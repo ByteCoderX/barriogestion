@@ -1,0 +1,232 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model usuarios {
+  id_usuario     Int       @id @default(autoincrement())
+  dni            String?   @unique
+  nombre         String
+  apellido       String
+  direccion      String?
+  contacto       String?
+  password       String?
+  creado_en      DateTime  @default(now())
+  actualizado_en DateTime  @updatedAt
+
+  roles          usuarios_roles[]
+  parcelas       usuarios_parcelas[]
+  invitados      invitados[]     @relation("UsuarioInvitado")
+  accesos        accesos[]       @relation("UsuarioAcceso")
+  vehiculos      vehiculos[]
+  multas         multas[]
+}
+
+model roles {
+  id_rol   Int              @id @default(autoincrement())
+  nombre   String           @unique
+  usuarios usuarios_roles[]
+}
+
+model usuarios_roles {
+  id_usuario Int
+  id_rol     Int
+
+  usuario usuarios @relation(fields: [id_usuario], references: [id_usuario])
+  rol     roles    @relation(fields: [id_rol], references: [id_rol])
+
+  @@id([id_usuario, id_rol])
+}
+
+model parcelas {
+  id_parcela       Int                 @id @default(autoincrement())
+  codigo_lote      String?             @unique
+  direccion        String?
+  estado_propiedad EstadoPropiedad     @default(ocupada)
+  descripcion      String?
+
+  usuarios   usuarios_parcelas[]
+  vehiculos  vehiculos[]
+  multas     multas[]
+  cargos     expensa_cargos[]
+  pagos      expensa_pagos[]
+}
+
+model usuarios_parcelas {
+  id_usuario_parcela Int       @id @default(autoincrement())
+  id_usuario         Int
+  id_parcela         Int
+  rol_propiedad      RolPropiedad
+  fecha_inicio       DateTime?
+  fecha_fin          DateTime?
+
+  usuario usuarios @relation(fields: [id_usuario], references: [id_usuario])
+  parcela parcelas @relation(fields: [id_parcela], references: [id_parcela])
+}
+
+model invitados {
+  id_invitado    Int       @id @default(autoincrement())
+  nombre         String
+  apellido       String
+  dni            String?
+  id_responsable Int
+  fecha_visita   DateTime?
+  permiso        Permiso    @default(pendiente)
+  observaciones  String?
+
+  responsable usuarios @relation("UsuarioInvitado", fields: [id_responsable], references: [id_usuario])
+  accesos     accesos[]
+}
+
+model accesos {
+  id_acceso   Int       @id @default(autoincrement())
+  id_usuario  Int?
+  id_invitado Int?
+  fecha_hora  DateTime  @default(now())
+  tipo        TipoAcceso
+  guardia     String?
+  observaciones String?
+
+  usuario  usuarios? @relation("UsuarioAcceso", fields: [id_usuario], references: [id_usuario])
+  invitado invitados? @relation(fields: [id_invitado], references: [id_invitado])
+}
+
+model vehiculos {
+  id_vehiculo      Int      @id @default(autoincrement())
+  placa            String   @unique
+  marca            String?
+  modelo           String?
+  color            String?
+  anio             Int?
+  fecha_fabricacion DateTime?
+  num_seguro       String?
+  info_seguro      String?
+  num_registro     String?
+  info_registro    String?
+  vtv              String?
+  id_usuario       Int?
+  id_parcela       Int?
+
+  usuario usuarios? @relation(fields: [id_usuario], references: [id_usuario])
+  parcela parcelas? @relation(fields: [id_parcela], references: [id_parcela])
+}
+
+model multas {
+  id_multa     Int       @id @default(autoincrement())
+  id_usuario   Int
+  id_parcela   Int?
+  causa        String?
+  descripcion  String?
+  tipo         String?
+  monto        Decimal   @default(0.0)
+  fecha_emision DateTime?
+  estado_multa EstadoMulta @default(pendiente)
+  creado_por   String?
+
+  usuario    usuarios @relation(fields: [id_usuario], references: [id_usuario])
+  parcela    parcelas? @relation(fields: [id_parcela], references: [id_parcela])
+  evidencias multas_evidencias[]
+}
+
+model multas_evidencias {
+  id_evidencia Int    @id @default(autoincrement())
+  id_multa     Int
+  nombre_img   String?
+  ruta         String?
+  tipo_mime    String?
+
+  multa multas @relation(fields: [id_multa], references: [id_multa])
+}
+
+model servicios {
+  id_servicio  Int           @id @default(autoincrement())
+  codigo       String?       @unique
+  nombre       String
+  descripcion  String?
+
+  items expensa_items[]
+}
+
+model expensa_periodo {
+  id_periodo   Int             @id @default(autoincrement())
+  periodo      String          @unique
+  fecha_inicio DateTime?
+  fecha_fin    DateTime?
+  notas        String?
+
+  cargos expensa_cargos[]
+  pagos  expensa_pagos[]
+}
+
+model expensa_items {
+  id_item      Int      @id @default(autoincrement())
+  id_servicio  Int
+  nombre       String
+  descripcion  String?
+
+  servicio servicios @relation(fields: [id_servicio], references: [id_servicio])
+  cargos   expensa_cargos[]
+}
+
+model expensa_cargos {
+  id_cargo   Int     @id @default(autoincrement())
+  id_periodo Int
+  id_parcela Int
+  id_item    Int?
+  importe    Decimal
+  detalle    String?
+
+  periodo expensa_periodo @relation(fields: [id_periodo], references: [id_periodo])
+  parcela parcelas        @relation(fields: [id_parcela], references: [id_parcela])
+  item    expensa_items?  @relation(fields: [id_item], references: [id_item])
+}
+
+model expensa_pagos {
+  id_pago   Int     @id @default(autoincrement())
+  id_periodo Int
+  id_parcela Int
+  fecha     DateTime
+  medio     String?
+  importe   Decimal
+  referencia String?
+
+  periodo expensa_periodo @relation(fields: [id_periodo], references: [id_periodo])
+  parcela parcelas        @relation(fields: [id_parcela], references: [id_parcela])
+}
+
+enum EstadoPropiedad {
+  ocupada
+  desocupada
+  en_obra
+  incobrable
+  otro
+}
+
+enum RolPropiedad {
+  propietario
+  inquilino
+  responsable
+  otro
+}
+
+enum Permiso {
+  autorizado
+  denegado
+  pendiente
+}
+
+enum TipoAcceso {
+  entrada
+  salida
+}
+
+enum EstadoMulta {
+  pendiente
+  abonada
+  anulada
+  en_reclamo
+}
