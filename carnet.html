@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Carnet - Barrio Privado</title>
+    <link rel="stylesheet" href="carnet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Bokeh Background Effect -->
+    <div class="bokeh-background">
+        <div class="bokeh-circle"></div>
+        <div class="bokeh-circle"></div>
+        <div class="bokeh-circle"></div>
+        <div class="bokeh-circle"></div>
+        <div class="bokeh-circle"></div>
+        <div class="bokeh-circle"></div>
+        <div class="bokeh-circle"></div>
+        <div class="bokeh-circle"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div>
+                        <div class="logo-main">BARRIO PRIVADO</div>
+                        <div class="logo-sub">Sistema de Gestión</div>
+                    </div>
+                </div>
+                
+                <nav class="nav-menu">
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-item">Inicio</a>
+                    </div>
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-item">Amenidades</a>
+                    </div>
+                    <div class="nav-dropdown active">
+                        <a href="#" class="nav-item">Mi Carnet</a>
+                    </div>
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-item">Configuración</a>
+                    </div>
+                </nav>
+
+                <div class="user-menu">
+                    <div class="notification-bell">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">3</span>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-label" id="header-user-name">Cargando...</div>
+                        <a href="#" class="user-action">Cerrar Sesión</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1><i class="fas fa-id-card"></i> Mi Carnet Digital</h1>
+                <p>Información personal y datos de residencia</p>
+                <div class="date-info">
+                    <i class="fas fa-calendar-alt"></i> Actualizado: <span id="current-date"></span>
+                </div>
+            </div>
+
+            <!-- Carnet Content -->
+            <div class="carnet-container">
+                <!-- Carnet Card -->
+                <div class="carnet-card">
+                    <div class="carnet-header">
+                        <div class="carnet-logo">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="carnet-title">
+                            <h2>BARRIO PRIVADO</h2>
+                            <p>Carnet de Residente</p>
+                        </div>
+                        <div class="carnet-id">
+                            <span class="id-label">ID</span>
+                            <span id="user-id" class="id-number">-</span>
+                        </div>
+                    </div>
+
+                    <div class="carnet-body">
+                        <div class="user-photo">
+                            <div class="photo-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+
+                        <div class="user-details">
+                            <div class="detail-row">
+                                <div class="detail-item">
+                                    <label><i class="fas fa-user"></i> Nombre</label>
+                                    <span id="user-nombre" data-field="nombre">Cargando...</span>
+                                </div>
+                                <div class="detail-item">
+                                    <label><i class="fas fa-user-tag"></i> Apellido</label>
+                                    <span id="user-apellido" data-field="apellido">Cargando...</span>
+                                </div>
+                            </div>
+
+                            <div class="detail-row">
+                                <div class="detail-item">
+                                    <label><i class="fas fa-id-card-alt"></i> DNI</label>
+                                    <span id="user-dni" data-field="dni">Cargando...</span>
+                                </div>
+                                <div class="detail-item">
+                                    <label><i class="fas fa-phone"></i> Contacto</label>
+                                    <span id="user-contacto" data-field="contacto">Cargando...</span>
+                                </div>
+                            </div>
+
+                            <div class="detail-row">
+                                <div class="detail-item full-width">
+                                    <label><i class="fas fa-map-marker-alt"></i> Dirección</label>
+                                    <span id="user-direccion" data-field="direccion">Cargando...</span>
+                                </div>
+                            </div>
+
+                            <div class="detail-row">
+                                <div class="detail-item">
+                                    <label><i class="fas fa-key"></i> ROL</label>
+                                    <span id="user-rol" class="role-badge" data-field="rol">Cargando...</span>
+                                </div>
+                                <div class="detail-item">
+                                    <label><i class="fas fa-home-user"></i> Parcela</label>
+                                    <span id="user-parcela" class="parcela-number" data-field="id_parcela">Cargando...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carnet-footer">
+                        <div class="qr-section">
+                            <div class="qr-placeholder">
+                                <i class="fas fa-qrcode"></i>
+                            </div>
+                            <p>Código QR de Identificación</p>
+                        </div>
+                        
+                        <div class="carnet-status">
+                            <div class="status-indicator active">
+                                <i class="fas fa-check-circle"></i>
+                                <span>ACTIVO</span>
+                            </div>
+                            <div class="valid-until">
+                                Válido hasta: Dic 2024
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="carnet-actions">
+                    <button class="btn-action btn-primary" onclick="downloadCarnet()">
+                        <i class="fas fa-download"></i>
+                        Descargar Carnet
+                    </button>
+                    <button class="btn-action btn-secondary" onclick="printCarnet()">
+                        <i class="fas fa-print"></i>
+                        Imprimir
+                    </button>
+                    <button class="btn-action btn-tertiary" onclick="shareCarnet()">
+                        <i class="fas fa-share-alt"></i>
+                        Compartir
+                    </button>
+                </div>
+
+                <!-- Additional Info -->
+                <div class="additional-info">
+                    <div class="info-card">
+                        <div class="info-header">
+                            <i class="fas fa-info-circle"></i>
+                            <h3>Información Importante</h3>
+                        </div>
+                        <div class="info-content">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Este carnet es válido únicamente para el residente registrado</li>
+                                <li><i class="fas fa-check"></i> Debe presentarse junto con documento de identidad</li>
+                                <li><i class="fas fa-check"></i> Válido para acceso a amenidades del barrio</li>
+                                <li><i class="fas fa-exclamation-triangle"></i> Reportar inmediatamente en caso de pérdida o robo</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-header">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Datos de Seguridad</h3>
+                        </div>
+                        <div class="info-content">
+                            <div class="security-item">
+                                <label>Última Actualización:</label>
+                                <span id="last-update"></span>
+                            </div>
+                            <div class="security-item">
+                                <label>Hash de Seguridad:</label>
+                                <span class="hash-code">$2y$10$mQqHZCPPeSBaNhgHwdKo6eL.GesSsYMsrR3XC/ACWNGI...</span>
+                            </div>
+                            <div class="security-item">
+                                <label>Estado de Verificación:</label>
+                                <span class="verified"><i class="fas fa-check-circle"></i> Verificado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="carnet.js"></script>
+</body>
+</html>
