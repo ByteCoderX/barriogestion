@@ -1,0 +1,259 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model usuarios {
+  id_usuario     Int                 @id @default(autoincrement())
+  dni            String              @unique(map: "dni") @db.VarChar(20)
+  nombre         String              @db.VarChar(50)
+  apellido       String              @db.VarChar(50)
+  direccion      String?             @db.VarChar(120)
+  contacto       String?             @db.VarChar(80)
+  password       String?             @db.VarChar(300)
+  creado_en      Int
+  actualizado_en Int
+  accesos        accesos[]           @relation("UsuarioAcceso")
+  invitados      invitados[]         @relation("UsuarioInvitado")
+  jwt            jwt[]
+  multas         multas[]
+  parcelas       usuarios_parcelas[]
+  roles          usuarios_roles[]
+  vehiculos      vehiculos[]
+}
+
+model roles {
+  id_rol   Int              @id @default(autoincrement()) @db.TinyInt
+  nombre   String           @unique(map: "nombre") @db.VarChar(30)
+  usuarios usuarios_roles[]
+}
+
+model usuarios_roles {
+  id_usuario Int
+  id_rol     Int      @db.TinyInt
+  rol        roles    @relation(fields: [id_rol], references: [id_rol], onDelete: NoAction, onUpdate: NoAction, map: "fk_ur_rol")
+  usuario    usuarios @relation(fields: [id_usuario], references: [id_usuario], onDelete: NoAction, onUpdate: NoAction, map: "fk_ur_usuario")
+
+  @@id([id_usuario, id_rol])
+  @@index([id_rol], map: "fk_ur_rol")
+}
+
+model parcelas {
+  id_parcela       Int                 @id @default(autoincrement())
+  codigo_lote      String?             @unique(map: "codigo_lote") @db.VarChar(50)
+  direccion        String?             @db.VarChar(150)
+  estado_propiedad EstadoPropiedad?    @default(ocupada)
+  descripcion      String?             @db.VarChar(200)
+  cargos           expensa_cargos[]
+  pagos            expensa_pagos[]
+  multas           multas[]
+  usuarios         usuarios_parcelas[]
+  vehiculos        vehiculos[]
+}
+
+model usuarios_parcelas {
+  id_usuario_parcela Int          @id @default(autoincrement())
+  id_usuario         Int
+  id_parcela         Int
+  rol_propiedad      RolPropiedad
+  fecha_inicio       DateTime?    @db.Date
+  fecha_fin          DateTime?    @db.Date
+  parcela            parcelas     @relation(fields: [id_parcela], references: [id_parcela], onDelete: NoAction, onUpdate: NoAction, map: "fk_up_parcela")
+  usuario            usuarios     @relation(fields: [id_usuario], references: [id_usuario], onDelete: NoAction, onUpdate: NoAction, map: "fk_up_usuario")
+
+  @@index([id_parcela], map: "idx_up_parcela")
+  @@index([id_usuario], map: "idx_up_usuario")
+}
+
+model invitados {
+  id_invitado    Int       @id @default(autoincrement())
+  nombre         String    @db.VarChar(50)
+  apellido       String    @db.VarChar(50)
+  dni            String?   @db.VarChar(20)
+  id_responsable Int
+  fecha_visita   DateTime? @db.Date
+  permiso        Permiso?  @default(pendiente)
+  observaciones  String?   @db.VarChar(200)
+  accesos        accesos[]
+  responsable    usuarios  @relation("UsuarioInvitado", fields: [id_responsable], references: [id_usuario], onDelete: NoAction, onUpdate: NoAction, map: "fk_inv_responsable")
+
+  @@index([id_responsable], map: "fk_inv_responsable")
+  @@index([dni], map: "idx_invitado_dni")
+}
+
+model accesos {
+  id_acceso     BigInt     @id @default(autoincrement())
+  id_usuario    Int?
+  id_invitado   Int?
+  fecha_hora    DateTime   @default(now()) @db.DateTime(0)
+  tipo          TipoAcceso
+  guardia       String?    @db.VarChar(80)
+  observaciones String?    @db.VarChar(200)
+  invitado      invitados? @relation(fields: [id_invitado], references: [id_invitado], onDelete: NoAction, onUpdate: NoAction, map: "fk_acc_invitado")
+  usuario       usuarios?  @relation("UsuarioAcceso", fields: [id_usuario], references: [id_usuario], onDelete: NoAction, onUpdate: NoAction, map: "fk_acc_usuario")
+
+  @@index([id_invitado], map: "fk_acc_invitado")
+  @@index([id_usuario], map: "fk_acc_usuario")
+  @@index([fecha_hora], map: "idx_acc_fh")
+}
+
+model vehiculos {
+  id_vehiculo       Int       @id @default(autoincrement())
+  placa             String    @unique(map: "placa") @db.VarChar(15)
+  marca             String?   @db.VarChar(50)
+  modelo            String?   @db.VarChar(60)
+  color             String?   @db.VarChar(30)
+  anio              Int?      @db.SmallInt
+  fecha_fabricacion DateTime? @db.Date
+  num_seguro        String?   @db.VarChar(40)
+  info_seguro       String?   @db.VarChar(150)
+  num_registro      String?   @db.VarChar(40)
+  info_registro     String?   @db.VarChar(150)
+  vtv               String?   @db.VarChar(150)
+  id_usuario        Int?
+  id_parcela        Int?
+  parcela           parcelas? @relation(fields: [id_parcela], references: [id_parcela], onDelete: NoAction, onUpdate: NoAction, map: "fk_veh_parcela")
+  usuario           usuarios? @relation(fields: [id_usuario], references: [id_usuario], onDelete: NoAction, onUpdate: NoAction, map: "fk_veh_usuario")
+
+  @@index([id_parcela], map: "idx_veh_parcela")
+  @@index([id_usuario], map: "idx_veh_usuario")
+}
+
+model multas {
+  id_multa      Int                 @id @default(autoincrement())
+  id_usuario    Int
+  id_parcela    Int?
+  causa         String?             @db.VarChar(150)
+  descripcion   String?             @db.VarChar(200)
+  tipo          String?             @db.VarChar(60)
+  monto         Decimal?            @default(0.00) @db.Decimal(12, 2)
+  fecha_emision DateTime?           @db.DateTime(0)
+  estado_multa  EstadoMulta?        @default(pendiente)
+  creado_por    String?             @db.VarChar(80)
+  parcela       parcelas?           @relation(fields: [id_parcela], references: [id_parcela], onDelete: NoAction, onUpdate: NoAction, map: "fk_mul_parcela")
+  usuario       usuarios            @relation(fields: [id_usuario], references: [id_usuario], onDelete: NoAction, onUpdate: NoAction, map: "fk_mul_usuario")
+  evidencias    multas_evidencias[]
+
+  @@index([estado_multa], map: "idx_mul_estado")
+  @@index([id_parcela], map: "idx_mul_parcela")
+  @@index([id_usuario], map: "idx_mul_usuario")
+}
+
+model multas_evidencias {
+  id_evidencia Int     @id @default(autoincrement())
+  id_multa     Int
+  nombre_img   String? @db.VarChar(150)
+  ruta         String? @db.VarChar(255)
+  tipo_mime    String? @db.VarChar(80)
+  multa        multas  @relation(fields: [id_multa], references: [id_multa], onDelete: NoAction, onUpdate: NoAction, map: "fk_me_multa")
+
+  @@index([id_multa], map: "fk_me_multa")
+}
+
+model servicios {
+  id_servicio Int             @id @default(autoincrement())
+  codigo      String?         @unique(map: "codigo") @db.VarChar(30)
+  nombre      String          @db.VarChar(80)
+  descripcion String?         @db.VarChar(150)
+  items       expensa_items[]
+}
+
+model expensa_periodo {
+  id_periodo   Int              @id @default(autoincrement())
+  periodo      String           @unique(map: "periodo") @db.Char(7)
+  fecha_inicio DateTime?        @db.Date
+  fecha_fin    DateTime?        @db.Date
+  notas        String?          @db.VarChar(200)
+  cargos       expensa_cargos[]
+  pagos        expensa_pagos[]
+}
+
+model expensa_items {
+  id_item     Int              @id @default(autoincrement())
+  id_servicio Int
+  nombre      String           @db.VarChar(80)
+  descripcion String?          @db.VarChar(150)
+  cargos      expensa_cargos[]
+  servicio    servicios        @relation(fields: [id_servicio], references: [id_servicio], onDelete: NoAction, onUpdate: NoAction, map: "fk_ei_serv")
+
+  @@index([id_servicio], map: "fk_ei_serv")
+}
+
+model expensa_cargos {
+  id_cargo   BigInt          @id @default(autoincrement())
+  id_periodo Int
+  id_parcela Int
+  id_item    Int?
+  importe    Decimal         @db.Decimal(12, 2)
+  detalle    String?         @db.VarChar(150)
+  item       expensa_items?  @relation(fields: [id_item], references: [id_item], onDelete: NoAction, onUpdate: NoAction, map: "fk_ec_item")
+  parcela    parcelas        @relation(fields: [id_parcela], references: [id_parcela], onDelete: NoAction, onUpdate: NoAction, map: "fk_ec_parcela")
+  periodo    expensa_periodo @relation(fields: [id_periodo], references: [id_periodo], onDelete: NoAction, onUpdate: NoAction, map: "fk_ec_periodo")
+
+  @@index([id_item], map: "fk_ec_item")
+  @@index([id_periodo], map: "fk_ec_periodo")
+  @@index([id_parcela, id_periodo], map: "idx_ec_parcela_periodo")
+}
+
+model expensa_pagos {
+  id_pago    BigInt          @id @default(autoincrement())
+  id_periodo Int
+  id_parcela Int
+  fecha      DateTime        @db.Date
+  medio      String?         @db.VarChar(40)
+  importe    Decimal         @db.Decimal(12, 2)
+  referencia String?         @db.VarChar(80)
+  parcela    parcelas        @relation(fields: [id_parcela], references: [id_parcela], onDelete: NoAction, onUpdate: NoAction, map: "fk_ep_parcela")
+  periodo    expensa_periodo @relation(fields: [id_periodo], references: [id_periodo], onDelete: NoAction, onUpdate: NoAction, map: "fk_ep_periodo")
+
+  @@index([id_periodo], map: "fk_ep_periodo")
+  @@index([id_parcela, id_periodo], map: "idx_ep_parcela_periodo")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model jwt {
+  rId                   String   @id @db.VarChar(255)
+  tokenExpirationNow    Int
+  tokenExpirationOffset Int
+  userId                Int
+  usuarios              usuarios @relation(fields: [userId], references: [id_usuario], onDelete: Cascade, map: "FK__usuarios")
+
+  @@index([userId], map: "FK__usuarios")
+}
+
+enum EstadoPropiedad {
+  ocupada
+  desocupada
+  en_obra
+  incobrable
+  otro
+}
+
+enum RolPropiedad {
+  propietario
+  inquilino
+  responsable
+  otro
+}
+
+enum Permiso {
+  autorizado
+  denegado
+  pendiente
+}
+
+enum TipoAcceso {
+  entrada
+  salida
+}
+
+enum EstadoMulta {
+  pendiente
+  abonada
+  anulada
+  en_reclamo
+}
