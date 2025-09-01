@@ -12,7 +12,7 @@
     "format": "prettier -w ."
   },
   "keywords": [],
-  "author": "IvanKunstlerDev",
+  "author": "ByteCoderX",
   "license": "ISC",
   "packageManager": "pnpm@10.6.2",
   "devDependencies": {
