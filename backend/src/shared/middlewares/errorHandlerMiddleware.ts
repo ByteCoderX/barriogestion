@@ -8,7 +8,6 @@ export const errorHandlerMiddlware: ErrorRequestHandler = (
   res,
   _next,
 ) => {
-  console.log(err)
   const { method, originalUrl } = req
   accessLogger.error(`${method} ${originalUrl} | ${err}`)
 
