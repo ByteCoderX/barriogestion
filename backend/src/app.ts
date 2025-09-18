@@ -11,7 +11,7 @@ app.get('/health', (req, res) => {
   res.json({ status: 'Ok' })
 })
 
-app.use('/api/v1', v1())
+app.use('/bg/v1', v1())
 
 app.use(routeNotFoundMiddleware)
 app.use(errorHandlerMiddlware)
