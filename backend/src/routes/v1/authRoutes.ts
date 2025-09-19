@@ -1,48 +1,90 @@
-import { Router } from "express";
-import { JWTServices } from "@app/jwt/JWTService";
-import { AuthServices } from "@app/auth/AuthServices";
-import { container } from "@diContainer/container";
-import { validate } from "@shared/middlewares/zodMiddleware";
-import { schem } from "./zodSchemas/authShema";
-import { AppException } from "@shared/exceptions/AppException";
+import { AuthServices } from '@app/auth/AuthServices'
+import { container } from '@diContainer/container'
+import { Router } from 'express'
+import { AuthSchema } from '@shared/schemas/routes/AuthSchema'
+import { zodBodyMiddleware } from '@shared/middlewares/zodBodyMiddleware'
+import { AppException, httpStatusCodes } from '@shared/exceptions/AppException'
+import { TokenManager } from '@app/auth/tokens/TokenManager'
 
 export const authRoutes = () => {
-    const router = Router()
-    const jwtServices = container.resolve<JWTServices>("jwt-services")
-    const authServices = container.resolve<AuthServices>("auth-services")
+  const router = Router()
+  const authServices = container.resolve<AuthServices>('auth-services')
+  const tokenManager = container.resolve<TokenManager>('token-manager')
 
-    router.post('/verify', validate(schem.verify, "body"), async (req, res) => { // La
-        const token = String(req.query.token)
-        const data = await jwtServices.verifyToken(token)
+  router.post(
+    '/register',
+    zodBodyMiddleware(AuthSchema.register),
+    async (req, res) => {
+      // Se registra un usuario 👍
+      await authServices.registerUser(req.body)
+      res.sendStatus(201)
+    },
+  )
 
-        res.status(data.valid ? 200 : 401).json(data)
-    })
+  router.post(
+    '/login',
+    zodBodyMiddleware(AuthSchema.login),
+    async (req, res) => {
+      // Primero se verifica que la contraseña sea correcta
+      // y se intenta obtener los datos del usuario.
+      // Se obtiene la ip y el useragent del usuario.
+      const userIp = req.ip ?? 'null'
+      const userAgent = req.headers['user-agent'] ?? 'null'
 
-    router.post('/login', validate(schem.login, "body"), async (req, res) => { // Concha de
-        const data = req.body;
-        if (!data.dni || !data.password) throw new AppException("Faltan datos", 401)
+      const connectionInfo = {
+        ip: userIp,
+        userAgent,
+      }
 
-        function removePoints(cursedNumber: string) {
-            return cursedNumber.replace(/\./g, "");
-        }
+      const result = await authServices.authenticate(req.body, connectionInfo)
 
-        const loginData = {
-            dni: removePoints(data.dni),
-            password: data.password
-        }
+      // Se asigna el refresh token al usuario mediante cookies.
+      res.cookie('refreshToken', result.tokens.refresh)
+      res.cookie('accessToken', result.tokens.access)
 
-        const response = await authServices.login(loginData)
+      // Se devuelve token de acceso y la información del usuario mediante el body.
+      res.status(200).send({
+        user: {
+          id: result.user.id,
+          personalId: result.user.personalId,
+          dni: result.user.dni,
+          email: result.user.email,
+        },
+      })
+    },
+  )
 
-        res.status(data ? 200 : 401).json(response)
-    })
+  router.post('/validator', async (req, res) => {
+    const refreshToken = req.cookies.refreshToken
 
-    router.post('/logout', validate(schem.logout, "body"), async (req, res) => { // Tu Madre
-        const token = String(req.query.token)
-        const data = await jwtServices.verifyToken(token)
-        if(data.valid && data.rId) await jwtServices.deleteToken(data.rId)
+    if (!refreshToken)
+      throw new AppException(
+        'Credenciales Inválidas.',
+        httpStatusCodes.unauthorized,
+      )
 
-        res.status(204)
-    })
+    const refreshVerificaition =
+      await tokenManager.validateRefresh(refreshToken)
 
-    return router
+    if (!refreshVerificaition.valid) {
+      throw new AppException(
+        'Credenciales Inválidas.',
+        httpStatusCodes.unauthorized,
+      )
+    }
+
+    res.sendStatus(200)
+  })
+
+  router.post(
+    '/change-password',
+    zodBodyMiddleware(AuthSchema.changePassword),
+    async (req, res) => {
+      // Cambia la contraseña de un usuario existente.
+      await authServices.changePassword(req.body)
+      res.sendStatus(200)
+    },
+  )
+
+  return router
 }
