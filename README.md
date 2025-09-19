@@ -34,6 +34,8 @@
   password: string
 }
 ```
+- **POST** /logout | Elimina una sesión existente.
+  - Busca la cookie "refreshToken". (La cual es generada por el login)
 ---
 # Listado de posibles endpoints para el panel de Administración.
 ```
