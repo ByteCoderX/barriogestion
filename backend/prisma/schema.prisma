@@ -8,22 +8,21 @@ datasource db {
 }
 
 model usuarios {
-  id_usuario     Int                 @id @default(autoincrement())
+  id     Int                 @id @default(autoincrement()) @map("id_usuario")
   dni            String              @unique(map: "dni") @db.VarChar(20)
-  nombre         String              @db.VarChar(50)
-  apellido       String              @db.VarChar(50)
-  direccion      String?             @db.VarChar(120)
-  contacto       String?             @db.VarChar(80)
+  firstName         String              @db.VarChar(50) @map("nombre")
+  lastName       String              @db.VarChar(50) @map("apellido")
+  address      String?             @db.VarChar(120) @map("direccion")
+  contact       String?             @db.VarChar(80) @map("contacto")
   password       String?             @db.VarChar(300)
-  creado_en      Int
-  actualizado_en Int
-  accesos        accesos[]           @relation("UsuarioAcceso")
-  invitados      invitados[]         @relation("UsuarioInvitado")
-  jwt            jwt[]
-  multas         multas[]
-  parcelas       usuarios_parcelas[]
+  createdDate      DateTime @map("creado_en")
+  updatedDate DateTime @map("actualizado_en")
+  access        accesos[]           @relation("UsuarioAcceso")
+  guests      invitados[]         @relation("UsuarioInvitado")
+  fines         multas[]
+  plots       usuarios_parcelas[]
   roles          usuarios_roles[]
-  vehiculos      vehiculos[]
+  vehicles      vehiculos[]
 }
 
 model roles {
@@ -36,7 +35,7 @@ model usuarios_roles {
   id_usuario Int
   id_rol     Int      @db.TinyInt
   rol        roles    @relation(fields: [id_rol], references: [id_rol], onDelete: NoAction, onUpdate: NoAction, map: "fk_ur_rol")
-  usuario    usuarios @relation(fields: [id_usuario], references: [id_usuario], onDelete: NoAction, onUpdate: NoAction, map: "fk_ur_usuario")
+  usuario    usuarios @relation(fields: [id_usuario], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_ur_usuario")
 
   @@id([id_usuario, id_rol])
   @@index([id_rol], map: "fk_ur_rol")
@@ -63,7 +62,7 @@ model usuarios_parcelas {
   fecha_inicio       DateTime?    @db.Date
   fecha_fin          DateTime?    @db.Date
   parcela            parcelas     @relation(fields: [id_parcela], references: [id_parcela], onDelete: NoAction, onUpdate: NoAction, map: "fk_up_parcela")
-  usuario            usuarios     @relation(fields: [id_usuario], references: [id_usuario], onDelete: NoAction, onUpdate: NoAction, map: "fk_up_usuario")
+  usuario            usuarios     @relation(fields: [id_usuario], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_up_usuario")
 
   @@index([id_parcela], map: "idx_up_parcela")
   @@index([id_usuario], map: "idx_up_usuario")
@@ -79,7 +78,7 @@ model invitados {
   permiso        Permiso?  @default(pendiente)
   observaciones  String?   @db.VarChar(200)
   accesos        accesos[]
-  responsable    usuarios  @relation("UsuarioInvitado", fields: [id_responsable], references: [id_usuario], onDelete: NoAction, onUpdate: NoAction, map: "fk_inv_responsable")
+  responsable    usuarios  @relation("UsuarioInvitado", fields: [id_responsable], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_inv_responsable")
 
   @@index([id_responsable], map: "fk_inv_responsable")
   @@index([dni], map: "idx_invitado_dni")
@@ -94,7 +93,7 @@ model accesos {
   guardia       String?    @db.VarChar(80)
   observaciones String?    @db.VarChar(200)
   invitado      invitados? @relation(fields: [id_invitado], references: [id_invitado], onDelete: NoAction, onUpdate: NoAction, map: "fk_acc_invitado")
-  usuario       usuarios?  @relation("UsuarioAcceso", fields: [id_usuario], references: [id_usuario], onDelete: NoAction, onUpdate: NoAction, map: "fk_acc_usuario")
+  usuario       usuarios?  @relation("UsuarioAcceso", fields: [id_usuario], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_acc_usuario")
 
   @@index([id_invitado], map: "fk_acc_invitado")
   @@index([id_usuario], map: "fk_acc_usuario")
@@ -117,7 +116,7 @@ model vehiculos {
   id_usuario        Int?
   id_parcela        Int?
   parcela           parcelas? @relation(fields: [id_parcela], references: [id_parcela], onDelete: NoAction, onUpdate: NoAction, map: "fk_veh_parcela")
-  usuario           usuarios? @relation(fields: [id_usuario], references: [id_usuario], onDelete: NoAction, onUpdate: NoAction, map: "fk_veh_usuario")
+  usuario           usuarios? @relation(fields: [id_usuario], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_veh_usuario")
 
   @@index([id_parcela], map: "idx_veh_parcela")
   @@index([id_usuario], map: "idx_veh_usuario")
@@ -135,7 +134,7 @@ model multas {
   estado_multa  EstadoMulta?        @default(pendiente)
   creado_por    String?             @db.VarChar(80)
   parcela       parcelas?           @relation(fields: [id_parcela], references: [id_parcela], onDelete: NoAction, onUpdate: NoAction, map: "fk_mul_parcela")
-  usuario       usuarios            @relation(fields: [id_usuario], references: [id_usuario], onDelete: NoAction, onUpdate: NoAction, map: "fk_mul_usuario")
+  usuario       usuarios            @relation(fields: [id_usuario], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_mul_usuario")
   evidencias    multas_evidencias[]
 
   @@index([estado_multa], map: "idx_mul_estado")
@@ -214,15 +213,31 @@ model expensa_pagos {
   @@index([id_parcela, id_periodo], map: "idx_ep_parcela_periodo")
 }
 
-/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
-model jwt {
-  rId                   String   @id @db.VarChar(255)
-  tokenExpirationNow    Int
-  tokenExpirationOffset Int
-  userId                Int
-  usuarios              usuarios @relation(fields: [userId], references: [id_usuario], onDelete: Cascade, map: "FK__usuarios")
+model User {
+  id         String  @id @default(uuid()) @db.VarChar(36)
+  dni   String  @unique @db.VarChar(36)
+  email      String  @unique @map("correo_electronico") @db.VarChar(255)
+  password   String  @map("contrasena") @db.VarChar(255)
+  personalId Int     @map("id_usuario")
+  admin      Boolean @default(false)
 
-  @@index([userId], map: "FK__usuarios")
+  sessions Session[]
+
+  @@map("usuarios_web")
+}
+
+model Session {
+  id             String   @id @default(uuid()) @db.VarChar(36)
+  userId         String   @map("usuario_id") @db.VarChar(36)
+  ip             String   @db.VarChar(45)
+  userAgent      String   @map("user_agent") @db.VarChar(512)
+  active         Boolean  @map("activo")
+  createdDate    DateTime @map("fecha_creacion") @db.DateTime
+  expirationDate DateTime @map("fecha_expiracion") @db.DateTime
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("sesiones_web")
 }
 
 enum EstadoPropiedad {

@@ -8,6 +8,7 @@ import { billsRoutes } from './billsRoutes'
 import { foundsRoutes } from './foundsRoutes'
 import { incomesRoutes } from './incomesRoutes'
 import { paymentsRoutes } from './paymentsRoutes'
+import { sessionsMiddleware } from '@shared/middlewares/sessionsMiddleware'
 
 export const v1 = () => {
   const router = Router()
@@ -19,13 +20,13 @@ export const v1 = () => {
   })
 
   router.use('/auth', authRoutes())
-  router.use('/user', usersRoutes())
-  router.use('/access', accessRoutes())
-  router.use('/expenses', expensesRoutes())
-  router.use('/bills', billsRoutes())
-  router.use('/founds', foundsRoutes())
-  router.use('/incomes', incomesRoutes())
-  router.use('/payment', paymentsRoutes())
+  router.use('/user', sessionsMiddleware, usersRoutes())
+  router.use('/access', sessionsMiddleware, accessRoutes())
+  router.use('/expenses', sessionsMiddleware, expensesRoutes())
+  router.use('/bills', sessionsMiddleware, billsRoutes())
+  router.use('/founds', sessionsMiddleware, foundsRoutes())
+  router.use('/incomes', sessionsMiddleware, incomesRoutes())
+  router.use('/payment', sessionsMiddleware, paymentsRoutes())
 
   return router
 }
