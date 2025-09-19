@@ -146,4 +146,8 @@ export class AuthServices {
 
     return user
   }
+
+  async deleteSession(id: string) {
+    this.sessionsRepository.delete(id)
+  }
 }

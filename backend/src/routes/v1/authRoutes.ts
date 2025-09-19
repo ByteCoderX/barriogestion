@@ -86,5 +86,18 @@ export const authRoutes = () => {
     },
   )
 
+  router.delete('/logout', async (req, res) => {
+    const refreshToken = req.cookies.refreshToken
+    if (!refreshToken) return res.sendStatus(204)
+
+    const refreshVerificaition =
+      await tokenManager.validateRefresh(refreshToken)
+
+    if (!refreshVerificaition.valid) return res.sendStatus(204)
+
+    await authServices.deleteSession(refreshVerificaition.decoded.sessionId)
+    return res.sendStatus(204)
+  })
+
   return router
 }
