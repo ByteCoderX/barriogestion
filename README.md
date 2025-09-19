@@ -4,7 +4,38 @@
 - 25 Endpoints - Lógicos
 - http://localhost:2005/bg/v1/{endpoints}
 
-
+# Documentación Crota
+/auth
+- **POST** /register | Registra un usuario de acceso.
+  - Recibe por Body:
+```
+{
+  dni: string
+  email: string
+  password: string
+  personalId: number
+}
+```
+- **POST** /login | Verifica la contraseña y genera la sesión.
+  - Recibe por Body:
+```
+{
+  dni: string
+  password: string
+}
+```
+- **POST** /validator | Valida el refresh token de la cookie.
+  - Busca la cookie "refreshToken". (La cual es generada por el login)
+- **POST** /change-password | Cambia la contraseña de un usuario de acceso.
+  - Recibe por Body:
+```
+{
+  dni: string
+  password: string
+}
+```
+---
+# Listado de posibles endpoints para el panel de Administración.
 ```
 - *Completado* | Ni idea amigo
 - [Posible] | Endpoints que se pueden llegar a hacer / Tienen su respectiva Tabla
