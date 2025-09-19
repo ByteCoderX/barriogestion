@@ -5,7 +5,7 @@
 
 # Primeros pasos
 - pnpm i
-- editen el ".env.template" a ".env.local" y completenlo con los datos necesarios.
+- Renombren el ".env.template" a ".env.local" y completenlo con los datos necesarios.
 - pnpm prisma generate
 - pnpm start:dev
 
