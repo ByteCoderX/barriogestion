@@ -3,6 +3,12 @@
 - 25 Endpoints - Lógicos
 - http://localhost:3000/bg/v1/{endpoints}
 
+# Primeros pasos
+- pnpm i
+- editen el ".env.template" a ".env.local" y completenlo con los datos necesarios.
+- pnpm prisma generate
+- pnpm start:dev
+
 # Documentación Crota
 /auth
 - **POST** /register | Registra un usuario de acceso.
@@ -15,7 +21,7 @@
   personalId: number
 }
 ```
-- **POST** /login | Verifica la contraseña y genera la sesión.
+- **POST** /login | Verifica la contraseña y genera la sesión (asigna los tokens mediante cookies).
   - Recibe por Body:
 ```
 {
