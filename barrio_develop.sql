@@ -1,10 +1,3 @@
--- --------------------------------------------------------
--- Host:                         127.0.0.1
--- Versión del servidor:         8.4.3 - MySQL Community Server - GPL
--- SO del servidor:              Win64
--- HeidiSQL Versión:             12.8.0.6908
--- --------------------------------------------------------
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
 /*!50503 SET NAMES utf8mb4 */;
@@ -14,12 +7,9 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-
--- Volcando estructura de base de datos para barrio_develop
 CREATE DATABASE IF NOT EXISTS `barrio_develop` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `barrio_develop`;
 
--- Volcando estructura para tabla barrio_develop.accesos
 CREATE TABLE IF NOT EXISTS `accesos` (
   `id_acceso` bigint NOT NULL AUTO_INCREMENT,
   `id_usuario` int DEFAULT NULL,
@@ -36,9 +26,6 @@ CREATE TABLE IF NOT EXISTS `accesos` (
   CONSTRAINT `fk_acc_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla barrio_develop.accesos: ~0 rows (aproximadamente)
-
--- Volcando estructura para tabla barrio_develop.expensa_cargos
 CREATE TABLE IF NOT EXISTS `expensa_cargos` (
   `id_cargo` bigint NOT NULL AUTO_INCREMENT,
   `id_periodo` int NOT NULL,
@@ -55,9 +42,6 @@ CREATE TABLE IF NOT EXISTS `expensa_cargos` (
   CONSTRAINT `fk_ec_periodo` FOREIGN KEY (`id_periodo`) REFERENCES `expensa_periodo` (`id_periodo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla barrio_develop.expensa_cargos: ~0 rows (aproximadamente)
-
--- Volcando estructura para tabla barrio_develop.expensa_items
 CREATE TABLE IF NOT EXISTS `expensa_items` (
   `id_item` int NOT NULL AUTO_INCREMENT,
   `id_servicio` int NOT NULL,
@@ -68,9 +52,6 @@ CREATE TABLE IF NOT EXISTS `expensa_items` (
   CONSTRAINT `fk_ei_serv` FOREIGN KEY (`id_servicio`) REFERENCES `servicios` (`id_servicio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla barrio_develop.expensa_items: ~0 rows (aproximadamente)
-
--- Volcando estructura para tabla barrio_develop.expensa_pagos
 CREATE TABLE IF NOT EXISTS `expensa_pagos` (
   `id_pago` bigint NOT NULL AUTO_INCREMENT,
   `id_periodo` int NOT NULL,
@@ -86,9 +67,6 @@ CREATE TABLE IF NOT EXISTS `expensa_pagos` (
   CONSTRAINT `fk_ep_periodo` FOREIGN KEY (`id_periodo`) REFERENCES `expensa_periodo` (`id_periodo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla barrio_develop.expensa_pagos: ~0 rows (aproximadamente)
-
--- Volcando estructura para tabla barrio_develop.expensa_periodo
 CREATE TABLE IF NOT EXISTS `expensa_periodo` (
   `id_periodo` int NOT NULL AUTO_INCREMENT,
   `periodo` char(7) NOT NULL,
@@ -99,9 +77,6 @@ CREATE TABLE IF NOT EXISTS `expensa_periodo` (
   UNIQUE KEY `periodo` (`periodo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla barrio_develop.expensa_periodo: ~0 rows (aproximadamente)
-
--- Volcando estructura para tabla barrio_develop.invitados
 CREATE TABLE IF NOT EXISTS `invitados` (
   `id_invitado` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
@@ -117,22 +92,6 @@ CREATE TABLE IF NOT EXISTS `invitados` (
   CONSTRAINT `fk_inv_responsable` FOREIGN KEY (`id_responsable`) REFERENCES `usuarios` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla barrio_develop.invitados: ~0 rows (aproximadamente)
-
--- Volcando estructura para tabla barrio_develop.jwt
-CREATE TABLE IF NOT EXISTS `jwt` (
-  `rId` varchar(255) NOT NULL,
-  `tokenExpirationNow` int NOT NULL,
-  `tokenExpirationOffset` int NOT NULL,
-  `userId` int NOT NULL,
-  PRIMARY KEY (`rId`),
-  KEY `FK__usuarios` (`userId`),
-  CONSTRAINT `FK__usuarios` FOREIGN KEY (`userId`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='puro sexo. La puta madre elias, esto era tu laburo';
-
--- Volcando datos para la tabla barrio_develop.jwt: ~0 rows (aproximadamente)
-
--- Volcando estructura para tabla barrio_develop.multas
 CREATE TABLE IF NOT EXISTS `multas` (
   `id_multa` int NOT NULL AUTO_INCREMENT,
   `id_usuario` int NOT NULL,
@@ -152,9 +111,6 @@ CREATE TABLE IF NOT EXISTS `multas` (
   CONSTRAINT `fk_mul_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla barrio_develop.multas: ~0 rows (aproximadamente)
-
--- Volcando estructura para tabla barrio_develop.multas_evidencias
 CREATE TABLE IF NOT EXISTS `multas_evidencias` (
   `id_evidencia` int NOT NULL AUTO_INCREMENT,
   `id_multa` int NOT NULL,
@@ -166,9 +122,6 @@ CREATE TABLE IF NOT EXISTS `multas_evidencias` (
   CONSTRAINT `fk_me_multa` FOREIGN KEY (`id_multa`) REFERENCES `multas` (`id_multa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla barrio_develop.multas_evidencias: ~0 rows (aproximadamente)
-
--- Volcando estructura para tabla barrio_develop.parcelas
 CREATE TABLE IF NOT EXISTS `parcelas` (
   `id_parcela` int NOT NULL AUTO_INCREMENT,
   `codigo_lote` varchar(50) DEFAULT NULL,
@@ -179,9 +132,6 @@ CREATE TABLE IF NOT EXISTS `parcelas` (
   UNIQUE KEY `codigo_lote` (`codigo_lote`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla barrio_develop.parcelas: ~0 rows (aproximadamente)
-
--- Volcando estructura para tabla barrio_develop.roles
 CREATE TABLE IF NOT EXISTS `roles` (
   `id_rol` tinyint NOT NULL AUTO_INCREMENT,
   `nombre` varchar(30) NOT NULL,
@@ -189,9 +139,6 @@ CREATE TABLE IF NOT EXISTS `roles` (
   UNIQUE KEY `nombre` (`nombre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla barrio_develop.roles: ~0 rows (aproximadamente)
-
--- Volcando estructura para tabla barrio_develop.servicios
 CREATE TABLE IF NOT EXISTS `servicios` (
   `id_servicio` int NOT NULL AUTO_INCREMENT,
   `codigo` varchar(30) DEFAULT NULL,
@@ -201,9 +148,19 @@ CREATE TABLE IF NOT EXISTS `servicios` (
   UNIQUE KEY `codigo` (`codigo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla barrio_develop.servicios: ~0 rows (aproximadamente)
+CREATE TABLE IF NOT EXISTS `sesiones_web` (
+  `id` varchar(36) NOT NULL DEFAULT (uuid()),
+  `usuario_id` varchar(36) NOT NULL,
+  `ip` varchar(45) NOT NULL,
+  `user_agent` varchar(512) NOT NULL,
+  `activo` tinyint(1) NOT NULL,
+  `fecha_creacion` datetime NOT NULL,
+  `fecha_expiracion` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `usuario_id` (`usuario_id`),
+  CONSTRAINT `sesiones_web_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios_web` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando estructura para tabla barrio_develop.usuarios
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id_usuario` int NOT NULL AUTO_INCREMENT,
   `dni` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -211,16 +168,12 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `apellido` varchar(50) NOT NULL,
   `direccion` varchar(120) DEFAULT NULL,
   `contacto` varchar(80) DEFAULT NULL,
-  `password` varchar(300) DEFAULT NULL,
-  `creado_en` int NOT NULL,
-  `actualizado_en` int NOT NULL,
+  `creado_en` datetime NOT NULL,
+  `actualizado_en` datetime NOT NULL,
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `dni` (`dni`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla barrio_develop.usuarios: ~0 rows (aproximadamente)
-
--- Volcando estructura para tabla barrio_develop.usuarios_parcelas
 CREATE TABLE IF NOT EXISTS `usuarios_parcelas` (
   `id_usuario_parcela` int NOT NULL AUTO_INCREMENT,
   `id_usuario` int NOT NULL,
@@ -235,9 +188,6 @@ CREATE TABLE IF NOT EXISTS `usuarios_parcelas` (
   CONSTRAINT `fk_up_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla barrio_develop.usuarios_parcelas: ~0 rows (aproximadamente)
-
--- Volcando estructura para tabla barrio_develop.usuarios_roles
 CREATE TABLE IF NOT EXISTS `usuarios_roles` (
   `id_usuario` int NOT NULL,
   `id_rol` tinyint NOT NULL,
@@ -247,9 +197,20 @@ CREATE TABLE IF NOT EXISTS `usuarios_roles` (
   CONSTRAINT `fk_ur_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla barrio_develop.usuarios_roles: ~0 rows (aproximadamente)
+CREATE TABLE IF NOT EXISTS `usuarios_web` (
+  `id` varchar(36) NOT NULL DEFAULT (uuid()),
+  `dni` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `correo_electronico` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `contrasena` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id_usuario` int NOT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `dni` (`dni`),
+  UNIQUE KEY `correo_electronico` (`correo_electronico`),
+  KEY `FK_usuarios_web_usuarios` (`id_usuario`),
+  CONSTRAINT `FK_usuarios_web_personal` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando estructura para tabla barrio_develop.vehiculos
 CREATE TABLE IF NOT EXISTS `vehiculos` (
   `id_vehiculo` int NOT NULL AUTO_INCREMENT,
   `placa` varchar(15) NOT NULL,
@@ -273,9 +234,6 @@ CREATE TABLE IF NOT EXISTS `vehiculos` (
   CONSTRAINT `fk_veh_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla barrio_develop.vehiculos: ~0 rows (aproximadamente)
-
--- Volcando estructura para tabla barrio_develop._prisma_migrations
 CREATE TABLE IF NOT EXISTS `_prisma_migrations` (
   `id` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL,
   `checksum` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -287,8 +245,6 @@ CREATE TABLE IF NOT EXISTS `_prisma_migrations` (
   `applied_steps_count` int unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Volcando datos para la tabla barrio_develop._prisma_migrations: ~0 rows (aproximadamente)
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
