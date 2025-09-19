@@ -86,7 +86,7 @@ export const authRoutes = () => {
     },
   )
 
-  router.delete('/logout', async (req, res) => {
+  router.post('/logout', async (req, res) => {
     const refreshToken = req.cookies.refreshToken
     if (!refreshToken) return res.sendStatus(204)
 
@@ -101,3 +101,4 @@ export const authRoutes = () => {
 
   return router
 }
+
