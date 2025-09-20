@@ -5,7 +5,7 @@ import { config } from '@config'
 import { getRemainingTime } from '@shared/utils/dates/getRemainingTime'
 import { TokenManager } from '@app/auth/tokens/TokenManager'
 import { SessionsRepository } from '@app/auth/sessions/SessionsRepository'
-import { UsersRepository } from '@app/auth/users/repositories/auth_users/UsersRepository'
+import { UsersCredentialsRepository } from '@app/auth/users/repositories/userCredentials/UsersCredentialsRepository'
 
 interface UserInyected extends Request {
   user?: {
@@ -23,7 +23,8 @@ export const sessionsMiddleware = async (
   const sessionsRepository = container.resolve<SessionsRepository>(
     'sessions-repository',
   )
-  const authRepository = container.resolve<UsersRepository>('auth-repository')
+  const authRepository =
+    container.resolve<UsersCredentialsRepository>('auth-repository')
 
   const accessToken = req.cookies.accessToken
   const refreshToken = req.cookies.refreshToken

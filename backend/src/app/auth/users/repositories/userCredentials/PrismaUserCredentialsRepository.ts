@@ -1,10 +1,12 @@
-import { User } from '../../models/auth__users/User'
-import { UserSave } from '@app/auth/users/models/auth__users/UserSave'
-import { AuthCredentials } from '../../models/auth__users/AuthCredentials'
-import { UsersRepository } from './UsersRepository'
+import { User } from '../../models/userCredentials/User'
+import { UserSave } from '@app/auth/users/models/userCredentials/UserSave'
+import { UserCredentials } from '../../models/userCredentials/UserCredentials'
+import { UsersCredentialsRepository } from './UsersCredentialsRepository'
 import { prisma } from '@database/prisma'
 
-export class PrismaUserRepository implements UsersRepository {
+export class PrismaUserCredentialsRepository
+  implements UsersCredentialsRepository
+{
   async create(data: UserSave) {
     await prisma.user.create({
       data: {
@@ -103,7 +105,7 @@ export class PrismaUserRepository implements UsersRepository {
     return resultFormatted
   }
 
-  async update(data: AuthCredentials): Promise<void> {
+  async update(data: UserCredentials): Promise<void> {
     await prisma.user.update({
       where: {
         dni: data.dni,

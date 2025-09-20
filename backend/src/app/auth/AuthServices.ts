@@ -1,18 +1,18 @@
 import { ResourceNotFoundException } from '@shared/exceptions/ResourceNotFoundException'
-import { UserRepository } from './users/repositories/user/UserRepository'
+import { UserMetaRepository } from './users/repositories/userMeta/UserMetaRepository'
 import { AppException, httpStatusCodes } from '@shared/exceptions/AppException'
-import { UsersRepository } from './users/repositories/auth_users/UsersRepository'
-import { AuthCredentials } from './users/models/auth__users/AuthCredentials'
+import { UsersCredentialsRepository } from './users/repositories/userCredentials/UsersCredentialsRepository'
+import { UserCredentials } from './users/models/userCredentials/UserCredentials'
 import { SessionsRepository } from './sessions/SessionsRepository'
-import { UserCreate } from './users/models/auth__users/UserCreate'
+import { UserCreate } from './users/models/userCredentials/UserCreate'
 import { PasswordHasher } from './passwords/PasswordHasher'
 import { TokenManager } from './tokens/TokenManager'
 import { randomUUID } from 'crypto'
 
 export class AuthServices {
   constructor(
-    private readonly usersRepository: UsersRepository,
-    private readonly userRepository: UserRepository,
+    private readonly usersCredentials: UsersCredentialsRepository,
+    private readonly userMetadata: UserMetaRepository,
     private readonly passwordHasher: PasswordHasher,
     private readonly tokenManager: TokenManager,
     private readonly sessionsRepository: SessionsRepository,
@@ -20,7 +20,7 @@ export class AuthServices {
 
   async registerUser(data: UserCreate) {
     // Verifica que el usuario no exista antes de registrarlo.
-    const dbUser = await this.usersRepository.getByDni(data.dni)
+    const dbUser = await this.usersCredentials.getByDni(data.dni)
     if (dbUser)
       throw new AppException(
         'Se intentó registrar un usuario existente.',
@@ -28,7 +28,7 @@ export class AuthServices {
       )
 
     // Verifica que el mail no esté registrado.
-    const dbEmail = await this.usersRepository.getByEmail(data.email)
+    const dbEmail = await this.usersCredentials.getByEmail(data.email)
     if (dbEmail)
       throw new AppException(
         'Se intentó registrar un email existente.',
@@ -36,7 +36,7 @@ export class AuthServices {
       )
 
     // Se verifica que la id de "personalId" sea válida.
-    const personal = await this.userRepository.getById(data.personalId)
+    const personal = await this.userMetadata.getById(data.personalId)
     if (!personal)
       throw new ResourceNotFoundException('No existe un Personal con esa ID.')
 
@@ -52,7 +52,7 @@ export class AuthServices {
     }
 
     // Se guarda la información final en la db.
-    await this.usersRepository.create(fullData)
+    await this.usersCredentials.create(fullData)
     return
     // No debe devolver nada a menos que suceda algo inesperado
     // Por lo que simplemente hago un retorno vacío para finalizar
@@ -60,11 +60,11 @@ export class AuthServices {
   }
 
   async authenticate(
-    data: AuthCredentials,
+    data: UserCredentials,
     connectionInfo: { ip: string; userAgent: string },
   ) {
     // Se obtiene la contraseña hasheada de la DB
-    const dbUser = await this.usersRepository.getByDni(data.dni)
+    const dbUser = await this.usersCredentials.getByDni(data.dni)
     if (!dbUser)
       throw new AppException(
         'Credenciales Inválidas.',
@@ -116,9 +116,9 @@ export class AuthServices {
     }
   }
 
-  async changePassword(data: AuthCredentials) {
+  async changePassword(data: UserCredentials) {
     // Se verifica que el usuario exista antes de cambiar la contraseña.
-    const dbUser = await this.usersRepository.getByDni(data.dni)
+    const dbUser = await this.usersCredentials.getByDni(data.dni)
     if (!dbUser)
       throw new AppException(
         'Credenciales Inválidas.',
@@ -134,13 +134,13 @@ export class AuthServices {
     }
 
     // Se actualiza el hasheo de la contraseña del usuario en la db.
-    const personal = await this.usersRepository.update(userUpdated)
+    const personal = await this.usersCredentials.update(userUpdated)
     return personal
   }
 
   async getUser(id: string) {
     // Obtiene un usuario y si este existe lo devuelve 👍
-    const user = this.usersRepository.getById(id)
+    const user = this.usersCredentials.getById(id)
 
     if (!user) throw new ResourceNotFoundException('Usuario no Encontrado')
 

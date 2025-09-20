@@ -1,8 +1,8 @@
 import { prisma } from '@database/prisma'
-import { User } from '../../models/users/User'
-import { UserRepository } from './UserRepository'
+import { User } from '../../models/userMeta/User'
+import { UserMetaRepository } from './UserMetaRepository'
 
-export class PrismaUserRepository implements UserRepository {
+export class PrismaUserMetaRepository implements UserMetaRepository {
   async getById(id: number): Promise<User | null> {
     const dbResult = await prisma.usuarios.findUnique({
       where: {
