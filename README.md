@@ -1,4 +1,4 @@
-# Barrio Gestión
+<div align="center"><h1>Barrio Gestión</h1></div>
 
 - **[Backend](./backend/README.md)**
   Contiene la API, lógica y datos.
