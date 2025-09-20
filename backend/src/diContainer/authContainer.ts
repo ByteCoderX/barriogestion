@@ -13,7 +13,7 @@ import { PrismaSessionsRepository as SessionsRepository } from '@app/auth/sessio
 // Services
 import { AuthServices } from '@app/auth/AuthServices'
 
-const container = new DiContainer()
+const authContainer = new DiContainer()
 
 // Auth Modules
 const sessionsRepository = new SessionsRepository()
@@ -22,13 +22,13 @@ const passwordHasher = new BcryptPasswordHasher()
 const authUserMeta = new PrismaUserMetaRepository()
 const authUserCredentials = new PrismaUserCredentialsRepository()
 
-container.registerInstance('sessions-repository', sessionsRepository)
-container.registerInstance('token-manager', tokenManager)
-container.registerInstance('password-hasher', passwordHasher)
+authContainer.registerInstance('sessions-repository', sessionsRepository)
+authContainer.registerInstance('token-manager', tokenManager)
+authContainer.registerInstance('password-hasher', passwordHasher)
 
-container.registerInstance('auth-user-credentials', authUserCredentials)
-container.registerInstance('auth-user-meta', authUserMeta)
-container.register('auth-services', AuthServices, [
+authContainer.registerInstance('auth-user-credentials', authUserCredentials)
+authContainer.registerInstance('auth-user-meta', authUserMeta)
+authContainer.register('auth-services', AuthServices, [
   'auth-user-meta',
   'auth-user-credentials',
   'password-hasher',
@@ -36,4 +36,4 @@ container.register('auth-services', AuthServices, [
   'sessions-repository',
 ])
 
-export { container }
+export { authContainer }
