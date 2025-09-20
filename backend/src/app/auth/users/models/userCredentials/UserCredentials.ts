@@ -1,4 +1,4 @@
-export interface AuthCredentials {
+export interface UserCredentials {
   dni: string
   password: string
 }
