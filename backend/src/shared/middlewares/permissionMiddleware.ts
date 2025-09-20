@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import { AuthServices } from '@app/auth/AuthServices'
-import { container } from '@diContainer/container'
+import { authContainer } from '@diContainer/authContainer'
 import { AppException, httpStatusCodes } from '@shared/exceptions/AppException'
 
 interface UserInyected extends Request {
@@ -15,7 +15,7 @@ export const permissionMiddleware = async (
   res: Response,
   next: NextFunction,
 ) => {
-  const authServices = container.resolve<AuthServices>('auth-services')
+  const authServices = authContainer.resolve<AuthServices>('auth-services')
 
   const inyectedUser = req.user
   if (!inyectedUser) throw new Error('Mal uso del Middleware de Permisos.')

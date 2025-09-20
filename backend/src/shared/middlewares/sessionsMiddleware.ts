@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { container } from '@diContainer/container'
+import { authContainer } from '@diContainer/authContainer'
 import { AppException, httpStatusCodes } from '@shared/exceptions/AppException'
 import { config } from '@config'
 import { getRemainingTime } from '@shared/utils/dates/getRemainingTime'
@@ -19,12 +19,12 @@ export const sessionsMiddleware = async (
   res: Response,
   next: NextFunction,
 ) => {
-  const tokenManager = container.resolve<TokenManager>('token-manager')
-  const sessionsRepository = container.resolve<SessionsRepository>(
+  const tokenManager = authContainer.resolve<TokenManager>('token-manager')
+  const sessionsRepository = authContainer.resolve<SessionsRepository>(
     'sessions-repository',
   )
   const authRepository =
-    container.resolve<UsersCredentialsRepository>('auth-repository')
+    authContainer.resolve<UsersCredentialsRepository>('auth-repository')
 
   const accessToken = req.cookies.accessToken
   const refreshToken = req.cookies.refreshToken
