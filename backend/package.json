@@ -4,7 +4,9 @@
   "description": "",
   "main": "dist/server.js",
   "scripts": {
-    "test": "vitest",
+    "test:unit": "cross-env NODE_ENV=testing vitest run --exclude tests/routes/**",
+    "test:routes": "cross-env NODE_ENV=testing vitest tests/routes --no-file-parallelism",
+    "test": "cls && cross-env NODE_ENV=testing node --run test:unit && node --run test:routes",
     "start:dev": "ts-node-dev --watch --clear --quiet -r tsconfig-paths/register src/server.ts",
     "build": "tsc -p tsconfig.build.json && tsc-alias",
     "start": "node --run build && node dist/server.js",
@@ -17,6 +19,7 @@
   "packageManager": "pnpm@10.6.2",
   "devDependencies": {
     "@eslint/js": "^9.34.0",
+    "@faker-js/faker": "^10.0.0",
     "@types/bcrypt": "^6.0.0",
     "@types/cookie-parser": "^1.4.9",
     "@types/cors": "^2.8.19",
@@ -24,6 +27,8 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.3.0",
     "@types/supertest": "^6.0.3",
+    "@verycrazydog/mysql-parser": "^2.0.0",
+    "cross-env": "^10.0.0",
     "eslint": "^9.34.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",

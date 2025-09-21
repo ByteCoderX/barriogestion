@@ -15,7 +15,7 @@
       "@app/*": ["src/app/*"],
       "@shared/*": ["src/shared/*"],
       "@database/*": ["src/database/*"],
-      "@tests/*": ["src/tests/*"],
+      "@tests/*": ["tests/*"],
       "@diContainer/*": ["src/diContainer/*"],
       "@config": ["src/configs.ts"]
     },

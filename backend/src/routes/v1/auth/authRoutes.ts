@@ -41,12 +41,13 @@ export const authRoutes = () => {
       // Se asigna el refresh token al usuario mediante cookies.
       res.cookie('refreshToken', result.tokens.refresh)
       res.cookie('accessToken', result.tokens.access)
+      res.cookie('test', 'asd')
 
       // Se devuelve token de acceso y la información del usuario mediante el body.
       res.status(200).send({
         user: {
           id: result.user.id,
-          personalId: result.user.personalId,
+          userId: result.user.userId,
           dni: result.user.dni,
           email: result.user.email,
         },
@@ -88,15 +89,15 @@ export const authRoutes = () => {
 
   router.post('/logout', async (req, res) => {
     const refreshToken = req.cookies.refreshToken
-    if (!refreshToken) return res.sendStatus(204)
+    if (!refreshToken) return res.sendStatus(304)
 
     const refreshVerificaition =
       await tokenManager.validateRefresh(refreshToken)
 
-    if (!refreshVerificaition.valid) return res.sendStatus(204)
+    if (!refreshVerificaition.valid) return res.sendStatus(304)
 
     await authServices.deleteSession(refreshVerificaition.decoded.sessionId)
-    return res.sendStatus(204)
+    return res.sendStatus(200)
   })
 
   return router

@@ -29,8 +29,8 @@ authContainer.registerInstance('password-hasher', passwordHasher)
 authContainer.registerInstance('auth-user-credentials', authUserCredentials)
 authContainer.registerInstance('auth-user-meta', authUserMeta)
 authContainer.register('auth-services', AuthServices, [
-  'auth-user-meta',
   'auth-user-credentials',
+  'auth-user-meta',
   'password-hasher',
   'token-manager',
   'sessions-repository',

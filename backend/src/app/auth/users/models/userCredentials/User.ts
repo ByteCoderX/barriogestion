@@ -3,6 +3,6 @@ export interface User {
   dni: string
   email: string
   password: string
-  personalId: string
+  userId: string
   admin: boolean
 }

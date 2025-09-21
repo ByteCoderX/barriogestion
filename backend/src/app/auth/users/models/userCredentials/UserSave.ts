@@ -3,5 +3,5 @@ export interface UserSave {
   dni: string
   email: string
   password: string
-  personalId: number
+  userId: number
 }
