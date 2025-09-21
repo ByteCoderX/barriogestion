@@ -14,9 +14,8 @@ model usuarios {
   lastName       String              @db.VarChar(50) @map("apellido")
   address      String?             @db.VarChar(120) @map("direccion")
   contact       String?             @db.VarChar(80) @map("contacto")
-  password       String?             @db.VarChar(300)
-  createdDate      DateTime @map("creado_en")
-  updatedDate DateTime @map("actualizado_en")
+  createdDate      DateTime @map("creado_en") @default(now())
+  updatedDate DateTime @map("actualizado_en") @updatedAt
   access        accesos[]           @relation("UsuarioAcceso")
   guests      invitados[]         @relation("UsuarioInvitado")
   fines         multas[]
@@ -218,7 +217,7 @@ model User {
   dni   String  @unique @db.VarChar(36)
   email      String  @unique @map("correo_electronico") @db.VarChar(255)
   password   String  @map("contrasena") @db.VarChar(255)
-  personalId Int     @map("id_usuario")
+  userId Int     @map("id_usuario")
   admin      Boolean @default(false)
 
   sessions Session[]

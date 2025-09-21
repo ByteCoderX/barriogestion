@@ -14,7 +14,7 @@ export class PrismaUserCredentialsRepository
         dni: data.dni,
         email: data.email,
         password: data.password,
-        personalId: data.personalId,
+        userId: data.userId,
       },
     })
   }
@@ -28,7 +28,7 @@ export class PrismaUserCredentialsRepository
         dni: true,
         email: true,
         password: true,
-        personalId: true,
+        userId: true,
         admin: true,
       },
     })
@@ -40,7 +40,7 @@ export class PrismaUserCredentialsRepository
         dni: dbResult.dni,
         email: dbResult.email,
         password: dbResult.password,
-        personalId: String(dbResult.personalId),
+        userId: String(dbResult.userId),
         admin: dbResult.admin,
       }
 
@@ -57,7 +57,7 @@ export class PrismaUserCredentialsRepository
         dni: true,
         email: true,
         password: true,
-        personalId: true,
+        userId: true,
         admin: true,
       },
     })
@@ -69,7 +69,7 @@ export class PrismaUserCredentialsRepository
         dni: dbResult.dni,
         email: dbResult.email,
         password: dbResult.password,
-        personalId: String(dbResult.personalId),
+        userId: String(dbResult.userId),
         admin: dbResult.admin,
       }
 
@@ -86,7 +86,7 @@ export class PrismaUserCredentialsRepository
         dni: true,
         email: true,
         password: true,
-        personalId: true,
+        userId: true,
         admin: true,
       },
     })
@@ -98,7 +98,7 @@ export class PrismaUserCredentialsRepository
         dni: dbResult.dni,
         email: dbResult.email,
         password: dbResult.password,
-        personalId: String(dbResult.personalId),
+        userId: String(dbResult.userId),
         admin: dbResult.admin,
       }
 

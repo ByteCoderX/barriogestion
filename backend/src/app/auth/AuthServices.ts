@@ -36,7 +36,7 @@ export class AuthServices {
       )
 
     // Se verifica que la id de "personalId" sea válida.
-    const personal = await this.userMetadata.getById(data.personalId)
+    const personal = await this.userMetadata.getById(data.userId)
     if (!personal)
       throw new ResourceNotFoundException('No existe un Personal con esa ID.')
 
@@ -48,7 +48,7 @@ export class AuthServices {
       dni: data.dni,
       email: data.email,
       password: passwordHashed,
-      personalId: data.personalId,
+      userId: data.userId,
     }
 
     // Se guarda la información final en la db.
@@ -110,7 +110,7 @@ export class AuthServices {
         id: dbUser.id,
         dni: dbUser.dni,
         email: dbUser.email,
-        personalId: dbUser.personalId,
+        userId: dbUser.userId,
         isAdmin: dbUser.admin,
       },
     }
