@@ -14,13 +14,12 @@ describe.sequential('auth routes v1', () => {
     })
     it('Si los datos ingresados son válidos debería responder con status 201.', async () => {
       // Arrange
-      await insertUsuarios()
+      const userDbGenerated = await insertUsuarios()
 
       const userRegisterMock = {
-        dni: '11.222.333',
+        dni: userDbGenerated?.dni,
         email: 'pedro@test.com',
         password: 'asd',
-        userId: 1,
       }
 
       // Act
@@ -35,13 +34,10 @@ describe.sequential('auth routes v1', () => {
 
     it('Si faltan datos o son inválidos debe responder con status 422.', async () => {
       // Arrange
-      await insertUsuarios()
-
       const userRegisterMock = {
-        dni: '11.222.333',
+        //dni: userDbGenerated?.dni,
         email: 'pedro@test.com',
         password: 'asd',
-        //userId: 1,
       }
 
       // Act
@@ -56,13 +52,12 @@ describe.sequential('auth routes v1', () => {
 
     it('Si se intenta registrar un usuario existente debe responder con status 409.', async () => {
       // Arrange
-      await insertUsuarios()
+      const userDbGenerated = await insertUsuarios()
 
       const userRegisterMock = {
-        dni: '11.222.333',
+        dni: userDbGenerated?.dni,
         email: 'pedro@test.com',
         password: 'asd',
-        userId: 1,
       }
 
       await request(app)
@@ -80,15 +75,12 @@ describe.sequential('auth routes v1', () => {
       expect(response.statusCode).toBe(409)
     })
 
-    it('Si la id de "Usuario" es inválida debe responder con status 404.', async () => {
+    it('Si el DNI es inválido debe responder con status 404.', async () => {
       // Arrange
-      await insertUsuarios()
-
       const userRegisterMock = {
-        dni: '11.222.333',
+        dni: '99999999',
         email: 'pedro@test.com',
         password: 'asd',
-        userId: 999,
       }
 
       // Act
@@ -125,8 +117,6 @@ describe.sequential('auth routes v1', () => {
 
     it('Si faltan datos o son inválidos debe responder con status 422.', async () => {
       // Arrange
-      await insertUsuarios()
-
       const userRegisterMock = {
         dni: '11.222.333',
         //password: 'asd',
@@ -144,17 +134,16 @@ describe.sequential('auth routes v1', () => {
 
     it('Si la contraseña es correcta debería responder con status 200 y asignar las cookies.', async () => {
       // Arrange
-      await insertUsuarios()
+      const userDbGenerated = await insertUsuarios()
       const userInputMock = {
-        dni: '11.222.333',
+        dni: userDbGenerated?.dni,
         password: 'asd',
       }
 
       const userRegisterMock = {
-        dni: '11.222.333',
+        dni: userDbGenerated?.dni,
         email: 'pedro@test.com',
         password: 'asd',
-        userId: 1,
       }
 
       await request(app)
@@ -196,17 +185,16 @@ describe.sequential('auth routes v1', () => {
 
     it('Si se envía un token válido debe responder con status 200.', async () => {
       // Arrange
-      await insertUsuarios()
+      const userDbGenerated = await insertUsuarios()
       const userInputMock = {
-        dni: '11.222.333',
+        dni: userDbGenerated?.dni,
         password: 'asd',
       }
 
       const userRegisterMock = {
-        dni: '11.222.333',
+        dni: userDbGenerated?.dni,
         email: 'pedro@test.com',
         password: 'asd',
-        userId: 1,
       }
 
       await request(app)
@@ -255,8 +243,6 @@ describe.sequential('auth routes v1', () => {
 
     it('Si faltan datos o son inválidos debe responder con status 422.', async () => {
       // Arrange
-      await insertUsuarios()
-
       const userRegisterMock = {
         dni: '11.222.333',
         //password: 'asd',
@@ -274,17 +260,16 @@ describe.sequential('auth routes v1', () => {
 
     it('Si los datos son correctos debería responder con status 200.', async () => {
       // Arrange
-      await insertUsuarios()
+      const userDbGenerated = await insertUsuarios()
       const userInputMock = {
-        dni: '11.222.333',
+        dni: userDbGenerated?.dni,
         password: 'asdasd',
       }
 
       const userRegisterMock = {
-        dni: '11.222.333',
+        dni: userDbGenerated?.dni,
         email: 'pedro@test.com',
         password: 'asd',
-        userId: 1,
       }
 
       await request(app)
@@ -304,16 +289,15 @@ describe.sequential('auth routes v1', () => {
 
     it('Se verifica mediante el endpoint "/login" que la contraseña se cambió correctamente.', async () => {
       // Arrange
-      await insertUsuarios()
+      const userDbGenerated = await insertUsuarios()
       const userRegisterMock = {
-        dni: '11.222.333',
+        dni: userDbGenerated?.dni,
         email: 'pedro@test.com',
         password: 'asd',
-        userId: 1,
       }
 
       const userNewPasswordMock = {
-        dni: '11.222.333',
+        dni: userDbGenerated?.dni,
         password: 'asdasd',
       }
 
@@ -373,17 +357,16 @@ describe.sequential('auth routes v1', () => {
 
     it('Si se envía un refresh token válido debe responder con status 200.', async () => {
       // Arrange
-      await insertUsuarios()
+      const userDbGenerated = await insertUsuarios()
       const userInputMock = {
-        dni: '11.222.333',
+        dni: userDbGenerated?.dni,
         password: 'asd',
       }
 
       const userRegisterMock = {
-        dni: '11.222.333',
+        dni: userDbGenerated?.dni,
         email: 'pedro@test.com',
         password: 'asd',
-        userId: 1,
       }
 
       await request(app)

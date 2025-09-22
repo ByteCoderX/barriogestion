@@ -13,7 +13,7 @@ interface UsuarioMockCreate {
 
 export const insertUsuarios = async (usuarios?: UsuarioMockCreate[]) => {
   if (!usuarios || usuarios.length === 0) {
-    await prisma.usuarios.create({
+    const dbData = await prisma.usuarios.create({
       data: {
         dni: String(faker.number.int({ min: 10_000_000, max: 99_999_999 })),
         firstName: faker.person.firstName(),
@@ -22,7 +22,7 @@ export const insertUsuarios = async (usuarios?: UsuarioMockCreate[]) => {
         contact: faker.phone.number({ style: 'international' }),
       },
     })
-    return
+    return dbData
   }
 
   await prisma.usuarios.createMany({
