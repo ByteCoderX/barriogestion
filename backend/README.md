@@ -71,8 +71,7 @@ Registra un usuario de acceso.
 {
   "dni": "string",
   "email": "string",
-  "password": "string",
-  "personalId": 0
+  "password": "string"
 }
 ```
 
