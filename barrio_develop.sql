@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id_usuario` int NOT NULL AUTO_INCREMENT,
-  `dni` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `dni` varchar(20) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `apellido` varchar(50) NOT NULL,
   `direccion` varchar(120) DEFAULT NULL,
@@ -151,10 +151,10 @@ CREATE TABLE IF NOT EXISTS `roles` (
 
 CREATE TABLE IF NOT EXISTS `usuarios_web` (
   `id` varchar(36) NOT NULL DEFAULT (uuid()),
-  `dni` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `avatar_hash` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `correo_electronico` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `contrasena` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `dni` varchar(20) NOT NULL,
+  `avatar_hash` varchar(128) NOT NULL,
+  `correo_electronico` varchar(255) NOT NULL,
+  `contrasena` varchar(255) NOT NULL,
   `admin` tinyint NOT NULL DEFAULT (0),
   PRIMARY KEY (`id`),
   UNIQUE KEY `dni` (`dni`),
