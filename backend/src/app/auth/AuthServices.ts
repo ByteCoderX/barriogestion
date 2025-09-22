@@ -7,7 +7,7 @@ import { SessionsRepository } from './sessions/SessionsRepository'
 import { UserCreate } from './users/models/userCredentials/UserCreate'
 import { PasswordHasher } from './passwords/PasswordHasher'
 import { TokenManager } from './tokens/TokenManager'
-import { randomUUID } from 'crypto'
+import crypto, { randomUUID } from 'crypto'
 
 export class AuthServices {
   constructor(
@@ -35,20 +35,25 @@ export class AuthServices {
         httpStatusCodes.conflict,
       )
 
-    // Se verifica que la id de "personalId" sea válida.
-    const personal = await this.userMetadata.getById(data.userId)
+    // Se verifica que el DNI sea válido.
+    const personal = await this.userMetadata.getByDni(data.dni)
     if (!personal)
-      throw new ResourceNotFoundException('No existe un Personal con esa ID.')
+      throw new ResourceNotFoundException('No existe un Usuario con ese DNI.')
 
     const passwordHashed = await this.passwordHasher.hash(data.password)
+
+    const emailHashed = crypto
+      .createHash('md5')
+      .update(data.email)
+      .digest('hex')
 
     // Se crea un objeto con los nuevos datos.
     const fullData = {
       id: randomUUID(),
       dni: data.dni,
+      avatarHash: emailHashed,
       email: data.email,
       password: passwordHashed,
-      userId: data.userId,
     }
 
     // Se guarda la información final en la db.
@@ -100,6 +105,12 @@ export class AuthServices {
       expirationDate: refreshToken.dates.offset,
     }
     await this.sessionsRepository.save(clientMetadata)
+    const avatarUrl = `https://www.gravatar.com/avatar/${dbUser.avatarHash}?s=200`
+    const userMetadata = await this.userMetadata.getByDni(data.dni)
+    if (!userMetadata)
+      throw new Error(
+        'La puta madre, pasó algo raro cuando se intentó obtener la metadada del usuario en el login del servicio de Auth.',
+      )
 
     return {
       tokens: {
@@ -109,9 +120,12 @@ export class AuthServices {
       user: {
         id: dbUser.id,
         dni: dbUser.dni,
+        fullName: `${userMetadata.firstName} ${userMetadata.lastName}`,
+        contact: userMetadata.contact,
+        address: userMetadata.address,
         email: dbUser.email,
-        userId: dbUser.userId,
         isAdmin: dbUser.admin,
+        avatar: avatarUrl,
       },
     }
   }
