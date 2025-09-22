@@ -1,5 +1,5 @@
 import { User } from '../../models/userMeta/User'
 
 export interface UserMetaRepository {
-  getById(id: number): Promise<User | null>
+  getByDni(dni: string): Promise<User | null>
 }

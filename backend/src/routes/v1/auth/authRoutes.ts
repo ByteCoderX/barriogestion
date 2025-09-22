@@ -41,16 +41,16 @@ export const authRoutes = () => {
       // Se asigna el refresh token al usuario mediante cookies.
       res.cookie('refreshToken', result.tokens.refresh)
       res.cookie('accessToken', result.tokens.access)
-      res.cookie('test', 'asd')
 
       // Se devuelve token de acceso y la información del usuario mediante el body.
       res.status(200).send({
-        user: {
-          id: result.user.id,
-          userId: result.user.userId,
-          dni: result.user.dni,
-          email: result.user.email,
-        },
+        id: result.user.id,
+        dni: result.user.dni,
+        fullName: result.user.fullName,
+        contact: result.user.contact,
+        address: result.user.address,
+        email: result.user.email,
+        avatar: result.user.avatar,
       })
     },
   )

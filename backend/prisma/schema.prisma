@@ -8,20 +8,20 @@ datasource db {
 }
 
 model usuarios {
-  id     Int                 @id @default(autoincrement()) @map("id_usuario")
-  dni            String              @unique(map: "dni") @db.VarChar(20)
-  firstName         String              @db.VarChar(50) @map("nombre")
-  lastName       String              @db.VarChar(50) @map("apellido")
-  address      String?             @db.VarChar(120) @map("direccion")
-  contact       String?             @db.VarChar(80) @map("contacto")
-  createdDate      DateTime @map("creado_en") @default(now())
-  updatedDate DateTime @map("actualizado_en") @updatedAt
-  access        accesos[]           @relation("UsuarioAcceso")
+  id          Int                 @id @default(autoincrement()) @map("id_usuario")
+  dni         String              @unique(map: "dni") @db.VarChar(20)
+  firstName   String              @map("nombre") @db.VarChar(50)
+  lastName    String              @map("apellido") @db.VarChar(50)
+  address     String?             @map("direccion") @db.VarChar(120)
+  contact     String?             @map("contacto") @db.VarChar(80)
+  createdDate DateTime            @default(now()) @map("creado_en")
+  updatedDate DateTime            @updatedAt @map("actualizado_en")
+  access      accesos[]           @relation("UsuarioAcceso")
   guests      invitados[]         @relation("UsuarioInvitado")
-  fines         multas[]
+  fines       multas[]
   plots       usuarios_parcelas[]
-  roles          usuarios_roles[]
-  vehicles      vehiculos[]
+  roles       usuarios_roles[]
+  vehicles    vehiculos[]
 }
 
 model roles {
@@ -214,10 +214,10 @@ model expensa_pagos {
 
 model User {
   id         String  @id @default(uuid()) @db.VarChar(36)
-  dni   String  @unique @db.VarChar(36)
+  dni        String  @unique @db.VarChar(20)
+  avatarHash String  @map("avatar_hash")
   email      String  @unique @map("correo_electronico") @db.VarChar(255)
   password   String  @map("contrasena") @db.VarChar(255)
-  userId Int     @map("id_usuario")
   admin      Boolean @default(false)
 
   sessions Session[]

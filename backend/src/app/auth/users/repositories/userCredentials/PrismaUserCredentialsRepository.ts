@@ -12,9 +12,9 @@ export class PrismaUserCredentialsRepository
       data: {
         id: data.id,
         dni: data.dni,
+        avatarHash: data.avatarHash,
         email: data.email,
         password: data.password,
-        userId: data.userId,
       },
     })
   }
@@ -26,9 +26,9 @@ export class PrismaUserCredentialsRepository
       select: {
         id: true,
         dni: true,
+        avatarHash: true,
         email: true,
         password: true,
-        userId: true,
         admin: true,
       },
     })
@@ -38,9 +38,9 @@ export class PrismaUserCredentialsRepository
       resultFormatted = {
         id: dbResult.id,
         dni: dbResult.dni,
+        avatarHash: dbResult.avatarHash,
         email: dbResult.email,
         password: dbResult.password,
-        userId: String(dbResult.userId),
         admin: dbResult.admin,
       }
 
@@ -55,9 +55,9 @@ export class PrismaUserCredentialsRepository
       select: {
         id: true,
         dni: true,
+        avatarHash: true,
         email: true,
         password: true,
-        userId: true,
         admin: true,
       },
     })
@@ -67,9 +67,9 @@ export class PrismaUserCredentialsRepository
       resultFormatted = {
         id: dbResult.id,
         dni: dbResult.dni,
+        avatarHash: dbResult.avatarHash,
         email: dbResult.email,
         password: dbResult.password,
-        userId: String(dbResult.userId),
         admin: dbResult.admin,
       }
 
@@ -84,9 +84,9 @@ export class PrismaUserCredentialsRepository
       select: {
         id: true,
         dni: true,
+        avatarHash: true,
         email: true,
         password: true,
-        userId: true,
         admin: true,
       },
     })
@@ -96,9 +96,9 @@ export class PrismaUserCredentialsRepository
       resultFormatted = {
         id: dbResult.id,
         dni: dbResult.dni,
+        avatarHash: dbResult.avatarHash,
         email: dbResult.email,
         password: dbResult.password,
-        userId: String(dbResult.userId),
         admin: dbResult.admin,
       }
 
