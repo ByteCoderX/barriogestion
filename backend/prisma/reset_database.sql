@@ -169,16 +169,15 @@ CREATE TABLE IF NOT EXISTS `roles` (
 
 CREATE TABLE IF NOT EXISTS `usuarios_web` (
   `id` varchar(36) NOT NULL DEFAULT (uuid()),
-  `dni` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `dni` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `avatar_hash` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `correo_electronico` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `contrasena` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `id_usuario` int NOT NULL,
-  `admin` tinyint(1) NOT NULL DEFAULT '0',
+  `contrasena` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `admin` tinyint NOT NULL DEFAULT (0),
   PRIMARY KEY (`id`),
   UNIQUE KEY `dni` (`dni`),
   UNIQUE KEY `correo_electronico` (`correo_electronico`),
-  KEY `FK_usuarios_web_usuarios` (`id_usuario`),
-  CONSTRAINT `FK_usuarios_web_personal` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
+  CONSTRAINT `FK_usuarios_web_usuarios` FOREIGN KEY (`dni`) REFERENCES `usuarios` (`dni`)
 );
 
 CREATE TABLE IF NOT EXISTS `sesiones_web` (
