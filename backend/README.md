@@ -40,7 +40,7 @@ Backend construido con TypeScript, NodeJS, Express.JS, JWT, Prisma ORM y algunas
 ## [Base URL](#base-url)
 
 ```
-http://localhost:3000/bg/v1/{endpoint}
+https://api.bringfeel.com.ar/bg/v1/{endpoint}
 ```
 
 ---
