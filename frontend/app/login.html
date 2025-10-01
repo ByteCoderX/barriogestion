@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./login.css?=v40">
+    <title>Ingreso</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="login-tarjeta">
+            <div class="logo-container">
+                <img src="./dashboard/Admin/assets/img/LogoApp.png" alt="Logo Barrio Gestion" class="logo">
+            </div>
+            <form action="./Utils/auth/login.php" method="post">
+                <h2>Acceso a la App</h2>
+                <p class="message" id="message">---</p>
+                
+                <div class="input-grupo">
+                    <input type="text" placeholder="DNI" id="username" name="dni" required>
+                </div>
+                
+                <div class="input-grupo">
+                    <input type="password" placeholder="Contraseña" id="password" name="clave" required>
+                </div>
+
+                <button type="submit" name="enviar" class="btn-ingreso">Ingresar</button>
+
+                <br>
+                <span class="forgot-pass"><a href="#" id="forgotPasswordLink">¿Olvidaste tu contraseña?</a></span>
+
+            </form>
+        </div>
+    </div>
+    
+    <!-- Popup de recuperación de contraseña -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Recuperar Contraseña</h3>
+                <button class="close-btn" id="closePopup">&times;</button>
+            </div>
+            
+            <p>Para recuperar tu contraseña tendras que comunicarte con el administrador:</p>
+            
+            <div class="important-note">
+                <strong>Importante:</strong> Para que la recuperación de tu contraseña sea realizada con exito tendrás que comprobar que la cuenta sea de tu grupo hogar. 
+            </div>
+
+            <div class="contact-info">
+                <strong>Informacion de Contacto</strong><br>
+                administrador: soporte@tuempresa.com<br>
+                Teléfono: +54 11 1234-5678
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./login.js?=v5"></script>
+<script src="https://bringfeel.com.ar/assets/js/jquery.min.js?=v2"></script>
+<script src="https://wasap2.bringfeel.com.ar/assets/js/index.js?=v2"></script>
+</html>

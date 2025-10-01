@@ -1,0 +1,11 @@
+Login.html
+    - Cambiar el sistema del formulario a un fetch o un ajax.
+    - Limitar caracteres.
+    - Agregar sistema de traducciones.
+
+Login.php
+    - Implementar traducciones y respuestas json.
+    - Implementar cookies.
+
+
+    no le den bola a esto - 01/07/2025
