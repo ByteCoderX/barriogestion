@@ -161,7 +161,7 @@
                     <h1>Gestionar Permisos Familiares</h1>
                     <p>Administra los roles y permisos de los miembros de tu familia</p>
                     <div class="breadcrumb">
-                        <a href="../index.php">Inicio</a> &gt; <a href="#">Seguridad</a> &gt; <span>Gestionar Permisos</span>
+                        <a href="../../index.php">Inicio</a> &gt; <span>Seguridad</span> &gt; <span>Gestionar Permisos</span>
                     </div>
                 </div>
                 <div class="header-actions">
