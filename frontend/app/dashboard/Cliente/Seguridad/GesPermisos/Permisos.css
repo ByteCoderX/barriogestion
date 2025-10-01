@@ -25,8 +25,8 @@ body.theme-light .mobile-menu-item.active {
 
 body.theme-nature .menu-item.active,
 body.theme-nature .mobile-menu-item.active {
-    background-color: #CCE3DE;
-    color: #6B9080;
+    background-color: #3d6752;
+    color: #ffffff;
 }
 
 .dropdown-content a.active {
@@ -40,9 +40,10 @@ body.theme-light .dropdown-content a.active {
 }
 
 body.theme-nature .dropdown-content a.active {
-    background-color: #CCE3DE;
-    color: #6B9080;
+    background-color: #3d6752;
+    color: #ffffff;
 }
+
 
 /* Selector de tema */
 .theme-selector {
@@ -211,11 +212,11 @@ body.theme-nature .permisos-header {
 }
 
 body.theme-light .breadcrumb a {
-    color: #847577
+    color: #000000
 }
 
 body.theme-nature .breadcrumb a {
-    color: #344E41;
+    color: #000000;
 }
 
 .breadcrumb a:hover {
@@ -264,14 +265,14 @@ body.theme-light .btn-primary:hover {
 }
 
 body.theme-nature .btn-primary {
-    background-color: #CCE3DE;
-    color: #6B9080;
+    background-color: transparent;
+    color: #344E41;
     border: 1px solid #CCE3DE;
 }
 
 body.theme-nature .btn-primary:hover {
-    background-color: #EAF4F4;
-    border-color: #EAF4F4;
+    background-color: #666;
+    color: white;
 }
 
 .btn-secondary {
@@ -330,7 +331,7 @@ body.theme-light .lote-card {
 }
 
 body.theme-nature .lote-card {
-    background: rgba(164, 195, 178, 0.8);
+    background: rgba(58, 90, 64, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.3);
     box-shadow:
         0 30px 60px rgba(0, 0, 0, 0.3),
@@ -381,7 +382,7 @@ body.theme-light .lote-details h3 {
 }
 
 body.theme-nature .lote-details h3 {
-    color: #6B9080;
+    color: white;
 }
 
 .lote-details p {
@@ -457,7 +458,7 @@ body.theme-light .filter-options select {
 }
 
 body.theme-nature .filter-options select {
-    background: rgba(246, 255, 248, 0.1);
+    background-color: #CCE3DE;
     color: #6B9080;
     border: 1px solid rgba(246, 255, 248, 0.2);
 }
@@ -500,7 +501,7 @@ body.theme-nature .filter-options select option {
 }
 
 body.theme-light .miembro-card {
-    background: rgba(207, 210, 205, 0.8);
+    background: rgb(227, 213, 202);
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow:
         0 30px 60px rgba(0, 0, 0, 0.2),
@@ -508,7 +509,7 @@ body.theme-light .miembro-card {
 }
 
 body.theme-nature .miembro-card {
-    background: rgba(164, 195, 178, 0.8);
+    background: rgba(58, 90, 64, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.3);
     box-shadow:
         0 30px 60px rgba(0, 0, 0, 0.3),
@@ -564,11 +565,11 @@ body.theme-nature .miembro-avatar img {
 }
 
 body.theme-light .miembro-info h4 {
-    color: #847577;
+    color: #344E41;
 }
 
 body.theme-nature .miembro-info h4 {
-    color: #6B9080;
+    color: #ffffff;
 }
 
 .miembro-edad,
@@ -580,7 +581,7 @@ body.theme-nature .miembro-info h4 {
 
 body.theme-light .miembro-edad,
 body.theme-light .miembro-dni {
-    color: #A4C3B2;
+    color: #344E41;
 }
 
 body.theme-nature .miembro-edad,
@@ -613,7 +614,7 @@ body.theme-nature .miembro-dni {
 
 body.theme-light .miembro-rol.conyuge .rol-badge {
     background-color: #A4C3B2;
-    color: #847577;
+    color: #344E41;
 }
 
 body.theme-nature .miembro-rol.conyuge .rol-badge {
@@ -627,8 +628,8 @@ body.theme-nature .miembro-rol.conyuge .rol-badge {
 }
 
 body.theme-light .miembro-rol.hijo .rol-badge {
-    background-color: #A6A2A2;
-    color: #847577;
+    background-color: #8fd0ce;
+    color: #344E41;
 }
 
 body.theme-nature .miembro-rol.hijo .rol-badge {
@@ -679,13 +680,13 @@ body.theme-light .permiso.activo {
 
 body.theme-nature .permiso.activo {
     background-color: rgba(204, 227, 222, 0.2);
-    color: #CCE3DE;
+    color: #ffffff;
     border: 1px solid rgba(204, 227, 222, 0.3);
 }
 
 .permiso.inactivo {
-    background-color: rgba(255, 68, 68, 0.2);
-    color: #ff4444;
+    background-color: rgb(255 68 68 / 75%);
+    color: #ffffff;
     border: 1px solid rgba(255, 68, 68, 0.3);
 }
 
@@ -718,12 +719,12 @@ body.theme-nature .permiso.activo {
 }
 
 body.theme-light .btn-edit {
-    background-color: #4CAF50;
-    color: #080808;
+    background-color: #588157;
+    color: white;
 }
 
 body.theme-light .btn-edit:hover {
-    background-color: #388E3C;
+    background-color: #385238;
 }
 
 body.theme-nature .btn-edit {
