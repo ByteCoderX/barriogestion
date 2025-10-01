@@ -1,0 +1,1462 @@
+/* Deshabilitar selección de texto pero mantener cursor */
+* {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    text-decoration: none;
+}
+
+/* Indicador de menú */
+.menu-item.active,
+.mobile-menu-item.active {
+    background-color: #333;
+    color: #fff;
+}
+
+body.theme-light .menu-item.active,
+body.theme-light .mobile-menu-item.active {
+    background-color: #bda7a1;
+    color: #000000;
+}
+
+body.theme-nature .menu-item.active,
+body.theme-nature .mobile-menu-item.active {
+    background-color: #3d6752;
+    color: #ffffff;
+}
+
+.dropdown-content a.active {
+    background-color: #3b3b3b;
+    border-radius: 0.4rem;
+}
+
+body.theme-light .dropdown-content a.active {
+    background-color: #bda7a1;
+    color: #000000;
+}
+
+body.theme-nature .dropdown-content a.active {
+    background-color: #3d6752;
+    color: #ffffff;
+}
+
+/* Header reservas */
+.reservas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0.5rem;
+    color: white;
+    margin-bottom: 0.2rem;
+}
+
+body.theme-light .reservas-header {
+    color: #344E41;
+}
+
+body.theme-nature .reservas-header {
+    color: #344E41;
+}
+
+.header-content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.header-content p {
+    font-size: 1rem;
+    opacity: 0.7;
+    margin-bottom: 0.3rem;
+}
+
+.breadcrumb {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.breadcrumb a {
+    color: #b9b6b6;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+body.theme-light .breadcrumb a {
+    color: #000000;
+}
+
+body.theme-nature .breadcrumb a {
+    color: #000000;
+}
+
+.breadcrumb a:hover {
+    opacity: 0.7;
+}
+
+.header-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.header-actions .cliente {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1;
+}
+
+/* Botones generales */
+.btn-primary,
+.btn-secondary {
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: #333;
+    color: white;
+    border: 1px solid #333;
+}
+
+.btn-primary:hover {
+    background-color: #555;
+    border-color: #555;
+}
+
+body.theme-light .btn-primary {
+    background-color: #A4C3B2;
+    color: #847577;
+    border: 1px solid #A4C3B2;
+}
+
+body.theme-light .btn-primary:hover {
+    background-color: #CFD2CD;
+    border-color: #CFD2CD;
+}
+
+body.theme-nature .btn-primary {
+    background-color: #CCE3DE;
+    color: #6B9080;
+    border: 1px solid #CCE3DE;
+}
+
+body.theme-nature .btn-primary:hover {
+    background-color: #EAF4F4;
+    border-color: #EAF4F4;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #666;
+}
+
+.btn-secondary:hover {
+    background-color: #666;
+}
+
+body.theme-light .btn-secondary {
+    color: #344E41;
+    border: 1px solid #588157;
+}
+
+body.theme-light .btn-secondary:hover {
+    background-color: #A6A2A2;
+    color: white;
+}
+
+body.theme-nature .btn-secondary {
+    color: #344E41;
+    border: 1px solid #CCE3DE;
+}
+
+body.theme-nature .btn-secondary:hover {
+    background-color: #A6A2A2;
+    color: white;
+}
+
+/* Selector de tema */
+.theme-selector {
+    position: relative;
+    margin-right: 1rem;
+}
+
+.theme-selector:hover .theme-options {
+    display: block;
+}
+
+.theme-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.theme-light .theme-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+body.theme-nature .theme-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: #fff;
+    transition: fill 0.3s ease;
+}
+
+body.theme-light .theme-icon {
+    fill: #344E41;
+}
+
+body.theme-nature .theme-icon {
+    fill: #F6FFF8;
+}
+
+.theme-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    min-width: 150px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+body.theme-light .theme-options {
+    background: rgba(207, 210, 205, 0.95);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+body.theme-nature .theme-options {
+    background: rgba(107, 144, 128, 0.95);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.theme-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+body.theme-light .theme-option {
+    color: #847577;
+}
+
+body.theme-nature .theme-option {
+    color: #F6FFF8;
+}
+
+.theme-option:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.theme-light .theme-option:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+body.theme-nature .theme-option:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-color {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+}
+
+.theme-dark {
+    background: linear-gradient(45deg, #000, #747474);
+}
+
+.theme-light-color {
+    background: linear-gradient(45deg, #FBFBF2, #A6A2A2);
+}
+
+.theme-nature-color {
+    background: linear-gradient(45deg, #CCE3DE, #6B9080);
+}
+
+/* Sección de espacios */
+.espacios-section {
+    margin-bottom: 3rem;
+}
+
+.espacios-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+}
+
+body.theme-light .espacios-section h2 {
+    color: #344E41;
+}
+
+body.theme-nature .espacios-section h2 {
+    color: #344E41;
+}
+
+/* Espacios Grid Vertical (para JavaScript) */
+.espacios-grid-vertical {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+}
+
+body.theme-light .espacios-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+    background: rgba(227, 213, 202, 0.8);
+}
+
+/* Tiras de espacios horizontales - Estructura básica */
+/* Estilo base */
+.espacio-tira {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    /* fondo por defecto */
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 30px 60px rgb(188 188 188 / 15%),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        0 8px 32px rgb(255 255 255 / 12%);
+    border: 1px solid rgba(15, 15, 15, 0.3);
+    color: #2e7d32;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    gap: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+/* Fondo para tema claro */
+body.theme-light .espacio-tira {
+    background: rgba(227, 213, 202, 0.8);
+}
+
+/* Fondo para tema naturaleza */
+body.theme-nature .espacio-tira {
+    background: rgba(58, 90, 64, 0.8);
+}
+
+
+
+
+/* Elementos dentro de la tira */
+.espacio-imagen {
+    min-width: 80px;
+}
+
+.espacio-icon {
+    width: 80px;
+    height: 80px;
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+}
+
+body.theme-light .espacio-icon {
+    width: 80px;
+    height: 80px;
+    filter: brightness(0) invert(0);
+    opacity: 0.8;
+}
+
+body.theme-nature .espacio-icon {
+    width: 80px;
+    height: 80px;
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+}
+
+
+.espacio-info-principal {
+    flex: 1;
+}
+
+.espacio-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.espacio-nombre {
+    font-size: 1.3rem;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    margin: 0;
+}
+body.theme-light .espacio-nombre {
+    color: rgb(0, 0, 0);
+}
+.espacio-status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.espacio-descripcion {
+    font-size: 0.9rem;
+    color: #e2e2e2;
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+}
+
+.espacio-detalles {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.8rem;
+    color: #e2e2e2;
+}
+
+.espacio-precio {
+    text-align: right;
+    min-width: 120px;
+}
+
+.precio-valor {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    margin-bottom: 0.5rem;
+}
+
+body.theme-light .precio-valor{
+    color: black
+}
+
+body.theme-nature .precio-valor{
+    color: rgb(255, 255, 255)
+}
+.ver-detalles {
+    min-width: 100px;
+    text-align: center;
+}
+
+.btn-reservar {
+    padding: 0.8rem 1.5rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+body.theme-nature .btn-reservar{
+    padding: 0.8rem 1.5rem;
+    background-color: #CCE3DE;
+    color: #6B9080;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+/* Estados hover */
+.espacio-tira.hover,
+.espacio-tira:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 35px 70px rgb(248 248 248 / 25%), inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 12px 40px rgb(246 246 246 / 18%);
+}
+
+.btn-reservar:hover {
+    background-color: #555;
+    transform: translateY(-1px);
+}
+
+body.theme-light .btn-reservar:hover {
+    background-color: #000000;
+}
+
+body.theme-nature .btn-reservar:hover {
+    background-color: #EAF4F4;
+}
+
+/* Ocultar las tarjetas originales si existen */
+.espacio-card {
+    display: none !important;
+}
+
+/* Modal de detalles específico */
+.modal-detalles .modal-content {
+    max-width: 600px;
+}
+
+.detalle-espacio-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.detalle-espacio-icon {
+    width: 80px;
+    height: 80px;
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+    margin-bottom: 1rem;
+}
+
+body.theme-light .detalle-espacio-icon {
+    width: 80px;
+    height: 80px;
+    filter: brightness(0) invert(0);
+    opacity: 0.8;
+    margin-bottom: 1rem;
+}
+
+body.theme-nature .detalle-espacio-icon {
+    width: 80px;
+    height: 80px;
+    filter: brightness(0) invert(0);
+    opacity: 0.8;
+    margin-bottom: 1rem;
+}
+
+.detalle-espacio-nombre {
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+body.theme-light .detalle-espacio-nombre {
+    color: #ffffff;
+}
+
+body.theme-nature .detalle-espacio-nombre {
+    color: #F6FFF8;
+}
+
+.detalle-espacio-descripcion {
+    color: #e2e2e2;
+    opacity: 0.9;
+}
+
+body.theme-light .detalle-espacio-descripcion {
+    color: #000000;
+}
+
+body.theme-nature .detalle-espacio-descripcion {
+    color: #EAF4F4;
+}
+
+.detalles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.detalle-section-title {
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+body.theme-light .detalle-section-title {
+    color: #ffffff;
+}
+
+body.theme-nature .detalle-section-title {
+    color: #F6FFF8;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.detail-label {
+    color: #e2e2e2;
+}
+
+body.theme-light .detail-label {
+    color: #000000;
+}
+
+body.theme-nature .detail-label {
+    color: #EAF4F4;
+}
+
+.detail-value {
+    color: #ffffff;
+}
+
+body.theme-light .detail-value {
+    color: #ffffff;
+}
+
+body.theme-nature .detail-value {
+    color: #F6FFF8;
+}
+
+.detail-value.precio {
+    color: #4CAF50;
+    font-weight: 600;
+}
+
+body.theme-light .detail-value.precio {
+    color: #000000;
+}
+
+body.theme-nature .detail-value.precio {
+    color: rgba(58, 90, 64, 0.8);
+}
+
+.caracteristicas-list {
+    list-style: none;
+    padding: 0;
+}
+
+.caracteristica-item {
+    color: #e2e2e2;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+}
+
+body.theme-light .caracteristica-item {
+    color: #000000;
+}
+
+body.theme-nature .caracteristica-item {
+    color: #EAF4F4;
+}
+
+/* Próximas reservas */
+.proximas-reservas {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(131, 131, 131, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.623);
+}
+
+body.theme-light .proximas-reservas {
+    background: rgba(227, 213, 202, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+body.theme-nature .proximas-reservas {
+    background: rgba(58, 90, 64, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.seccion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.seccion-header h2 {
+    font-size: 1.3rem;
+    color: #ffffff;
+}
+
+body.theme-light .seccion-header h2 {
+    color: #344E41;
+}
+
+body.theme-nature .seccion-header h2 {
+    color: #CCE3DE;
+}
+
+body.theme-light .espacio-tira p,
+body.theme-light .espacio-tira span {
+    color: #000 !important;
+}
+
+.ver-todas {
+    color: #e2e2e2;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+body.theme-light .ver-todas {
+    color: #0c0c0c;
+}
+
+body.theme-nature .ver-todas {
+    color: #CCE3DE;
+}
+
+.ver-todas:hover {
+    color: #ffffff;
+}
+
+body.theme-light .ver-todas:hover {
+    color: #555454;
+}
+
+body.theme-nature .ver-todas:hover {
+    color: #F6FFF8;
+}
+
+.reservas-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.reserva-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+body.theme-light .reserva-item {
+    background: rgba(207, 210, 205, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+body.theme-nature .reserva-item {
+    background: rgba(204, 227, 222, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.reserva-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+body.theme-light .reserva-item:hover {
+    background: rgba(166, 162, 162, 0.4);
+}
+
+body.theme-nature .reserva-item:hover {
+    background: rgba(204, 227, 222, 0.3);
+}
+
+.reserva-info h4 {
+    font-size: 1rem;
+    color: #ffffff;
+    margin-bottom: 0.3rem;
+}
+
+body.theme-light .reserva-info h4 {
+    color: #000000;
+}
+
+body.theme-nature .reserva-info h4 {
+    color: #344E41;
+}
+
+.reserva-info p {
+    font-size: 0.9rem;
+    color: #e2e2e2;
+    opacity: 0.8;
+}
+
+body.theme-light .reserva-info p {
+    color: #344E41;
+}
+
+body.theme-nature .reserva-info p {
+    color: #EAF4F4;
+}
+
+.reserva-status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.reserva-status.confirmada {
+    background-color: #4CAF50;
+    color: white;
+}
+
+body.theme-light .reserva-status.confirmada {
+    background-color: #486b47;
+    color: #ffffff;
+}
+
+body.theme-nature .reserva-status.confirmada {
+    background-color: #CCE3DE;
+    color: #6B9080;
+}
+
+.reserva-status.pendiente {
+    background-color: #ffaa00;
+    color: white;
+}
+
+/* Modal de reserva */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(20px);
+    border-radius: 1rem;
+    padding: 0;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(131, 131, 131, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+body.theme-light .modal-content {
+    background: rgba(227, 213, 202, 0.8);
+    color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+body.theme-nature .modal-content {
+    background: rgba(107, 144, 128, 0.95);
+    color: #F6FFF8;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+body.theme-light .modal-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+body.theme-nature .modal-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-header h3 {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+body.theme-light .modal-header h3 {
+    color: #ffffff;
+}
+
+body.theme-nature .modal-header h3 {
+    color: #F6FFF8;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+body.theme-light .close-modal {
+    color: #847577;
+}
+
+body.theme-nature .close-modal {
+    color: #F6FFF8;
+}
+
+.close-modal:hover {
+    background-color: #333;
+}
+
+body.theme-light .close-modal:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+body.theme-nature .close-modal:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+/* Formulario del modal */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 0.9rem;
+}
+
+body.theme-light .form-group label {
+    color: #ffffff;
+}
+
+body.theme-nature .form-group label {
+    color: #F6FFF8;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+body.theme-light .form-group input,
+body.theme-light .form-group select,
+body.theme-light .form-group textarea {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.5);
+    color: #000000;
+}
+
+body.theme-nature .form-group input,
+body.theme-nature .form-group select,
+body.theme-nature .form-group textarea {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: #F6FFF8;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #666;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+body.theme-light .form-group input:focus,
+body.theme-light .form-group select:focus,
+body.theme-light .form-group textarea:focus {
+    border-color: #A4C3B2;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+body.theme-nature .form-group input:focus,
+body.theme-nature .form-group select:focus,
+body.theme-nature .form-group textarea:focus {
+    border-color: #CCE3DE;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+body.theme-light .form-group input::placeholder,
+body.theme-light .form-group textarea::placeholder {
+    color: rgba(132, 117, 119, 0.6);
+}
+
+body.theme-nature .form-group input::placeholder,
+body.theme-nature .form-group textarea::placeholder {
+    color: rgba(246, 255, 248, 0.6);
+}
+
+.form-group select option {
+    background-color: #333;
+    color: white;
+}
+
+body.theme-light .form-group select option {
+    background-color: rgba(227, 213, 202, 0.8);
+    color: #000000;
+}
+
+body.theme-nature .form-group select option {
+    background-color: #6B9080;
+    color: #F6FFF8;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Información de precio */
+.precio-info {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.theme-light .precio-info {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+body.theme-nature .precio-info {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.precio-detalle {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.precio-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.precio-item:last-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+body.theme-light .precio-item:last-child {
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+body.theme-nature .precio-item:last-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Acciones del modal */
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+body.theme-light .modal-actions {
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+body.theme-nature .modal-actions {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-actions .btn-primary,
+.modal-actions .btn-secondary {
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.modal-actions .btn-primary {
+    background-color: #333;
+    color: white;
+}
+
+.modal-actions .btn-primary:hover {
+    background-color: #555;
+}
+
+body.theme-light .modal-actions .btn-primary {
+    background-color: #588157;
+    color: white;
+}
+
+body.theme-light .modal-actions .btn-primary:hover {
+    background-color: #385238;
+}
+
+body.theme-nature .modal-actions .btn-primary {
+    background-color: #CCE3DE;
+    color: #6B9080;
+}
+
+body.theme-nature .modal-actions .btn-primary:hover {
+    background-color: #EAF4F4;
+}
+
+.modal-actions .btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #666;
+}
+
+.modal-actions .btn-secondary:hover {
+    background-color: #666;
+}
+
+body.theme-light .modal-actions .btn-secondary {
+    color: #ffffff;
+    border: 1px solid #837676;
+}
+
+body.theme-light .modal-actions .btn-secondary:hover {
+    background-color: #A6A2A2;
+    color: white;
+}
+
+body.theme-nature .modal-actions .btn-secondary {
+    color: #ffffff;
+    border: 1px solid #CCE3DE;
+}
+
+body.theme-nature .modal-actions .btn-secondary:hover {
+    background-color: #A6A2A2;
+    color: white;
+}
+
+/* Modal de confirmación */
+.confirmacion-modal {
+    max-width: 400px;
+    text-align: center;
+}
+
+.confirmacion-icon {
+    margin-bottom: 1rem;
+}
+
+.confirmacion-icon img {
+    width: 60px;
+    height: 60px;
+    filter: brightness(0) invert(1);
+}
+
+body.theme-light .confirmacion-icon img {
+    filter: brightness(0) saturate(100%) invert(40%) sepia(10%) saturate(588%) hue-rotate(299deg) brightness(92%) contrast(91%);
+}
+
+body.theme-nature .confirmacion-icon img {
+    filter: brightness(0) invert(1);
+}
+
+.confirmacion-mensaje h4 {
+    font-size: 1.2rem;
+    color: #4CAF50;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+body.theme-light .confirmacion-mensaje h4 {
+    color: #000000;
+}
+
+body.theme-nature .confirmacion-mensaje h4 {
+    color: #CCE3DE;
+}
+
+.confirmacion-mensaje p {
+    font-size: 0.9rem;
+    color: #e2e2e2;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+
+body.theme-light .confirmacion-mensaje p {
+    color: #282828;
+}
+
+body.theme-nature .confirmacion-mensaje p {
+    color: #EAF4F4;
+}
+
+.confirmacion-detalle {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+}
+
+body.theme-light .confirmacion-detalle {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+body.theme-nature .confirmacion-detalle {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.confirmacion-detalle .detail-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.confirmacion-detalle .detail-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Estado sin reservas */
+.sin-reservas {
+    text-align: center;
+    padding: 2rem;
+    color: #e2e2e2;
+    opacity: 0.7;
+}
+
+body.theme-light .sin-reservas {
+    color: #344E41;
+}
+
+body.theme-nature .sin-reservas {
+    color: #EAF4F4;
+}
+
+.sin-reservas img {
+    width: 60px;
+    height: 60px;
+    filter: brightness(0) invert(1);
+    opacity: 0.5;
+    margin-bottom: 1rem;
+}
+
+body.theme-light .sin-reservas img {
+    filter: brightness(0) saturate(100%) invert(40%) sepia(10%) saturate(588%) hue-rotate(299deg) brightness(92%) contrast(91%);
+}
+
+body.theme-nature .sin-reservas img {
+    filter: brightness(0) invert(1);
+}
+
+body.theme-light .sin-reservas p {
+    font-size: 0.9rem;
+    color: #000000;
+}
+
+body.theme-nature .sin-reservas p {
+    font-size: 0.9rem;
+    color: #CCE3DE;
+}
+
+/* Animaciones */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-overlay.active .modal-content {
+    animation: slideIn 0.3s ease;
+}
+
+.modal-overlay.active {
+    animation: fadeIn 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .reservas-header {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .espacios-grid {
+        gap: 1rem !important;
+    }
+
+    .espacio-tira {
+        margin: 0 1rem;
+        padding: 1rem !important;
+        gap: 1rem !important;
+    }
+
+    .espacio-info-principal {
+        flex: 1 !important;
+    }
+
+    .espacio-precio {
+        min-width: 80px !important;
+        font-size: 0.9rem;
+    }
+
+    .ver-detalles {
+        min-width: 80px !important;
+    }
+
+    .btn-reservar {
+        padding: 0.6rem 1rem !important;
+        font-size: 0.8rem !important;
+    }
+
+    .header-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 1rem;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .modal-actions .btn-primary,
+    .modal-actions .btn-secondary {
+        width: 100%;
+    }
+
+    .detalles-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .espacio-tira {
+        flex-direction: column !important;
+        text-align: center;
+        gap: 1rem !important;
+        margin: 0;
+    }
+
+    .espacio-imagen {
+        min-width: auto !important;
+        align-self: center;
+    }
+
+    .espacio-info-principal {
+        text-align: center;
+    }
+
+    .espacio-header {
+        justify-content: center !important;
+    }
+
+    .espacio-precio {
+        min-width: auto !important;
+        text-align: center;
+    }
+
+    .ver-detalles {
+        min-width: auto !important;
+    }
+
+    .reserva-item {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .header-content h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Forzar espaciado correcto del menú principal */
+.menu-principal {
+    gap: 1.5rem !important;
+}
+
+.menu-item {
+    margin: 0 !important;
+}
+
+.dropdown {
+    margin: 0 !important;
+}

@@ -1,0 +1,725 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+}
+
+/*Body*/
+body {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #000000, #272727, #747474);
+    background-size: 1000% 1000%;
+    animation: aurora 10s ease-in-out infinite;
+}
+
+@keyframes aurora {
+    0% {
+        background-position: 0% 25%;
+        filter: blur(0deg);
+    }
+
+    33% {
+        background-position: 50% 50%;
+        filter: blur(120deg);
+    }
+
+    66% {
+        background-position: 50% 0%;
+        filter: blur(240deg);
+    }
+
+    100% {
+        background-position: 0% 25%;
+        filter: blur(360deg);
+    }
+}
+
+body::-webkit-scrollbar {
+    background-color: #b12323;
+    width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #999;
+    border-radius: 10px;
+}
+
+/*Header*/
+header {
+    z-index: 200;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    background-color: #000;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/*Seccion izquierda del menu*/
+.izq {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/*LogoApp*/
+.LogoApp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.LogoApp .logo {
+    width: 10rem;
+}
+
+/*Menu Principal*/
+.menu-principal {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.menu-item {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.menu-item.active,
+.mobile-menu-item.active {
+    background-color: #333;
+    color: #fff;
+}
+
+.menu-item:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(15px);
+    min-width: 200px;
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(131, 131, 131, 0.2);
+    border-radius: 0.4rem;
+    z-index: 1000;
+    top: 100%;
+    left: 0;
+    border: solid rgba(141, 141, 141, 0.1);
+}
+
+.dropdown-content a {
+    color: #ffffff;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #3b3b3b;
+    border-radius: 0.4rem;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/*Seccion derecha del menu*/
+.derecha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.derecha a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease;
+    position: relative;
+}
+
+.derecha a:hover {
+    background-color: #333;
+}
+
+.derecha img {
+    width: 1.5rem;
+    margin: 0.5rem;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #666;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.IdSession {
+    color: #fff;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.IdSession h1 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.IdSession h2 {
+    font-size: 0.8rem;
+    color: #b90000;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.IdSession h2:hover {
+    color: #3a0000;
+}
+
+/* Menú Hamburguesa */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.hamburger:hover {
+    background-color: #333;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Navbar específica del sistema de visitas */
+.navbar {
+    backdrop-filter: blur(15px);
+    padding: 2rem;
+    margin-top: 5rem;
+    border-radius: 1rem;
+    margin: 5rem 2rem 0 2rem;
+}
+
+body.theme-light .navbar h1 {
+    color: #344E41;
+}
+
+/* Tema Naturaleza - Título */
+body.theme-nature .navbar h1 {
+    color: rgb(52, 78, 65);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.navbar h1 {
+    color: #ffffff;
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+/* Estadísticas */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: rgb(0 0 0 / 80%);
+    backdrop-filter: blur(15px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    border: 1px solid rgb(172 172 172 / 20%);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+body.theme-light .stat-card{
+    background-color: rgba(227, 213, 202, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+body.theme-nature .stat-card{
+    background-color: rgba(58, 90, 64, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+body.theme-nature .stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #CCE3DE;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+body.theme-nature  .stat-label {
+    color: #CCE3DE;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+/* Acciones rápidas - AGREGADO */
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.action-card {
+    background: rgba(227, 213, 202, 0.8);
+    backdrop-filter: blur(15px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.action-card:hover {
+    transform: translateY(-5px);
+}
+
+.action-card h3 {
+    color: #344e41;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.action-card p {
+    color: #344e41;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+/* Controles de filtros */
+.filters-section {
+    background: rgba(227, 213, 202, 0.8);
+    backdrop-filter: blur(15px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.filters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    align-items: end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-group label {
+    color: #344e41;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.filter-group input,
+.filter-group select {
+    padding: 0.6rem;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.5rem;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-family: "Poppins", sans-serif;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+    outline: none;
+    border-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+/* Botones */
+.btn {
+    padding: 0.75rem 1.5rem;
+    background-color: #588157;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.btn:hover {
+    background-color: #385238;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+}
+
+.btn-small {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.875rem;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #344E41;
+    border: 1px solid #A4C3B2;
+    ;
+}
+
+.btn-secondary:hover {
+    background-color: #A6A2A2;
+    color: #344E41;
+}
+
+/* Botones de acción en tabla - AGREGADO */
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.btn-action {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+    border-radius: 0.3rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-cancel {
+    background-color: #ff4444;
+    color: white;
+}
+
+.btn-cancel:hover {
+    background-color: #cc0000;
+    transform: translateY(-1px);
+}
+
+.btn-edit {
+    background-color: #ffa500;
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #cc8400;
+    transform: translateY(-1px);
+}
+
+/* Sección de tabla */
+.table-section {
+    background: rgba(227, 213, 202, 0.8);
+    backdrop-filter: blur(15px);
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.table-header {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.table-header h2 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+    /* Evita que la tabla se comprima demasiado */
+}
+
+th {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    color: #ffffff;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    white-space: nowrap;
+    /* Evita que los headers se rompan */
+}
+
+td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #000000;
+    vertical-align: top;
+    /* Alinea el contenido arriba */
+}
+
+tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+/* Estados */
+.status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+/* Estados corregidos - versiones más consistentes */
+.status-autorizada {
+    background-color: rgb(0 191 255);
+    color: #ffffff;
+    border: 1px solid rgba(0, 191, 255, 0.3);
+}
+
+.status-activa {
+    background-color: rgb(169 119 70 / 91%);
+    color: #ffffff;
+    border: 1px solid rgba(134, 95, 56, 0.91);
+}
+
+.status-completada {
+    background-color: rgb(0 255 136 / 70%);
+    color: #ffffff;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+.status-cancelada {
+    background-color: rgb(255 68 68 / 80%);
+    color: #ffffff;
+    border: 1px solid rgba(255, 68, 68, 0.3);
+}
+
+/* Tipo de visita */
+.tipo-visita {
+    padding: 0.2rem 0.6rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.tipo-una_vez {
+    background-color: rgb(22 149 227);
+    color: #ffffff;
+    border: 1px solid rgba(135, 206, 250, 0.3);
+}
+
+.tipo-temporal {
+    background-color: rgb(201 162 89);
+    color: #ffffff;
+    border: 1px solid rgb(201 152 59 / 98%);
+}
+
+.tipo-permanente {
+    background-color: rgb(155 152 152);
+    color: #fafafa;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/*Responsive*/
+@media (max-width: 768px) {
+    .navbar {
+        margin: 5rem 1rem 0 1rem;
+        padding: 1.5rem;
+    }
+
+    .navbar h1 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .menu-principal {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .derecha .icono-header {
+        display: none;
+    }
+
+    .filters-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .table-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    /* Responsive para acciones rápidas - AGREGADO */
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+
+    /* Mejoras para tabla en móviles */
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    .btn-action {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        margin: 5rem 0.5rem 0 0.5rem;
+        padding: 1rem;
+    }
+
+    .navbar h1 {
+        font-size: 1.3rem;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .filters-section,
+    .table-section {
+        padding: 1rem;
+    }
+
+    th,
+    td {
+        padding: 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    /* Ajustes adicionales para pantallas muy pequeñas */
+    .action-card {
+        padding: 1rem;
+    }
+
+    .action-card h3 {
+        font-size: 1rem;
+    }
+
+    .action-card p {
+        font-size: 0.85rem;
+    }
+}
