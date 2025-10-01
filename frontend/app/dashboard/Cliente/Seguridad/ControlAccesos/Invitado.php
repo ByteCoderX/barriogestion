@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuario - Registro de Invitados</title>
-    <link rel="stylesheet" href="invitado.css?=18">
+    <link rel="stylesheet" href="invitado.css">
     <link rel="stylesheet" href="../../index.css?v=46">
 
 </head>

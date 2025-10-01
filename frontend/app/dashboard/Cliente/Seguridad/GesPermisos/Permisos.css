@@ -330,7 +330,7 @@ body.theme-light .lote-card {
 }
 
 body.theme-nature .lote-card {
-    background: rgba(164, 195, 178, 0.8);
+    background: rgba(58, 90, 64, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.3);
     box-shadow:
         0 30px 60px rgba(0, 0, 0, 0.3),
@@ -381,7 +381,7 @@ body.theme-light .lote-details h3 {
 }
 
 body.theme-nature .lote-details h3 {
-    color: #6B9080;
+    color: #344E41;
 }
 
 .lote-details p {
@@ -508,7 +508,7 @@ body.theme-light .miembro-card {
 }
 
 body.theme-nature .miembro-card {
-    background: rgba(164, 195, 178, 0.8);
+    background: rgba(58, 90, 64, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.3);
     box-shadow:
         0 30px 60px rgba(0, 0, 0, 0.3),
@@ -568,7 +568,7 @@ body.theme-light .miembro-info h4 {
 }
 
 body.theme-nature .miembro-info h4 {
-    color: #6B9080;
+    color: #ffffff;
 }
 
 .miembro-edad,
@@ -684,8 +684,8 @@ body.theme-nature .permiso.activo {
 }
 
 .permiso.inactivo {
-    background-color: rgba(255, 68, 68, 0.2);
-    color: #ff4444;
+    background-color: rgb(255 68 68 / 75%);
+    color: #ffffff;
     border: 1px solid rgba(255, 68, 68, 0.3);
 }
 
