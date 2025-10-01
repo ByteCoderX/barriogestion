@@ -385,7 +385,7 @@
 
         /* Sección de formularios */
         .form-section {
-            background: rgba(0, 0, 0, 0.15);
+            background: rgb(0, 0, 0);
             backdrop-filter: blur(15px);
             padding: 2rem;
             border-radius: 1rem;
@@ -413,7 +413,7 @@
             font-weight: 600;
         }
 
-        body.theme-light .form-title{
+        body.theme-light .form-title {
             color: #000;
         }
 
@@ -441,9 +441,24 @@
             font-weight: 500;
         }
 
+
         .form-group input,
         .form-group select,
         .form-group textarea {
+            padding: 0.75rem;
+            background: rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            color: #ffffff;
+            font-size: 1rem;
+            font-family: "Poppins", sans-serif;
+        }
+
+        /* Tema nature */
+        body.theme-nature .form-group input,
+        body.theme-nature .form-group select,
+        body.theme-nature .form-group textarea {
             padding: 0.75rem;
             background: #344E41;
             backdrop-filter: blur(10px);
@@ -453,6 +468,30 @@
             font-size: 1rem;
             font-family: "Poppins", sans-serif;
         }
+
+        body.theme-light .form-group input::placeholder,
+        body.theme-light .form-group select::placeholder,
+        body.theme-light .form-group textarea::placeholder {
+            color: #707070;
+            /* ejemplo: gris oscuro */
+            opacity: 1;
+            /* asegura que se vea con el color elegido */
+        }
+
+        /* Tema light */
+        body.theme-light .form-group input,
+        body.theme-light .form-group select,
+        body.theme-light .form-group textarea {
+            padding: 0.75rem;
+            background: rgba(227, 213, 202, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            color: #000000;
+            font-size: 1rem;
+            font-family: "Poppins", sans-serif;
+        }
+
 
         .form-group input:focus,
         .form-group select:focus,
@@ -469,8 +508,8 @@
         /* Botones */
         .btn {
             padding: 0.75rem 1.5rem;
-            background-color: #CCE3DE;
-            color: #6B9080;
+            background-color: #333;
+            color: white;
             border: none;
             border-radius: 0.5rem;
             font-size: 1rem;
@@ -482,6 +521,17 @@
             display: inline-block;
             text-align: center;
             box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        body.theme-light .btn {
+            background-color: #588157;
+            color: white;
+        }
+
+        body.theme-nature .btn {
+            background-color: #CCE3DE;
+            color: #6B9080;
+
         }
 
         .btn:hover {
@@ -519,10 +569,20 @@
         }
 
         .table-header {
-            background: #344E41;
+            background: rgb(0 0 0);
             backdrop-filter: blur(15px);
             padding: 1rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.theme-light .table-header {
+            background-color: rgb(227, 213, 202);
+
+        }
+
+        body.theme-nature .table-header {
+
+            background-color: rgb(58, 90, 64);
         }
 
         .table-header h2 {
@@ -539,6 +599,14 @@
         table {
             width: 100%;
             border-collapse: collapse;
+        }
+
+        body.theme-light th {
+            background-color: #bda7a1;
+        }
+
+        body.theme-nature th {
+            background-color: #3d6752;
         }
 
         th {
