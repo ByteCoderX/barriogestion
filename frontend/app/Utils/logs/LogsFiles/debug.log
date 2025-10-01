@@ -1,0 +1,127 @@
+[2025-07-01 20:32:56] [INFO] DNI: 12345678
+[2025-07-01 20:32:56] [INFO] Clave Pelada: putagorda
+[2025-07-01 20:32:56] [INFO] Clave + Salt: 
+[2025-07-01 20:32:56] [INFO] Password hasheada de la DB: $2y$10$/8kwykZHVLBE2O.GIfvNGOoojukbyhe.1DJ5ABgB46r
+[2025-07-01 20:32:56] [INFO] Rol obtenido de la DB: 4
+[2025-07-01 20:32:56] [INFO] DNI obtenido de la DB: 12345678
+[2025-07-01 20:41:42] [INFO] DNI: 12345678
+[2025-07-01 20:41:42] [INFO] Clave Pelada: putagorda
+[2025-07-01 20:41:42] [INFO] Clave + Salt: putagorda12345678
+[2025-07-01 20:41:42] [INFO] Password hasheada de la DB: $2y$10$/8kwykZHVLBE2O.GIfvNGOoojukbyhe.1DJ5ABgB46r
+[2025-07-01 20:41:42] [INFO] Rol obtenido de la DB: 4
+[2025-07-01 20:41:42] [INFO] DNI obtenido de la DB: 12345678
+[2025-07-01 20:41:58] [INFO] DNI: 12345678
+[2025-07-01 20:41:58] [INFO] Clave Pelada: putagorda
+[2025-07-01 20:41:58] [INFO] Clave + Salt: putagorda12345678
+[2025-07-01 20:41:58] [INFO] Password hasheada de la DB: $2y$10$/8kwykZHVLBE2O.GIfvNGOoojukbyhe.1DJ5ABgB46r
+[2025-07-01 20:41:58] [INFO] Rol obtenido de la DB: 4
+[2025-07-01 20:41:58] [INFO] DNI obtenido de la DB: 12345678
+[2025-07-01 20:46:39] [INFO] |||||||||||||||||||||||||||| LOGIN.PHP ||||||||||||||||||||||||||||
+[2025-07-01 20:46:39] [INFO] DNI: 12345678
+[2025-07-01 20:46:39] [INFO] Clave Pelada: putagorda
+[2025-07-01 20:46:39] [INFO] Clave + Salt: putagorda12345678
+[2025-07-01 20:46:39] [INFO] Password hasheada de la DB: $2y$10$/8kwykZHVLBE2O.GIfvNGOoojukbyhe.1DJ5ABgB46r
+[2025-07-01 20:46:39] [INFO] Rol obtenido de la DB: 4
+[2025-07-01 20:46:39] [INFO] DNI obtenido de la DB: 12345678
+[2025-07-01 20:46:39] [INFO] |||||||||||||||||||||||||||| LOGIN.PHP ||||||||||||||||||||||||||||
+[2025-07-01 20:48:39] [INFO] |||||||||||||||||||||||||||| UsuarioModel.PHP ||||||||||||||||||||||||||||
+[2025-07-01 20:48:39] [INFO] DNI:12345678
+[2025-07-01 20:48:39] [INFO] Clave Pelada:putagorda
+[2025-07-01 20:48:39] [INFO] Clave + Salt: putagorda12345678
+[2025-07-01 20:48:39] [INFO] |||||||||||||||||||||||||||| UsuarioModel.PHP ||||||||||||||||||||||||||||
+[2025-07-01 20:51:17] [INFO] |||||||||||||||||||||||||||| LOGIN.PHP ||||||||||||||||||||||||||||
+[2025-07-01 20:51:17] [INFO] DNI: 12345678
+[2025-07-01 20:51:17] [INFO] Clave Pelada: putagorda
+[2025-07-01 20:51:17] [INFO] Clave + Salt: putagorda12345678
+[2025-07-01 20:51:17] [INFO] Password hasheada de la DB: $2y$10$T9Hh30wJxWe9Js04I7c2O.sj.ykqwuiaRyLChzV8Gqo
+[2025-07-01 20:51:17] [INFO] Rol obtenido de la DB: 4
+[2025-07-01 20:51:17] [INFO] DNI obtenido de la DB: 12345678
+[2025-07-01 20:51:17] [INFO] |||||||||||||||||||||||||||| LOGIN.PHP ||||||||||||||||||||||||||||
+[2025-07-01 20:52:29] [INFO] |||||||||||||||||||||||||||| LOGIN.PHP ||||||||||||||||||||||||||||
+[2025-07-01 20:52:29] [INFO] DNI: 12345678
+[2025-07-01 20:52:29] [INFO] Clave Pelada: putagorda
+[2025-07-01 20:52:29] [INFO] Clave + Salt: putagorda12345678
+[2025-07-01 20:52:29] [INFO] Password hasheada de la DB: $2y$10$T9Hh30wJxWe9Js04I7c2O.sj.ykqwuiaRyLChzV8Gqo
+[2025-07-01 20:52:29] [INFO] Rol obtenido de la DB: 4
+[2025-07-01 20:52:29] [INFO] DNI obtenido de la DB: 12345678
+[2025-07-01 20:52:29] [INFO] |||||||||||||||||||||||||||| LOGIN.PHP ||||||||||||||||||||||||||||
+[2025-07-01 20:52:46] [INFO] |||||||||||||||||||||||||||| LOGIN.PHP ||||||||||||||||||||||||||||
+[2025-07-01 20:52:46] [INFO] DNI: 12345678
+[2025-07-01 20:52:46] [INFO] Clave Pelada: putagorda
+[2025-07-01 20:52:46] [INFO] Clave + Salt: putagorda12345678
+[2025-07-01 20:52:46] [INFO] Password hasheada de la DB: $2y$10$T9Hh30wJxWe9Js04I7c2O.sj.ykqwuiaRyLChzV8Gqo
+[2025-07-01 20:52:46] [INFO] Rol obtenido de la DB: 4
+[2025-07-01 20:52:46] [INFO] DNI obtenido de la DB: 12345678
+[2025-07-01 20:52:46] [INFO] |||||||||||||||||||||||||||| LOGIN.PHP ||||||||||||||||||||||||||||
+[2025-07-01 20:53:54] [INFO] |||||||||||||||||||||||||||| UsuarioModel.PHP ||||||||||||||||||||||||||||
+[2025-07-01 20:53:54] [INFO] DNI: 12345678
+[2025-07-01 20:53:54] [INFO] Clave Pelada: pruebaPass
+[2025-07-01 20:53:54] [INFO] Clave + Salt: pruebaPass12345678
+[2025-07-01 20:53:54] [INFO] |||||||||||||||||||||||||||| UsuarioModel.PHP ||||||||||||||||||||||||||||
+[2025-07-01 20:54:00] [INFO] |||||||||||||||||||||||||||| LOGIN.PHP ||||||||||||||||||||||||||||
+[2025-07-01 20:54:00] [INFO] DNI: 12345678
+[2025-07-01 20:54:00] [INFO] Clave Pelada: pruebaPass
+[2025-07-01 20:54:00] [INFO] Clave + Salt: pruebaPass12345678
+[2025-07-01 20:54:00] [INFO] Password hasheada de la DB: $2y$10$juT3DDRwYq1r4bpEhHxtz.BT2Xn2QiB.jC4aVy5.4mS
+[2025-07-01 20:54:00] [INFO] Rol obtenido de la DB: 4
+[2025-07-01 20:54:00] [INFO] DNI obtenido de la DB: 12345678
+[2025-07-01 20:54:00] [INFO] |||||||||||||||||||||||||||| LOGIN.PHP ||||||||||||||||||||||||||||
+[2025-07-01 20:59:12] [INFO] |||||||||||||||||||||||||||| UsuarioModel.PHP ||||||||||||||||||||||||||||
+[2025-07-01 20:59:12] [INFO] DNI: 12345678
+[2025-07-01 20:59:12] [INFO] Clave Pelada: pruebaPass
+[2025-07-01 20:59:12] [INFO] Clave + Salt: pruebaPass12345678
+[2025-07-01 20:59:12] [INFO] |||||||||||||||||||||||||||| UsuarioModel.PHP ||||||||||||||||||||||||||||
+[2025-07-01 20:59:19] [INFO] |||||||||||||||||||||||||||| LOGIN.PHP ||||||||||||||||||||||||||||
+[2025-07-01 20:59:19] [INFO] DNI: 12345678
+[2025-07-01 20:59:19] [INFO] Clave Pelada: pruebaPass
+[2025-07-01 20:59:19] [INFO] Clave + Salt: pruebaPass12345678
+[2025-07-01 20:59:19] [INFO] Password hasheada de la DB: $2y$10$mQqHZCPPeSBeNhgHwdKo6eLGes5sYMsrR3XC/ACWNGlBJp68y59u2
+[2025-07-01 20:59:19] [INFO] Rol obtenido de la DB: 4
+[2025-07-01 20:59:19] [INFO] DNI obtenido de la DB: 12345678
+[2025-07-01 20:59:19] [INFO] |||||||||||||||||||||||||||| LOGIN.PHP ||||||||||||||||||||||||||||
+[2025-07-01 21:04:52] [INFO] [::1|Windows(Chrome)] |||||||||||||||||||||||||||| LOGIN.PHP ||||||||||||||||||||||||||||
+[2025-07-01 21:04:52] [INFO] [::1|Windows(Chrome)] DNI: 12345678
+[2025-07-01 21:04:52] [INFO] [::1|Windows(Chrome)] Clave Pelada: pruebaPass
+[2025-07-01 21:04:52] [INFO] [::1|Windows(Chrome)] Clave + Salt: pruebaPass12345678
+[2025-07-01 21:04:52] [INFO] [::1|Windows(Chrome)] Password hasheada de la DB: $2y$10$mQqHZCPPeSBeNhgHwdKo6eLGes5sYMsrR3XC/ACWNGlBJp68y59u2
+[2025-07-01 21:04:52] [INFO] [::1|Windows(Chrome)] Rol obtenido de la DB: 4
+[2025-07-01 21:04:52] [INFO] [::1|Windows(Chrome)] DNI obtenido de la DB: 12345678
+[2025-07-01 21:04:52] [INFO] [::1|Windows(Chrome)] |||||||||||||||||||||||||||| LOGIN.PHP ||||||||||||||||||||||||||||
+[2025-07-01 21:06:55] [INFO] [::1|Windows(Chrome)] |||||||||||||||||||||||||||| LOGIN.PHP ||||||||||||||||||||||||||||
+[2025-07-01 21:06:55] [INFO] [::1|Windows(Chrome)] DNI: 12345678
+[2025-07-01 21:06:55] [INFO] [::1|Windows(Chrome)] Clave Pelada: pruebaPass
+[2025-07-01 21:06:55] [INFO] [::1|Windows(Chrome)] Clave + Salt: pruebaPass12345678
+[2025-07-01 21:06:55] [INFO] [::1|Windows(Chrome)] Password hasheada de la DB: $2y$10$mQqHZCPPeSBeNhgHwdKo6eLGes5sYMsrR3XC/ACWNGlBJp68y59u2
+[2025-07-01 21:06:55] [INFO] [::1|Windows(Chrome)] Rol obtenido de la DB: 4
+[2025-07-01 21:06:55] [INFO] [::1|Windows(Chrome)] DNI obtenido de la DB: 12345678
+[2025-07-01 21:06:55] [INFO] [::1|Windows(Chrome)] |||||||||||||||||||||||||||| LOGIN.PHP ||||||||||||||||||||||||||||
+[2025-07-04 19:30:27] [INFO] [::1|Windows(Chrome)] |||||||||||||||||||||||||||| UsuarioModel.PHP ||||||||||||||||||||||||||||
+[2025-07-04 19:30:27] [INFO] [::1|Windows(Chrome)] DNI: 47551042
+[2025-07-04 19:30:27] [INFO] [::1|Windows(Chrome)] Clave Pelada: 47551042
+[2025-07-04 19:30:27] [INFO] [::1|Windows(Chrome)] Clave + Salt: 4755104247551042
+[2025-07-04 19:30:27] [INFO] [::1|Windows(Chrome)] |||||||||||||||||||||||||||| UsuarioModel.PHP ||||||||||||||||||||||||||||
+[2025-07-04 20:49:48] [INFO] [::1|Windows(Chrome)] |||||||||||||||||||||||||||| UsuarioModel.PHP ||||||||||||||||||||||||||||
+[2025-07-04 20:49:48] [INFO] [::1|Windows(Chrome)] DNI: 47643970
+[2025-07-04 20:49:48] [INFO] [::1|Windows(Chrome)] Clave Pelada: juli2020!
+[2025-07-04 20:49:48] [INFO] [::1|Windows(Chrome)] Clave + Salt: juli2020!47643970
+[2025-07-04 20:49:48] [INFO] [::1|Windows(Chrome)] |||||||||||||||||||||||||||| UsuarioModel.PHP ||||||||||||||||||||||||||||
+[2025-07-10 19:02:16] [INFO] [::1|Windows(Chrome)] |||||||||||||||||||||||||||| UsuarioModel.PHP ||||||||||||||||||||||||||||
+[2025-07-10 19:02:16] [INFO] [::1|Windows(Chrome)] DNI: 47102382
+[2025-07-10 19:02:16] [INFO] [::1|Windows(Chrome)] Clave Pelada: frijol
+[2025-07-10 19:02:16] [INFO] [::1|Windows(Chrome)] Clave + Salt: frijol47102382
+[2025-07-10 19:02:16] [INFO] [::1|Windows(Chrome)] |||||||||||||||||||||||||||| UsuarioModel.PHP ||||||||||||||||||||||||||||
+[2025-07-14 21:24:21] [INFO] [::1|Linux(Chrome)] |||||||||||||||||||||||||||| UsuarioModel.PHP ||||||||||||||||||||||||||||
+[2025-07-14 21:24:21] [INFO] [::1|Linux(Chrome)] DNI: 46941043
+[2025-07-14 21:24:21] [INFO] [::1|Linux(Chrome)] Clave Pelada: maxWqSa6GJlFcTs
+[2025-07-14 21:24:21] [INFO] [::1|Linux(Chrome)] Clave + Salt: maxWqSa6GJlFcTs46941043
+[2025-07-14 21:24:21] [INFO] [::1|Linux(Chrome)] |||||||||||||||||||||||||||| UsuarioModel.PHP ||||||||||||||||||||||||||||
+[2025-07-16 04:55:14] [INFO] [::1|Windows(Chrome)] |||||||||||||||||||||||||||| UsuarioModel.PHP ||||||||||||||||||||||||||||
+[2025-07-16 04:55:14] [INFO] [::1|Windows(Chrome)] DNI: 47551042
+[2025-07-16 04:55:14] [INFO] [::1|Windows(Chrome)] Clave Pelada: Maria1106.
+[2025-07-16 04:55:14] [INFO] [::1|Windows(Chrome)] Clave + Salt: Maria1106.47551042
+[2025-07-16 04:55:14] [INFO] [::1|Windows(Chrome)] |||||||||||||||||||||||||||| UsuarioModel.PHP ||||||||||||||||||||||||||||
+[2025-08-19 15:12:31] [INFO] [::1|Windows(Chrome)] |||||||||||||||||||||||||||| UsuarioModel.PHP ||||||||||||||||||||||||||||
+[2025-08-19 15:12:31] [INFO] [::1|Windows(Chrome)] DNI: 47102444
+[2025-08-19 15:12:31] [INFO] [::1|Windows(Chrome)] Clave Pelada: 1234
+[2025-08-19 15:12:31] [INFO] [::1|Windows(Chrome)] Clave + Salt: 123447102444
+[2025-08-19 15:12:31] [INFO] [::1|Windows(Chrome)] |||||||||||||||||||||||||||| UsuarioModel.PHP ||||||||||||||||||||||||||||

@@ -1,0 +1,25 @@
+{
+    "login": {
+        "title": "Ingreso",
+        "form": {
+            "title": "Acceso a la App",
+            "inputs": {
+                "username": "DNI",
+                "pass": "Contraseña",
+                "submit": "Ingresar"
+            }
+        },
+        "error": {
+            "spacesInDNI": "Tu dni no puede contener espacios.",
+            "invalidDNI": "dni inválido.",
+            "invalidPass": "Contraseña inválida.",
+            "accNotFound": "dni no encontrado.",
+            "wrongCredentials": "Clave o dni Incorrecto.",
+            "empty": "No se envió ningún dato.",
+            "unknown": "Pasó algo, pero no tengo idea flaco."
+        },
+        "logs": {
+            "nose": "nose?"
+        }
+    }
+}
