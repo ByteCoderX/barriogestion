@@ -883,7 +883,6 @@ function showAlert(message, type = 'info') {
         font-weight: 500;
         animation: slideInRight 0.3s ease-out;
     `;
-    
     // Aplicar estilos según el tema actual
     if (type === 'success') {
         if (document.body.classList.contains('theme-light')) {
