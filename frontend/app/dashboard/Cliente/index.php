@@ -35,7 +35,7 @@ require_once '../../Utils/auth/auth_check.php';
                 <div class="dropdown">
                     <a href="#" class="menu-item">Servicios</a>
                     <div class="dropdown-content">
-                        <a href="mapa-barrio.php">Mapa del Barrio</a>
+                        <a href="./Servicios/MapaDelBarrio/Barrios.php">Mapa del Barrio</a>
                         <a href="./Servicios/ReservasEC/reservas.php">Reservar Espacios</a>
                         <a href="./Servicios/MiCarnet/carnet.php">Mi Carnet</a>
                     </div>
