@@ -51,6 +51,7 @@ export const authRoutes = () => {
         address: result.user.address,
         email: result.user.email,
         avatar: result.user.avatar,
+        admin: result.user.isAdmin,
       })
     },
   )
