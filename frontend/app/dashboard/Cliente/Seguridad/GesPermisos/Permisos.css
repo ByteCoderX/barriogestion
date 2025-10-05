@@ -3,6 +3,7 @@
    ================================== */
 
 /* Deshabilitar selección de texto */
+
 * {
     user-select: none;
     -webkit-user-select: none;
@@ -668,7 +669,7 @@ body.theme-nature .miembro-rol.hijo .rol-badge {
 
 .permiso.activo {
     background-color: rgba(76, 175, 80, 0.2);
-    color: #4CAF50;
+    color: #69ff6f;
     border: 1px solid rgba(76, 175, 80, 0.3);
 }
 
