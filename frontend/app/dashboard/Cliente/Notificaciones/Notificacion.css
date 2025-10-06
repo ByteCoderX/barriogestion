@@ -525,7 +525,7 @@ body.theme-nature .hamburger span {
 }
 
 body.theme-light .notification-filters {
-    background: rgba(207, 210, 205, 0.8);
+    background: rgba(227, 213, 202, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: 
         0 30px 60px rgba(0, 0, 0, 0.2),
@@ -533,7 +533,7 @@ body.theme-light .notification-filters {
 }
 
 body.theme-nature .notification-filters {
-    background: rgba(164, 195, 178, 0.8);
+    background: rgba(58, 90, 64, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.3);
     box-shadow: 
         0 30px 60px rgba(0, 0, 0, 0.3),
@@ -549,12 +549,12 @@ body.theme-nature .notification-filters {
 }
 
 body.theme-light .filter-title {
-    color: #847577;
+    color: #000000;
     text-shadow: none;
 }
 
 body.theme-nature .filter-title {
-    color: #6B9080;
+    color: #ffffff;
     text-shadow: none;
 }
 
@@ -580,7 +580,7 @@ body.theme-nature .filter-title {
 
 body.theme-light .filter-btn {
     background: rgba(132, 117, 119, 0.1);
-    color: #847577;
+    color: #000000;
     border: 1px solid rgba(132, 117, 119, 0.2);
 }
 
@@ -592,7 +592,7 @@ body.theme-light .filter-btn.active {
 
 body.theme-nature .filter-btn {
     background: rgba(246, 255, 248, 0.1);
-    color: #6B9080;
+    color: #ffffff;
     border: 1px solid rgba(246, 255, 248, 0.2);
 }
 
@@ -622,8 +622,8 @@ body.theme-nature .filter-btn.active {
 }
 
 body.theme-light .mark-all-read {
-    background-color: #A4C3B2;
-    color: #847577;
+    background-color: rgb(88, 129, 87);
+    color: white;
     box-shadow: 0 4px 15px rgba(164, 195, 178, 0.2);
 }
 
@@ -670,7 +670,7 @@ body.theme-nature .mark-all-read:hover {
 }
 
 body.theme-light .notification-item {
-    background: rgba(207, 210, 205, 0.8);
+    background: rgba(227, 213, 202, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: 
         0 30px 60px rgba(0, 0, 0, 0.2),
@@ -678,7 +678,7 @@ body.theme-light .notification-item {
 }
 
 body.theme-nature .notification-item {
-    background: rgba(164, 195, 178, 0.8);
+    background: rgba(58, 90, 64, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.3);
     box-shadow: 
         0 30px 60px rgba(0, 0, 0, 0.3),
@@ -731,7 +731,7 @@ body.theme-nature .notification-item.unread {
 }
 
 .type-maintenance {
-    background-color: rgba(255, 193, 7, 0.2);
+    background-color: rgb(255 193 7 / 50%);
     color: #ffc107;
 }
 
@@ -782,11 +782,11 @@ body.theme-nature .type-announcement {
 }
 
 body.theme-light .type-label {
-    color: #847577;
+    color: #000000;
 }
 
 body.theme-nature .type-label {
-    color: #6B9080;
+    color: #ffffff;
 }
 
 .notification-time {
@@ -829,12 +829,12 @@ body.theme-nature .unread-badge {
 }
 
 body.theme-light .notification-title {
-    color: #847577;
+    color: #000000;
     text-shadow: none;
 }
 
 body.theme-nature .notification-title {
-    color: #6B9080;
+    color: #ffffff;
     text-shadow: none;
 }
 
@@ -876,19 +876,19 @@ body.theme-nature .notification-content {
 }
 
 body.theme-light .btn-mark-read {
-    background: rgba(132, 117, 119, 0.1);
-    color: #847577;
+    background-color: transparent;
+    color: rgb(52, 78, 65);
     border: 1px solid rgba(132, 117, 119, 0.2);
 }
 
 body.theme-light .btn-mark-read:hover {
-    background: rgba(166, 162, 162, 0.2);
-    border-color: #847577;
+    background-color: rgb(166, 162, 162);
+    color: rgb(52, 78, 65);
 }
 
 body.theme-nature .btn-mark-read {
-    background: rgba(246, 255, 248, 0.1);
-    color: #6B9080;
+    color: #ffffff;
+    background-color: transparent;
     border: 1px solid rgba(246, 255, 248, 0.2);
 }
 
@@ -908,8 +908,8 @@ body.theme-nature .btn-mark-read:hover {
 }
 
 body.theme-light .btn-view-details {
-    background-color: #A4C3B2;
-    color: #847577;
+    background-color: #588157;
+    color: white;
 }
 
 body.theme-light .btn-view-details:hover {
