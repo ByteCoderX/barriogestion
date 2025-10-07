@@ -278,7 +278,7 @@
         </div>
     </div>
 
-    <script src="../../assets/js/index.js?v=6"></script>
-    <script src="./reservas.js?v=10"></script>
+    <script src="../../assets/js/index.js?v=8"></script>
+    <script src="./reservas.js?v=13"></script>
 </body>
 </html>

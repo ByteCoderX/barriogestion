@@ -5,7 +5,7 @@
      padding: 0;
      box-sizing: border-box;
      font-family: "Poppins", sans-serif;
-     text-decoration: none;
+    text-decoration: none;
  }
 
  /*Body - Tema Oscuro (por defecto)*/
@@ -149,7 +149,7 @@
      color: #DAD7CD;
  }
 
- body.theme-light .menu-item.active,
+  body.theme-light .menu-item.active,
  .mobile-menu-item.active {
      background-color: #bda7a1;
      color: #000000;
@@ -409,7 +409,7 @@
  }
 
  body.theme-light .notification-badge {
-     background-color: #000000;
+     background-color: #588157;
  }
 
  body.theme-nature .notification-badge {
@@ -488,7 +488,7 @@
 
  body.theme-light .presen-seccion {
      background: linear-gradient(135deg, #E3D5CA, #D5BDAF);
-     color: #000000;
+     color: #344E41;
      box-shadow:
          0 30px 60px rgba(0, 0, 0, 0.2),
          inset 0 1px 0 rgba(255, 255, 255, 0.3);
@@ -496,7 +496,7 @@
 
  body.theme-nature .presen-seccion {
      background: linear-gradient(135deg, #3A5A40, #588157);
-     color: #ffffff;
+     color: #DAD7CD;
      box-shadow:
          0 30px 60px rgba(0, 0, 0, 0.3),
          inset 0 1px 0 rgba(255, 255, 255, 0.2);
@@ -537,11 +537,11 @@
  }
 
  body.theme-light .estado {
-     color: #000000;
+     color: #344E41;
  }
 
  body.theme-nature .estado {
-     color: #ffffff;
+     color: #DAD7CD;
  }
 
  .resumen-card {
@@ -592,11 +592,11 @@
  }
 
  body.theme-light .card-content h3 {
-     color: #000000;
+     color: #344E41;
  }
 
  body.theme-nature .card-content h3 {
-     color: #ffffff;
+     color: #DAD7CD;
  }
 
  .estado-pago {
@@ -616,7 +616,7 @@
  }
 
  body.theme-nature .monto {
-     color: #ffffff;
+     color: #DAD7CD;
  }
 
  .estado.pendiente {
@@ -632,11 +632,11 @@
  }
 
  body.theme-light .vencimiento {
-     color: #000000;
+     color: #588157;
  }
 
  body.theme-nature .vencimiento {
-     color: #ffffff;
+     color: #A3B18A;
  }
 
  .proxima-reserva {
@@ -651,11 +651,11 @@
  }
 
  body.theme-light .lugar {
-     color: #000000;
+     color: #344E41;
  }
 
  body.theme-nature .lugar {
-     color: #ffffff;
+     color: #DAD7CD;
  }
 
  .fecha {
@@ -664,11 +664,11 @@
  }
 
  body.theme-light .fecha {
-     color: #000000;
+     color: #588157;
  }
 
  body.theme-nature .fecha {
-     color: #ffffff;
+     color: #A3B18A;
  }
 
  .acceso-item {
@@ -715,8 +715,8 @@
  }
 
  body.theme-light .btn-accion {
-     color: #000000;
-     border: 1px solid #000000;
+     color: #3A5A40;
+     border: 1px solid #588157;
      box-shadow: 0 4px 15px rgb(86 91 88);
  }
 
@@ -725,7 +725,7 @@
  }
 
  body.theme-nature .btn-accion {
-     color: #ffffff;
+     color: #DAD7CD;
      border: 1px solid #A3B18A;
  }
 
@@ -747,7 +747,7 @@
  }
 
  body.theme-light .accesos-rapidos h2 {
-     color: #000000;
+     color: #344E41;
  }
 
  body.theme-nature .accesos-rapidos h2 {
@@ -809,7 +809,7 @@
  }
 
  body.theme-light .ad-icon {
-     background-color: #344e41;
+     background-color: #588157;
  }
 
  body.theme-nature .ad-icon {
@@ -830,11 +830,11 @@
  }
 
  body.theme-light .ad-info h3 {
-     color: #000000;
+     color: #344E41;
  }
 
  body.theme-nature .ad-info h3 {
-     color: #ffffff;
+     color: #DAD7CD;
  }
 
  .ad-info p {
@@ -843,11 +843,11 @@
  }
 
  body.theme-light .ad-info p {
-     color: #000000;
+     color: #588157;
  }
 
  body.theme-nature .ad-info p {
-     color: #ffffff;
+     color: #A3B18A;
  }
 
  .ad-info a {
@@ -903,11 +903,11 @@
  }
 
  body.theme-light .seccion-header h2 {
-     color: #000000;
+     color: #344E41;
  }
 
  body.theme-nature .seccion-header h2 {
-     color: #ffffff;
+     color: #DAD7CD;
  }
 
  .ver-todas {
@@ -919,7 +919,7 @@
  }
 
  body.theme-light .ver-todas {
-     color: #000000;
+     color: #588157;
  }
 
  body.theme-light .ver-todas:hover {
@@ -927,7 +927,7 @@
  }
 
  body.theme-nature .ver-todas {
-     color: #ffffff;
+     color: #A3B18A;
  }
 
  body.theme-nature .ver-todas:hover {
@@ -991,11 +991,11 @@
  }
 
  body.theme-light .notif-content h4 {
-     color: #000000;
+     color: #344E41;
  }
 
  body.theme-nature .notif-content h4 {
-     color: #ffffff;
+     color: #DAD7CD;
  }
 
  .notif-content p {
@@ -1005,11 +1005,11 @@
  }
 
  body.theme-light .notif-content p {
-     color: #000000;
+     color: #588157;
  }
 
  body.theme-nature .notif-content p {
-     color: #ffffff;
+     color: #A3B18A;
  }
 
  .notif-fecha {
@@ -1018,7 +1018,7 @@
  }
 
  body.theme-light .notif-fecha {
-     color: #000000;
+     color: #3A5A40;
  }
 
  body.theme-nature .notif-fecha {

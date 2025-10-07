@@ -1,3 +1,8 @@
+<?php
+$requiredAdmin = false;  // solo usuarios normales
+require_once '../../../../Utils/auth/validator.php';
+require_once '../../../../Utils/auth/auth_check.php';
+?>
 <html lang="es">
     <head>
         <meta charset="UTF-8">
@@ -7,13 +12,13 @@
         <link rel="stylesheet" href="./carnet.css?v=52">
     </head>
 <body>
-    
+
     <header>
         <div class="izq">
             <div class="LogoApp">
             <a href="../../index.php">
                 <img src="../../assets/icons/logoheader.webp" alt="icono-barriogestion" class="logo">
-                </a>                
+                </a>
             </div>
 
             <nav class="menu-principal">
@@ -183,7 +188,7 @@
                         </div>
                         <div class="carnet-photo">
                         <div class="photo-placeholder">
-                            <img src="../assets/icons/user-avatar.png" alt="Foto del residente" id="userPhoto">
+                            <img src="<?php echo $_SESSION['barriogestion']['userdata']['avatar']; ?>" alt="Foto del residente" id="userPhoto">
                         </div>
                     </div>
                 </div>
@@ -191,15 +196,15 @@
                     <div>
                         <div class="info-row">
                             <span class="label">Nombre:</span>
-                            <span class="value" id="userName">Juan Carlos Pérez</span>
+                            <span class="value" id="userName"><?php echo $_SESSION['barriogestion']['userdata']['fullName']; ?></span>
                         </div>
                         <div class="info-row">
                             <span class="label">Lote:</span>
-                            <span class="value" id="userLote">Manzana A, Lote 15</span>
+                            <span class="value" id="userLote"><?php echo $_SESSION['barriogestion']['userdata']['address']; ?></span>
                         </div>
                         <div class="info-row">
                             <span class="label">DNI:</span>
-                            <span class="value" id="userDNI">35.678.901</span>
+                            <span class="value" id="userDNI"><?php echo $_SESSION['barriogestion']['userdata']['dni']; ?></span>
                         </div>
                         <div class="info-row">
                             <span class="label">Tipo:</span>
@@ -278,6 +283,5 @@
     </main>
 
     <script src="../../assets/js/index.js?v=6"></script>
-    <script src="./carnet.js?v=6"></script>
 </body>
 </html>

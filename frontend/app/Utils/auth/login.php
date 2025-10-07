@@ -36,6 +36,7 @@ curl_close($ch);
 if ($httpCode === 200) {
     $userData = json_decode($response, true);
 
+    $_SESSION['barriogestion']['userdata'] = $userData;
     $_SESSION['dni'] = $userData['dni'];
     $_SESSION['id'] = $userData['id'];
     $_SESSION['admin'] = $userData['admin'];

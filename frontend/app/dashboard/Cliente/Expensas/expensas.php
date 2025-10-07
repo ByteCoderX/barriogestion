@@ -209,46 +209,6 @@
         </div>
     </main>
 
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>Barrio Gestión</h3>
-                <p>Sistema online para la administración eficiente de barrios cerrados y countrys.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/barriogestionbcx/"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Contacto</h3>
-                <ul>
-                    <li><i class="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</li>
-                    <li><i class="fas fa-phone"></i> Teléfono: +54 11 4184 6774</li>
-                    <li><i class="fas fa-envelope"></i> Email: BarrioGestion@ByteCoderX.com</li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Enlaces</h3>
-                <ul>
-                    <li><a href="index.php">Inicio</a></li>
-                    <li><a href="./Expensas/expensas.php">Expensas</a></li>
-                    <li><a href="./Servicios/ReservasEC/reservas.php">Servicios</a></li>
-                    <li><a href="Seguridad/ControlAccesos/invitado.php">Seguridad</a></li>
-                    <li><a href="./Reclamos/quejas.php">Reclamos</a></li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2025 Barrio Gestión - Desarrollado por ByteCoderX</p>
-        </div>
-    </footer>
-
     <script>
 // Variables globales
 let currentTheme = localStorage.getItem('theme') || 'dark';

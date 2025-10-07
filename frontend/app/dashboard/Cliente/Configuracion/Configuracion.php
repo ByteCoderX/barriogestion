@@ -1,3 +1,8 @@
+<?php
+$requiredAdmin = false;  // solo usuarios normales
+require_once '../../../Utils/auth/validator.php';
+require_once '../../../Utils/auth/auth_check.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuario - Configuración</title>
     <link rel="stylesheet" href="../index.css?v=18">
-    <link rel="stylesheet" href="Configuracion.css?v=10">
+    <link rel="stylesheet" href="Configuracion.css?v=17">
 </head>
 <body>
     <header>
@@ -13,7 +18,7 @@
             <div class="LogoApp">
                 <a href="../index.php">
                 <img src="../assets/icons/logoheader.webp" class="logo">
-                </a>           
+                </a>
             </div>
 
             <nav class="menu-principal">
@@ -90,17 +95,13 @@
         </div>
     </header>
 
-    <nav class="navbar">
-        <h1>⚙️ Configuración </h1>
-    </nav>
-
     <div class="container">
         <!-- Navegación de configuración -->
         <div class="settings-nav">
             <div class="nav-buttons">
-                <button class="nav-btn active" onclick="showSection('perfil')">👤 Perfil</button>
-                <button class="nav-btn" onclick="showSection('seguridad')">🔒 Seguridad</button>
-                <button class="nav-btn" onclick="showSection('notificaciones')">🔔 Notificaciones</button>
+                <button class="nav-btn active" onclick="showSection('perfil')">Perfil</button>
+                <button class="nav-btn" onclick="showSection('seguridad')">Seguridad</button>
+                <button class="nav-btn" onclick="showSection('notificaciones')">Notificaciones</button>
             </div>
         </div>
 
@@ -108,61 +109,28 @@
 
         <!-- Sección Perfil -->
         <div id="perfil" class="config-section active">
-            <h2 class="section-title">👤 Configuración del Perfil</h2>
-            
-            <div class="profile-photo-container">
-                <div class="profile-photo" id="profilePhoto">
-                    👤
-                </div>
-                <div class="photo-upload">
-                    <input type="file" id="photoInput" accept="image/*" style="display: none;">
-                    <button class="btn" onclick="document.getElementById('photoInput').click()">📷 Cambiar Foto</button>
-                    <button class="btn btn-secondary" onclick="removePhoto()">🗑️ Eliminar Foto</button>
-                </div>
-            </div>
+            <h2 class="section-title">Configuración del Perfil</h2>
 
             <form id="perfilForm">
                 <div class="form-grid">
                     <div class="form-group">
-                        <label for="nombre">Nombre Completo *</label>
-                        <input type="text" id="nombre" name="nombre" value="Juan Pérez" required placeholder="Ingrese su nombre completo">
-                    </div>
-                    
-                    <div class="form-group">
                         <label for="telefono">Teléfono *</label>
-                        <input type="tel" id="telefono" name="telefono" value="+54 9 11 1234-5678" required placeholder="Ej: +54 9 11 1234-5678">
+                        <input type="tel" id="telefono" name="telefono" value="<?php echo $_SESSION['barriogestion']['userdata']['contact']; ?>" required placeholder="Ej: +54 9 11 1234-5678">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" value="juan.perez@email.com" required placeholder="email@ejemplo.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="lote">Lote/Propiedad</label>
-                        <input type="text" id="lote" name="lote" value="Lote 15" readonly style="opacity: 0.7;">
+                        <input type="email" id="email" name="email" value="<?php echo $_SESSION['barriogestion']['userdata']['email']; ?>" required placeholder="email@ejemplo.com">
                     </div>
                 </div>
-                
-                <button type="submit" class="btn">💾 Guardar Cambios</button>
+
+                <button type="submit" class="btn">Guardar Cambios</button>
             </form>
         </div>
 
         <!-- Sección Seguridad -->
         <div id="seguridad" class="config-section">
-            <h2 class="section-title">🔒 Configuración de Seguridad</h2>
-            
-            <div class="security-info">
-                <strong>⚠️ Información de Seguridad:</strong> Tu contraseña está cifrada por seguridad. Solo puedes ver una versión enmascarada y cambiarla si es necesario.
-            </div>
-
-            <div class="form-group">
-                <label>Contraseña Actual</label>
-                <div class="password-display" id="passwordDisplay">
-                    ••••••••••••
-                </div>
-                <button class="btn btn-secondary" onclick="togglePassword()">👁️ Mostrar/Ocultar</button>
-            </div>
+            <h2 class="section-title">Configuración de Seguridad</h2>
 
             <form id="passwordForm">
                 <div class="form-grid">
@@ -182,7 +150,7 @@
                     </div>
                 </div>
                 
-                <button type="submit" class="btn">🔑 Cambiar Contraseña</button>
+                <button type="submit" class="btn">Cambiar Contraseña</button>
             </form>
 
             <hr style="margin: 2rem 0; border: 1px solid rgba(255, 255, 255, 0.1);">
@@ -223,17 +191,14 @@
                     </div>
                 </div>
                 
-                <button type="submit" class="btn">🛡️ Guardar Preguntas de Seguridad</button>
+                <button type="submit" class="btn">Guardar Preguntas de Seguridad</button>
             </form>
         </div>
 
         <!-- Sección Notificaciones -->
         <div id="notificaciones" class="config-section">
-            <h2 class="section-title">🔔 Configuración de Notificaciones</h2>
-            
-            <div class="alert alert-info">
-                <strong>ℹ️ Información:</strong> Configure cómo desea recibir las notificaciones del sistema y alertas de seguridad.
-            </div>
+            <h2 class="section-title">Configuración de Notificaciones</h2>
+
 
             <h3 style="color: #ffffff; margin-bottom: 1rem;">Notificaciones de Visitas</h3>
             
@@ -321,7 +286,7 @@
                     </div>
                 </div>
                 
-                <button type="submit" class="btn">⏰ Guardar Configuración de Horarios</button>
+                <button type="submit" class="btn">Guardar Configuración de Horarios</button>
             </form>
         </div>
     </div>
@@ -492,7 +457,7 @@
                     
                     // Guardar en la configuración
                     configDB.updatePerfil({ foto: e.target.result });
-                    showAlert('✅ Foto de perfil actualizada correctamente', 'success');
+                    showAlert('Foto de perfil actualizada correctamente', 'success');
                 };
                 reader.readAsDataURL(file);
             }
@@ -502,7 +467,7 @@
         window.removePhoto = function() {
             document.getElementById('profilePhoto').innerHTML = '👤';
             configDB.updatePerfil({ foto: null });
-            showAlert('🗑️ Foto de perfil eliminada', 'success');
+            showAlert('Foto de perfil eliminada', 'success');
         };
 
         // Función para mostrar/ocultar contraseña
@@ -529,19 +494,19 @@
             // Validar email
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(perfilData.email)) {
-                showAlert('❌ Por favor ingrese un email válido', 'error');
+                showAlert('Por favor ingrese un email válido', 'error');
                 return;
             }
 
             // Validar teléfono argentino
             const phoneRegex = /^\+54\s9\s\d{2,4}\s\d{4}-\d{4}$/;
             if (!phoneRegex.test(perfilData.telefono)) {
-                showAlert('❌ El teléfono debe tener formato argentino: +54 9 11 1234-5678', 'error');
+                showAlert('El teléfono debe tener formato argentino: +54 9 11 1234-5678', 'error');
                 return;
             }
 
             configDB.updatePerfil(perfilData);
-            showAlert('✅ Perfil actualizado correctamente', 'success');
+            showAlert('Perfil actualizado correctamente', 'success');
         });
 
         document.getElementById('passwordForm').addEventListener('submit', function(e) {
@@ -553,19 +518,19 @@
             
             // Verificar contraseña actual
             if (passwordData.currentPassword !== userData.seguridad.password) {
-                showAlert('❌ La contraseña actual es incorrecta', 'error');
+                showAlert('La contraseña actual es incorrecta', 'error');
                 return;
             }
 
             // Verificar que las nuevas contraseñas coincidan
             if (passwordData.newPassword !== passwordData.confirmPassword) {
-                showAlert('❌ Las nuevas contraseñas no coinciden', 'error');
+                showAlert('Las nuevas contraseñas no coinciden', 'error');
                 return;
             }
 
             // Verificar longitud mínima
             if (passwordData.newPassword.length < 8) {
-                showAlert('❌ La nueva contraseña debe tener al menos 8 caracteres', 'error');
+                showAlert('La nueva contraseña debe tener al menos 8 caracteres', 'error');
                 return;
             }
 
@@ -583,7 +548,7 @@
             // Validar que ambas preguntas estén completas
             if (!securityData.question1 || !securityData.answer1 || 
                 !securityData.question2 || !securityData.answer2) {
-                showAlert('❌ Por favor complete ambas preguntas y respuestas', 'error');
+                showAlert('Por favor complete ambas preguntas y respuestas', 'error');
                 return;
             }
 
@@ -594,7 +559,7 @@
                 respuesta2: securityData.answer2
             });
             
-            showAlert('🛡️ Preguntas de seguridad guardadas correctamente', 'success');
+            showAlert('Preguntas de seguridad guardadas correctamente', 'success');
         });
 
         document.getElementById('notificationScheduleForm').addEventListener('submit', function(e) {
@@ -616,7 +581,7 @@
             };
             
             configDB.updateNotificaciones(notificationData);
-            showAlert('⏰ Configuración de notificaciones guardada correctamente', 'success');
+            showAlert('Configuración de notificaciones guardada correctamente', 'success');
         });
 
         // Guardar cambios de switches en tiempo real

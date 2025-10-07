@@ -61,59 +61,6 @@ const espaciosData = {
             'Pelotas incluidas'
         ]
     },
-    canchaPolideportiva: {
-        nombre: 'Cancha Polideportiva',
-        descripcion: 'Espacio para fútbol, básquet y vóley',
-        capacidad: '12 jugadores',
-        precio: 15000,
-        sena: 2500,
-        horarioInicio: 8,
-        horarioFin: 22,
-        icono: '../../assets/icons/polideportivo.png',
-        estado: 'disponible',
-        detalles: [
-            'Piso multiuso',
-            'Arcos y aros incluidos',
-            'Iluminación nocturna',
-            'Marcador digital',
-            'Gradas para espectadores'
-        ]
-    },
-    quinchoMesas: {
-        nombre: 'Mesas Quincho',
-        descripcion: 'Sector de mesas al aire libre junto al quincho',
-        capacidad: '40 personas',
-        precio: 12000,
-        sena: 0,
-        horarioInicio: 10,
-        horarioFin: 22,
-        icono: '../../assets/icons/mesas.png',
-        estado: 'disponible',
-        detalles: [
-            'Mesas grandes',
-            'Sillas incluidas',
-            'Baños cercanos',
-            'Espacio techado',
-            'Ideal para comidas familiares'
-        ]
-    },
-    metegol: {
-        nombre: 'Metegol – Playroom',
-        descripcion: 'Mesa de metegol para uso recreativo',
-        capacidad: '4 jugadores',
-        precio: 5000,
-        sena: 0,
-        horarioInicio: 10,
-        horarioFin: 22,
-        icono: '../../assets/icons/metegol.png',
-        estado: 'disponible',
-        detalles: [
-            'Mesa oficial',
-            'Pelotas incluidas',
-            'Espacio techado',
-            'Iluminación'
-        ]
-    },
     canchaFutbol1: {
         nombre: 'Cancha de Fútbol Nº1',
         descripcion: 'Cancha de fútbol 5 con césped sintético',
@@ -198,72 +145,7 @@ const espaciosData = {
             'Pelotas disponibles'
         ]
     },
-    pingpong: {
-        nombre: 'Ping Pong – Playroom',
-        descripcion: 'Mesa de ping pong en el área de juegos',
-        capacidad: '4 jugadores',
-        precio: 6000,
-        sena: 2000,
-        horarioInicio: 10,
-        horarioFin: 22,
-        icono: '../../assets/icons/pingpong.png',
-        estado: 'disponible',
-        detalles: [
-            'Mesa oficial',
-            'Red incluida',
-            'Paletas disponibles',
-            'Pelotas incluidas'
-        ]
-    },
-    pool: {
-        nombre: 'Pool – Playroom',
-        descripcion: 'Mesa de pool para uso recreativo',
-        capacidad: '4 jugadores',
-        precio: 9000,
-        sena: 1500,
-        horarioInicio: 10,
-        horarioFin: 22,
-        icono: '../../assets/icons/pool.png',
-        estado: 'disponible',
-        detalles: [
-            'Mesa profesional',
-            'Tacos disponibles',
-            'Bolas incluidas',
-            'Iluminación adecuada'
-        ]
-    },
-    quinchoMesa1: {
-        nombre: 'Quincho Mesa Nº1',
-        descripcion: 'Sector quincho con mesa exclusiva',
-        capacidad: '10 personas',
-        precio: 10000,
-        sena: 2000,
-        horarioInicio: 10,
-        horarioFin: 22,
-        icono: '../../assets/icons/quincho.png',
-        estado: 'disponible',
-        detalles: [
-            'Parrilla compartida',
-            'Mesa y bancos',
-            'Baño cercano'
-        ]
-    },
-    quinchoMesa2: {
-        nombre: 'Quincho Mesa Nº2',
-        descripcion: 'Sector quincho con mesa exclusiva',
-        capacidad: '10 personas',
-        precio: 10000,
-        sena: 2000,
-        horarioInicio: 10,
-        horarioFin: 22,
-        icono: '../../assets/icons/quincho.png',
-        estado: 'disponible',
-        detalles: [
-            'Parrilla compartida',
-            'Mesa y bancos',
-            'Baño cercano'
-        ]
-    },
+
     quinchoMesa3: {
         nombre: 'Quincho Mesa Nº3',
         descripcion: 'Sector quincho con mesa exclusiva',

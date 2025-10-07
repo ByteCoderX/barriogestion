@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestionar Permisos - Barrio Gestión</title>
     <link rel="stylesheet" href="../../index.css?v=1">
-    <link rel="stylesheet" href="./Permisos.css?v=15">
+    <link rel="stylesheet" href="./Permisos.css?v=19">
 </head>
 <body>
     
@@ -79,12 +79,6 @@
             <div class="IdSession">
                 <h1 class="texto">Cliente</h1>
                 <a href="../../../../Utils/auth/logout.php"><h2>Cerrar Sesión</h2></a>
-            </div>
-            
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
             </div>
         </div>
     </header>
@@ -174,7 +168,7 @@
             <div class="lote-info">
                 <div class="lote-card">
                     <div class="lote-icon">
-                        <img src="../assets/icons/lote.png" alt="Lote">
+                        <img src="https://pxcdn.ellitoral.com.ar/litoral/072012/1515510933132.jpg" alt="Lote">
                     </div>
                     <div class="lote-details">
                         <h3>Lote 101 - Manzana A</h3>
@@ -204,7 +198,7 @@
                     <!-- Miembro 1 - Propietario -->
                     <div class="miembro-card" data-id="1" data-rol="propietario">
                         <div class="miembro-avatar">
-                            <img src="../assets/icons/usuario-hombre.png" alt="Avatar">
+                            <img src="https://www.gravatar.com/avatar/ejemplo?s=200" alt="Avatar">
                         </div>
                         <div class="miembro-info">
                             <h4>Juan Carlos Pérez</h4>
@@ -230,7 +224,7 @@
                     <!-- Miembro 2 - Cónyuge -->
                     <div class="miembro-card" data-id="2" data-rol="conyuge">
                         <div class="miembro-avatar">
-                            <img src="../assets/icons/usuario-mujer.png" alt="Avatar">
+                            <img src="https://www.gravatar.com/avatar/ejemplo?s=200" alt="Avatar">
                         </div>
                         <div class="miembro-info">
                             <h4>María Elena García</h4>
@@ -256,7 +250,7 @@
                     <!-- Miembro 3 - Hijo -->
                     <div class="miembro-card" data-id="3" data-rol="hijo">
                         <div class="miembro-avatar">
-                            <img src="../assets/icons/usuario-joven.png" alt="Avatar">
+                            <img src="https://www.gravatar.com/avatar/ejemplo?s=200" alt="Avatar">
                         </div>
                         <div class="miembro-info">
                             <h4>Carlos Andrés Pérez</h4>
@@ -282,7 +276,7 @@
                     <!-- Miembro 4 - Hija -->
                     <div class="miembro-card" data-id="4" data-rol="hijo">
                         <div class="miembro-avatar">
-                            <img src="../assets/icons/usuario-joven-mujer.png" alt="Avatar">
+                            <img src="https://www.gravatar.com/avatar/ejemplo?s=200" alt="Avatar">
                         </div>
                         <div class="miembro-info">
                             <h4>Sofía Pérez García</h4>
@@ -308,7 +302,7 @@
                     <!-- Miembro 5 - Empleada -->
                     <div class="miembro-card" data-id="5" data-rol="empleado">
                         <div class="miembro-avatar">
-                            <img src="../assets/icons/usuario-empleada.png" alt="Avatar">
+                            <img src="https://www.gravatar.com/avatar/ejemplo?s=200" alt="Avatar">
                         </div>
                         <div class="miembro-info">
                             <h4>Rosa Elena Martinez</h4>
@@ -1079,43 +1073,5 @@ function agregarMiembroADOM(miembro) {
     lista.appendChild(card);
 }
     </script>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>Barrio Gestión</h3>
-                <p>Sistema online para la administración eficiente de barrios cerrados y countrys.</p>
-                <div class="social-links">
-                    <a href="https://wa.me/5491141846774"><i class="fa-brands fa-whatsapp"></i>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/barriogestionbcx/"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/barriogestion/"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-        
-        <div class="footer-section">
-            <h3>Contacto</h3>
-            <ul>
-                    <li><i class="fas fa-map-marker-alt"></i>  Buenos Aires, Argentina</li>
-                    <li><i class="fas fa-phone"></i> Teléfono: +54 11 4184 6774</li>
-                    <li><i class="fas fa-envelope"></i> Email: BarrioGestion@ByteCoderX.com</li>
-                </ul>
-        </div>
-        
-        <div class="footer-section">
-            <h3>Enlaces</h3>
-            <ul>
-                <li><a href="index.php">Inicio</a></li>
-                <li><a href="./Expensas/expensas.php">Expensas</a></li>
-                <li><a href="./Servicios/ReservasEC/reservas.php">Servicios</a></li>
-                <li><a href="Seguridad/ControlAccesos/invitado.php">Seguridad</a></li>
-                <li><a href="./Reclamos/quejas.php">Reclamos</a></li>
-            </ul>
-        </div>
-    </div>
-    
-    <div class="footer-bottom">
-        <p>&copy; 2025 Barrio Gestión - Desarrollado por ByteCoderX</p>
-    </div>
 </body>
 </html>

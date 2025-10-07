@@ -122,7 +122,7 @@
 
         <!-- Formulario para registrar invitado -->
         <div class="form-section">
-            <h2 class="form-title">👤 Registrar Nuevo Invitado</h2>
+            <h2 class="form-title">Registrar Nuevo Invitado</h2>
             
             <div id="alertContainer"></div>
 
@@ -186,14 +186,14 @@
                     <textarea id="observaciones" name="observaciones" rows="3" placeholder="Información adicional sobre la visita (opcional)"></textarea>
                 </div>
                 <br>
-                <button type="submit" class="btn">📝 Registrar Invitado</button>
+                <button type="submit" class="btn">Registrar Invitado</button>
             </form>
         </div>
 
         <!-- Tabla de mis invitados -->
         <div class="table-section">
             <div class="table-header">
-                <h2>📋 Mis Invitados Registrados</h2>
+                <h2>Mis Invitados Registrados</h2>
             </div>
             <div class="table-container">
                 <table id="invitadosTable">
