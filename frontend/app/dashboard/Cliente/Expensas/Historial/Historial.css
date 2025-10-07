@@ -730,7 +730,7 @@ body.theme-nature .filtro-grupo select option {
 }
 
 .btn-primary {
-    background-color: #667eea;
+    background-color: #588157;
     color: white;
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
 }
@@ -1056,7 +1056,7 @@ body.theme-nature .estado-badge.pendiente {
 
 .btn-descargar {
     background-color: transparent;
-    color: white;
+    color: #000000;
     box-shadow: 0 4px 15px rgba(164, 195, 178, 0.2);
 }
 
@@ -1123,9 +1123,9 @@ body.theme-nature .paginacion-btn:hover:not(.disabled) {
 }
 
 .paginacion-btn.active {
-    background: #667eea;
+    background: #588157;
     color: white;
-    border-color: #667eea;
+    border-color: #314131;
 }
 
 body.theme-light .paginacion-btn.active {

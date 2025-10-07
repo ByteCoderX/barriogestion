@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notificaciones - Barrio Privado</title>
-    <link rel="stylesheet" href="Notificacion.css?=4">
+    <link rel="stylesheet" href="Notificacion.css?=5">
     <link rel="stylesheet" href="../index.css?v=83">
 </head>
 <body>
