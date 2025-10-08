@@ -8,7 +8,7 @@ export class PrismaUserCredentialsRepository
   implements UsersCredentialsRepository
 {
   async create(data: UserSave) {
-    await prisma.user.create({
+    await prisma.webUser.create({
       data: {
         id: data.id,
         dni: data.dni,
@@ -19,7 +19,7 @@ export class PrismaUserCredentialsRepository
     })
   }
   async getByDni(dni: string): Promise<User | undefined> {
-    const dbResult = await prisma.user.findUnique({
+    const dbResult = await prisma.webUser.findUnique({
       where: {
         dni,
       },
@@ -48,7 +48,7 @@ export class PrismaUserCredentialsRepository
   }
 
   async getByEmail(email: string): Promise<User | undefined> {
-    const dbResult = await prisma.user.findUnique({
+    const dbResult = await prisma.webUser.findUnique({
       where: {
         email,
       },
@@ -77,7 +77,7 @@ export class PrismaUserCredentialsRepository
   }
 
   async getById(id: string): Promise<User | undefined> {
-    const dbResult = await prisma.user.findUnique({
+    const dbResult = await prisma.webUser.findUnique({
       where: {
         id,
       },
@@ -106,7 +106,7 @@ export class PrismaUserCredentialsRepository
   }
 
   async update(data: UserCredentials): Promise<void> {
-    await prisma.user.update({
+    await prisma.webUser.update({
       where: {
         dni: data.dni,
       },

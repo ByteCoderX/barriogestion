@@ -4,7 +4,7 @@ import { UserMetaRepository } from './UserMetaRepository'
 
 export class PrismaUserMetaRepository implements UserMetaRepository {
   async getByDni(dni: string): Promise<User | null> {
-    const dbResult = await prisma.usuarios.findUnique({
+    const dbResult = await prisma.user.findUnique({
       where: {
         dni,
       },

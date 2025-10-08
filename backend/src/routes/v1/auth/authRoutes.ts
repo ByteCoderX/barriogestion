@@ -1,7 +1,7 @@
 import { AuthServices } from '@app/auth/AuthServices'
 import { authContainer } from '@diContainer/authContainer'
 import { Router } from 'express'
-import { AuthSchema } from '@shared/schemas/routes/AuthSchema'
+import { AuthSchema } from '@shared/schemas/routes/auth/AuthSchema'
 import { zodBodyMiddleware } from '@shared/middlewares/zodBodyMiddleware'
 import { AppException, httpStatusCodes } from '@shared/exceptions/AppException'
 import { TokenManager } from '@app/auth/tokens/TokenManager'
