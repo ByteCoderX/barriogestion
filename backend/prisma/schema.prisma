@@ -149,16 +149,16 @@ model UserExpense {
 }
 
 model PublicSpace {
-  id              Int       @id @default(autoincrement()) @map("id_espacio")
-  name            String    @map("nombre") @db.VarChar(100)
-  characteristics String?   @map("caracteristicas") @db.VarChar(150)
-  address         String?   @map("direccion") @db.VarChar(150)
-  price           Decimal?  @map("precio") @db.Decimal(10, 2)
-  openingTime     DateTime? @map("hora_apertura") @db.Time(0)
-  closingTime     DateTime? @map("hora_cierre") @db.Time(0)
-  usageCondition  String?   @map("condicion_uso") @db.VarChar(150)
-  capacity        Int?      @map("capacidad")
-  availability    String?   @map("disponibilidad") @db.VarChar(50)
+  id              Int      @id @default(autoincrement()) @map("id_espacio")
+  name            String   @map("nombre") @db.VarChar(100)
+  characteristics String   @map("caracteristicas") @db.VarChar(150)
+  address         String   @map("direccion") @db.VarChar(150)
+  price           Decimal  @default(0) @map("precio") @db.Decimal(10, 2)
+  openingTime     DateTime @map("hora_apertura") @db.Time(0)
+  closingTime     DateTime @map("hora_cierre") @db.Time(0)
+  usageCondition  String   @map("condicion_uso") @db.VarChar(150)
+  capacity        Int      @map("capacidad")
+  availability    String   @map("disponibilidad") @db.VarChar(50)
 
   reservations Reservation[]
 
@@ -166,16 +166,16 @@ model PublicSpace {
 }
 
 model Reservation {
-  id              Int       @id @default(autoincrement()) @map("id_reserva")
-  reservationDate DateTime  @map("fecha_reserva")
-  userId          Int?      @map("id_usuario")
-  spaceId         Int?      @map("id_espacio")
-  startTime       DateTime? @map("hora_inicio")
-  endTime         DateTime? @map("hora_fin")
-  peopleCount     Int?      @map("cantidad_personas")
-  observations    String?   @map("obsrevaciones") @db.VarChar(1024)
+  id              Int      @id @default(autoincrement()) @map("id_reserva")
+  reservationDate DateTime @map("fecha_reserva")
+  dni             String   @map("id_usuario")
+  spaceId         Int      @map("id_espacio")
+  startTime       DateTime @map("hora_inicio")
+  endTime         DateTime @map("hora_fin")
+  peopleCount     Int      @map("cantidad_personas")
+  observations    String?  @map("obsrevaciones") @db.VarChar(1024)
 
-  user  User?        @relation(fields: [userId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  user  User?        @relation(fields: [dni], references: [dni], onDelete: Restrict, onUpdate: Restrict)
   space PublicSpace? @relation(fields: [spaceId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   @@map("reservas")
