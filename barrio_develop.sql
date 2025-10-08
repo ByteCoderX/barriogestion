@@ -1,222 +1,160 @@
-CREATE TABLE IF NOT EXISTS `usuarios` (
-  `id_usuario` int NOT NULL AUTO_INCREMENT,
-  `dni` varchar(20) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `apellido` varchar(50) NOT NULL,
-  `direccion` varchar(120) DEFAULT NULL,
-  `contacto` varchar(80) DEFAULT NULL,
+CREATE TABLE `roles` (
+  `id_rol` INT PRIMARY KEY AUTO_INCREMENT,
+  `nombre` VARCHAR(50) UNIQUE NOT NULL
+);
+
+CREATE TABLE `usuarios` (
+  `id_usuario` INT PRIMARY KEY AUTO_INCREMENT,
+  `nombre` VARCHAR(50) NOT NULL,
+  `apellido` VARCHAR(50) NOT NULL,
+  `direccion` VARCHAR(100),
+  `contacto` VARCHAR(50),
+  `dni` VARCHAR(20) UNIQUE NOT NULL,
+  `id_rol` INT,
   `creado_en` datetime NOT NULL,
-  `actualizado_en` datetime NOT NULL,
-  PRIMARY KEY (`id_usuario`),
-  UNIQUE KEY `dni` (`dni`)
+  `actualizado_en` datetime NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `invitados` (
-  `id_invitado` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(50) NOT NULL,
-  `apellido` varchar(50) NOT NULL,
-  `dni` varchar(20) DEFAULT NULL,
-  `id_responsable` int NOT NULL,
-  `fecha_visita` date DEFAULT NULL,
-  `permiso` enum('autorizado','denegado','pendiente') DEFAULT 'pendiente',
-  `observaciones` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id_invitado`),
-  KEY `fk_inv_responsable` (`id_responsable`),
-  KEY `idx_invitado_dni` (`dni`),
-  CONSTRAINT `fk_inv_responsable` FOREIGN KEY (`id_responsable`) REFERENCES `usuarios` (`id_usuario`)
+CREATE TABLE `invitados` (
+  `id_invitado` INT PRIMARY KEY AUTO_INCREMENT,
+  `nombre` VARCHAR(50) NOT NULL,
+  `apellido` VARCHAR(50) NOT NULL,
+  `fecha_visita` DATETIME NOT NULL,
+  `fecha_salida` DATETIME NOT NULL,
+  `dni` VARCHAR(20) UNIQUE NOT NULL,
+  `tipo_visita` VARCHAR(35),
+  `motivo` VARCHAR(50),
+  `id_usuario` INT NOT NULL,
+  `contacto` VARCHAR(120),
+  `observaciones` VARCHAR(1024) NOT NULL,
+  `estado` VARCHAR(50)
 );
 
-CREATE TABLE IF NOT EXISTS `accesos` (
-  `id_acceso` bigint NOT NULL AUTO_INCREMENT,
-  `id_usuario` int DEFAULT NULL,
-  `id_invitado` int DEFAULT NULL,
-  `fecha_hora` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `tipo` enum('entrada','salida') NOT NULL,
-  `guardia` varchar(80) DEFAULT NULL,
-  `observaciones` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id_acceso`),
-  KEY `fk_acc_usuario` (`id_usuario`),
-  KEY `fk_acc_invitado` (`id_invitado`),
-  KEY `idx_acc_fh` (`fecha_hora`),
-  CONSTRAINT `fk_acc_invitado` FOREIGN KEY (`id_invitado`) REFERENCES `invitados` (`id_invitado`),
-  CONSTRAINT `fk_acc_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
+CREATE TABLE `registro_accesos` (
+  `id_accesos` INT PRIMARY KEY AUTO_INCREMENT,
+  `acceso_tipo` VARCHAR(50) NOT NULL,
+  `acceso_medio` VARCHAR(50) NOT NULL,
+  `fecha_acceso` DATE NOT NULL,
+  `dni` VARCHAR(20) UNIQUE NOT NULL,
+  `permiso` VARCHAR(30),
+  `detalles` VARCHAR(255)
 );
 
-CREATE TABLE IF NOT EXISTS `servicios` (
-  `id_servicio` int NOT NULL AUTO_INCREMENT,
-  `codigo` varchar(30) DEFAULT NULL,
-  `nombre` varchar(80) NOT NULL,
-  `descripcion` varchar(150) DEFAULT NULL,
-  PRIMARY KEY (`id_servicio`),
-  UNIQUE KEY `codigo` (`codigo`)
+CREATE TABLE `reclamos` (
+  `id_reclamo` INT PRIMARY KEY AUTO_INCREMENT,
+  `titulo` VARCHAR(50),
+  `categoria` VARCHAR(50),
+  `prioridad` VARCHAR(30),
+  `ubicacion` VARCHAR(120),
+  `descripcion` VARCHAR(512),
+  `dni` VARCHAR(20) UNIQUE NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `expensa_items` (
-  `id_item` int NOT NULL AUTO_INCREMENT,
-  `id_servicio` int NOT NULL,
-  `nombre` varchar(80) NOT NULL,
-  `descripcion` varchar(150) DEFAULT NULL,
-  PRIMARY KEY (`id_item`),
-  KEY `fk_ei_serv` (`id_servicio`),
-  CONSTRAINT `fk_ei_serv` FOREIGN KEY (`id_servicio`) REFERENCES `servicios` (`id_servicio`)
+CREATE TABLE `multas` (
+  `id_multa` INT PRIMARY KEY AUTO_INCREMENT,
+  `descripcion` VARCHAR(150) NOT NULL,
+  `causa` VARCHAR(150),
+  `fecha_emision` DATETIME,
+  `estado` VARCHAR(50)
 );
 
-CREATE TABLE IF NOT EXISTS `parcelas` (
-  `id_parcela` int NOT NULL AUTO_INCREMENT,
-  `codigo_lote` varchar(50) DEFAULT NULL,
-  `direccion` varchar(150) DEFAULT NULL,
-  `estado_propiedad` enum('ocupada','desocupada','en_obra','incobrable','otro') DEFAULT 'ocupada',
-  `descripcion` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id_parcela`),
-  UNIQUE KEY `codigo_lote` (`codigo_lote`)
+CREATE TABLE `usuarios_multas` (
+  `id_usuario` INT,
+  `id_multa` INT,
+  PRIMARY KEY (`id_usuario`, `id_multa`)
 );
 
-CREATE TABLE IF NOT EXISTS `expensa_periodo` (
-  `id_periodo` int NOT NULL AUTO_INCREMENT,
-  `periodo` char(7) NOT NULL,
-  `fecha_inicio` date DEFAULT NULL,
-  `fecha_fin` date DEFAULT NULL,
-  `notas` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id_periodo`),
-  UNIQUE KEY `periodo` (`periodo`)
+CREATE TABLE `expensas` (
+  `id_expensa` INT PRIMARY KEY AUTO_INCREMENT,
+  `periodo` VARCHAR(50) NOT NULL,
+  `fecha_emision` DATETIME,
+  `fecha_vencimiento` DATETIME,
+  `estado` VARCHAR(50),
+  `fecha_pago` DATETIME,
+  `metodo_pago` VARCHAR(50),
+  `dni` VARCHAR(20) UNIQUE NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `expensa_cargos` (
-  `id_cargo` int NOT NULL AUTO_INCREMENT,
-  `id_periodo` int NOT NULL,
-  `id_parcela` int NOT NULL,
-  `id_item` int DEFAULT NULL,
-  `importe` decimal(12,2) NOT NULL,
-  `detalle` varchar(150) DEFAULT NULL,
-  PRIMARY KEY (`id_cargo`),
-  KEY `fk_ec_periodo` (`id_periodo`),
-  KEY `fk_ec_item` (`id_item`),
-  KEY `idx_ec_parcela_periodo` (`id_parcela`,`id_periodo`),
-  CONSTRAINT `fk_ec_item` FOREIGN KEY (`id_item`) REFERENCES `expensa_items` (`id_item`),
-  CONSTRAINT `fk_ec_parcela` FOREIGN KEY (`id_parcela`) REFERENCES `parcelas` (`id_parcela`),
-  CONSTRAINT `fk_ec_periodo` FOREIGN KEY (`id_periodo`) REFERENCES `expensa_periodo` (`id_periodo`)
+CREATE TABLE `expensas_items` (
+  `id_item` INT PRIMARY KEY AUTO_INCREMENT,
+  `id_expensa` INT,
+  `titulo` VARCHAR(50),
+  `descripcion` VARCHAR(250),
+  `monto` INT
 );
 
-CREATE TABLE IF NOT EXISTS `expensa_pagos` (
-  `id_pago` bigint NOT NULL AUTO_INCREMENT,
-  `id_periodo` int NOT NULL,
-  `id_parcela` int NOT NULL,
-  `fecha` date NOT NULL,
-  `medio` varchar(40) DEFAULT NULL,
-  `importe` decimal(12,2) NOT NULL,
-  `referencia` varchar(80) DEFAULT NULL,
-  PRIMARY KEY (`id_pago`),
-  KEY `fk_ep_periodo` (`id_periodo`),
-  KEY `idx_ep_parcela_periodo` (`id_parcela`,`id_periodo`),
-  CONSTRAINT `fk_ep_parcela` FOREIGN KEY (`id_parcela`) REFERENCES `parcelas` (`id_parcela`),
-  CONSTRAINT `fk_ep_periodo` FOREIGN KEY (`id_periodo`) REFERENCES `expensa_periodo` (`id_periodo`)
+CREATE TABLE `usuarios_expensas` (
+  `id_usuario` INT,
+  `id_expensa` INT,
+  `monto` DECIMAL(10,2) NOT NULL,
+  PRIMARY KEY (`id_usuario`, `id_expensa`)
 );
 
-CREATE TABLE IF NOT EXISTS `multas` (
-  `id_multa` int NOT NULL AUTO_INCREMENT,
-  `id_usuario` int NOT NULL,
-  `id_parcela` int DEFAULT NULL,
-  `causa` varchar(150) DEFAULT NULL,
-  `descripcion` varchar(200) DEFAULT NULL,
-  `tipo` varchar(60) DEFAULT NULL,
-  `monto` decimal(12,2) DEFAULT '0.00',
-  `fecha_emision` datetime DEFAULT NULL,
-  `estado_multa` enum('pendiente','abonada','anulada','en_reclamo') DEFAULT 'pendiente',
-  `creado_por` varchar(80) DEFAULT NULL,
-  PRIMARY KEY (`id_multa`),
-  KEY `idx_mul_usuario` (`id_usuario`),
-  KEY `idx_mul_parcela` (`id_parcela`),
-  KEY `idx_mul_estado` (`estado_multa`),
-  CONSTRAINT `fk_mul_parcela` FOREIGN KEY (`id_parcela`) REFERENCES `parcelas` (`id_parcela`),
-  CONSTRAINT `fk_mul_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
+CREATE TABLE `espacios_publicos` (
+  `id_espacio` INT PRIMARY KEY AUTO_INCREMENT,
+  `nombre` VARCHAR(100) NOT NULL,
+  `caracteristicas` VARCHAR(150),
+  `direccion` VARCHAR(150),
+  `precio` DECIMAL(10,2),
+  `hora_apertura` TIME,
+  `hora_cierre` TIME,
+  `condicion_uso` VARCHAR(150),
+  `capacidad` INT,
+  `disponibilidad` VARCHAR(50)
 );
 
-CREATE TABLE IF NOT EXISTS `multas_evidencias` (
-  `id_evidencia` int NOT NULL AUTO_INCREMENT,
-  `id_multa` int NOT NULL,
-  `nombre_img` varchar(150) DEFAULT NULL,
-  `ruta` varchar(255) DEFAULT NULL,
-  `tipo_mime` varchar(80) DEFAULT NULL,
-  PRIMARY KEY (`id_evidencia`),
-  KEY `fk_me_multa` (`id_multa`),
-  CONSTRAINT `fk_me_multa` FOREIGN KEY (`id_multa`) REFERENCES `multas` (`id_multa`)
+CREATE TABLE `reservas` (
+  `id_reserva` INT PRIMARY KEY AUTO_INCREMENT,
+  `fecha_reserva` DATETIME NOT NULL,
+  `id_usuario` INT,
+  `id_espacio` INT,
+  `hora_inicio` DATETIME,
+  `hora_fin` DATETIME,
+  `cantidad_personas` INT,
+  `obsrevaciones` VARCHAR(1024)
 );
 
-CREATE TABLE IF NOT EXISTS `roles` (
-  `id_rol` tinyint NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(30) NOT NULL,
-  PRIMARY KEY (`id_rol`),
-  UNIQUE KEY `nombre` (`nombre`)
-);
-
-CREATE TABLE IF NOT EXISTS `usuarios_web` (
-  `id` varchar(36) NOT NULL DEFAULT (uuid()),
-  `dni` varchar(20) NOT NULL,
-  `avatar_hash` varchar(128) NOT NULL,
-  `correo_electronico` varchar(255) NOT NULL,
-  `contrasena` varchar(255) NOT NULL,
-  `admin` tinyint NOT NULL DEFAULT (0),
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `dni` (`dni`),
-  UNIQUE KEY `correo_electronico` (`correo_electronico`),
-  CONSTRAINT `FK_usuarios_web_usuarios` FOREIGN KEY (`dni`) REFERENCES `usuarios` (`dni`)
-);
-
-CREATE TABLE IF NOT EXISTS `sesiones_web` (
-  `id` varchar(36) NOT NULL DEFAULT (uuid()),
+CREATE TABLE `sesiones_web` (
+  `id` varchar(36) PRIMARY KEY NOT NULL,
   `usuario_id` varchar(36) NOT NULL,
   `ip` varchar(45) NOT NULL,
   `user_agent` varchar(512) NOT NULL,
   `activo` tinyint(1) NOT NULL,
   `fecha_creacion` datetime NOT NULL,
-  `fecha_expiracion` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `usuario_id` (`usuario_id`),
-  CONSTRAINT `sesiones_web_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios_web` (`id`)
+  `fecha_expiracion` datetime NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `usuarios_parcelas` (
-  `id_usuario_parcela` int NOT NULL AUTO_INCREMENT,
-  `id_usuario` int NOT NULL,
-  `id_parcela` int NOT NULL,
-  `rol_propiedad` enum('propietario','inquilino','responsable','otro') NOT NULL,
-  `fecha_inicio` date DEFAULT NULL,
-  `fecha_fin` date DEFAULT NULL,
-  PRIMARY KEY (`id_usuario_parcela`),
-  KEY `idx_up_usuario` (`id_usuario`),
-  KEY `idx_up_parcela` (`id_parcela`),
-  CONSTRAINT `fk_up_parcela` FOREIGN KEY (`id_parcela`) REFERENCES `parcelas` (`id_parcela`),
-  CONSTRAINT `fk_up_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
+CREATE TABLE `usuarios_web` (
+  `id` varchar(36) PRIMARY KEY NOT NULL,
+  `dni` VARCHAR(20) UNIQUE NOT NULL,
+  `avatar_hash` varchar(128) NOT NULL,
+  `correo_electronico` varchar(255) NOT NULL,
+  `contrasena` varchar(255) NOT NULL,
+  `admin` tinyint(4) NOT NULL DEFAULT 0
 );
 
-CREATE TABLE IF NOT EXISTS `usuarios_roles` (
-  `id_usuario` int NOT NULL,
-  `id_rol` tinyint NOT NULL,
-  PRIMARY KEY (`id_usuario`,`id_rol`),
-  KEY `fk_ur_rol` (`id_rol`),
-  CONSTRAINT `fk_ur_rol` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`),
-  CONSTRAINT `fk_ur_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
-);
+ALTER TABLE `usuarios` ADD FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`);
 
-CREATE TABLE IF NOT EXISTS `vehiculos` (
-  `id_vehiculo` int NOT NULL AUTO_INCREMENT,
-  `placa` varchar(15) NOT NULL,
-  `marca` varchar(50) DEFAULT NULL,
-  `modelo` varchar(60) DEFAULT NULL,
-  `color` varchar(30) DEFAULT NULL,
-  `anio` smallint DEFAULT NULL,
-  `fecha_fabricacion` date DEFAULT NULL,
-  `num_seguro` varchar(40) DEFAULT NULL,
-  `info_seguro` varchar(150) DEFAULT NULL,
-  `num_registro` varchar(40) DEFAULT NULL,
-  `info_registro` varchar(150) DEFAULT NULL,
-  `vtv` varchar(150) DEFAULT NULL,
-  `id_usuario` int DEFAULT NULL,
-  `id_parcela` int DEFAULT NULL,
-  PRIMARY KEY (`id_vehiculo`),
-  UNIQUE KEY `placa` (`placa`),
-  KEY `idx_veh_usuario` (`id_usuario`),
-  KEY `idx_veh_parcela` (`id_parcela`),
-  CONSTRAINT `fk_veh_parcela` FOREIGN KEY (`id_parcela`) REFERENCES `parcelas` (`id_parcela`),
-  CONSTRAINT `fk_veh_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
-);
+ALTER TABLE `invitados` ADD FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
+
+ALTER TABLE `usuarios_multas` ADD FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
+
+ALTER TABLE `usuarios_multas` ADD FOREIGN KEY (`id_multa`) REFERENCES `multas` (`id_multa`);
+
+ALTER TABLE `usuarios_expensas` ADD FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
+
+ALTER TABLE `usuarios_expensas` ADD FOREIGN KEY (`id_expensa`) REFERENCES `expensas` (`id_expensa`);
+
+ALTER TABLE `reservas` ADD FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
+
+ALTER TABLE `reservas` ADD FOREIGN KEY (`id_espacio`) REFERENCES `espacios_publicos` (`id_espacio`);
+
+ALTER TABLE `sesiones_web` ADD CONSTRAINT `sesiones_web_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios_web` (`id`);
+
+ALTER TABLE `usuarios_web` ADD CONSTRAINT `FK_usuarios_web_usuarios` FOREIGN KEY (`dni`) REFERENCES `usuarios` (`dni`);
+
+ALTER TABLE `usuarios` ADD FOREIGN KEY (`dni`) REFERENCES `reclamos` (`dni`);
+
+ALTER TABLE `usuarios` ADD FOREIGN KEY (`dni`) REFERENCES `registro_accesos` (`dni`);
+
+ALTER TABLE `expensas_items` ADD FOREIGN KEY (`id_expensa`) REFERENCES `expensas` (`id_expensa`);
