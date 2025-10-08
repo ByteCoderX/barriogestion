@@ -1,6 +1,4 @@
-import { ExpensaItem } from './ExpensaItem'
-
-export interface ExpensaDetalle {
+export interface ExpensaHistorial {
   id: string
   period: string
   issueDate: Date
@@ -8,6 +6,5 @@ export interface ExpensaDetalle {
   status: string
   paymentDate: Date | null
   paymentMethod: string | null
-  dni: string
-  items: ExpensaItem[]
+  items: number
 }

@@ -111,9 +111,9 @@ model UserFine {
 model Expense {
   id            Int       @id @default(autoincrement()) @map("id_expensa")
   period        String    @map("periodo") @db.VarChar(50)
-  issueDate     DateTime? @map("fecha_emision")
-  dueDate       DateTime? @map("fecha_vencimiento")
-  status        String?   @map("estado") @db.VarChar(50)
+  issueDate     DateTime  @map("fecha_emision")
+  dueDate       DateTime  @map("fecha_vencimiento")
+  status        String    @map("estado") @db.VarChar(50)
   paymentDate   DateTime? @map("fecha_pago")
   paymentMethod String?   @map("metodo_pago") @db.VarChar(50)
   dni           String    @unique @map("dni") @db.VarChar(20)
@@ -125,11 +125,11 @@ model Expense {
 }
 
 model ExpenseItem {
-  id          Int     @id @default(autoincrement()) @map("id_item")
-  expenseId   Int?    @map("id_expensa")
-  title       String? @map("titulo") @db.VarChar(50)
-  description String? @map("descripcion") @db.VarChar(250)
-  amount      Int?    @map("monto")
+  id          Int    @id @default(autoincrement()) @map("id_item")
+  expenseId   Int    @map("id_expensa")
+  title       String @map("titulo") @db.VarChar(50)
+  description String @map("descripcion") @db.VarChar(250)
+  amount      Int    @map("monto")
 
   expense Expense? @relation(fields: [expenseId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
