@@ -5,7 +5,7 @@ import { SessionUpdate } from './models/SessionUpdate'
 
 export class PrismaSessionsRepository implements SessionsRepository {
   async save(data: Session): Promise<void> {
-    await prisma.session.create({
+    await prisma.webSession.create({
       data: {
         id: data.id,
         userId: data.userId,
@@ -18,7 +18,7 @@ export class PrismaSessionsRepository implements SessionsRepository {
     })
   }
   async update(data: SessionUpdate): Promise<void> {
-    await prisma.session.update({
+    await prisma.webSession.update({
       where: {
         id: data.sessionId,
       },
@@ -30,7 +30,7 @@ export class PrismaSessionsRepository implements SessionsRepository {
     })
   }
   async getById(id: string): Promise<Session | null> {
-    const session = await prisma.session.findUnique({
+    const session = await prisma.webSession.findUnique({
       where: {
         id,
       },
@@ -40,7 +40,7 @@ export class PrismaSessionsRepository implements SessionsRepository {
   }
 
   async delete(id: string) {
-    await prisma.session.delete({
+    await prisma.webSession.delete({
       where: {
         id,
       },
