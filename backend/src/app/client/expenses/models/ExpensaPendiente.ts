@@ -1,9 +1,10 @@
-import { Cargo } from './Cargo'
+import { ExpensaItem } from './ExpensaItem'
 
 export interface ExpensaPendiente {
-  periodo: string
-  total: number
-  pagado: number
-  saldo: number
-  cargos: Cargo[]
+  id: string
+  period: string
+  issueDate: Date
+  dueDate: Date
+  status: string
+  items: ExpensaItem[]
 }

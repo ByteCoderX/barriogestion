@@ -1,8 +1,11 @@
+import { ExpensaItem } from './ExpensaItem'
+
 export interface ExpensaUltimoPago {
-  periodo: string
-  parcela: string
-  fecha: Date
-  medio: string | null
-  importe: number
-  referencia: string | null
+  id: string
+  period: string
+  issueDate: Date
+  dueDate: Date
+  paymentDate?: Date | null
+  paymentMethod?: string | null
+  items: ExpensaItem[]
 }

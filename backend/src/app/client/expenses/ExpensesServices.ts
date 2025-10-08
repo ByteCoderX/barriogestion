@@ -1,5 +1,6 @@
 import { AppException, httpStatusCodes } from '@shared/exceptions/AppException'
 import { ExpensesRepository } from './repositories/ExpensesRepository'
+import { ResourceNotFoundException } from '@shared/exceptions/ResourceNotFoundException'
 
 export class ExpensesServices {
   constructor(private readonly expensesRepository: ExpensesRepository) {}
@@ -12,37 +13,43 @@ export class ExpensesServices {
       )
 
     const expense = await this.expensesRepository.getDetailedById(idCargo)
+
+    if (!expense)
+      throw new ResourceNotFoundException(
+        'No se encontró una expensa con la id:' + idCargo,
+      )
+
     return expense
   }
-  public async getCurrentPending(userId: number) {
-    if (!userId)
+  public async getCurrentPending(dni: string) {
+    if (!dni)
       throw new AppException(
         'No se ingresó una id',
         httpStatusCodes.unproccesableEntity,
       )
 
-    const expense = await this.expensesRepository.getCurrentPending(userId)
+    const expense = await this.expensesRepository.getCurrentPending(dni)
     return expense
   }
-  public async getLastPaid(userId: number) {
-    if (!userId)
+  public async getLastPaid(dni: string) {
+    if (!dni)
       throw new AppException(
         'No se ingresó una id',
         httpStatusCodes.unproccesableEntity,
       )
 
-    const expense = await this.expensesRepository.getLastPaid(userId)
+    const expense = await this.expensesRepository.getLastPaid(dni)
     return expense
   }
 
-  public async getHistory(userId: number) {
-    if (!userId)
+  public async getHistory(dni: string) {
+    if (!dni)
       throw new AppException(
         'No se ingresó una id',
         httpStatusCodes.unproccesableEntity,
       )
 
-    const expense = await this.expensesRepository.getHistory(userId)
+    const expense = await this.expensesRepository.getHistory(dni)
     return expense
   }
 }

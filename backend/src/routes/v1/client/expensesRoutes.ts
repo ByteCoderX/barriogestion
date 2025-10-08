@@ -13,46 +13,52 @@ export const expensesRoutes = () => {
     // Obtenes los detalles de una Expensa
     const result = await expensesServices.getDetailedById(expenseId)
 
-    if (!result)
-      throw new ResourceNotFoundException(
-        'No se encontró una expensa con la id:' + expenseId,
-      )
-
     res.status(200).send(result)
   })
 
-  router.get('/:userId', async (req, res) => {
-    const userId = Number(req.params.userId)
+  router.get('/:dni', async (req, res) => {
+    const userDni = String(req.params.dni)
 
-    const pendingExpense = await expensesServices.getCurrentPending(userId)
-    const lastExpense = await expensesServices.getLastPaid(userId)
+    const pendingExpense = await expensesServices.getCurrentPending(userDni)
+    const lastExpense = await expensesServices.getLastPaid(userDni)
 
     if (!pendingExpense && !lastExpense)
       throw new ResourceNotFoundException(
-        'No se encontraron expensas para el usuario:' + userId,
+        'No se encontraron expensas para el usuario:' + userDni,
       )
+
+    let currentImport = 0
+    let previousImport = 0
+
+    pendingExpense?.items.forEach((item) => {
+      currentImport += item.amount
+    })
+
+    lastExpense?.items.forEach((item) => {
+      previousImport += item.amount
+    })
 
     // Todas las mañanas que vivi...
     res.status(200).send({
       current: {
-        monto: pendingExpense?.total, // ?, Ni idea
-        vencimiento: pendingExpense?.periodo, // ?, Ni idea
+        monto: currentImport,
+        vencimiento: pendingExpense?.dueDate,
       },
       previous: {
-        monto: lastExpense?.importe, // ?, Ni idea
-        paidDate: lastExpense?.fecha, // ?, Ni idea
+        monto: previousImport,
+        paidDate: lastExpense?.paymentDate,
       },
     })
   })
 
-  router.get('/history/:userId', async (req, res) => {
-    const userId = Number(req.params.userId)
+  router.get('/history/:dni', async (req, res) => {
+    const userDni = String(req.params.dni)
 
-    const expenseHistory = await expensesServices.getHistory(userId)
+    const expenseHistory = await expensesServices.getHistory(userDni)
 
     if (!expenseHistory)
       throw new ResourceNotFoundException(
-        'No se encontraron expensas para el usuario:' + userId,
+        'No se encontraron expensas para el usuario:' + userDni,
       )
 
     res.status(200).send(expenseHistory)
