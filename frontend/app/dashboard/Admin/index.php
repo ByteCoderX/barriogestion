@@ -1,9 +1,4 @@
-<?php
-$requiredAdmin = true;  // solo admins
-require_once '../../Utils/auth/validator.php';
-require_once '../../Utils/auth/auth_check.php';
-?>
-
+<script src="../../utils/auth/validator.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 <head>

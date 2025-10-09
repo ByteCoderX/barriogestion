@@ -1,8 +1,4 @@
-<?php
-$requiredAdmin = false;  // solo usuarios normales
-require_once '../../Utils/auth/validator.php';
-require_once '../../Utils/auth/auth_check.php';
-?>
+<script src="../../utils/auth/validator.js"></script>
 <!DOCTYPE html>
 <html lang="es">
 <head>
