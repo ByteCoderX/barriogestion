@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./login.css?=v40">
     <title>Ingreso</title>
 </head>
+
 <body>
 
     <div class="container">
@@ -13,14 +15,14 @@
             <div class="logo-container">
                 <img src="./dashboard/Admin/assets/img/LogoApp.png" alt="Logo Barrio Gestion" class="logo">
             </div>
-            <form action="./Utils/auth/login.php" method="post">
+            <form id="loginForm">
                 <h2>Acceso a la App</h2>
                 <p class="message" id="message">---</p>
-                
+
                 <div class="input-grupo">
                     <input type="text" placeholder="DNI" id="username" name="dni" required>
                 </div>
-                
+
                 <div class="input-grupo">
                     <input type="password" placeholder="Contraseña" id="password" name="clave" required>
                 </div>
@@ -33,7 +35,7 @@
             </form>
         </div>
     </div>
-    
+
     <!-- Popup de recuperación de contraseña -->
     <div class="popup-overlay" id="popupOverlay">
         <div class="popup-content">
@@ -41,11 +43,12 @@
                 <h3>Recuperar Contraseña</h3>
                 <button class="close-btn" id="closePopup">&times;</button>
             </div>
-            
+
             <p>Para recuperar tu contraseña tendras que comunicarte con el administrador:</p>
-            
+
             <div class="important-note">
-                <strong>Importante:</strong> Para que la recuperación de tu contraseña sea realizada con exito tendrás que comprobar que la cuenta sea de tu grupo hogar. 
+                <strong>Importante:</strong> Para que la recuperación de tu contraseña sea realizada con exito tendrás
+                que comprobar que la cuenta sea de tu grupo hogar.
             </div>
 
             <div class="contact-info">
@@ -56,7 +59,47 @@
         </div>
     </div>
 </body>
+<script>
+    const form = document.getElementById('loginForm');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const dni = form.dni.value.trim();
+        const clave = form.clave.value.trim();
+
+        try {
+            const res = await fetch('https://api.bringfeel.com.ar/bg/v1/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': 'hola'
+                },
+                body: JSON.stringify({ dni, password: clave }),
+                credentials: 'include' // MUY IMPORTANTE: hace que las cookies se guarden
+            });
+
+            if (!res.ok) throw new Error('Credenciales inválidas');
+
+            const data = await res.json();
+
+            // Guardás info de usuario en localStorage para manejar UI
+            localStorage.setItem('userdata', JSON.stringify(data));
+
+            // Redirigís según rol
+            if (data.admin) {
+                window.location.href = '/dashboard/Admin/';
+            } else {
+                window.location.href = '/dashboard/Cliente/';
+            }
+
+        } catch (err) {
+            alert(err.message);
+        }
+    });
+</script>
 <script src="./login.js?=v5"></script>
 <script src="https://bringfeel.com.ar/assets/js/jquery.min.js?=v2"></script>
 <script src="https://wasap2.bringfeel.com.ar/assets/js/index.js?=v2"></script>
+
 </html>
