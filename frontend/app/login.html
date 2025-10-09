@@ -61,6 +61,7 @@
 </body>
 <script>
     const form = document.getElementById('loginForm');
+    const API_URL = process.env.API_URL;
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -69,24 +70,23 @@
         const clave = form.clave.value.trim();
 
         try {
-            const res = await fetch('https://api.bringfeel.com.ar/bg/v1/auth/login', {
+            const res = await fetch(`${API_URL}/bg/v1/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'x-api-key': 'hola'
                 },
                 body: JSON.stringify({ dni, password: clave }),
-                credentials: 'include' // MUY IMPORTANTE: hace que las cookies se guarden
+                credentials: 'include' // guarda las cookies
             });
 
             if (!res.ok) throw new Error('Credenciales inválidas');
 
             const data = await res.json();
 
-            // Guardás info de usuario en localStorage para manejar UI
+            // guarda info en localStorage
             localStorage.setItem('userdata', JSON.stringify(data));
 
-            // Redirigís según rol
             if (data.admin) {
                 window.location.href = '/dashboard/Admin/';
             } else {
