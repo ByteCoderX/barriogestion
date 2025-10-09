@@ -1,4 +1,4 @@
-<script src="/utils/auth/validator.js"></script>
+<script src="../../utils/auth/validator.js"></script>
 <!DOCTYPE html>
 <html lang="es">
 <head>
