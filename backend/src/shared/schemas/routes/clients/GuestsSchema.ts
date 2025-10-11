@@ -1,6 +1,10 @@
 import * as z from 'zod'
 
 export const GuestsSchema = {
+  get: z.object({
+    userId: z.coerce.number(),
+  }),
+
   create: z.object({
     firstName: z.string(),
     lastName: z.string(),

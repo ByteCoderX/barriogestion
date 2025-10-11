@@ -1,22 +1,27 @@
 import { GuestsServices } from '@app/client/guests/GuestsServices'
 import { clientContainer } from '@diContainer/clientContainer'
 import { zodBodyMiddleware } from '@shared/middlewares/zodBodyMiddleware'
+import { zodQueryMiddleware } from '@shared/middlewares/zodQueryMiddleware'
 import { GuestsSchema } from '@shared/schemas/routes/clients/GuestsSchema'
 import { Router } from 'express'
 
-export const accessRoutes = () => {
+export const guestsRoutes = () => {
   const router = Router()
   const guestsServices = clientContainer.resolve<GuestsServices>(
     'reservations-services',
   )
 
-  router.get('/:userId', async (req, res) => {
-    // Recibe únicamente el dni
-    const userId = Number(req.query.userId)
-    const guests = await guestsServices.getGuests(userId)
+  router.get(
+    '/:userId',
+    zodQueryMiddleware(GuestsSchema.get),
+    async (req, res) => {
+      // Recibe únicamente el dni
+      const userId = Number(req.query.userId)
+      const guests = await guestsServices.getGuests(userId)
 
-    res.status(200).send(guests)
-  })
+      res.status(200).send(guests)
+    },
+  )
 
   // Recibe toda la data
   router.post('/', zodBodyMiddleware(GuestsSchema.create), async (req, res) => {

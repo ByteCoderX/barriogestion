@@ -24,6 +24,13 @@ export class GuestsServices {
         httpStatusCodes.unproccesableEntity,
       )
 
+    const guest = await this.guestsRepository.getByDni(guestData.dni)
+    if (guest)
+      throw new AppException(
+        'Este invitado ya existe.',
+        httpStatusCodes.conflict,
+      )
+
     const result = await this.guestsRepository.create(guestData)
     return result
   }
@@ -32,6 +39,13 @@ export class GuestsServices {
     if (!guestData)
       throw new AppException(
         'Faltan datos para crear un invitado.',
+        httpStatusCodes.unproccesableEntity,
+      )
+
+    const guest = await this.guestsRepository.getByDni(guestData.dni)
+    if (!guest)
+      throw new AppException(
+        'Este invitado no existe.',
         httpStatusCodes.unproccesableEntity,
       )
 
@@ -47,6 +61,13 @@ export class GuestsServices {
       )
 
     const result = await this.guestsRepository.remove(userId, guestId)
+
+    if (!result)
+      throw new AppException(
+        'No se eliminó al invitado con la ID: ' + guestId,
+        httpStatusCodes.unproccesableEntity,
+      )
+
     return result
   }
 }

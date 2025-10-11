@@ -3,8 +3,9 @@ import { GuestCreate } from '../models/GuestCreate'
 import { GuestUpdate } from '../models/GuestUpdate'
 
 export interface GuestsRepository {
-  create(guest: GuestCreate): Promise<void>
+  create(guest: GuestCreate): Promise<Guest>
   getById(userId: number): Promise<Guest[]>
-  update(guest: GuestUpdate): Promise<void>
-  remove(userId: number, guestId: number): Promise<void>
+  getByDni(dni: string): Promise<Guest | undefined>
+  update(guest: GuestUpdate): Promise<Guest>
+  remove(userId: number, guestId: number): Promise<Guest | undefined>
 }
