@@ -1,4 +1,6 @@
-<script src="../../utils/auth/validator.js"></script>
+<?php
+    require "../../Utils/auth/validator.php"
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
