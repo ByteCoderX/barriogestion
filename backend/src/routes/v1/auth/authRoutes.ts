@@ -39,8 +39,18 @@ export const authRoutes = () => {
       const result = await authServices.authenticate(req.body, connectionInfo)
 
       // Se asigna el refresh token al usuario mediante cookies.
-      res.cookie('refreshToken', result.tokens.refresh)
-      res.cookie('accessToken', result.tokens.access)
+      res.cookie('refreshToken', result.tokens.refresh, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'lax',
+        domain: '.bringfeel.com.ar',
+      })
+      res.cookie('accessToken', result.tokens.access, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'lax',
+        domain: '.bringfeel.com.ar',
+      })
 
       // Se devuelve token de acceso y la información del usuario mediante el body.
       res.status(200).send({
