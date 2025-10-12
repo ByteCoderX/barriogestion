@@ -8,7 +8,14 @@ if (!isset($_COOKIE['refreshToken'])) {
     exit;
 }
 
-$apiUrl = $_ENV['API_URL'];
+function cargarSettings() {
+    $rootPath = dirname(__DIR__, 2);
+    $json = file_get_contents($rootPath . '/settings.json');
+    return json_decode($json, true);
+}
+
+$settings = cargarSettings();
+$apiUrl = $settings['API_URL'];
 
 $refreshToken=$_COOKIE['refreshToken'];
 $endpoint = $apiUrl . '/bg/v1/auth/validator';
