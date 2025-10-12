@@ -32,7 +32,7 @@ model User {
   expenses     UserExpense[]
   reservations Reservation[]
   webUsers     WebUser[]
-  claim        Claim?
+  claim        Complaints?
   accessRecord AccessRecord?
 
   @@map("usuarios")
@@ -71,18 +71,31 @@ model AccessRecord {
   @@map("registro_accesos")
 }
 
-model Claim {
-  id          Int     @id @default(autoincrement()) @map("id_reclamo")
-  title       String? @map("titulo") @db.VarChar(50)
-  category    String? @map("categoria") @db.VarChar(50)
-  priority    String? @map("prioridad") @db.VarChar(30)
-  location    String? @map("ubicacion") @db.VarChar(120)
-  description String? @map("descripcion") @db.VarChar(512)
-  dni         String  @unique @db.VarChar(20)
+model Complaints {
+  id          Int    @id @default(autoincrement()) @map("id_reclamo")
+  title       String @map("titulo") @db.VarChar(50)
+  category    String @map("categoria") @db.VarChar(50)
+  priority    String @map("prioridad") @db.VarChar(30)
+  location    String @map("ubicacion") @db.VarChar(120)
+  description String @map("descripcion") @db.VarChar(512)
+  dni         String @unique @db.VarChar(20)
 
-  user User @relation(fields: [dni], references: [dni], onDelete: Restrict, onUpdate: Restrict)
+  user           User            @relation(fields: [dni], references: [dni], onDelete: Restrict, onUpdate: Restrict)
+  TicketMessages TicketMessages?
 
   @@map("reclamos")
+}
+
+model TicketMessages {
+  id        Int      @id @unique @default(autoincrement()) @map("id_mensaje")
+  ticketId  Int      @unique @map("id_reclamo")
+  senderDni String   @map("remitente") @db.VarChar(20)
+  message   String   @map("mapa") @db.VarChar(512)
+  sendAt    DateTime @default(now()) @map("creado_en")
+
+  ticket Complaints @relation(fields: [ticketId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  @@map("reclamos_mensajes")
 }
 
 model Fine {
