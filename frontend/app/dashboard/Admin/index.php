@@ -1,5 +1,5 @@
 <?php
-    require "../../Utils/auth/validator.php"
+    // require "../../Utils/auth/validator.php"
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,63 +7,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barrio Gestion - Dashboard</title>
-    <link rel="stylesheet" href="./index.css?=v14">
-    <link rel="stylesheet" href="./assets/sidebar-right.css?=v5">
+    <link rel="stylesheet" href="index.css?=v14">
+    <link rel="stylesheet" href="assets/css/sidebar-right.css?=v5">
+
 </head>
 <body>
-    <header>
-        <div class="izq">
-            <div class="LogoApp">
-                <a href="index.php">
-                <img src="./assets/icons/logoheader.webp" alt="icono-barriogestion" class="logo">
-                </a>                
-            </div>
-            <nav class="menu-principal">
-                <a href="./index.php" class="menu-item">Inicio</a>
-                <div class="dropdown">
-                    <a href="#" class="menu-item">Mi Barrio</a>
-                    <div class="dropdown-content">
-                        <a href="expensas.php">Gestionar Gastos</a>
-                        <a href="pagar-expensas.php">Gestionar Pagos</a>
-                        <a href="historial-pagos.php">Gestionar Ingresos</a>
-                        <a href="historial-pagos.php">Gestionar Fondos</a>
-                        <a href="historial-pagos.php">Gestionar Expensas</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <a class="menu-item">Gestion Lotes</a>
-                    <div class="dropdown-content">
-                        <a href="mapa-barrio.php">Gestionar Grupo Hogar</a>
-                        <a href="lotes/Ges-EspaciosComunes/ReservasEspacios.php">Gestionar Espacios</a>
-                        <a href="./lotes/carnet.php">Gestionar Carnet</a>
-                        <a href="./lotes/Users/UserList.php">Gestionar Usuarios</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <a href="#" class="menu-item">Seguridad</a>
-                    <div class="dropdown-content">
-                        <a href="control-acceso.php">Historial de Accesos</a>
-                        <a href="permisos.php">Gestionar Permisos</a>
-                        <a href="Seguridad/Ges-Accesos/invitados.php">Gestionar Accesos</a>
-                    </div>
-                </div>
-                <a href="reclamos.php" class="menu-item">Configuracion</a>
-            </nav>
-        </div>
-        <div class="derecha">
-            <a href="notificaciones.php" class="icono-header">
-                <img src="./assets/icons/notificacion.png" alt="notificaciones">
-                <span class="notification-badge" id="notificationCount">3</span>
-            </a>
-            <a href="reclamos.php" class="icono-header">
-                <img src="./assets/icons/reclamos4.png" alt="Reclamos">
-            </a>
-            <div class="IdSession">
-                <h1 class="texto">Administrador</h1>
-                <a href="../../Utils/auth/logout.php"><h2>Cerrar Sesión</h2></a>
-            </div>
-        </div>
-    </header>
+    <?php include './includes/header.php'; ?>
 
     <div class="sidebar-right" id="sidebar-right">
         <div class="search-container">
