@@ -1,5 +1,5 @@
 <?php
-$baseUrl = '/barriogestion/frontend/app/dashboard/admin'; // carpeta raíz del proyecto en el servidor
+$baseUrl = '/tesisde/app/dashboard/admin';
 ?>
 <header>
     <div class="izq">
