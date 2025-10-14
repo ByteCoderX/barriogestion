@@ -23,9 +23,9 @@ $baseUrl = '/tesisde/app/dashboard/admin';
             <div class="dropdown">
                 <a class="menu-item">Gestion Lotes</a>
                 <div class="dropdown-content">
-                    <a href="<?= $baseUrl ?>/mapa-barrio.php">Gestionar Grupo Hogar</a>
+                    <!-- <a href="<?= $baseUrl ?>/mapa-barrio.php">Gestionar Grupo Hogar</a> -->
                     <a href="<?= $baseUrl ?>/modules/GestionLotes/espacios/ReservasEspacios.php">Gestionar Espacios</a>
-                    <a href="<?= $baseUrl ?>/modules/GestionLotes/carnet/carnet.php">Gestionar Carnet</a>
+                    <!-- <a href="<?= $baseUrl ?>/modules/GestionLotes/carnet/carnet.php">Gestionar Carnet</a> -->
                     <a href="<?= $baseUrl ?>/modules/GestionLotes/usuarios/UserList.php">Gestionar Usuarios</a>
                 </div>
             </div>
@@ -33,7 +33,7 @@ $baseUrl = '/tesisde/app/dashboard/admin';
                 <a href="#" class="menu-item">Seguridad</a>
                 <div class="dropdown-content">
                     <a href="#">Historial de Accesos</a>
-                    <a href="#">Gestionar Permisos</a>
+                    <!-- <a href="#">Gestionar Permisos</a> -->
                     <a href="#">Gestionar Accesos</a>
                 </div>
             </div>
