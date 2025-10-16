@@ -1,5 +1,5 @@
 <?php
-$baseUrl = '/app/dashboard/admin';
+$baseUrl = 'tesisde/app/dashboard/admin';
 ?>
 <header>
     <div class="izq">
