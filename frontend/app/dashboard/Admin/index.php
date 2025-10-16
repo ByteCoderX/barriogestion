@@ -1,6 +1,3 @@
-<?php
-    require "../../Utils/auth/validator.php"
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

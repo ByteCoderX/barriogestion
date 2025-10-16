@@ -1,6 +1,3 @@
-<?php
-require_once '../../../../../Utils/auth/validator.php';
-?>
 <html lang="es">
     <head>
         <meta charset="UTF-8">
