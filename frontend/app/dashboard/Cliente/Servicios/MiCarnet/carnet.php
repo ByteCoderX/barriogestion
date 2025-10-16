@@ -1,7 +1,5 @@
 <?php
-$requiredAdmin = false;  // solo usuarios normales
 require_once '../../../../Utils/auth/validator.php';
-require_once '../../../../Utils/auth/auth_check.php';
 ?>
 <html lang="es">
     <head>
@@ -188,7 +186,7 @@ require_once '../../../../Utils/auth/auth_check.php';
                         </div>
                         <div class="carnet-photo">
                         <div class="photo-placeholder">
-                            <img src="<?php echo $_SESSION['barriogestion']['userdata']['avatar']; ?>" alt="Foto del residente" id="userPhoto">
+                            <img src="https://www.gravatar.com/avatar/ejemplo?s=200" alt="Foto del residente" id="userPhoto">
                         </div>
                     </div>
                 </div>
@@ -196,15 +194,15 @@ require_once '../../../../Utils/auth/auth_check.php';
                     <div>
                         <div class="info-row">
                             <span class="label">Nombre:</span>
-                            <span class="value" id="userName"><?php echo $_SESSION['barriogestion']['userdata']['fullName']; ?></span>
+                            <span class="value" id="userName">---</span>
                         </div>
                         <div class="info-row">
                             <span class="label">Lote:</span>
-                            <span class="value" id="userLote"><?php echo $_SESSION['barriogestion']['userdata']['address']; ?></span>
+                            <span class="value" id="userLote">---</span>
                         </div>
                         <div class="info-row">
                             <span class="label">DNI:</span>
-                            <span class="value" id="userDNI"><?php echo $_SESSION['barriogestion']['userdata']['dni']; ?></span>
+                            <span class="value" id="userDNI">---</span>
                         </div>
                         <div class="info-row">
                             <span class="label">Tipo:</span>
@@ -282,6 +280,26 @@ require_once '../../../../Utils/auth/auth_check.php';
         </div>
     </main>
 
-    <script src="../../assets/js/index.js?v=6"></script>
+    <script>
+        const userDataLocal = localStorage.getItem('userdata')
+        const userData = JSON.parse(userDataLocal);
+
+        const avatar = document.getElementById('userPhoto');
+        avatar.src = userData.avatar
+
+        const username = document.getElementById('userName');
+        username.textContent = userData.fullName
+
+        const address = document.getElementById('userLote');
+        address.textContent = userData.address
+
+        const dni = document.getElementById('userDNI');
+        dni.textContent = userData.dni
+
+        const qr = document.getElementById('qrCode'); // Crotisimo
+        const qrLink = `https://barriogestion.com.ar/public/check/${userData.dni}`
+        const qrImage = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${userDataLocal}`
+        qr.src = qrImage
+    </script>
 </body>
 </html>
