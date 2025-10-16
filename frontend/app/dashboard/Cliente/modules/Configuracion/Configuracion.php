@@ -1,5 +1,5 @@
 <?php
-// require_once '../../../../Utils/auth/validator.php';
+require_once '../../../../Utils/auth/validator.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
