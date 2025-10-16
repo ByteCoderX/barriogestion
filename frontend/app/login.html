@@ -82,22 +82,20 @@
                     'x-api-key': 'hola'
                 },
                 body: JSON.stringify({ dni, password: clave }),
-                credentials: 'include' // guarda las cookies
+                credentials: 'include'
             });
 
             if (!res.ok) throw new Error('Credenciales inválidas');
 
             const data = await res.json();
 
-            // guarda info en localStorage
             localStorage.setItem('userdata', JSON.stringify(data));
 
             if (data.admin) {
-                window.location.href = '/dashboard/Admin/';
+                window.location.href = "./dashboard/Admin/index.php";
             } else {
-                window.location.href = '/dashboard/Cliente/';
+                window.location.href = "./dashboard/Cliente/index.php";
             }
-
         } catch (err) {
             alert(err.message);
         }

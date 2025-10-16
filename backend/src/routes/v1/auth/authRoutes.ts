@@ -108,6 +108,7 @@ export const authRoutes = () => {
     if (!refreshVerificaition.valid) return res.sendStatus(304)
 
     await authServices.deleteSession(refreshVerificaition.decoded.sessionId)
+    res.clearCookie('refreshToken', {path: '/' })
     return res.sendStatus(200)
   })
 

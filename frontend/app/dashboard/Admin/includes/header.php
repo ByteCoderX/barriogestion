@@ -50,7 +50,9 @@ $baseUrl = '/tesisde/app/dashboard/admin';
         </a>
         <div class="IdSession">
             <h1 class="texto">Administrador</h1>
-            <a href="<?= $baseUrl ?>/Utils/auth/logout.php"><h2>Cerrar Sesión</h2></a>
+            <h2 id="logoutBtn" style="cursor:pointer;">Cerrar Sesión</h2>
         </div>
+
     </div>
 </header>
+<script src="../../Utils/logout.js"></script>
