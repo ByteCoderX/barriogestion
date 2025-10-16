@@ -1,5 +1,5 @@
 <?php
-$baseUrl = 'tesisde/app/dashboard/admin';
+$baseUrl = 'tesisde/app/dashboard/Admin';
 ?>
 <header>
     <div class="izq">
@@ -49,7 +49,7 @@ $baseUrl = 'tesisde/app/dashboard/admin';
         </a>
         <div class="IdSession">
             <h1 class="texto">Administrador</h1>
-            <a href="<?= $baseUrl ?>/Utils/auth/logout.php"><h2>Cerrar Sesión</h2></a>
+            <a href="../../Utils/logout.js"><h2>Cerrar Sesión</h2></a>
         </div>
 
         <div class="hamburger" id="hamburger">

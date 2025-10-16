@@ -1,5 +1,5 @@
 <?php
-    require "../../Utils/auth/validator.php"
+    // require "../../Utils/auth/validator.php"
 ?>
 <!DOCTYPE html>
 <html lang="en">
