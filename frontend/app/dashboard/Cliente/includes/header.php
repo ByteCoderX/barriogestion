@@ -1,5 +1,7 @@
 <?php
-$baseUrl = 'tesisde/app/dashboard/Cliente';
+require "../../Utils/auth/validator.php";
+
+$baseUrl = '/tesisde/app/dashboard/cliente';
 
 ?>
 <header>
@@ -74,7 +76,7 @@ $baseUrl = 'tesisde/app/dashboard/Cliente';
 
         <div class="IdSession">
             <h1 class="texto">Cliente</h1>
-            <a href="../../Utils/logout.js"><h2>Cerrar Sesión</h2></a>
+            <h2 id="logoutBtn" style="cursor:pointer;">Cerrar Sesión</h2>
         </div>
 
         <div class="hamburger" id="hamburger">
@@ -84,3 +86,4 @@ $baseUrl = 'tesisde/app/dashboard/Cliente';
         </div>
     </div>
 </header>
+<script src="../../../Utils/logout.js"></script>

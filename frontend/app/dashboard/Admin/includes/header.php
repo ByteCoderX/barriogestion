@@ -1,5 +1,7 @@
 <?php
-$baseUrl = 'tesisde/app/dashboard/Admin';
+require "../../Utils/auth/validator.php";
+
+$baseUrl = '/tesisde/app/dashboard/Admin';
 ?>
 <header>
     <div class="izq">
@@ -49,7 +51,7 @@ $baseUrl = 'tesisde/app/dashboard/Admin';
         </a>
         <div class="IdSession">
             <h1 class="texto">Administrador</h1>
-            <a href="../../Utils/logout.js"><h2>Cerrar Sesión</h2></a>
+            <h2 id="logoutBtn" style="cursor:pointer;">Cerrar Sesión</h2>
         </div>
 
         <div class="hamburger" id="hamburger">
@@ -75,3 +77,4 @@ $baseUrl = 'tesisde/app/dashboard/Admin';
     <a href="#">Seguridad</a>
     <a href="#">Configuración</a>
 </div>
+<script src="../../../Utils/logout.js"></script>
