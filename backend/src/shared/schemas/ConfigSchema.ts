@@ -18,6 +18,7 @@ const parsedTimeSchema = timeSchema.transform((val) => {
 export const ConfigSchema = z.object({
   PORT: z.coerce.number(),
   DATABASE_URL: z.url(),
+  CORS_ORIGIN: z.string(),
   JWT_ACCESS_EXP_TIME: parsedTimeSchema,
   JWT_ACCESS_REFRESH_TIME: parsedTimeSchema,
   JWT_REFRESH_EXP_TIME: parsedTimeSchema,
