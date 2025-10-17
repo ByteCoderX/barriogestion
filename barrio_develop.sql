@@ -1,9 +1,9 @@
-CREATE TABLE `roles` (
+CREATE TABLE IF NOT EXISTS `roles` (
   `id_rol` INT PRIMARY KEY AUTO_INCREMENT,
   `nombre` VARCHAR(50) UNIQUE NOT NULL
 );
 
-CREATE TABLE `usuarios` (
+CREATE TABLE IF NOT EXISTS `usuarios` (
   `id_usuario` INT PRIMARY KEY AUTO_INCREMENT,
   `nombre` VARCHAR(50) NOT NULL,
   `apellido` VARCHAR(50) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE `usuarios` (
   `actualizado_en` datetime NOT NULL
 );
 
-CREATE TABLE `invitados` (
+CREATE TABLE IF NOT EXISTS `invitados` (
   `id_invitado` INT PRIMARY KEY AUTO_INCREMENT,
   `nombre` VARCHAR(50) NOT NULL,
   `apellido` VARCHAR(50) NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE `invitados` (
   `estado` VARCHAR(50)
 );
 
-CREATE TABLE `registro_accesos` (
+CREATE TABLE IF NOT EXISTS `registro_accesos` (
   `id_accesos` INT PRIMARY KEY AUTO_INCREMENT,
   `acceso_tipo` VARCHAR(50) NOT NULL,
   `acceso_medio` VARCHAR(50) NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE `registro_accesos` (
   `detalles` VARCHAR(255)
 );
 
-CREATE TABLE `reclamos` (
+CREATE TABLE IF NOT EXISTS `reclamos` (
   `id_reclamo` INT PRIMARY KEY AUTO_INCREMENT,
   `titulo` VARCHAR(50),
   `categoria` VARCHAR(50),
@@ -50,7 +50,7 @@ CREATE TABLE `reclamos` (
   `dni` VARCHAR(20) UNIQUE NOT NULL
 );
 
-CREATE TABLE `multas` (
+CREATE TABLE IF NOT EXISTS `multas` (
   `id_multa` INT PRIMARY KEY AUTO_INCREMENT,
   `descripcion` VARCHAR(150) NOT NULL,
   `causa` VARCHAR(150),
@@ -58,13 +58,13 @@ CREATE TABLE `multas` (
   `estado` VARCHAR(50)
 );
 
-CREATE TABLE `usuarios_multas` (
+CREATE TABLE IF NOT EXISTS `usuarios_multas` (
   `id_usuario` INT,
   `id_multa` INT,
   PRIMARY KEY (`id_usuario`, `id_multa`)
 );
 
-CREATE TABLE `expensas` (
+CREATE TABLE IF NOT EXISTS `expensas` (
   `id_expensa` INT PRIMARY KEY AUTO_INCREMENT,
   `periodo` VARCHAR(50) NOT NULL,
   `fecha_emision` DATETIME,
@@ -75,7 +75,7 @@ CREATE TABLE `expensas` (
   `dni` VARCHAR(20) UNIQUE NOT NULL
 );
 
-CREATE TABLE `expensas_items` (
+CREATE TABLE IF NOT EXISTS `expensas_items` (
   `id_item` INT PRIMARY KEY AUTO_INCREMENT,
   `id_expensa` INT,
   `titulo` VARCHAR(50),
@@ -83,14 +83,14 @@ CREATE TABLE `expensas_items` (
   `monto` INT
 );
 
-CREATE TABLE `usuarios_expensas` (
+CREATE TABLE IF NOT EXISTS `usuarios_expensas` (
   `id_usuario` INT,
   `id_expensa` INT,
   `monto` DECIMAL(10,2) NOT NULL,
   PRIMARY KEY (`id_usuario`, `id_expensa`)
 );
 
-CREATE TABLE `espacios_publicos` (
+CREATE TABLE IF NOT EXISTS `espacios_publicos` (
   `id_espacio` INT PRIMARY KEY AUTO_INCREMENT,
   `nombre` VARCHAR(100) NOT NULL,
   `caracteristicas` VARCHAR(150),
@@ -103,7 +103,7 @@ CREATE TABLE `espacios_publicos` (
   `disponibilidad` VARCHAR(50)
 );
 
-CREATE TABLE `reservas` (
+CREATE TABLE IF NOT EXISTS `reservas` (
   `id_reserva` INT PRIMARY KEY AUTO_INCREMENT,
   `fecha_reserva` DATETIME NOT NULL,
   `id_usuario` INT,
@@ -114,7 +114,7 @@ CREATE TABLE `reservas` (
   `obsrevaciones` VARCHAR(1024)
 );
 
-CREATE TABLE `sesiones_web` (
+CREATE TABLE IF NOT EXISTS `sesiones_web` (
   `id` varchar(36) PRIMARY KEY NOT NULL,
   `usuario_id` varchar(36) NOT NULL,
   `ip` varchar(45) NOT NULL,
@@ -124,7 +124,7 @@ CREATE TABLE `sesiones_web` (
   `fecha_expiracion` datetime NOT NULL
 );
 
-CREATE TABLE `usuarios_web` (
+CREATE TABLE IF NOT EXISTS `usuarios_web` (
   `id` varchar(36) PRIMARY KEY NOT NULL,
   `dni` VARCHAR(20) UNIQUE NOT NULL,
   `avatar_hash` varchar(128) NOT NULL,
