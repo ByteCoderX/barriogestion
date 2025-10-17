@@ -1,19 +1,28 @@
-document.getElementById('logoutBtn').addEventListener('click', async () => {
-    try {
-        const resSettings = await fetch('../../settings.json');
-        const settings = await resSettings.json();
-        const apiUrl = settings.API_URL;
+document.addEventListener('DOMContentLoaded', () => {
 
-        await fetch(`${apiUrl}/bg/v1/auth/logout`, {
-            method: 'POST',
-            headers: { 'x-api-key': 'hola' },
-            credentials: 'include'
-        });
-    } catch (err) {
-        console.warn('Error al cerrar sesión en el backend:', err);
+    async function logoutFunction() {
+        try {
+            const resSettings = await fetch('../../settings.json');
+            const settings = await resSettings.json();
+            const apiUrl = settings.API_URL;
+
+            await fetch(`http://localhost:3000/bg/v1/auth/logout`, {
+                method: 'POST',
+                headers: { 'x-api-key': 'hola' },
+                credentials: 'include'
+            });
+        } catch (err) {
+            console.warn('Error al cerrar sesión en el backend:', err);
+        }
+
+        localStorage.removeItem('userdata');
+        window.location.href = "../../login.html";
     }
 
-    localStorage.removeItem('userdata');
+    const logoutDesktop = document.getElementById('logoutBtnDesktop');
+    const logoutMobile = document.getElementById('logoutBtnMobile');
 
-    window.location.href = "../../login.html";
+    if (logoutDesktop) logoutDesktop.addEventListener('click', logoutFunction);
+    if (logoutMobile) logoutMobile.addEventListener('click', logoutFunction);
+
 });
