@@ -1,5 +1,5 @@
 <?php
-require "../../../Utils/auth/validator.php";
+require "/tesisde/app/Utils/auth/validator.php";
 
 $baseUrl = '/tesisde/app/dashboard/cliente';
 
