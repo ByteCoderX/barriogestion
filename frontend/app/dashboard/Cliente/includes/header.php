@@ -158,4 +158,4 @@ $baseUrl = '/tesisde/app/dashboard/cliente';
         </div>
     </div>
 </header>
-<script src="../../Utils/logout.js"></script>
+<script src="/tesisde/app/Utils/logout.js"></script>

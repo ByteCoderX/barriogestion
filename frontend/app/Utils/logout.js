@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const settings = await resSettings.json();
             const apiUrl = settings.API_URL;
 
-            await fetch(`http://localhost:3000/bg/v1/auth/logout`, {
+            await fetch(`${apiUrl}/bg/v1/auth/logout`, {
                 method: 'POST',
                 headers: { 'x-api-key': 'hola' },
                 credentials: 'include'
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         localStorage.removeItem('userdata');
-        window.location.href = "../../login.html";
+        window.location.href = "/tesisde/app/login.html";
     }
 
     const logoutDesktop = document.getElementById('logoutBtnDesktop');
