@@ -1,5 +1,5 @@
 <?php
-require "../../Utils/auth/validator.php";
+require "../../../Utils/auth/validator.php";
 
 $baseUrl = '/tesisde/app/dashboard/cliente';
 
@@ -158,4 +158,4 @@ $baseUrl = '/tesisde/app/dashboard/cliente';
         </div>
     </div>
 </header>
-<script src="../../Utils/logout.js"></script>
+<script src="/tesisde/app/Utils/logout.js"></script>

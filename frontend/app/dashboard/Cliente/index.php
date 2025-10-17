@@ -56,7 +56,7 @@
                 <div class="ad-container">
                 <div class="ad-tarjeta">
                     <div class="ad-icon">
-                        <img src="./Assets/icons/reservas.png" alt="Reservas">
+                        <img src="./assets/icons/reservas.png" alt="Reservas">
                 </div>
                 <div class="ad-info">
                     <a href="Servicios/ReservasEC/reservas.php">
@@ -68,7 +68,7 @@
                 </div>
                 <div class="ad-tarjeta">
                     <div class="ad-icon">
-                        <img src="./Assets/icons/permisos.png" alt="Permisos">
+                        <img src="./assets/icons/permisos.png" alt="Permisos">
                     </div>
                     <div class="ad-info">
                         <a href="Seguridad/ControlAccesos/Invitado.php">
@@ -79,10 +79,10 @@
                 </div>
                 <div class="ad-tarjeta">
                     <div class="ad-icon">
-                        <img src="./Assets/icons/reclamos2.png" alt="Reclamos">
+                        <img src="./assets/icons/reclamos2.png" alt="Reclamos">
                     </div>
                     <div class="ad-info">
-                       <a href="Reclamos/quejas.php">
+                        <a href="Reclamos/quejas.php">
                         <h3>Nuevo Reclamo</h3>
                         <p>Reporta Incidencias</p>
                         </a>
@@ -91,7 +91,7 @@
                 
                 <div class="ad-tarjeta">
                     <div class="ad-icon">
-                        <img src="./Assets/icons/carnet.png" alt="Carnet">
+                        <img src="./assets/icons/carnet.png" alt="Carnet">
                     </div>
                     <div class="ad-info">
                         <a href="./Servicios/MiCarnet/carnet.php">
