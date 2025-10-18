@@ -47,7 +47,7 @@ $baseUrl = '/tesisde/app/dashboard/Admin';
             <img src="<?= $baseUrl ?>/assets/icons/notificacion.png" alt="notificaciones">
             <span class="notification-badge" id="notificationCount">3</span>
         </a>
-        <a href="<?= $baseUrl ?>/reclamos.php" class="icono-header">
+        <a href="<?= $baseUrl ?>/modules/complains/complains.php" class="icono-header" title="reclamos">
             <img src="<?= $baseUrl ?>/assets/icons/reclamos4.png" alt="Reclamos">
         </a>
         <div class="IdSession">

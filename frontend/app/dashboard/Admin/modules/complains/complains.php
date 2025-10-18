@@ -4,38 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Reclamos</title>
+    <link rel="stylesheet" href="../../index.css">
     <link rel="stylesheet" href="complains.css">
 </head>
 <body>
-    <!-- Header placeholder -->
-    <header>
-        <div class="izq">
-            <div class="LogoApp">
-                <img src="logo.png" alt="Logo" class="logo">
-            </div>
-            <nav class="menu-principal">
-                <a href="#" class="menu-item">Inicio</a>
-                <div class="dropdown">
-                    <a href="#" class="menu-item">Servicios</a>
-                    <div class="dropdown-content">
-                        <a href="#">Notificaciones</a>
-                        <a href="#">Reclamos</a>
-                        <a href="#">Invitados</a>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <div class="derecha">
-            <a href="#" style="position: relative;">
-                <img src="bell-icon.png" alt="Notificaciones">
-                <span class="notification-badge" id="reclamosNuevos">3</span>
-            </a>
-            <div class="IdSession">
-                <h1 id="usuarioNombre">Admin Principal</h1>
-                <h2>Cerrar Sesión</h2>
-            </div>
-        </div>
-    </header>
+    <?php include '../../includes/header.php'; ?>
 
     <nav class="navbar">
         <h1>Sistema de Reclamos y Sugerencias</h1>
