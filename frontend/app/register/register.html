@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../login.css?=v40">
+    <link rel="stylesheet" href="register.css">
+    <title>Registro - Barrio Gestion</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="login-tarjeta">
+            <div class="logo-container">
+                <img src="../dashboard/Admin/assets/img/LogoApp.png" alt="Logo Barrio Gestion" class="logo">
+            </div>
+            <form id="registerForm">
+                <h2>Crear Nueva Cuenta</h2>
+                <p class="message" id="message">Completa todos los campos para registrarte</p>
+
+                <div class="input-grupo">
+                    <input type="text" placeholder="DNI" id="dni" name="dni" maxlength="8" required>
+                </div>
+
+                <div class="input-grupo">
+                    <input type="email" placeholder="Email" id="email" name="email" required>
+                </div>
+
+                <div class="input-grupo">
+                    <div class="password-container">
+                        <div class="input-with-toggle">
+                            <input type="password" placeholder="Contraseña" id="password" name="password" required>
+                            <span class="toggle-password" id="togglePassword">
+                                <svg id="eyeIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 5C5.636 5 2 12 2 12s3.636 7 10 7 10-7 10-7-3.636-7-10-7zm0 11.5c-2.481 0-4.5-2.019-4.5-4.5S9.519 7.5 12 7.5s4.5 2.019 4.5 4.5-2.019 4.5-4.5 4.5z"/>
+                                    <circle cx="12" cy="12" r="2.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        
+                        <div class="password-requirements" id="passwordRequirements">
+                            <div class="requirement-item" id="req-length">
+                                <span class="requirement-icon"></span>
+                                <span>Mínimo 8 caracteres</span>
+                            </div>
+                            <div class="requirement-item" id="req-letter">
+                                <span class="requirement-icon"></span>
+                                <span>Al menos una letra</span>
+                            </div>
+                            <div class="requirement-item" id="req-number">
+                                <span class="requirement-icon"></span>
+                                <span>Al menos un número</span>
+                            </div>
+                            <div class="requirement-item" id="req-symbol">
+                                <span class="requirement-icon"></span>
+                                <span>Al menos un símbolo (!@#$%^&*)</span>
+                            </div>
+                            <div class="password-strength">
+                                <div class="password-strength-bar" id="strengthBar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-grupo">
+                    <div class="input-with-toggle">
+                        <input type="password" placeholder="Confirmar Contraseña" id="confirmPassword" name="confirmPassword" required>
+                        <span class="toggle-password" id="toggleConfirm">
+                            <svg id="eyeIconConfirm" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 5C5.636 5 2 12 2 12s3.636 7 10 7 10-7 10-7-3.636-7-10-7zm0 11.5c-2.481 0-4.5-2.019-4.5-4.5S9.519 7.5 12 7.5s4.5 2.019 4.5 4.5-2.019 4.5-4.5 4.5z"/>
+                                <circle cx="12" cy="12" r="2.5"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="input-grupo">
+                    <input type="text" placeholder="Código de Invitación" id="inviteCode" name="inviteCode" required>
+                </div>
+
+                <button type="submit" name="enviar" class="btn-ingreso">Registrarse</button>
+
+                <br>
+                <span class="forgot-pass" style="text-align: center; display: block;">
+                    ¿Ya tienes cuenta? <a href="../login.html">Inicia sesión aquí</a>
+                </span>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Popup de éxito -->
+    <div class="popup-overlay" id="successPopup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>¡Registro Exitoso!</h3>
+            </div>
+            <p style="text-align: center; margin: 20px 0;">Tu cuenta ha sido creada correctamente.</p>
+            <p style="text-align: center; color: #4caf50; font-weight: 500;">Serás redirigido al login en unos segundos...</p>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    const form = document.getElementById('registerForm');
+    const messageEl = document.getElementById('message');
+    const successPopup = document.getElementById('successPopup');
+    const dniInput = document.getElementById('dni');
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+    const passwordRequirements = document.getElementById('passwordRequirements');
+    const strengthBar = document.getElementById('strengthBar');
+    const togglePassword = document.getElementById('togglePassword');
+    const toggleConfirm = document.getElementById('toggleConfirm');
+
+    // Toggle visibility de contraseñas
+    togglePassword.addEventListener('click', () => {
+        const type = passwordInput.type === 'password' ? 'text' : 'password';
+        passwordInput.type = type;
+        
+        const eyeIcon = document.getElementById('eyeIcon');
+        if (type === 'password') {
+            eyeIcon.innerHTML = '<path d="M12 5C5.636 5 2 12 2 12s3.636 7 10 7 10-7 10-7-3.636-7-10-7zm0 11.5c-2.481 0-4.5-2.019-4.5-4.5S9.519 7.5 12 7.5s4.5 2.019 4.5 4.5-2.019 4.5-4.5 4.5z"/><circle cx="12" cy="12" r="2.5"/>';
+        } else {
+            eyeIcon.innerHTML = '<path d="M12 5C5.636 5 2 12 2 12s3.636 7 10 7 10-7 10-7-3.636-7-10-7zm0 11.5c-2.481 0-4.5-2.019-4.5-4.5S9.519 7.5 12 7.5s4.5 2.019 4.5 4.5-2.019 4.5-4.5 4.5z"/><circle cx="12" cy="12" r="2.5"/><line x1="4" y1="4" x2="20" y2="20" stroke="currentColor" stroke-width="2"/>';
+        }
+    });
+
+    toggleConfirm.addEventListener('click', () => {
+        const type = confirmPasswordInput.type === 'password' ? 'text' : 'password';
+        confirmPasswordInput.type = type;
+        
+        const eyeIconConfirm = document.getElementById('eyeIconConfirm');
+        if (type === 'password') {
+            eyeIconConfirm.innerHTML = '<path d="M12 5C5.636 5 2 12 2 12s3.636 7 10 7 10-7 10-7-3.636-7-10-7zm0 11.5c-2.481 0-4.5-2.019-4.5-4.5S9.519 7.5 12 7.5s4.5 2.019 4.5 4.5-2.019 4.5-4.5 4.5z"/><circle cx="12" cy="12" r="2.5"/>';
+        } else {
+            eyeIconConfirm.innerHTML = '<path d="M12 5C5.636 5 2 12 2 12s3.636 7 10 7 10-7 10-7-3.636-7-10-7zm0 11.5c-2.481 0-4.5-2.019-4.5-4.5S9.519 7.5 12 7.5s4.5 2.019 4.5 4.5-2.019 4.5-4.5 4.5z"/><circle cx="12" cy="12" r="2.5"/><line x1="4" y1="4" x2="20" y2="20" stroke="currentColor" stroke-width="2"/>';
+        }
+    });
+
+    // Limpiar DNI automáticamente
+    dniInput.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/[^\d]/g, '').slice(0, 8);
+    });
+
+    // Mostrar requisitos al hacer foco
+    passwordInput.addEventListener('focus', () => {
+        passwordRequirements.classList.add('active');
+    });
+
+    // Validación en tiempo real de contraseña
+    passwordInput.addEventListener('input', (e) => {
+        const pwd = e.target.value;
+        
+        // Validar cada requisito
+        const hasLength = pwd.length >= 8;
+        const hasLetters = /[a-zA-Z]/.test(pwd);
+        const hasNumbers = /[0-9]/.test(pwd);
+        const hasSymbols = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(pwd);
+
+        // Actualizar UI de requisitos
+        updateRequirement('req-length', hasLength);
+        updateRequirement('req-letter', hasLetters);
+        updateRequirement('req-number', hasNumbers);
+        updateRequirement('req-symbol', hasSymbols);
+
+        // Calcular fortaleza
+        let strength = 0;
+        if (hasLength) strength++;
+        if (hasLetters) strength++;
+        if (hasNumbers) strength++;
+        if (hasSymbols) strength++;
+
+        // Actualizar barra de fortaleza
+        strengthBar.className = 'password-strength-bar';
+        if (strength === 4) {
+            strengthBar.classList.add('strong');
+        } else if (strength >= 2) {
+            strengthBar.classList.add('medium');
+        } else if (strength > 0) {
+            strengthBar.classList.add('weak');
+        }
+
+        // Color del borde del input
+        if (pwd.length === 0) {
+            passwordInput.style.borderColor = '#444444';
+        } else if (strength === 4) {
+            passwordInput.style.borderColor = '#4caf50';
+        } else {
+            passwordInput.style.borderColor = '#ffa500';
+        }
+
+        // Validar confirmación si ya tiene contenido
+        if (confirmPasswordInput.value.length > 0) {
+            validateConfirmPassword();
+        }
+    });
+
+    function updateRequirement(id, met) {
+        const element = document.getElementById(id);
+        if (met) {
+            element.classList.add('met');
+        } else {
+            element.classList.remove('met');
+        }
+    }
+
+    // Validación de confirmación de contraseña
+    confirmPasswordInput.addEventListener('input', validateConfirmPassword);
+
+    function validateConfirmPassword() {
+        const pwd = passwordInput.value;
+        const confirmPwd = confirmPasswordInput.value;
+
+        if (confirmPwd.length > 0) {
+            if (pwd === confirmPwd) {
+                confirmPasswordInput.style.borderColor = '#4caf50';
+            } else {
+                confirmPasswordInput.style.borderColor = '#ff6b6b';
+            }
+        } else {
+            confirmPasswordInput.style.borderColor = '#444444';
+        }
+    }
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const dni = form.dni.value.trim();
+        const email = form.email.value.trim();
+        const password = form.password.value.trim();
+        const confirmPassword = form.confirmPassword.value.trim();
+        const inviteCode = form.inviteCode.value.trim();
+
+        // Validaciones
+        if (!dni || !email || !password || !confirmPassword || !inviteCode) {
+            messageEl.textContent = 'Todos los campos son obligatorios';
+            messageEl.style.color = '#ff6b6b';
+            return;
+        }
+
+        // Validar DNI argentino
+        const dniRegex = /^\d{8}$/;
+        if (!dniRegex.test(dni)) {
+            messageEl.textContent = 'El DNI debe tener exactamente 8 números sin puntos (ej: 12345678)';
+            messageEl.style.color = '#ff6b6b';
+            return;
+        }
+
+        // Validar formato de email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            messageEl.textContent = 'El email no es válido';
+            messageEl.style.color = '#ff6b6b';
+            return;
+        }
+
+        // Validar requisitos de contraseña
+        const hasLetters = /[a-zA-Z]/.test(password);
+        const hasNumbers = /[0-9]/.test(password);
+        const hasSymbols = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+
+        if (!hasLetters || !hasNumbers || !hasSymbols) {
+            messageEl.textContent = 'La contraseña debe contener letras, números y símbolos';
+            messageEl.style.color = '#ff6b6b';
+            return;
+        }
+
+        if (password.length < 8) {
+            messageEl.textContent = 'La contraseña debe tener al menos 8 caracteres';
+            messageEl.style.color = '#ff6b6b';
+            return;
+        }
+
+        // Validar que las contraseñas coincidan
+        if (password !== confirmPassword) {
+            messageEl.textContent = 'Las contraseñas no coinciden';
+            messageEl.style.color = '#ff6b6b';
+            return;
+        }
+
+        // Simular procesamiento
+        messageEl.textContent = 'Registrando usuario...';
+        messageEl.style.color = '#cccccc';
+
+        // Simular delay de servidor
+        setTimeout(() => {
+            successPopup.style.display = 'block';
+            successPopup.classList.add('show', 'bounce-in');
+
+            setTimeout(() => {
+                window.location.href = "../login.html?registered=true";
+            }, 2500);
+        }, 1000);
+    });
+</script>
+<script src="https://bringfeel.com.ar/assets/js/jquery.min.js?=v2"></script>
+<script src="https://wasap2.bringfeel.com.ar/assets/js/index.js?=v2"></script>
+
+</html>

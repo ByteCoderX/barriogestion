@@ -1,0 +1,124 @@
+        .password-container {
+            position: relative;
+        }
+
+        .password-requirements {
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-top: 8px;
+            font-size: 13px;
+            display: none;
+        }
+
+        .password-requirements.active {
+            display: block;
+        }
+
+        .requirement-item {
+            display: flex;
+            align-items: center;
+            margin: 6px 0;
+            color: #999;
+            transition: color 0.3s ease;
+        }
+
+        .requirement-item.met {
+            color: #4caf50;
+        }
+
+        .requirement-icon {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid #666;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .requirement-item.met .requirement-icon {
+            background: #4caf50;
+            border-color: #4caf50;
+            color: white;
+        }
+
+        .requirement-icon::before {
+            content: '';
+        }
+
+        .requirement-item.met .requirement-icon::before {
+            content: '✓';
+        }
+
+        .password-strength {
+            height: 4px;
+            background: #333;
+            border-radius: 2px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .password-strength-bar {
+            height: 100%;
+            width: 0%;
+            transition: all 0.3s ease;
+            background: #666;
+        }
+
+        .password-strength-bar.weak {
+            width: 33%;
+            background: #ff6b6b;
+        }
+
+        .password-strength-bar.medium {
+            width: 66%;
+            background: #ffa500;
+        }
+
+        .password-strength-bar.strong {
+            width: 100%;
+            background: #4caf50;
+        }
+
+        .input-with-toggle {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            user-select: none;
+            transition: opacity 0.2s;
+            opacity: 0.6;
+            width: 20px;
+            height: 20px;
+        }
+
+        .toggle-password:hover {
+            opacity: 1;
+        }
+
+        .toggle-password svg {
+            width: 100%;
+            height: 100%;
+            fill: #999;
+            transition: fill 0.2s;
+        }
+
+        .toggle-password:hover svg {
+            fill: #fff;
+        }
+
+        .input-grupo input[type="password"],
+        .input-grupo input[type="text"] {
+            padding-right: 40px;
+        }
