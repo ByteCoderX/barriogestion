@@ -40,10 +40,14 @@ export class PrismaSessionsRepository implements SessionsRepository {
   }
 
   async delete(id: string) {
-    await prisma.webSession.delete({
-      where: {
-        id,
-      },
-    })
+    try {
+      await prisma.webSession.delete({
+        where: {
+          id,
+        },
+      })
+    } catch {
+      return undefined
+    }
   }
 }
