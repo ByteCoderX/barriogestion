@@ -197,25 +197,49 @@
     </main>
 
     <script>
-        const userDataLocal = localStorage.getItem('userdata')
-        const userData = JSON.parse(userDataLocal);
+        const userDataLocal = localStorage.getItem('userdata');
+        
+        if (userDataLocal) {
+            const userData = JSON.parse(userDataLocal);
 
-        const avatar = document.getElementById('userPhoto');
-        avatar.src = userData.avatar
+            // Avatar
+            const avatar = document.getElementById('userPhoto');
+            if (avatar && userData.avatar) {
+                avatar.src = userData.avatar;
+            }
 
-        const username = document.getElementById('userName');
-        username.textContent = userData.fullName
+            // Nombre completo
+            const username = document.getElementById('userName');
+            if (username && userData.fullName) {
+                username.textContent = userData.fullName;
+            }
 
-        const address = document.getElementById('userLote');
-        address.textContent = userData.address
+            // Dirección/Lote
+            const address = document.getElementById('userLote');
+            if (address && userData.address) {
+                address.textContent = userData.address;
+            }
 
-        const dni = document.getElementById('userDNI');
-        dni.textContent = userData.dni
+            // DNI
+            const dni = document.getElementById('userDNI');
+            if (dni && userData.dni) {
+                dni.textContent = userData.dni;
+            }
 
-        const qr = document.getElementById('qrCode'); // Crotisimo
-        const qrLink = `https://barriogestion.com.ar/public/check/${userData.dni}`
-        const qrImage = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${userDataLocal}`
-        qr.src = qrImage
+            // Código QR
+            const qr = document.getElementById('qrCode');
+            if (qr) {
+                const qrImage = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(userDataLocal)}`;
+                qr.src = qrImage;
+            }
+        } else {
+            console.warn('No se encontraron datos de usuario en localStorage');
+        }
     </script>
+
+    <!-- Script principal del carnet (maneja temas y funcionalidades) -->
+    <script src="carnet.js"></script>
+</body>
+</html>
 </body>
 </html>
