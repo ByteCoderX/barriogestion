@@ -6,6 +6,7 @@
     <title>Sistema de Reclamos</title>
     <link rel="stylesheet" href="complains.css">
     <link rel="stylesheet" href="../../index.css">
+
 </head>
 <body>
     <?php include '../../includes/header.php'; ?>
