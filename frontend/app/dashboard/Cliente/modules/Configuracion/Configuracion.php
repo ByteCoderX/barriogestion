@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+|<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -30,12 +30,12 @@
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="telefono">Teléfono *</label>
-                        <input type="tel" id="telefono" name="telefono" value="<?php echo $_SESSION['barriogestion']['userdata']['contact']; ?>" required placeholder="Ej: +54 9 11 1234-5678">
+                        <input type="tel" id="telefono" name="telefono" required placeholder="Ej: +54 9 11 1234-5678">
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" value="<?php echo $_SESSION['barriogestion']['userdata']['email']; ?>" required placeholder="email@ejemplo.com">
+                        <input type="email" id="email" name="email" required placeholder="email@ejemplo.com">
                     </div>
                 </div>
 
@@ -206,7 +206,27 @@
         </div>
     </div>
 
-    
+    <script>
+        const userDataLocal = localStorage.getItem('userdata');
+        
+        if (userDataLocal) {
+            const userData = JSON.parse(userDataLocal);
+
+            // Contact
+            const contact = document.getElementById('telefono');
+            if (contact && userData.contact) {
+                contact.value = userData.contact;
+            }
+
+            // Email
+            const email = document.getElementById('email');
+            if (email && userData.email) {
+                email.value = userData.email;
+            }
+        } else {
+            console.warn('No se encontraron datos de usuario en localStorage');
+        }
+    </script>
 
     <script>
         // Base de datos del usuario (simulada con localStorage)
