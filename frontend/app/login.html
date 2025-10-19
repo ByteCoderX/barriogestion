@@ -31,6 +31,11 @@
 
                 <br>
                 <span class="forgot-pass"><a href="#" id="forgotPasswordLink">¿Olvidaste tu contraseña?</a></span>
+                
+                <br><br>
+                <span class="forgot-pass" style="text-align: center; display: block;">
+                    ¿No tienes cuenta? <a href="register/register.html">Regístrate aquí</a>
+                </span>
 
             </form>
         </div>
@@ -61,6 +66,22 @@
 </body>
 <script>
     const form = document.getElementById('loginForm');
+    const messageEl = document.getElementById('message');
+
+    // Verificar si viene desde registro exitoso
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('registered') === 'true') {
+        messageEl.textContent = '¡Registro exitoso! Ya puedes iniciar sesión';
+        messageEl.style.color = '#4caf50';
+        
+        // Limpiar URL después de 3 segundos
+        setTimeout(() => {
+            window.history.replaceState({}, document.title, window.location.pathname);
+            messageEl.textContent = '---';
+            messageEl.style.color = '#cccccc';
+        }, 3000);
+    }
+
     async function cargarSettings() {
         const res = await fetch('./settings.json');
         return await res.json();
