@@ -149,7 +149,7 @@ main { margin-top: 5rem; padding: 2rem; min-height: calc(100vh - 5rem); }
 .presen-contenido h1 { font-size: 2rem; margin-bottom: 0.5rem; font-weight: 700; }
 .presen-contenido p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 1rem; }
 .presen-breadcrumb { font-size: 0.9rem; opacity: 0.8; }
-.presen-breadcrumb a { color: #ffffff; text-decoration: none; transition: opacity 0.3s ease; }
+.presen-breadcrumb a { color: #5cc078; text-decoration: none; transition: opacity 0.3s ease; }
 .presen-breadcrumb a:hover { opacity: 0.7; }
 
 .presen-acciones { display: flex; gap: 1rem; align-items: center; }

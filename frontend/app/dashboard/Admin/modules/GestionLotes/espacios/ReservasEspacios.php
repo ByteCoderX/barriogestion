@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Reservas - Barrio Gestión</title>
     <link rel="stylesheet" href="ReservasEspacios.css">
+    <link rel="stylesheet" href="../../../index.css">
 </head>
 <body>
     <?php include '../../../includes/header.php'; ?>
@@ -17,7 +18,7 @@
                     <h1>Gestión de Reservas</h1>
                     <p>Administra las reservas de espacios comunes del barrio</p>
                     <div class="presen-breadcrumb">
-                        <a href="index.php">Inicio</a> › <a href="#">Gestión Lotes</a> › <span>Gestionar Espacios</span>
+                        <a href="../../../index.php">Inicio</a> › <span>Gestión Lotes</span> › <span>Gestionar Espacios</span>
                     </div>
                 </div>
                 <div class="presen-acciones">
@@ -37,7 +38,7 @@
                     <div class="stats-info">
                         <h3>Reservas Hoy</h3>
                         <div class="stats-icono up">
-                            <img src="./assets/icons/subida.png" alt="Incremento">
+                            <img src="../../../assets/icons/subida.png" alt="Incremento">
                             <span>0%</span>
                         </div>
                     </div>
@@ -47,7 +48,7 @@
                     <div class="stats-info">
                         <h3>Esta Semana</h3>
                         <div class="stats-icono up">
-                            <img src="./assets/icons/subida.png" alt="Incremento">
+                            <img src="../../../assets/icons/subida.png" alt="Incremento">
                             <span>0%</span>
                         </div>
                     </div>
@@ -57,7 +58,7 @@
                     <div class="stats-info">
                         <h3>Ingresos Estimados</h3>
                         <div class="stats-icono up">
-                            <img src="./assets/icons/subida.png" alt="Incremento">
+                            <img src="../../../assets/icons/subida.png" alt="Incremento">
                             <span>0%</span>
                         </div>
                     </div>
@@ -67,7 +68,7 @@
                     <div class="stats-info">
                         <h3>% Ocupación</h3>
                         <div class="stats-icono up">
-                            <img src="./assets/icons/subida.png" alt="Incremento">
+                            <img src="../../../assets/icons/subida.png" alt="Incremento">
                             <span>0%</span>
                         </div>
                     </div>
