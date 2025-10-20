@@ -4,7 +4,7 @@ let currentTheme = localStorage.getItem("theme") || "dark";
 // Aplicar tema al cargar la página
 document.addEventListener("DOMContentLoaded", function () {
   applyTheme(currentTheme);
-  
+
   // Inicializar funcionalidades del carnet
   initializeCarnet();
   setupEventListeners();
@@ -20,10 +20,10 @@ function setTheme(theme) {
 
 function applyTheme(theme) {
   const body = document.body;
-  
+
   // Remover todas las clases de tema
   body.classList.remove("theme-dark", "theme-light", "theme-nature");
-  
+
   // Aplicar el tema seleccionado
   if (theme === "light") {
     body.classList.add("theme-light");
@@ -52,12 +52,12 @@ function setupEventListeners() {
   const shareBtn = document.querySelector('[onclick="shareCarnet()"]');
 
   if (downloadBtn) {
-    downloadBtn.removeAttribute('onclick');
+    downloadBtn.removeAttribute("onclick");
     downloadBtn.addEventListener("click", downloadCarnet);
   }
 
   if (shareBtn) {
-    shareBtn.removeAttribute('onclick');
+    shareBtn.removeAttribute("onclick");
     shareBtn.addEventListener("click", shareCarnet);
   }
 }
@@ -69,7 +69,7 @@ function setupCardEvents() {
 function updateCarnetStatus() {
   const vigenciaElement = document.getElementById("userVigencia");
   if (!vigenciaElement) return;
-  
+
   const fechaVencimiento = new Date("2025-12-31");
   const hoy = new Date();
   const diferenciaDias = Math.ceil(
@@ -77,7 +77,11 @@ function updateCarnetStatus() {
   );
 
   // Remover todas las clases de estado
-  vigenciaElement.classList.remove('estado-vigente', 'estado-por-vencer', 'estado-vencido');
+  vigenciaElement.classList.remove(
+    "estado-vigente",
+    "estado-por-vencer",
+    "estado-vencido"
+  );
 
   if (diferenciaDias > 30) {
     vigenciaElement.classList.add("estado-vigente");
@@ -92,9 +96,33 @@ function updateCarnetStatus() {
 
 function downloadCarnet() {
   showNotification("Descargando carnet en PDF...", "success");
-  setTimeout(() => {
-    showNotification("Carnet descargado correctamente", "success");
-  }, 2000);
+
+  const userDataLocal = localStorage.getItem("userdata");
+  if (userDataLocal) {
+    const userData = JSON.parse(userDataLocal);
+    if (userData) {
+      fetch(
+        `https://api.bringfeel.com.ar/bg/v1/client/carnet/${userData.dni}`,
+        {
+          method: "GET",
+          headers: {
+            "x-api-key": "hola",
+          },
+          credentials: "include",
+        }
+      )
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "carnet-digital.pdf";
+          a.click();
+          URL.revokeObjectURL(url);
+        })
+        .catch((err) => console.error("Error descargando el PDF:", err));
+    }
+  }
 }
 
 function shareCarnet() {
@@ -146,9 +174,9 @@ function reportarPerdida() {
 // ============ ACCIONES RÁPIDAS ============
 
 function verAmenidades() {
-  showNotification('Cargando lista de amenidades...', 'info');
+  showNotification("Cargando lista de amenidades...", "info");
   setTimeout(() => {
-    window.location.href = '../amenidades/amenidades.php';
+    window.location.href = "../amenidades/amenidades.php";
   }, 1000);
 }
 
@@ -157,9 +185,9 @@ function verHorarios() {
 }
 
 function verHistorialAcceso() {
-  showNotification('Cargando historial de accesos...', 'info');
+  showNotification("Cargando historial de accesos...", "info");
   setTimeout(() => {
-    window.location.href = '../ReservasEC/reservas.php';
+    window.location.href = "../ReservasEC/reservas.php";
   }, 1000);
 }
 

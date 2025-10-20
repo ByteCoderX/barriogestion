@@ -23,8 +23,9 @@ export const sessionsMiddleware = async (
   const sessionsRepository = authContainer.resolve<SessionsRepository>(
     'sessions-repository',
   )
-  const authRepository =
-    authContainer.resolve<UsersCredentialsRepository>('auth-repository')
+  const authRepository = authContainer.resolve<UsersCredentialsRepository>(
+    'auth-user-credentials',
+  )
 
   const accessToken = req.cookies.accessToken
   const refreshToken = req.cookies.refreshToken

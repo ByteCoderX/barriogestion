@@ -122,11 +122,11 @@
                         </div>
                         <div class="info-row">
                             <span class="label">Tipo:</span>
-                            <span class="value" id="userTipo">PROPIETARIO</span>
+                            <span class="value" id="userTipo">---</span>
                         </div>
                         <div class="info-row">
                             <span class="label">Vigencia:</span>
-                            <span class="value estado-vigente" id="userVigencia">31/12/2025</span>
+                            <span class="value estado-vigente" id="userVigencia">---</span>
                         </div>
                     </div>
                     <div class="carnet-qr">
@@ -138,10 +138,10 @@
                 </div>
                 <div class="carnet-footer">
                     <div class="security-code">
-                        <span>Código: <strong id="securityCode">BG-2025-A15</strong></span>
+                        <span>Código: <strong id="securityCode">---</strong></span>
                     </div>
                     <div class="issue-date">
-                        <span>Emitido: <span id="issueDate">01/01/2025</span></span>
+                        <span>Emitido: <span id="issueDate">---</span></span>
                     </div>
                 </div>
             </div>
@@ -152,9 +152,6 @@
                 <h2>Acciones Rápidas</h2>
                 <div class="acciones-grid">
                     <div class="accion-card" onclick="verAmenidades()">
-                        <div class="accion-icon">
-                            <img src="../../../assets/icons/amenities.png" alt="Amenidades">
-                        </div>
                         <div class="accion-content">
                             <h3>Ver Amenidades</h3>
                             <p>Consultar instalaciones disponibles</p>
@@ -162,9 +159,6 @@
                     </div>
                     
                     <div class="accion-card" onclick="verHorarios()">
-                        <div class="accion-icon">
-                            <img src="../../../assets/icons/schedule.png" alt="Horarios">
-                        </div>
                         <div class="accion-content">
                             <h3>Horarios de Acceso</h3>
                             <p>Consultar horarios de cada instalación</p>
@@ -172,9 +166,6 @@
                     </div>
                     
                     <div class="accion-card" onclick="reportarPerdida()">
-                        <div class="accion-icon">
-                            <img src="../../../assets/icons/warning.png" alt="Reportar">
-                        </div>
                         <div class="accion-content">
                             <h3>Reportar Problema</h3>
                             <p>Informar pérdida o daño del carnet</p>
@@ -182,9 +173,6 @@
                     </div>
                     
                     <div class="accion-card" onclick="verHistorialAcceso()">
-                        <div class="accion-icon">
-                            <img src="../../../assets/icons/historial.png" alt="Historial">
-                        </div>
                         <div class="accion-content">
                             <a href="../ReservasEC/reservas.php">
                             <h3>Historial de Uso</h3>
@@ -201,35 +189,61 @@
         
         if (userDataLocal) {
             const userData = JSON.parse(userDataLocal);
+            console.log(userData)
 
             // Avatar
             const avatar = document.getElementById('userPhoto');
             if (avatar && userData.avatar) {
-                avatar.src = userData.avatar;
+                avatar.src = userData.carnet.avatar;
             }
 
             // Nombre completo
             const username = document.getElementById('userName');
             if (username && userData.fullName) {
-                username.textContent = userData.fullName;
+                username.textContent = userData.carnet.nombre;
             }
 
             // Dirección/Lote
             const address = document.getElementById('userLote');
             if (address && userData.address) {
-                address.textContent = userData.address;
+                address.textContent = userData.carnet.lote;
             }
 
             // DNI
             const dni = document.getElementById('userDNI');
             if (dni && userData.dni) {
-                dni.textContent = userData.dni;
+                dni.textContent = userData.carnet.dni;
             }
+
+            // Tipo
+            const type = document.getElementById('userTipo');
+            if (type && userData.carnet.tipo) {
+                type.textContent = userData.carnet.tipo;
+            }
+
+            // Vigencia
+            const vigency = document.getElementById('userVigencia');
+            if (vigency && userData.carnet.vigencia) {
+                vigency.textContent = userData.carnet.vigencia;
+            }
+
+            // Código
+            const securityCode = document.getElementById('securityCode');
+            if (securityCode && userData.carnet.codigo) {
+                securityCode.textContent = userData.carnet.codigo;
+            }
+
+            // Emisión
+            const issueDate = document.getElementById('issueDate');
+            if (issueDate && userData.carnet.emitido) {
+                issueDate.textContent = userData.carnet.emitido;
+            }
+
 
             // Código QR
             const qr = document.getElementById('qrCode');
             if (qr) {
-                const qrImage = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(userDataLocal)}`;
+                const qrImage = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${userData.carnet.qrUrl}`;
                 qr.src = qrImage;
             }
         } else {
