@@ -5,11 +5,15 @@ import { AuthSchema } from '@shared/schemas/routes/auth/AuthSchema'
 import { zodBodyMiddleware } from '@shared/middlewares/zodBodyMiddleware'
 import { AppException, httpStatusCodes } from '@shared/exceptions/AppException'
 import { TokenManager } from '@app/auth/tokens/TokenManager'
+import { DigitalIDServices } from '@app/client/digitalID/DigitalIDServices'
+import { clientContainer } from '@diContainer/clientContainer'
 
 export const authRoutes = () => {
   const router = Router()
   const authServices = authContainer.resolve<AuthServices>('auth-services')
   const tokenManager = authContainer.resolve<TokenManager>('token-manager')
+  const digitalIDServices =
+    clientContainer.resolve<DigitalIDServices>('digitalid-services')
 
   router.post(
     '/register',
@@ -52,6 +56,8 @@ export const authRoutes = () => {
         domain: '.bringfeel.com.ar',
       })
 
+      const carnetData = await digitalIDServices.getCarnetData(result.user.dni)
+
       // Se devuelve token de acceso y la información del usuario mediante el body.
       res.status(200).send({
         id: result.user.id,
@@ -62,6 +68,7 @@ export const authRoutes = () => {
         email: result.user.email,
         avatar: result.user.avatar,
         admin: result.user.isAdmin,
+        carnet: carnetData,
       })
     },
   )
@@ -108,7 +115,7 @@ export const authRoutes = () => {
     if (!refreshVerificaition.valid) return res.sendStatus(304)
 
     await authServices.deleteSession(refreshVerificaition.decoded.sessionId)
-    res.clearCookie('refreshToken', {path: '/' })
+    res.clearCookie('refreshToken', { path: '/' })
     return res.sendStatus(200)
   })
 
