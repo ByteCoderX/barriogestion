@@ -5,10 +5,12 @@ import { reservationsRoutes } from './reservationsRoutes'
 import { sessionsMiddleware } from '@shared/middlewares/sessionsMiddleware'
 import { guestsRoutes } from './guestsRoutes'
 import { ComplaintsRoutes } from './ComplaintsRoutes'
+import { DigitalIDRoutes } from './DigitalIDRoutes'
 
 export const client_v1 = () => {
   const router = Router()
 
+  router.use('/carnet', DigitalIDRoutes())
   router.use(apiKeyMiddleware)
 
   router.get('/', (req, res) => {
