@@ -1,0 +1,1224 @@
+/* Estilos específicos para Gestión de Lotes */
+
+.lotes-container {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    color: #f3f3f3;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.page-header p {
+    color: #d4d4d4;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* ========================================
+   ACCIONES RÁPIDAS
+======================================== */
+.acciones-section {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: #333;
+    color: white;
+    border: 1px solid #333;
+}
+
+.btn-primary:hover {
+    background-color: #555;
+    border-color: #555;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #666;
+}
+
+.btn-secondary:hover {
+    background-color: #666;
+}
+
+.btn-primary img, .btn-secondary img {
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) invert(1);
+}
+
+/* ========================================
+   RESUMEN DE LOTES
+======================================== */
+.resumen-lotes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.resumen-card {
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(15px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.623);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(131, 131, 131, 0.2);
+    transition: all 0.3s ease;
+}
+
+.resumen-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.resumen-card h3 {
+    font-size: 0.9rem;
+    color: #d4d4d4;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.resumen-valor {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #f3f3f3;
+}
+
+.resumen-card.principal .resumen-valor {
+    color: #f3f3f3;
+}
+
+.resumen-card.success .resumen-valor {
+    color: #f3f3f3;
+}
+
+.resumen-card.warning .resumen-valor {
+    color: #f3f3f3;
+}
+
+.resumen-card.info .resumen-valor {
+    color: #f3f3f3;
+}
+
+.resumen-detalle {
+    font-size: 0.9rem;
+    color: #d4d4d4;
+}
+
+.resumen-progreso {
+    margin-top: 0.75rem;
+}
+
+.progreso-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progreso-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2ecc71 0%, #27ae60 100%);
+    border-radius: 10px;
+    transition: width 1s ease;
+}
+
+/* ========================================
+   FILTROS
+======================================== */
+.filtros-section {
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(15px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.623);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(131, 131, 131, 0.2);
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.filtro-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 180px;
+}
+
+.filtro-grupo label {
+    font-size: 0.9rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.filtro-grupo select {
+    padding: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filtro-grupo select:focus {
+    outline: none;
+    border-color: #666;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.filtro-grupo select option {
+    background-color: #333;
+    color: white;
+}
+
+.btn-filtro, .btn-filtro-limpiar {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-filtro {
+    background: #333;
+    color: white;
+}
+
+.btn-filtro:hover {
+    background: #555;
+}
+
+.btn-filtro-limpiar {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-filtro-limpiar:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ========================================
+   GRÁFICO
+======================================== */
+.grafico-section {
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(15px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.623);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(131, 131, 131, 0.2);
+    margin-bottom: 2rem;
+}
+
+.grafico-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.grafico-header h3 {
+    font-size: 1.2rem;
+    color: #f3f3f3;
+    font-weight: 600;
+}
+
+.grafico-controles {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-periodo {
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-periodo:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-periodo.active {
+    background: #333;
+    color: white;
+    border-color: #333;
+}
+
+.grafico-container {
+    height: 300px;
+    position: relative;
+}
+
+/* ========================================
+   TABLA
+======================================== */
+.tabla-section {
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(15px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.623);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(131, 131, 131, 0.2);
+}
+
+.tabla-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.tabla-header h3 {
+    font-size: 1.2rem;
+    color: #f3f3f3;
+    font-weight: 600;
+}
+
+.tabla-controles {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.tabla-buscar {
+    position: relative;
+}
+
+.tabla-buscar input {
+    padding: 0.8rem 2.5rem 0.8rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    width: 280px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.tabla-buscar input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.tabla-buscar input:focus {
+    outline: none;
+    border-color: #666;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.tabla-buscar img {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    opacity: 0.5;
+    filter: brightness(0) invert(1);
+}
+
+.tabla-controles select {
+    padding: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    cursor: pointer;
+}
+
+.tabla-controles select option {
+    background-color: #333;
+    color: white;
+}
+
+.tabla-container {
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead tr {
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+td {
+    padding: 1rem;
+    color: #e2e2e2;
+    font-size: 0.9rem;
+}
+
+td strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+    min-width: 80px;
+}
+
+.estado-ocupado {
+    background-color: #28a745;
+    color: white;
+}
+
+.estado-disponible {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.estado-construccion {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.estado-reservado {
+    background-color: #dc3545;
+    color: white;
+}
+
+.acciones {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-icon {
+    padding: 0.5rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.4rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-icon:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #666;
+    transform: scale(1.05);
+}
+
+.btn-icon img {
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) invert(1);
+}
+
+/* ========================================
+   PAGINACIÓN
+======================================== */
+.paginacion {
+    margin-top: 1.5rem;
+}
+
+.paginacion-controles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.paginacion-numeros {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.btn-paginacion, .btn-numero {
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-paginacion:hover:not([disabled]), .btn-numero:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #666;
+}
+
+.btn-paginacion[disabled] {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.btn-numero.active {
+    background: #333;
+    color: white;
+    border-color: #333;
+}
+
+.btn-paginacion img {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) invert(1);
+}
+
+.paginacion-dots {
+    color: #95a5a6;
+    padding: 0 0.5rem;
+}
+
+/* ========================================
+   MODAL
+======================================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(20px);
+    margin: 2rem auto;
+    padding: 0;
+    border-radius: 1rem;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideDown 0.3s ease;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(131, 131, 131, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-header h3 {
+    font-size: 1.3rem;
+    color: white;
+    margin: 0;
+    font-weight: 600;
+}
+
+.close {
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    line-height: 1;
+    transition: all 0.3s ease;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.close:hover {
+    background-color: #333;
+}
+
+form {
+    padding: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    color: white;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #666;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.form-group select option {
+    background-color: #333;
+    color: white;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+#propietarioSection hr {
+    margin: 1.5rem 0;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#propietarioSection h4 {
+    margin-bottom: 1rem;
+    color: #f3f3f3;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-cancel, .btn-save {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-cancel {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-cancel:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-save {
+    background-color: #333;
+    color: white;
+}
+
+.btn-save:hover {
+    background-color: #555;
+}
+
+/* ========================================
+   DETALLE
+======================================== */
+.detalle-content {
+    padding: 1.5rem;
+}
+
+.detalle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.detalle-seccion {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.detalle-seccion h4 {
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #333;
+}
+
+.detalle-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detalle-item:last-child {
+    border-bottom: none;
+}
+
+.detalle-label {
+    font-weight: 500;
+    color: #d4d4d4;
+    font-size: 0.9rem;
+}
+
+.detalle-valor {
+    color: white;
+    font-size: 0.95rem;
+    text-align: right;
+}
+
+.detalle-valor strong {
+    color: white;
+    font-weight: 600;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-actions .btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.modal-actions .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.modal-actions .btn-primary {
+    background-color: #333;
+    color: white;
+}
+
+.modal-actions .btn-primary:hover {
+    background-color: #555;
+}
+
+/* ========================================
+   NOTIFICACIONES
+======================================== */
+.notificacion {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+    opacity: 0;
+    transform: translateX(400px);
+    transition: all 0.3s ease;
+}
+
+.notificacion.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.notif-success {
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+}
+
+.notif-error {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+}
+
+.notif-info {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+}
+
+.notif-warning {
+    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+@media (max-width: 1200px) {
+    .lotes-container {
+        padding: 1.5rem;
+    }
+    
+    .resumen-lotes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .lotes-container {
+        padding: 1rem;
+    }
+    
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .acciones-section {
+        flex-direction: column;
+    }
+    
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .resumen-lotes {
+        grid-template-columns: 1fr;
+    }
+    
+    .resumen-valor {
+        font-size: 2rem;
+    }
+    
+    .filtros-section {
+        flex-direction: column;
+    }
+    
+    .filtro-grupo {
+        min-width: 100%;
+    }
+    
+    .btn-filtro, .btn-filtro-limpiar {
+        width: 100%;
+    }
+    
+    .grafico-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .grafico-controles {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    
+    .btn-periodo {
+        flex: 1;
+        min-width: 120px;
+    }
+    
+    .grafico-container {
+        height: 250px;
+    }
+    
+    .tabla-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .tabla-controles {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .tabla-buscar {
+        width: 100%;
+    }
+    
+    .tabla-buscar input {
+        width: 100%;
+    }
+    
+    .tabla-controles select {
+        width: 100%;
+    }
+    
+    .tabla-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    table {
+        min-width: 900px;
+    }
+    
+    th, td {
+        padding: 0.75rem;
+        font-size: 0.8rem;
+    }
+    
+    .acciones {
+        flex-wrap: nowrap;
+    }
+    
+    .paginacion-controles {
+        flex-direction: column;
+    }
+    
+    .paginacion-numeros {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .btn-paginacion {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .modal-content {
+        margin: 1rem;
+        max-width: calc(100% - 2rem);
+        max-height: calc(100vh - 2rem);
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .detalle-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+    }
+    
+    .modal-actions button {
+        width: 100%;
+    }
+    
+    .notificacion {
+        right: 10px;
+        left: 10px;
+        width: auto;
+    }
+}
+
+@media (max-width: 500px) {
+    .lotes-container {
+        padding: 0.5rem;
+    }
+    
+    .page-header h1 {
+        font-size: 1.3rem;
+    }
+    
+    .page-header p {
+        font-size: 0.9rem;
+    }
+    
+    .resumen-card {
+        padding: 1rem;
+    }
+    
+    .resumen-card h3 {
+        font-size: 0.8rem;
+    }
+    
+    .resumen-valor {
+        font-size: 1.8rem;
+    }
+    
+    .resumen-detalle {
+        font-size: 0.85rem;
+    }
+    
+    .tabla-section,
+    .grafico-section,
+    .filtros-section {
+        padding: 1rem;
+    }
+    
+    .btn-periodo {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.75rem;
+    }
+    
+    .form-group label {
+        font-size: 0.85rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 0.9rem;
+        padding: 0.65rem;
+    }
+}
+
+/* ========================================
+   ANIMACIONES ADICIONALES
+======================================== */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.resumen-card:hover .resumen-valor {
+    animation: pulse 0.6s ease;
+}
+
+/* ========================================
+   SCROLLBAR PERSONALIZADO
+======================================== */
+.tabla-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.tabla-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.tabla-container::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 10px;
+}
+
+.tabla-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* ========================================
+   ESTILOS DE IMPRESIÓN
+======================================== */
+@media print {
+    .acciones-section,
+    .filtros-section,
+    .grafico-section,
+    .tabla-header,
+    .paginacion,
+    .acciones,
+    .modal-actions {
+        display: none !important;
+    }
+    
+    .lotes-container {
+        padding: 0;
+    }
+    
+    .tabla-container {
+        overflow: visible;
+    }
+    
+    table {
+        page-break-inside: auto;
+    }
+    
+    tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+    }
+    
+    thead {
+        display: table-header-group;
+    }
+    
+    .detalle-content {
+        padding: 0;
+    }
+}
+
+/* ========================================
+   ACCESIBILIDAD
+======================================== */
+.btn-primary:focus,
+.btn-secondary:focus,
+.btn-filtro:focus,
+.btn-filtro-limpiar:focus,
+.btn-icon:focus,
+.btn-periodo:focus,
+.btn-paginacion:focus,
+.btn-numero:focus {
+    outline: 2px solid #666;
+    outline-offset: 2px;
+}
+
+/* ========================================
+   ESTADOS DESHABILITADOS
+======================================== */
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+    background: rgba(255, 255, 255, 0.05);
+    cursor: not-allowed;
+}
+
+/* ========================================
+   ESTADO VACÍO
+======================================== */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #d4d4d4;
+}
+
+.empty-state img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+    filter: brightness(0) invert(1);
+}
+
+.empty-state h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #f3f3f3;
+}
+
+.empty-state p {
+    font-size: 0.95rem;
+    color: #d4d4d4;
+}
+
+/* ========================================
+   INFORMACIÓN ADICIONAL
+======================================== */
+.info {
+    color: #d4d4d4;
+}
