@@ -122,11 +122,11 @@
                         </div>
                         <div class="info-row">
                             <span class="label">Tipo:</span>
-                            <span class="value" id="userTipo">PROPIETARIO</span>
+                            <span class="value" id="userTipo">---</span>
                         </div>
                         <div class="info-row">
                             <span class="label">Vigencia:</span>
-                            <span class="value estado-vigente" id="userVigencia">31/12/2025</span>
+                            <span class="value estado-vigente" id="userVigencia">---</span>
                         </div>
                     </div>
                     <div class="carnet-qr">
@@ -138,10 +138,10 @@
                 </div>
                 <div class="carnet-footer">
                     <div class="security-code">
-                        <span>Código: <strong id="securityCode">BG-2025-A15</strong></span>
+                        <span>Código: <strong id="securityCode">---</strong></span>
                     </div>
                     <div class="issue-date">
-                        <span>Emitido: <span id="issueDate">01/01/2025</span></span>
+                        <span>Emitido: <span id="issueDate">---</span></span>
                     </div>
                 </div>
             </div>
@@ -189,35 +189,61 @@
         
         if (userDataLocal) {
             const userData = JSON.parse(userDataLocal);
+            console.log(userData)
 
             // Avatar
             const avatar = document.getElementById('userPhoto');
             if (avatar && userData.avatar) {
-                avatar.src = userData.avatar;
+                avatar.src = userData.carnet.avatar;
             }
 
             // Nombre completo
             const username = document.getElementById('userName');
             if (username && userData.fullName) {
-                username.textContent = userData.fullName;
+                username.textContent = userData.carnet.nombre;
             }
 
             // Dirección/Lote
             const address = document.getElementById('userLote');
             if (address && userData.address) {
-                address.textContent = userData.address;
+                address.textContent = userData.carnet.lote;
             }
 
             // DNI
             const dni = document.getElementById('userDNI');
             if (dni && userData.dni) {
-                dni.textContent = userData.dni;
+                dni.textContent = userData.carnet.dni;
             }
+
+            // Tipo
+            const type = document.getElementById('userTipo');
+            if (type && userData.carnet.tipo) {
+                type.textContent = userData.carnet.tipo;
+            }
+
+            // Vigencia
+            const vigency = document.getElementById('userVigencia');
+            if (vigency && userData.carnet.vigencia) {
+                vigency.textContent = userData.carnet.vigencia;
+            }
+
+            // Código
+            const securityCode = document.getElementById('securityCode');
+            if (securityCode && userData.carnet.codigo) {
+                securityCode.textContent = userData.carnet.codigo;
+            }
+
+            // Emisión
+            const issueDate = document.getElementById('issueDate');
+            if (issueDate && userData.carnet.emitido) {
+                issueDate.textContent = userData.carnet.emitido;
+            }
+
 
             // Código QR
             const qr = document.getElementById('qrCode');
             if (qr) {
-                const qrImage = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://barriogestion.com/public/spaces/autorization/${userData.dni}`;
+                const qrImage = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${userData.carnet.qrUrl}`;
                 qr.src = qrImage;
             }
         } else {
