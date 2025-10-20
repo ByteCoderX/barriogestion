@@ -2,7 +2,7 @@
 define('APP_BASE_PATH', realpath(__DIR__ . '/../../../')); 
 //require APP_BASE_PATH . "/Utils/auth/validator.php";
 
-$baseUrl = '/barriogestion-develop/frontend/app/dashboard/Admin';
+$baseUrl = '/tesisde/app/dashboard/Admin';
 ?>
 <header>
     <div class="izq">
@@ -27,9 +27,8 @@ $baseUrl = '/barriogestion-develop/frontend/app/dashboard/Admin';
             <div class="dropdown">
                 <a class="menu-item">Gestión Lotes</a>
                 <div class="dropdown-content">
-                    <a href="<?= $baseUrl ?>/modules/Gestion/espacios/ReservasEspacios.php">Gestionar Espacios</a>
-                    <a href="<?= $baseUrl ?>/modules/Gestion/lotes/lotes.php">Gestionar Lotes</a>
-                    <a href="<?= $baseUrl ?>/modules/Gestion/usuarios/Usuarios.php">Gestionar Usuarios</a>
+                    <a href="<?= $baseUrl ?>/modules/GestionLotes/espacios/ReservasEspacios.php">Gestionar Espacios</a>
+                    <a href="<?= $baseUrl ?>/modules/GestionLotes/usuarios/Usuarios.php">Gestionar Usuarios</a>
                 </div>
             </div>
             <div class="dropdown">

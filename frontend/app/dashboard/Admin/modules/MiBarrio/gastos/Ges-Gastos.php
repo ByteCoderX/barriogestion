@@ -20,15 +20,15 @@
             <!-- Sección de acciones rápidas -->
             <div class="acciones-section">
                 <button class="btn-primary" id="nuevoGastoBtn">
-                    <img src="../../../assets/icons/newgasto.png" alt="Nuevo">
+                    <img src="../../../assets/icons/iconmas.svg" alt="Nuevo">
                     Nuevo Gasto
                 </button>
                 <button class="btn-secondary" id="importarGastosBtn">
-                    <img src="../../../assets/icons/import.png" alt="Importar">
+                    <img src="../../../assets/icons/import.svg" alt="Importar">
                     Importar Gastos
                 </button>
                 <button class="btn-secondary" id="exportarGastosBtn">
-                    <img src="../../../assets/icons/export.png" alt="Exportar">
+                    <img src="../../../assets/icons/export.svg" alt="Exportar">
                     Exportar Gastos
                 </button>
             </div>

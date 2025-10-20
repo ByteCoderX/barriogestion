@@ -311,14 +311,14 @@ function cargarExpensas() {
             <td><span class="badge ${estadoClass}">${capitalizar(exp.estado)}</span></td>
             <td>${formatearFecha(exp.vencimiento)}</td>
             <td class="acciones">
-                <button class="btn-icon" onclick="verDetalleExpensa(${exp.id})" title="Ver detalle">
-                    <img src="../../../assets/icons/eye.svg" alt="Ver">
+                <button class="btn-accion btn-ver" onclick="verDetalleExpensa(${exp.id})" title="Ver detalle">
+                    Ver
                 </button>
-                ${exp.saldo > 0 ? `<button class="btn-icon" onclick="abrirModalPago(${exp.id})" title="Registrar pago">
-                    <img src="../../../assets/icons/iconmas.png" alt="Pagar">
+                ${exp.saldo > 0 ? `<button class="btn-accion btn-editar" onclick="abrirModalPago(${exp.id})" title="Registrar pago">
+                    Editar
                 </button>` : ''}
-                <button class="btn-icon" onclick="eliminarExpensa(${exp.id})" title="Eliminar">
-                    <img src="../../../assets/icons/trash.svg" alt="Eliminar">
+                <button class="btn-accion btn-eliminar" onclick="eliminarExpensa(${exp.id})" title="Eliminar">
+                    Eliminar
                 </button>
             </td>
         `;

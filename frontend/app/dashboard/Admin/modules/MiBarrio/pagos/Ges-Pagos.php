@@ -20,19 +20,19 @@
             <!-- Sección de acciones rápidas -->
             <div class="acciones-section">
                 <button class="btn-primary" id="registrarPagoBtn">
-                    <img src="../../../assets/icons/new.png" alt="Nuevo">
+                    <img src="../../../assets/icons/iconmas.svg" alt="Nuevo">
                     Registrar Pago
                 </button>
                 <button class="btn-secondary" id="importarPagosBtn">
-                    <img src="../../../assets/icons/import.png" alt="Importar">
+                    <img src="../../../assets/icons/import.svg" alt="Importar">
                     Importar Pagos
                 </button>
                 <button class="btn-secondary" id="exportarPagosBtn">
-                    <img src="../../../assets/icons/export.png" alt="Exportar">
+                    <img src="../../../assets/icons/export.svg" alt="Exportar">
                     Exportar Pagos
                 </button>
                 <button class="btn-secondary" id="enviarRecordatoriosBtn">
-                    <img src="../../../assets/icons/recordatorio.png" alt="Recordatorios">
+                    <img src="../../../assets/icons/recordatorio.svg" alt="Recordatorios">
                     Enviar Recordatorios
                 </button>
             </div>
