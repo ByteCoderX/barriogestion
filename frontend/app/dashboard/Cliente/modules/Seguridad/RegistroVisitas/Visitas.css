@@ -290,6 +290,7 @@ body.theme-nature .navbar h1 {
 }
 
 .stat-card {
+    color: white;
     background: rgb(0 0 0 / 80%);
     backdrop-filter: blur(15px);
     padding: 1.5rem;
@@ -313,7 +314,18 @@ body.theme-nature .stat-card{
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
-
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+body.theme-light .stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #344E41;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
 body.theme-nature .stat-number {
     font-size: 2rem;
     font-weight: bold;
@@ -336,7 +348,28 @@ body.theme-nature  .stat-label {
     margin-bottom: 2rem;
 }
 
-.action-card {
+ .action-card {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(15px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease;
+}
+
+
+body.theme-nature .action-card {
+    background: rgba(227, 213, 202, 0.8);
+    backdrop-filter: blur(15px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease;
+}
+
+body.theme-nature .action-card {
     background: rgba(227, 213, 202, 0.8);
     backdrop-filter: blur(15px);
     padding: 1.5rem;
@@ -350,20 +383,59 @@ body.theme-nature  .stat-label {
     transform: translateY(-5px);
 }
 
-.action-card h3 {
+ .action-card h3 {
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+body.theme-light .action-card h3 {
+    color: #344e41;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+body.theme-nature .action-card h3 {
     color: #344e41;
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
 }
 
 .action-card p {
-    color: #344e41;
+    color: #ffffff;
     margin-bottom: 1rem;
     font-size: 0.9rem;
 }
 
+body.theme-nature .action-card p {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
 /* Controles de filtros */
 .filters-section {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(15px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+body.theme-light .filters-section {
+    background: rgba(227, 213, 202, 0.8);
+    backdrop-filter: blur(15px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+body.theme-nature .filters-section {
     background: rgba(227, 213, 202, 0.8);
     backdrop-filter: blur(15px);
     padding: 1.5rem;
@@ -387,7 +459,21 @@ body.theme-nature  .stat-label {
 }
 
 .filter-group label {
-    color: #344e41;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+body.theme-light .filter-group label {
+    color: #000000;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+body.theme-nature .filter-group label {
+    color: #000000;
     margin-bottom: 0.5rem;
     font-weight: 500;
     font-size: 0.9rem;
@@ -443,10 +529,25 @@ body.theme-nature  .stat-label {
 
 .btn-secondary {
     background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #A4C3B2;
+    ;
+}
+
+body.theme-light .btn-secondary {
+    background-color: transparent;
     color: #344E41;
     border: 1px solid #A4C3B2;
     ;
 }
+
+body.theme-nature .btn-secondary {
+    background-color: transparent;
+    color: #344E41;
+    border: 1px solid #A4C3B2;
+    ;
+}
+
 
 .btn-secondary:hover {
     background-color: #A6A2A2;
@@ -492,7 +593,29 @@ body.theme-nature  .stat-label {
 
 /* Sección de tabla */
 .table-section {
-    background: rgba(227, 213, 202, 0.8);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(15px);
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+body.theme-light .table-section {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(15px);
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+body.theme-nature .table-section {
+    background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(15px);
     border-radius: 1rem;
     border: 1px solid rgba(0, 0, 0, 0.2);
@@ -514,6 +637,29 @@ body.theme-nature  .stat-label {
     gap: 1rem;
 }
 
+body.theme-light .table-header {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+body.theme-nature .table-header {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
 .table-header h2 {
     color: #ffffff;
     font-size: 1.2rem;
@@ -547,7 +693,24 @@ th {
 td {
     padding: 0.75rem 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    color: #000000;
+    color: #ffffff;
+    vertical-align: top;
+    /* Alinea el contenido arriba */
+}
+
+
+body.theme-nature td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    vertical-align: top;
+    /* Alinea el contenido arriba */
+}
+
+body.theme-nature td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
     vertical-align: top;
     /* Alinea el contenido arriba */
 }

@@ -17,7 +17,7 @@
             <h2 class="section-title">Configuración de Seguridad</h2>
 
             <div class="security-info">
-                <strong>⚠️ Importante:</strong> Como administrador, es crucial mantener una contraseña segura. 
+                <strong>Importante:</strong> Como administrador, es crucial mantener una contraseña segura. 
                 Utiliza una combinación de letras mayúsculas, minúsculas, números y símbolos.
             </div>
 

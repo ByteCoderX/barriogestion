@@ -1,81 +1,60 @@
-// Base de datos del administrador (simulada en memoria)
-class ConfiguracionAdminDB {
-    constructor() {
-        this.initializeDefaultData();
-    }
+// Datos del administrador en memoria
+let adminData = {
+    password: 'admin123',
+    pregunta1: '',
+    respuesta1: '',
+    pregunta2: '',
+    respuesta2: ''
+};
 
-    initializeDefaultData() {
-        this.adminData = {
-            seguridad: {
-                password: 'admin123',
-                pregunta1: '',
-                respuesta1: '',
-                pregunta2: '',
-                respuesta2: ''
-            }
-        };
-        this.history = [];
-    }
+let history = [];
 
-    updateSeguridad(data) {
-        this.adminData.seguridad = { ...this.adminData.seguridad, ...data };
+// Función para agregar entrada al historial
+function addHistoryEntry(action) {
+    const entry = {
+        action,
+        timestamp: new Date().toISOString(),
+        date: new Date().toLocaleString('es-AR', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        })
+    };
+    history.unshift(entry);
+    
+    // Mantener solo los últimos 10 registros
+    if (history.length > 10) {
+        history = history.slice(0, 10);
     }
-
-    getAdminData() {
-        return this.adminData;
-    }
-
-    addHistoryEntry(action) {
-        const entry = {
-            action,
-            timestamp: new Date().toISOString(),
-            date: new Date().toLocaleString('es-AR', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            })
-        };
-        this.history.unshift(entry);
-        
-        // Mantener solo los últimos 10 registros
-        if (this.history.length > 10) {
-            this.history = this.history.slice(0, 10);
-        }
-        
-        this.updateHistoryDisplay();
-    }
-
-    getHistory() {
-        return this.history;
-    }
-
-    updateHistoryDisplay() {
-        const history = this.getHistory();
-        const container = document.getElementById('historyContainer');
-        
-        if (!container) return;
-        
-        if (history.length === 0) {
-            container.innerHTML = '<p style="color: #d4d4d4; text-align: center; padding: 2rem;">No hay cambios registrados</p>';
-            return;
-        }
-
-        container.innerHTML = history.map(entry => `
-            <div class="history-item">
-                <div class="history-icon">🔒</div>
-                <div class="history-content">
-                    <div class="history-action">${entry.action}</div>
-                    <div class="history-date">${entry.date}</div>
-                </div>
-            </div>
-        `).join('');
-    }
+    
+    updateHistoryDisplay();
 }
 
-// Inicializar base de datos
-const configDB = new ConfiguracionAdminDB();
+// Actualizar visualización del historial
+function updateHistoryDisplay() {
+    const container = document.getElementById('historyContainer');
+    
+    if (!container) return;
+    
+    if (history.length === 0) {
+        container.innerHTML = '<p style="color: #d4d4d4; text-align: center; padding: 2rem;">No hay cambios registrados</p>';
+        return;
+    }
+
+    container.innerHTML = history.map(entry => `
+        <div class="history-item">
+            <div class="history-icon">
+                <img src="../../assets/icons/candado.svg" alt="icono">
+            </div>
+            <div class="history-content">
+                <div class="history-action">${entry.action}</div>
+                <div class="history-date">${entry.date}</div>
+            </div>
+        </div>
+    `).join('');
+}
 
 // Función para mostrar alertas
 function showAlert(message, type = 'success') {
@@ -98,9 +77,13 @@ function showAlert(message, type = 'success') {
     const alertClass = type === 'success' ? 'alert-success' : 
                       type === 'error' ? 'alert-error' : 'alert-info';
     
+    const iconSrc = type === 'success' ? '../../assets/icons/candado.svg' : 
+                    type === 'error' ? '../../assets/icons/error.svg' : '../../assets/icons/info.svg';
+    
     alertContainer.innerHTML = `
-        <div class="alert ${alertClass}">
-            ${message}
+        <div class="alert ${alertClass}" style="display: flex; align-items: center; gap: 0.75rem;">
+            <span class="alert-icon"><img src="${iconSrc}" alt="icono"></span>
+            <span>${message}</span>
         </div>
     `;
     
@@ -143,8 +126,6 @@ window.showSection = function(sectionName) {
 
 // Cargar datos de la sección
 function loadSectionData(section) {
-    const adminData = configDB.getAdminData();
-    
     if (section === 'seguridad') {
         // Cargar preguntas de seguridad si existen
         const question1 = document.getElementById('question1');
@@ -152,21 +133,21 @@ function loadSectionData(section) {
         const question2 = document.getElementById('question2');
         const answer2 = document.getElementById('answer2');
         
-        if (question1 && adminData.seguridad.pregunta1) {
-            question1.value = adminData.seguridad.pregunta1;
+        if (question1 && adminData.pregunta1) {
+            question1.value = adminData.pregunta1;
         }
-        if (answer1 && adminData.seguridad.respuesta1) {
-            answer1.value = adminData.seguridad.respuesta1;
+        if (answer1 && adminData.respuesta1) {
+            answer1.value = adminData.respuesta1;
         }
-        if (question2 && adminData.seguridad.pregunta2) {
-            question2.value = adminData.seguridad.pregunta2;
+        if (question2 && adminData.pregunta2) {
+            question2.value = adminData.pregunta2;
         }
-        if (answer2 && adminData.seguridad.respuesta2) {
-            answer2.value = adminData.seguridad.respuesta2;
+        if (answer2 && adminData.respuesta2) {
+            answer2.value = adminData.respuesta2;
         }
         
         // Actualizar historial
-        configDB.updateHistoryDisplay();
+        updateHistoryDisplay();
     }
 }
 
@@ -193,13 +174,13 @@ function validatePasswordStrength(password) {
 function updateRequirement(elementId, isMet) {
     const element = document.getElementById(elementId);
     if (element) {
-        const originalText = element.textContent.replace('✓ ', '').replace('✗ ', '');
+        const originalText = element.textContent.replace(/^[^\w\s]*\s*/, '');
         if (isMet) {
             element.style.color = '#00ff88';
-            element.textContent = '✓ ' + originalText;
+            element.innerHTML = '<span class="req-icon req-check"><img src="../../assets/icons/tick.svg" alt="check"></span> ' + originalText;
         } else {
             element.style.color = '#ff4444';
-            element.textContent = '✗ ' + originalText;
+            element.innerHTML = '<span class="req-icon req-error"><img src="../../assets/icons/error.svg" alt="error"></span> ' + originalText;
         }
     }
 }
@@ -231,37 +212,36 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const formData = new FormData(this);
             const passwordData = Object.fromEntries(formData);
-            const adminData = configDB.getAdminData();
             
             // Verificar contraseña actual
-            if (passwordData.currentPassword !== adminData.seguridad.password) {
-                showAlert('❌ La contraseña actual es incorrecta', 'error');
+            if (passwordData.currentPassword !== adminData.password) {
+                showAlert('La contraseña actual es incorrecta', 'error');
                 return;
             }
 
             // Verificar que las nuevas contraseñas coincidan
             if (passwordData.newPassword !== passwordData.confirmPassword) {
-                showAlert('❌ Las nuevas contraseñas no coinciden', 'error');
+                showAlert('Las nuevas contraseñas no coinciden', 'error');
                 return;
             }
 
             // Verificar que la nueva contraseña sea diferente a la actual
             if (passwordData.newPassword === passwordData.currentPassword) {
-                showAlert('❌ La nueva contraseña debe ser diferente a la actual', 'error');
+                showAlert('La nueva contraseña debe ser diferente a la actual', 'error');
                 return;
             }
 
             // Validar fortaleza de la contraseña
             if (!validatePasswordStrength(passwordData.newPassword)) {
-                showAlert('❌ La nueva contraseña no cumple con los requisitos de seguridad', 'error');
+                showAlert('La nueva contraseña no cumple con los requisitos de seguridad', 'error');
                 return;
             }
 
             // Actualizar contraseña
-            configDB.updateSeguridad({ password: passwordData.newPassword });
-            configDB.addHistoryEntry('Contraseña actualizada');
+            adminData.password = passwordData.newPassword;
+            addHistoryEntry('Contraseña actualizada');
             
-            showAlert('✅ Contraseña cambiada correctamente. Por seguridad, se recomienda cerrar sesión e iniciar con la nueva contraseña.', 'success');
+            showAlert('Contraseña cambiada correctamente. Por seguridad, se recomienda cerrar sesión e iniciar con la nueva contraseña.', 'success');
             
             // Limpiar formulario
             this.reset();
@@ -285,31 +265,30 @@ document.addEventListener('DOMContentLoaded', function() {
             // Validar que ambas preguntas estén completas
             if (!securityData.question1 || !securityData.answer1 || 
                 !securityData.question2 || !securityData.answer2) {
-                showAlert('❌ Por favor complete ambas preguntas y respuestas', 'error');
+                showAlert('Por favor complete ambas preguntas y respuestas', 'error');
                 return;
             }
 
             // Validar que las preguntas sean diferentes
             if (securityData.question1 === securityData.question2) {
-                showAlert('❌ Las preguntas de seguridad deben ser diferentes', 'error');
+                showAlert('Las preguntas de seguridad deben ser diferentes', 'error');
                 return;
             }
 
             // Validar que las respuestas tengan al menos 3 caracteres
             if (securityData.answer1.length < 3 || securityData.answer2.length < 3) {
-                showAlert('❌ Las respuestas deben tener al menos 3 caracteres', 'error');
+                showAlert('Las respuestas deben tener al menos 3 caracteres', 'error');
                 return;
             }
 
-            configDB.updateSeguridad({
-                pregunta1: securityData.question1,
-                respuesta1: securityData.answer1,
-                pregunta2: securityData.question2,
-                respuesta2: securityData.answer2
-            });
+            // Actualizar preguntas de seguridad
+            adminData.pregunta1 = securityData.question1;
+            adminData.respuesta1 = securityData.answer1;
+            adminData.pregunta2 = securityData.question2;
+            adminData.respuesta2 = securityData.answer2;
             
-            configDB.addHistoryEntry('Preguntas de seguridad actualizadas');
-            showAlert('✅ Preguntas de seguridad guardadas correctamente', 'success');
+            addHistoryEntry('Preguntas de seguridad actualizadas');
+            showAlert('Preguntas de seguridad guardadas correctamente', 'success');
         });
     }
 
@@ -322,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-//Prevenir que el usuario salga sin guardar cambios
+// Prevenir que el usuario salga sin guardar cambios
 let formChanged = false;
 
 // Detectar cambios en formularios
