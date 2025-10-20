@@ -4,4 +4,5 @@ export interface User {
   contact: string
   address: string
   id: string // Number
+  createdAt: Date
 }
