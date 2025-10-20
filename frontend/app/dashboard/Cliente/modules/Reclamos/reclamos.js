@@ -36,7 +36,7 @@ function renderizarListaReclamos() {
 
     lista.innerHTML = reclamos.map(reclamo => `
         <div class="${reclamoActivo?.id === reclamo.id ? 'active' : ''}" 
-             onclick="seleccionarReclamo('${reclamo.id}')">
+            onclick="seleccionarReclamo('${reclamo.id}')">
             <div>${reclamo.id}</div>
             <div>${formatearFechaCorta(reclamo.fechaCreacion)}</div>
             <div>${reclamo.titulo}</div>
@@ -128,14 +128,14 @@ function mostrarNotificacion(mensaje) {
 async function crearReclamo(event) {
     event.preventDefault();
 
-    // let settings;
-    // try {
-    //     settings = await cargarSettings();
-    // } catch (e) {
-    //     console.error('Error cargando settings:', e);
-    //     mostrarNotificacion('No se pudieron cargar settings');
-    //     return;
-    // }
+    let settings;
+    try {
+        settings = await cargarSettings();
+    } catch (e) {
+        console.error('Error cargando settings:', e);
+        mostrarNotificacion('No se pudieron cargar settings');
+        return;
+    }
 
     const formData = new FormData(event.target);
     const nuevoReclamo = {
@@ -144,11 +144,11 @@ async function crearReclamo(event) {
         priority: formData.get('prioridad'),
         location: formData.get('ubicacion') || 'No especificada',
         description: formData.get('descripcion'),
-        dni: localStorage.getItem('dni') || '11222333'
+        dni: localStorage.getItem('dni')
     };
 
     try {
-        const res = await fetch(`http://localhost:3000/bg/v1/client/complaints`, {
+        const res = await fetch(`${settings.API_URL}/bg/v1/client/complaints`, {
             method: 'POST',
             headers: { 
                 'x-api-key': 'hola',
