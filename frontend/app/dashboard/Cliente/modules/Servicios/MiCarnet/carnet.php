@@ -152,9 +152,6 @@
                 <h2>Acciones Rápidas</h2>
                 <div class="acciones-grid">
                     <div class="accion-card" onclick="verAmenidades()">
-                        <div class="accion-icon">
-                            <img src="../../../assets/icons/amenities.png" alt="Amenidades">
-                        </div>
                         <div class="accion-content">
                             <h3>Ver Amenidades</h3>
                             <p>Consultar instalaciones disponibles</p>
@@ -162,9 +159,6 @@
                     </div>
                     
                     <div class="accion-card" onclick="verHorarios()">
-                        <div class="accion-icon">
-                            <img src="../../../assets/icons/schedule.png" alt="Horarios">
-                        </div>
                         <div class="accion-content">
                             <h3>Horarios de Acceso</h3>
                             <p>Consultar horarios de cada instalación</p>
@@ -172,9 +166,6 @@
                     </div>
                     
                     <div class="accion-card" onclick="reportarPerdida()">
-                        <div class="accion-icon">
-                            <img src="../../../assets/icons/warning.png" alt="Reportar">
-                        </div>
                         <div class="accion-content">
                             <h3>Reportar Problema</h3>
                             <p>Informar pérdida o daño del carnet</p>
@@ -182,9 +173,6 @@
                     </div>
                     
                     <div class="accion-card" onclick="verHistorialAcceso()">
-                        <div class="accion-icon">
-                            <img src="../../../assets/icons/historial.png" alt="Historial">
-                        </div>
                         <div class="accion-content">
                             <a href="../ReservasEC/reservas.php">
                             <h3>Historial de Uso</h3>
@@ -229,7 +217,7 @@
             // Código QR
             const qr = document.getElementById('qrCode');
             if (qr) {
-                const qrImage = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(userDataLocal)}`;
+                const qrImage = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://barriogestion.com/public/spaces/autorization/${userData.dni}`;
                 qr.src = qrImage;
             }
         } else {
