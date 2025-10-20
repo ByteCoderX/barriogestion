@@ -20,6 +20,12 @@ export class DigitalIDServices {
         httpStatusCodes.unproccesableEntity,
       )
 
+    const data = await this.getCarnetData(userDni)
+
+    await this.generateCarnetPDF(res, data)
+  }
+
+  public async getCarnetData(userDni: string) {
     const userCreds = await this.usersCredentials.getByDni(userDni)
 
     if (!userCreds)
@@ -57,7 +63,7 @@ export class DigitalIDServices {
 
     const fechaFormateadaMasUnAño = `${dia2}/${mes2}/${año2}`
 
-    const carnetData = {
+    return {
       nombre: `${userMeta.firstName} ${userMeta.lastName}`,
       lote: userMeta.address,
       dni: userCreds.dni,
@@ -68,8 +74,6 @@ export class DigitalIDServices {
       avatar: `https://www.gravatar.com/avatar/${userCreds.avatarHash}?s=200`,
       qrUrl: `https://barriogestion.com/public/spaces/autorization/${userCreds.dni}`,
     }
-
-    await this.generateCarnetPDF(res, carnetData)
   }
 
   private generateCarnetPDF(
