@@ -27,8 +27,9 @@ $baseUrl = '/tesisde/app/dashboard/Admin';
             <div class="dropdown">
                 <a class="menu-item">Gestión Lotes</a>
                 <div class="dropdown-content">
-                    <a href="<?= $baseUrl ?>/modules/GestionLotes/espacios/ReservasEspacios.php">Gestionar Espacios</a>
-                    <a href="<?= $baseUrl ?>/modules/GestionLotes/usuarios/Usuarios.php">Gestionar Usuarios</a>
+                    <a href="<?= $baseUrl ?>/modules/Gestion/espacios/ReservasEspacios.php">Gestionar Espacios</a>
+                    <a href="<?= $baseUrl ?>/modules/Gestion/lotes/lotes.php">Gestionar Lotes</a>
+                    <a href="<?= $baseUrl ?>/modules/Gestion/usuarios/Usuarios.php">Gestionar Usuarios</a>
                 </div>
             </div>
             <div class="dropdown">
