@@ -34,8 +34,8 @@ $baseUrl = '/tesisde/app/dashboard/Admin';
             <div class="dropdown">
                 <a href="#" class="menu-item">Seguridad</a>
                 <div class="dropdown-content">
-                    <a href="#">Historial de Accesos</a>
-                    <a href="#">Gestionar Accesos</a>
+                    <a href="<?= $baseUrl ?>/modules/Seguridad/GestionAccesos/Accesos.php">Gestionar Accesos</a>
+                    <a href="<?= $baseUrl ?>/modules/Seguridad/Historial/HistorialAccesos.php">Historial de Accesos</a>
                 </div>
             </div>
             <a href="#" class="menu-item">Configuración</a>
