@@ -394,14 +394,14 @@ function cargarIngresos() {
             <td><span class="badge ${estadoClass}">${capitalizar(ing.estado)}</span></td>
             <td>${ing.recibo || 'Pendiente'}</td>
             <td class="acciones">
-                <button class="btn-icon" onclick="verDetalle(${ing.id})" title="Ver detalle">
-                    <img src="../../../assets/icons/eye.svg" alt="Ver">
+                <button class="btn-accion btn-ver" onclick="verDetalle(${ing.id})" title="Ver detalle">
+                    Ver
                 </button>
-                <button class="btn-icon" onclick="editarIngreso(${ing.id})" title="Editar">
-                    <img src="../../../assets/icons/edit.svg" alt="Editar">
+                <button class="btn-accion btn-editar" onclick="editarIngreso(${ing.id})" title="Editar">
+                    Editar
                 </button>
-                <button class="btn-icon" onclick="eliminarIngreso(${ing.id})" title="Eliminar">
-                    <img src="../../../assets/icons/trash.svg" alt="Eliminar">
+                <button class="btn-accion btn-eliminar" onclick="eliminarIngreso(${ing.id})" title="Eliminar">
+                    Eliminar
                 </button>
             </td>
         `;

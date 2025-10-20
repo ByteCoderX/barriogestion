@@ -20,7 +20,7 @@
             <!-- Sección de acciones rápidas -->
             <div class="acciones-section">
                 <button class="btn-primary" id="nuevoIngresoBtn">
-                    <img src="../../../assets/icons/iconmas.png" alt="Nuevo">
+                    <img src="../../../assets/icons/new.png" alt="Nuevo">
                     Registrar Ingreso
                 </button>
                 <button class="btn-secondary" id="cobrarExpensasBtn">
@@ -28,11 +28,11 @@
                     Cobrar Expensas Masivo
                 </button>
                 <button class="btn-secondary" id="exportarIngresosBtn">
-                    <img src="../../../assets/icons/download.svg" alt="Exportar">
+                    <img src="../../../assets/icons/export.png" alt="Exportar">
                     Exportar Ingresos
                 </button>
                 <button class="btn-secondary" id="generarRecibosBtn">
-                    <img src="../../../assets/icons/assets/icons/reportes.png" alt="Recibos">
+                    <img src="../../../assets/icons/recibos.png" alt="Recibos">
                     Generar Recibos
                 </button>
             </div>

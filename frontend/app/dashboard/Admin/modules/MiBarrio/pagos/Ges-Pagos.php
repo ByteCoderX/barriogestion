@@ -20,19 +20,19 @@
             <!-- Sección de acciones rápidas -->
             <div class="acciones-section">
                 <button class="btn-primary" id="registrarPagoBtn">
-                    <img src="../assets/icons/plus.svg" alt="Nuevo">
+                    <img src="../../../assets/icons/new.png" alt="Nuevo">
                     Registrar Pago
                 </button>
                 <button class="btn-secondary" id="importarPagosBtn">
-                    <img src="../assets/icons/upload.svg" alt="Importar">
+                    <img src="../../../assets/icons/import.png" alt="Importar">
                     Importar Pagos
                 </button>
                 <button class="btn-secondary" id="exportarPagosBtn">
-                    <img src="../assets/icons/download.svg" alt="Exportar">
+                    <img src="../../../assets/icons/export.png" alt="Exportar">
                     Exportar Pagos
                 </button>
                 <button class="btn-secondary" id="enviarRecordatoriosBtn">
-                    <img src="../assets/icons/mail.svg" alt="Recordatorios">
+                    <img src="../../../assets/icons/recordatorio.png" alt="Recordatorios">
                     Enviar Recordatorios
                 </button>
             </div>
@@ -85,7 +85,7 @@
                         <div class="progreso-bar">
                             <div class="progreso-fill" style="width: 85%"></div>
                         </div>
-                        <span>85% del mes</span>
+                        <span class="resumen-detalle">85% del mes</span>
                     </div>
                 </div>
                 <div class="resumen-card">
@@ -112,7 +112,7 @@
                     <div class="tabla-controles">
                         <div class="tabla-buscar">
                             <input type="text" id="buscarPago" placeholder="Buscar por lote o residente...">
-                            <img src="./assets/icons/search.svg" alt="Buscar">
+                            <img src="../../../assets/icons/search.svg" alt="Buscar">
                         </div>
                         <select id="registrosPorPagina">
                             <option value="10">10 por página</option>
