@@ -19,9 +19,9 @@ $baseUrl = '/tesisde/app/dashboard/Admin';
                 <div class="dropdown-content">
                     <a href="<?= $baseUrl ?>/modules/MiBarrio/gastos/Ges-Gastos.php">Gestionar Gastos</a>
                     <a href="<?= $baseUrl ?>/modules/MiBarrio/pagos/Ges-Pagos.php">Gestionar Pagos</a>
-                    <a href="<?= $baseUrl ?>/modules/MiBarrio/ingresos/invitados.php">Gestionar Ingresos</a>
+                    <a href="<?= $baseUrl ?>/modules/MiBarrio/ingresos/ingresos.php">Gestionar Ingresos</a>
                     <a href="<?= $baseUrl ?>/modules/MiBarrio/fondos/fondos.php">Gestionar Fondos</a>
-                    <a href="<?= $baseUrl ?>/modules/MiBarrio/expensas/Ges-Expensas.php">Gestionar Expensas</a>
+                    <a href="<?= $baseUrl ?>/modules/MiBarrio/expensas/ExpensasAdmin.php">Gestionar Expensas</a>
                 </div>
             </div>
             <div class="dropdown">
