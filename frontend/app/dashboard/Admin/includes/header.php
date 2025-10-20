@@ -39,7 +39,8 @@ $baseUrl = '/tesisde/app/dashboard/Admin';
                     <a href="<?= $baseUrl ?>/modules/Seguridad/Historial/HistorialAccesos.php">Historial de Accesos</a>
                 </div>
             </div>
-            <a href="#" class="menu-item">Configuración</a>
+            
+                    <a href="<?= $baseUrl ?>/modules/Configuracion/Configuracion.php" class="menu-item">Configuración</a>
         </nav>
     </div>
 
