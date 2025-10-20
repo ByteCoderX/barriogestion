@@ -1,7 +1,7 @@
 import { DigitalIDServices } from '@app/client/digitalID/DigitalIDServices'
 import { clientContainer } from '@diContainer/clientContainer'
-import { zodQueryMiddleware } from '@shared/middlewares/zodQueryMiddleware'
-import { ComplaintsSchema } from '@shared/schemas/routes/clients/ComplaintsSchema'
+import { zodParamsMiddleware } from '@shared/middlewares/zodParamsMiddleware'
+import { DigitalIDSchema } from '@shared/schemas/routes/clients/DigitalIDSchema'
 import { Router } from 'express'
 
 export const DigitalIDRoutes = () => {
@@ -11,10 +11,10 @@ export const DigitalIDRoutes = () => {
 
   router.get(
     '/:dni',
-    zodQueryMiddleware(ComplaintsSchema.get),
+    zodParamsMiddleware(DigitalIDSchema.generate),
     async (req, res) => {
-      const userDni = String(req.query.dni)
-      // Obtiene los tickets de un usuario
+      const userDni = String(req.params.dni)
+      // Devuelve un PDF
       const tickets = await digitalIDRoutes.generateCarnet(res, userDni)
 
       res.status(200).send(tickets)
