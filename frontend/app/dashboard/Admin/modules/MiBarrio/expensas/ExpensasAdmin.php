@@ -20,19 +20,19 @@
             <!-- Sección de acciones rápidas -->
             <div class="acciones-section">
                 <button class="btn-primary" id="generarExpensasBtn">
-                    <img src="../../../assets/icons/iconmas.png" alt="Generar">
+                    <img src="../../../assets/icons/iconmas.svg" alt="Generar">
                     Generar Expensas del Mes
                 </button>
                 <button class="btn-secondary" id="enviarExpensasBtn">
-                    <img src="../../../assets/icons/actualizardatos.png" alt="Enviar">
+                    <img src="../../../assets/icons/email.svg" alt="Enviar">
                     Enviar por Email
                 </button>
                 <button class="btn-secondary" id="exportarExpensasBtn">
-                    <img src="../../../assets/icons/download.svg" alt="Exportar">
+                    <img src="../../../assets/icons/export.svg" alt="Exportar">
                     Exportar Listado
                 </button>
                 <button class="btn-secondary" id="imprimirExpensasBtn">
-                    <img src="../../../assets/icons/assets/icons/reportes.png" alt="Imprimir">
+                    <img src="../../../assets/icons/print.svg" alt="Imprimir">
                     Imprimir Todas
                 </button>
             </div>

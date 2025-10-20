@@ -232,38 +232,313 @@ function updateDaysRemaining() {
     });
 }
 
-// FunciÃ³n para dÏ¤f€0‚ÊwÀ‡d`j$˜šÈ7
-„5¦ Êåmò,å4DÏß8ãŞÀ)ß(˜×píŠ"#Ğ¬ù¹°V×ÚÈÿüc‡ü‘îµ˜QQ˜ÄÅ<ŸŒ²kc‚ÆjÕÄŞIH‹L CKjÍÀ±I6?U…0m±BŞÜt÷1$&$Ê˜Ÿ­±ÊñªD"©š;¶£Õ ÕÓè[päöÄ^¼ñ“á6HÆÏ†^pg$	5%	P´L–%–xšôŠ7qŸ¸Œ[ ½10Éí×K‡ÜFİ‰ÆA$ÚGûÒ&ú¯H$âóLıf+¶:(/¨şªÉ%1rAÍÀåÀª	¸Ø@T3pF0ÁŠ ~¹\fœ¹H=”0jj{%‡5v>œQg wš%Ë úÃ…A!‚±±ù5Ù/ÜÀE£­ñ,v |ßŠFâ!ë6Ëâ†h4Pªi¨‡ªŒ®
-¸`¾|‡‚æ#Ğˆ¨ªçØ#ãç¾Û×€÷ q ¯‡¤d–cß¼J§ƒsª1-	—"¥Ä®è¨İ‡k\IB[\ "¹Zâ0ub~ÓU ú£ººšP­« fÕ¸¡MÀeSáœÅ"qŸ´zÉ-»\]µ.\8&­Qmb,uÔX³ |ŸÜÂÂr0]«‚%ì´ÊK­Ÿ«A*¡ÅMñÔG2íÿ
-h»[¦±UD#ØhÃ%I“¯Põ®q7í‘‡I†G—_HÆ—8#F×È,Ë®(‡+?Œá}&¢QòRd¢‚®9çĞêE#…T0mèşŞğa0’/pÓÿÕ‘vôJHÜ^e†ˆ=”Â Ïké”Ø³œ¼ÁJ/O3õ¤ø–BºE–s^Ä[Äíß@æO±Î†–ñ{fXO‰eYW#a´2/íí½µpjwè—‘îÎWÑ@€¸½tgx‡Ó)³'Îã©ÅĞ4Õ(æ:åxä]Ú³ˆ¶DJ±Ö§šO›^‘ô°a®¦Rš@Sxá5pš:ÓÕ.5|
-5ú*x‰¹7ÖÀm?@‰K>cßåmha¯GØà§ˆg"±„lù>Šy)Â(Ù¶¤ºkl°+Ax…äW+<sÙ€t5¯y¦U×œ»fp¡ŒƒF€mğ"¢NpcG-l%_/ÀÈ‘&ùG
-ÃÍÓG	-‹Òá4‚&µZ†G¶Ì‹Ô4úÔdUS i!P¶b% ˆ)‰ÚbÉ€é?Û• Ú ™ZÿÜ‰ª_™oQpµfš“”RóÔÏ§ïÀBª<õ¿…ë/kYhö/¢5@>µÊ–ØªÁ¶Àv@i‰1]"ÄíùÂãnÙyè–¹AÛ¹6˜‡¡˜³SGpµñ/ Éñ+p%µäú‘Èvå¢4ºNA¾»×gù‘l-õ¦“]€€êÑ$ï
-(H(A>˜·ĞX’½Ô ˆ…ª °×WƒÚ²¢ö„£ÔÊÂ	ªâ,v®ÊK–FÜ#O`µÔ2æ——«eèÒ%D² O“É±6ÈWJæe ¦"ş†´ SÑQJ~X¤D\bÅXÒS.1'R?Ç\Êv¤|Ê¸×š@Ñ9œ²­ JËg‰§lƒC`ACƒ›°áÛ…ğ1]nÅ$zdÃÛZ…ß€T·¸äU›,Ë¦Ö9=ALIU	ãò±P^fS×ğ³ĞîWb¦|€°@ùlÍ`LË2fL©|êXÍrãmb±ksàXÛªŸÑ[’ª{%s5mAA¸¶xf}v¥A˜cï•v%ì-·÷¾Û#Tò-N·Xuö{cJ®	2ÃÖJ¸J‹Uöì5Ä6FtáÜVîÀKàh­G¬We U#ß(ìÎ˜O˜_øøĞ*ã1ÒÚ1À® ƒ›­Îw7V%«[J$L<Še]ª¼¶fÀ#á¢¡É5 ù}u¤8wİ5Ã^QÜ:’5[‰1pvÀáº9KÑ†k±PíAu¥í«©*êù.ÌîgŞ¸(d{cú(À¹¢ºêşùXVÔèï>öÔ.ˆõt>oãã±»z%„¡· ¨5W·€ºMĞ‰ŠÁ»´}*+&ë(Å1L=¤‘°¬$,SÓàÔg@½ñà[Ã+€e1:l²Š*QUp5¼|„€ç}§¬ax-ËJNá@kè@bXÙd¦Äw„Id+”/VDÿ¼€ª387Ü‹5ö²òzê5 š8Y–”b¹LÙñ3C—w°`[_ÚîfÑEÇlûª ‹ÜFBå_DLc „™ü°¨To™7¦1rø$×ı2½l2\‡S½añIHI7
-Pè¾½ 2A*¶<ŞŠñàÉTñ8Ø<%¬gEİØRA`¨œÀÖŠÎcx&>P#Æc;âWœ³ªm«ã:"*<ÇSÄğFèeoŸ#®p5¹a³_lŠ•†1p)¨ø]aÕ‡Ş-«Ëê¬ÓY›Ø?L±_im¨è•Bq1<kXM¬ĞÅk.8*ZM;R«„@zquä%jb,Ñ	¯ÜŒ+$¦b_Ô–¯¥]Ê‚¦RkŞ2‡äÃ(nöØÄLp5äë´Zùv„Y¢v$P˜ò& çİ»v¥&ß“¡9¨%€0 xÍà-„¯¦Š©`¦{<ô»’Ù˜[5QB‚À,Éx”åó0"â(®‘(—UF°èh3ß%¬9rÏG+¤-(õ&š&ğÚ2ß³B—9Z~
-’¹SlZ*8qûÙ©åRüeM?¿ßï½åïšçÆã›"í–m_ĞŒ= 	F-XÁô‘À0~PÚƒğŸÆ-MT÷ŸÓ`Vš+
-åJ+ÚFLpåÍ£”I¯Ù´˜²veÏ”1fbTsáÏDé–8F|Î©©ØœÅu~¡™Ş­a16ÆÄDÜˆ<®¿Ö:‹æ‡D‡# ¼ñ£0´U‹@XiS ’u3ÁQ2††+oËè)ôŸtÍD@– ÌÈl´Âñˆ©ŠE´ğÇ+!û[a†3‹)d»Ÿ{Œ¦&sé(ÀUéb¦xªcğğàÁAÒ§F°zI:™bm?§Llé™)å¯2å•é5û %Ÿ¤¬à2—+–m*WÚ˜qıØ´‘†£+DG@˜8é`¦D@€Ê‰°šC»CJHèAĞü Wfv²ÏØ:Æ‚iy@ëH¾w0p§;Ù\8sB}~.ÛrÇ(ö8İÒO—L;É'x‡Gùù3¨Ú(É k}dœ€®š+&“Ê»¢ÿ(3Ğ¹ñ7XËDô>ßBwÖş³õ¡tÑN¸ôYbT|pD\ÒšÃ4ğBçjU°M´Àf$¨šÊFÍºK÷”º‡ñL·)wÏ|Vç9„[üËl§ß9ÛåÀKÂ™Í…1÷úİb9}ŞŸóçVˆËç~À¥‚WÊ\…q¦§Ã\ßÏ3÷¬ó#\Ú™XYéˆ¥ ÛÚCÚÆMöDc/ÔUT›çòâX¹2Œëì8-ë§x$Ë°÷s]†¶	–u"à( Ê‹ˆ«?¹-ğ&»ÑI8ÙŠ™
-«@šÕŠıÁ.0¨BoàvğŒ+=Çu$ôLW®Öş‘µBüËq–ï¢ö{Ëï‡åPÆêí¨âæîõˆœ®Ï¶À…Ÿ@JëBıZ§‡ôdtº½tsåëÕ4#:YHCûUwºFÈıï™Ğì3TÁı÷¨ó^x×ÒB3“8Àıı†×u­b”.(êsnÂ¹mL¡ã¨+:×í¥ñPO±ÌL¶SàñFÔL=¯„“Ò­T‡½Jµú9p(Í##]uÿ‘0¶å'š,ß7wör˜ŸXoz½ÕJÏ"mO^7µ¡g'êÿìZ`ù#çœëwšûÎÕZ7 â&Óï{,¯^<	,2G©EV¶PÄşC÷E\ğ}pÉ· W—ÂµÄ±˜Ì/ı	ö÷øy“ñß¡{œ±B>®Õ¼J~ùÇ‰}|—rµşÑˆÄ¿F.Ò.²ğÄB‘%ª}JØ§D¢ÉĞ•"ğQø]©6ÕÈ)­¬€túuÂ‰“y±×Ó(ğöØç_¬E¡áÍßC˜ÿ,®|ì”k¥ë^¯¶Vf:â+ğï•l#ZA¬j™ï¯[f.ÿæ°8±ÔZö5yû6§¿g}vÏF`1ÎXå~D+4Ë;«~z
-t Ğ“—‘ñ{õ» j°´Ï­ÖªºQ—ÏàZ„ZT“x@BO—g<%©K«O‹êİ`7ÖíÆò!FMù[µ‰‡¦ˆIêo{Î§n£á’xVgàMôO¸<Ø)jR#DÊ³ '†?d÷«ı2t“îüõ6ùÿÉ€¬(ï3àÍcµŒ=Ô(M„$V#Í	wW'Jä¢Õ¬rµÁ}
-p›w‹BµÌâoo C .¯²l6NºÃ­Ó«W™ÈÿÉpd(½BÑr7-Ê!1x˜\úàâmÄål©ÄÂt‰¬çZBÈÄ’UâÀY¼dp	Ğ±).Dƒ­Ì…s£@¤÷]ç!¡¢§Û©ä¶§Œu‰\TXQå^¯oË¿U7¦òI}6:é;'{0Ô33=]Œw¾ÅìæU¸xaƒdKË€ıl«¼sîÎ›Q‹ã¢‹Ú>!3ø'$ëÙÿAàŸ£:±˜:Îõ-Í–0"û?Õì©VB:¥ÜÒ¯nË…&QG”}gëÈ	G8¹æ–bz† ¦æPlµÏ 99uV–…Ú•.ƒ)ès nâ+aæÓ
-xÆRìäœhÄ;9ß\7ªíO½”ÜÙQqíÓ‚RÁ÷²=3yAÛİ½ ¡tö;‘˜ÂM•ŠÈw„WX¥pr:rÆàåˆw¸—O¿Ag¸Û…Ş¡Mì“°ñ?£Òên¥wV÷œÒòÃè˜‚|™R=™¥è{ŒS9ßTy•«8Oç>7İÚBC6sèzèã !™ŞÖ-®“ë2+‚´+*¤T¡wÑn¡ìqâÈş+Y­MP@¯úøq¯ÊÕ/´®ˆú!a5ÕŠ{oåH­MËrë_sÁ’û…ş'Äğ;ßòĞ³%«À¡Õ3!»eoÒ„3S‚á^PúqÀÀîú	“/ìCB¾€ÊBrÖ,¶§ó ¯ãê	
-²$ag _ö3ƒá1¨ÈàçÒ4/şüœ²Ù3ù&H	ª”nE²½ï@D™ç™`h
-ÍğŠÇ‰Yø!¸ÅéÔÍ¶‡qÜÙ7Ø‹'ÔxñøE7Xó&úgƒ‘3!(ù¸rÈ_rJ»s$árn]‰Ù
-2KşÒã@$Ò(æ3d·äcXŞ¿Ğg¬óšt@k}tëxOQ|’—,¯ogïjĞsÆ)µUYúÅ€İª*ÑšğşĞhºó q@×Jî®C"Mñr¥SO€%1ní‹ğíÚ³KÚq8°İ€¹Ä}šdÅ¥ÛÆ¦÷—”?Ğ7ï†É¼!œÃ+??£m VëMPeÜ¯©/¸¿šırqŒgõºˆ®umá*ig{€—¤zRYê C0ï`ºØ”ú'6<}¢\ÚÄw­c<Cƒ¢sEœu†Ò€6,¦DqÙîm‡ÈÆ¬ı³I<À2;	_'Ëè'8càuŞj9ß"‘,`•ãá>¤éĞ,4™ü7eéëÀÈüq}”ºÑÕÊûŞ^²'¿G¢$ÉßşÌ&4šW,5ÍõÆAâÏ:w>Ò;Íó°ÛOK+^™8ˆbw,7Pe„iI·=ıî¯‹{jq`ˆe3+H¥y,Ğ'\¿İÑ¨Ï	Ùnÿ,<Òy=ÈÊ-Ö\Y}÷XåöÈQ®Â	)=LkÉ<DègCxØ­gf:ˆšPÙ‘‹E}éƒN4†'*±—ıì+D¥}àâpc/+Œ3ÍòÅxVœ§Ö½ØÍÓ6zPİ¦w¥İïœÁíäÇó®æà#.¦–K=Áñˆ_ñ§wÃ
-¹3c\Î¢çã^ºâÚeFŸ|ĞŒìÃE0`WQö­ÿâ"†q'Şhü9ĞÆµæĞ$¤§åv­	|ãÕxQâØ¸C	7àªÀù(‚{o‚wT(¾ÒG÷#¤™‘|`ûœ•a¯¸î¬ƒëbbæ9gìÁê´Ü%Ñ.6¢2‰‚$Êé}â@ªdÀHmªÌk¯÷ø˜áÛnÇN°&ëÉäñ‰¼I²õ[¤<,¤m—¡ı-0Fœ±Ü›~.§‡·4} SÉ{h¨s&’ˆ×›CÄÎó-,Céìè¡jç;’ÈL²KıBÌ’‹!eóæƒ¶ØÉ ué¢ËB,w¨`¤êjhùƒişI9¤*¶2é_Aƒ­ ;./@f§z¿Kª0·¿·»Ã»“WÊu¿ÂuíLSYŠJ©ëçÁ€èÈÉ€İâ–è™Î'.é‘üØzN)G"\ÑIÕˆì€`Li›z¢QºôæqÄ@¡à	_&½ûÆÑSN÷’Ã|-Àg Ú@JV?èÇPØwäÏJ2ßQ…{²ƒö„J+í€Î‰lñf%q˜„Á€làŸ@W“P-wûm7h8ÿ®™¶òÃÓ:Ïn÷õ±­5X{¾©)Öú¤İüø qg
-1.ß°è~%à¹ÏS``u¹áßàKiü]¢íc1ÉàOu@˜G1v3˜(Ÿ(%N Üî|˜Ä™ÍØÃÀı'ŞõM&±[ùtlqVt$=bdÛ©Ğ”Ï•h4ŠÙÙM ×hH¿èò•YÅ;W¦w¬W¾.ù8íÜï}Y­êíqAÎO};Ş­xA…ÕâNÊÅéCµ:öÂ/æd_!Bèßÿ­ãJı@koJw}S×½ícá–-}‚œø1•”á#u;è(e}·upR‰À’ZRªsc}}à[n¡	ìFĞ‘8bÜ°7Ìç6v\83¹Â¦±@ï‚4«I¡äºi°šv§T;•d)sùš*¼ğ¬ º€ô~Şõşq.ƒÏ 6Êœg°xğßÃMè]o'?q3™L·@‚@ÎÆxß¯÷/º‰“6C3×¹çÔ\Ù?.ğ)[eäkñ%O“}¦ƒ$İœç?ürAï(Bœ\t)H4p?s¨¹Ò)ˆ»e¨°7‘è*n}ƒÙ5•h=¤LóhäºhJ±ğ)›Ç&,c“§»”ûã9^ÎİÃ”êÀCŠÚŸjcZz™:¨‹Ûò5X7fÄ÷h}ĞÙò¹'0½×N!uÑó§Ìá&3™µÀPf{³c¹wÛ±^Ô~ƒ£#‹rR¶4Ø:ØòÙ$0/®õÚª¯TòªXî•Æ}Äx¡•î şë>O;ÔNß¦¾”ùÖÃ>õ!âÛ¶=|³G¨³¸-´4*qÉtñ•¡”YaİŒÏ!øœÚfLg"*ÚôµœŸàDM×ó_~NDÂt©ÃİÌ‰vzá#ÂŒô¨òX	‚\ÇKI½Ã[Õ3N°óHğ47æÕx4¸­xÖµŠ’ò3ä•!Ÿ«2·ÏıôØ”]a;‡xc«áúB:.h4ißÑ‘ñK@§¯º;|İ…úóçFO9{‡êjW—æ#ÕCÿçrûÅÿÎòM)x:<tôS;°6AAşún
-™ÍG±7ÃgtïyJ³Pl~â¥"§ô€~>²2oTïZ]VåşïĞıwó~G5»)*yÇbŒ(ÿMÔxúœ‘¿]ìS6„I\åjê	<i‚:6	“sKó•šg!,Rvt[!SÉÕå¹?ììÒìP§‰~7Á¾Ö]n¦ÏIš /şãCëŞ¯³Â,–BÆ‰éš¼±°LâZó‚¤#×{÷ §kô rƒc¥¯‹óÄÑñ¼
-re*À±mØAµĞ€“]å÷ÿ[0±hİ {»Ÿò;´n(Ñç“cz>Úh`äÍ<ÄhRª.Ó­„‹ ìChÃ1$+õ™–Î¯¹eŞï`Ê«hÿ'ªtŒú\Lá9oí1nJb mwÅ±sjŠíaO„u`ş#gæús?€äø&{sàòúİ_íúŠ¾ß¼ÉJ8§ãdg¯pz°3‹‚apyÿÎŸÕËzg²zïŸaæúUAeûªOßN%ÔÁ6ÇdØ›œ[&ûLöïÓ±Uà‘éşÚe9U¶€fnd	ĞeI‡î÷Ïœf™÷N°üÁşÃŞåÈ5ãqc¬1WèË:,ı@vª°Ì\_+Ì	a™xîáæÊ™#F3w„¥×LoÓûÛ#è³£u6¨yãš7
-ÃÉ‹ñ~}…‡WZ·ôWè³m³ê¤/séä_Î8•ïr01ÅlsFuzçÄn˜hV‹Ptay+ÍI¡ÀÈwg)ŸÜpL2ô”Øã”­—Öê<7—‡ ©G×©Ñ¤KaeÖ¥¬Í÷ÖéwsÎ)ú í ­zšÜAœ„rš(lën„š”áYAK´FgšPÇv YÉbğa/ó6R×¦Œ!’¢Üqr£µÁ`'ü´2_3èF4(„àÍpÍµËë7o¤Ëaæ´Ù
-®f¢²‡IĞ(˜´|¥Ìùs&ù ğ¦·ùÕ"õ!¥×š'*úLd)›ı¤èa–4
-Y	'òÆhøtOPp&*¬Ø3ShBí4åÉí¦›ëDI@®¡õqĞ‘°rCo,Dm‚T8p2ef^JŒs’Ñûéx·¡Gã	 ¤{Z83ƒªN]öR>a„Äì0X(İ$9&õ]„ªœê™aÚĞ±ÜJû¼¸CL–Ğ-^6©YƒÍa—~ß§™hOYEÃ³÷ùñ€²;°qÂi»YCb/Øv}§ÊÙå]T¼”“r¢Q`,³ïßÄãˆ¡iá|†"œäd’nj:¶Ğe÷ˆ{´z‹Ù’-üÒ,ß›4ÑM+×Igí¼R3YA>ğ
-Ë’ÍŒ™«zUÀËŸ`5¼­Éş†4Pé¨¬Ö2^Ü3=®UÀWá'»šÔŠ›<ÏD)—Ûôç5Ú)»uÑaÙÑE•D‰ßr±u›ĞÅ€Që¥¹_OjYén0dw+7Uò&#¸)rBÖúşPÜ}Œîo´s2Â¤ŸXİµö‘”ØŸ`‰¬Õ•€K›‹cwdÈ#AX7ò:Î’ºæÓ¥¥kkËñkíyâ[—õ!¯§‘SH¾Ş†—‡9‹¢Işd|û1„”lº#[‚¡ÜL[ŞRQÙÎÄ­2·”[û÷àìÖí†…œu£Ğº†eFY"`è3¥]NtWYÎ¿$İÑÆ¾d˜QyzsÌïâ¶Hï²¦”5Cƒ‹GÍÿCÈ„°‡ñOÏå;‰ÆÓ>‚2ƒ=›!Lgîİ/yš…vµ‚¢ÆREÂ˜]ÿZEBÀÓ¨´{¨÷äès¯9tŞ!@)?­²O 4‹‘m4§ƒ¸!½|Äí‚… B9c²sÀ2&JMˆ ËCÈvk§üÌGvŒC<´¶¥;y1ğŒ!·÷Œ×‡v‚-m¨I·¤‚é!9äÏ½L¼™9oíU)¯˜'ûxŠå9Ê6È†£xzgã$DÂ‰F–÷:­­ÇNı¦¶€rKÄªı„ü'ØóÚˆêVÅ6ÈøãÔ[×÷”¶}Z?*„9ÂæCÕ…x7“A?Sªú–n§¦Í™‹x(”ÒS11â7´ÎfË)s}kõ½*û{‹DæáEíÒúw6Nëöû¥V³4ÜièÎ05òÚíÄ£<
-İÄ·`4nÑ
-×Á¬®rN^MãßÊ÷€¹e€´l?È½Qban·øå;«ôò<A{64ñÃÔâ}a©œÉºGåÚIR»È,Œj1Û’´†â2…/ˆ)
-ùk#›uš1fÒL½ZÉ¨9VŸ ¦0´oXabÛ¶çcTŞÎÄÒaQOsgœìjÅTçmäcôxì~s|ÈqüÛF±§Œa4Æ:ÚBk7×Ÿú ï±¬õ°)ñWàUÖ 5	<¹¹şlSG$„9\+İÒ9B)IàRkÍ‚ÈaÆ/ŞA(³f™|ıŠ_f¦–SÓä#‘@âë›eJû “òİ:Æ-è'
-´a–ĞêÇÍb _w‰ÊpAÒxî˜[G¶§aè0¥g‚)Lµçõ€´¦wÌqA¡c¯FØ–çÁ6u•|Äï0¤	j.R1F€­ÑiÜ}£’%!º[èÈ¶N³ùtë ¥}ŞÃ•Ì†à8©ÿÓ“j¥Xä_P¢ıÃ{©NY¾IißhssıJõôv„ño¸A®ş»!ÇX©úš˜@Ø¥c`ŸV-GĞ%^=Ğ95`>$yıóÉãd;êïwd¤>Ñg ‹
-ÔI‡Ï gìhßvŒg;0>@¨|¥.­ˆ2ì\˜`u.ƒØÚ­Ğ‘×àÖ` ‹*îøujç6pÍœ	/vqİÇbT<ôõM"±¡ş¥†]hUvlëeF%¦k‚ÒÅ»æ ‘bıâæj€€˜Ú-#—b`ÎPŠèÎ¾\±§é¾8;ØR3ôä´÷kyğ¢œ13PÌä2BK\ZB×¬3)[²qL¦#L'õbHš&a•w;‰X}t2àïÄÆG9±š¶ƒÍ#Íã¬~c+ş..u´¬’ÅqYù ¹]/¹=‹DN)¼<‘’Œ86óÇb”À’8·Æâ¯jûMYD:À¿Gh¦ldÚN*9'2ve4dQ‹ao4?ÀÙ£H¢ØÅåƒÔ¯’¾ Ë'E˜C"Y†Õ#‘ùlt–øI»^8Éàª½z‰-»–qÀ€AÓËÆ»-Ú(½1`á»Cà_D£WncÏeáì#qm‘»c÷İÁ‰"êAöqˆ¦µ§a ü6„k˜é2ä.X’¸Ï„­Ëó>H¤‰–\t©K‚¥4kíC¢&;0p‰å92z{~¿9‰ ©˜dõª`ëK2…Ë¶­Hl@<@åÛşóõäÃ7Eh†ÑÉwè¾\é\ú% Ÿ‘¨ı€útÕÀøg±‹áÂP€}€QA£Ü”ü[@<$nhÄD
-ÿGœtwïÀ¸£k©vˆ	'”üYß¢ æ;Ïì02{¤Ù›b½û×	ˆCxÎ€Æ–Ó3;½ŸL;²;f¦ÏRæÃ(Ÿù7¿ÌÜÅ·ØÁ9újc‰Åø!@'ƒÿs"ä9	r<R±;³pT“Iš‘7`1Q¼7CNˆÊKî]5eÒœ¸¦lk•QjZQrú±81~/õoB÷ÒòÒÿj˜EËh`SX¿­¸ÈÆÏÅ.½×‡ş•H²Æ5RÈƒD^9Xá†ï¾Ï#ûØ^R8a¨÷Wi¸bh¨ÁSˆ~}Ç¦S¼ys’ÖsÀÄ(€‰tº’Ö9C!ŒX5°õ<Pd_Pó óå X&ŠkÅ"4gìÁÜ‡n0–ù¡‡kÅîî‘5G ÄGÎ7¢AßËÅí¯;
-†6ÎˆÁ‘9€L
-xÊúK‘>š¥% Ü´Å.Aâ‰	çıN^br ø¦Q`[ÛL÷·/Ä¿h	öº ia¢J³Øgµa	,·†á8¹FNÛg˜GòNzi’EèJ9Œ±1o˜sDRÜAÜS(üˆWÙæGµá	2"ı#ûË#E¢'ÃhÄñ8B½1ú‡QÓĞÑæ}›p¬ua{ŠprĞÏ23>›5$]ÚAûƒàD,[‘¡³=eåÊ
-v"Ş§C¿Â¬wZàÊ˜¦Ep5¹÷V‹œöö°jv\«RPÑĞ•é’¤Q½ˆ¬e¶F@'e9½‰ÆKkã4ßı+´¦[ŠÔM0<ŠÍ€…W}©#¯Şš½@FÁÓ™­-§#¿2–rÿ©è>pÅ¹.şŠçğÌ¸Â¦ÔP“"ß4Ñ£õ’LÈÁH.KÄ©lÍ†ÍùMC ÂC‘}-PîŒÃzìrbd†¦;³:&ÀDpm	ôwÇÄŞJ>Ÿ«…%gòê“G%kÓo¦üŠ)·VsNw-Í]"Y}Ú¤Î5 T,²çòãXÏ8''®&íl3ÖöX“S¼ıÀg¿@üüÏ4=ü½ú*Ü2[+äıtBLnf{c½kb	r*Ójº*1ßÕÎ¹R>×ĞıNúxËq’ì(]²oFL©ªñIÊLøÄıµš/h/è¨LI "¨ÉàÀá€6Ñ»°w}b‘?Šæ&¥D–ÚøÆ.$½{°zãôWÌRQ ûof°ú–šl¡Ç:MİÛî¿}
-~6`$ ºÉ«ëâzôßÂĞ¢,wïÆU+§¶ñï¥¦D|úû) ”·ÅşqÌm×
+// FunciÃ³n para descargar PDF
+function descargarPDF(button) {
+    const expensaItem = button.closest('.expensa-item');
+    const periodo = expensaItem.querySelector('.expensa-periodo h3').textContent;
+    
+    // Mostrar loading en el botÃ³n
+    const textoOriginal = button.textContent;
+    button.textContent = 'Descargando...';
+    button.disabled = true;
+    
+    // Simular descarga
+    setTimeout(() => {
+        // En una aplicaciÃ³n real, aquÃ­ se harÃ­a la peticiÃ³n al servidor
+        console.log(`Descargando PDF para: ${periodo}`);
+        
+        // Simular creaciÃ³n de enlace de descarga
+        const link = document.createElement('a');
+        link.href = '#'; // En una app real serÃ­a la URL del PDF
+        link.download = `expensa_${periodo.replace(' ', '_')}.pdf`;
+        
+        mostrarNotificacion(`PDF de ${periodo} descargado correctamente`, 'success');
+        
+        // Restaurar botÃ³n
+        button.textContent = textoOriginal;
+        button.disabled = false;
+    }, 2000);
+}
+
+// FunciÃ³n para mostrar comprobante
+function mostrarComprobante(button) {
+    const expensaItem = button.closest('.expensa-item');
+    const periodo = expensaItem.querySelector('.expensa-periodo h3').textContent;
+    const numeroComprobante = expensaItem.querySelector('.valor').textContent;
+    
+    // Crear modal para mostrar comprobante
+    const modal = document.createElement('div');
+    modal.classList.add('modal-overlay');
+    modal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Comprobante de Pago</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="comprobante-info">
+                    <div class="comprobante-row">
+                        <span class="label">PerÃ­odo:</span>
+                        <span class="valor">${periodo}</span>
+                    </div>
+                    <div class="comprobante-row">
+                        <span class="label">NÃºmero de comprobante:</span>
+                        <span class="valor">${numeroComprobante}</span>
+                    </div>
+                    <div class="comprobante-row">
+                        <span class="label">Estado:</span>
+                        <span class="valor estado-pagada">PAGADO</span>
+                    </div>
+                    <div class="comprobante-row">
+                        <span class="label">Fecha de procesamiento:</span>
+                        <span class="valor">${new Date().toLocaleDateString('es-ES')}</span>
+                    </div>
+                </div>
+                <div class="comprobante-actions">
+                    <button class="btn-primary">Descargar PDF</button>
+                    <button class="btn-secondary">Enviar por Email</button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Event listener para cerrar modal
+    const closeModal = modal.querySelector('.close-modal');
+    closeModal.addEventListener('click', () => {
+        modal.remove();
+    });
+    
+    // Cerrar al hacer clic fuera del modal
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.remove();
+        }
+    });
+}
+
+// FunciÃ³n para mostrar notificaciones
+function mostrarNotificacion(mensaje, tipo = 'info') {
+    const notificacion = document.createElement('div');
+    notificacion.classList.add('notificacion-toast', tipo);
+    notificacion.textContent = mensaje;
+    
+    // Estilos para la notificaciÃ³n
+    notificacion.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: ${tipo === 'success' ? '#4CAF50' : tipo === 'error' ? '#ff4444' : '#2196F3'};
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        animation: slideInRight 0.3s ease-out;
+    `;
+    
+    document.body.appendChild(notificacion);
+    
+    // Remover automÃ¡ticamente despuÃ©s de 3 segundos
+    setTimeout(() => {
+        notificacion.style.animation = 'slideOutRight 0.3s ease-out';
+        setTimeout(() => {
+            if (notificacion.parentNode) {
+                notificacion.remove();
+            }
+        }, 300);
+    }, 3000);
+}
+
+// FunciÃ³n para configurar tooltips
+function setupTooltips() {
+    const tooltipElements = document.querySelectorAll('[data-tooltip]');
+    tooltipElements.forEach(element => {
+        element.classList.add('tooltip');
+    });
+}
+
+// FunciÃ³n para exportar datos (funcionalidad adicional)
+function exportarDatos(formato = 'excel') {
+    const expensas = [];
+    const expensaItems = document.querySelectorAll('.expensa-item:not([style*="display: none"])');
+    
+    expensaItems.forEach(item => {
+        const periodo = item.querySelector('.expensa-periodo h3').textContent;
+        const monto = item.querySelector('.monto-principal').textContent;
+        const estado = item.querySelector('.estado-badge').textContent;
+        
+        expensas.push({
+            periodo,
+            monto,
+            estado
+        });
+    });
+    
+    console.log(`Exportando ${expensas.length} expensas en formato ${formato}:`, expensas);
+    mostrarNotificacion(`Datos exportados correctamente (${formato})`, 'success');
+}
+
+// Agregar estilos CSS para animaciones y modales
+const styles = `
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOutRight {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+    
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+    
+    .modal-content {
+        background: linear-gradient(135deg, #000, #333);
+        border-radius: 1rem;
+        padding: 2rem;
+        max-width: 500px;
+        width: 90%;
+        color: white;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+    
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #666;
+    }
+    
+    .modal-header h3 {
+        margin: 0;
+        font-size: 1.3rem;
+    }
+    
+    .close-modal {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 0.3rem;
+        transition: background-color 0.3s ease;
+    }
+    
+    .close-modal:hover {
+        background-color: #666;
+    }
+    
+    .comprobante-info {
+        margin-bottom: 1.5rem;
+    }
+    
+    .comprobante-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .comprobante-row:last-child {
+        border-bottom: none;
+    }
+    
+    .comprobante-row .label {
+        color: #ccc;
+    }
+    
+    .comprobante-row .valor {
+        font-weight: 600;
+        color: white;
+    }
+    
+    .estado-pagada {
+        color: #4CAF50 !important;
+    }
+    
+    .comprobante-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-end;
+    }
+    
+    .loading-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 1rem;
+    }
+`;
+
+// Agregar los estilos al documento
+if (!document.getElementById('expensas-dynamic-styles')) {
+    const styleSheet = document.createElement('style');
+    styleSheet.id = 'expensas-dynamic-styles';
+    styleSheet.textContent = styles;
+    document.head.appendChild(styleSheet);
+}
+
+// Funciones de utilidad
+const ExpensasUtils = {
+    formatearMonto: function(monto) {
+        return new Intl.NumberFormat('es-AR', {
+            style: 'currency',
+            currency: 'ARS'
+        }).format(monto);
+    },
+    
+    formatearFecha: function(fecha) {
+        return new Date(fecha).toLocaleDateString('es-ES', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        });
+    },
+    
+    calcularDiasVencimiento: function(fechaVencimiento) {
+        const hoy = new Date();
+        const vencimiento = new Date(fechaVencimiento);
+        const diferencia = Math.ceil((vencimiento - hoy) / (1000 * 60 * 60 * 24));
+        return diferencia;
+    }
+};
+
+// Exponer funciones globales para uso en HTML
+window.toggleDetalles = toggleDetalles;
+window.aplicarFiltros = aplicarFiltros;
+window.limpiarFiltros = limpiarFiltros;
+window.exportarDatos = exportarDatos;

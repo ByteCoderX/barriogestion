@@ -1,6 +1,10 @@
 <?php
 define('APP_BASE_PATH', realpath(__DIR__ . '/../../../')); 
+<<<<<<< HEAD
+//require APP_BASE_PATH . "/Utils/auth/validator.php";
+=======
 // require APP_BASE_PATH . "/Utils/auth/validator.php";
+>>>>>>> 352e706ea61a22cca553e65e8cb5f798619835ed
 
 $baseUrl = '/barriogestion/frontend/app/dashboard/Admin';
 ?>
@@ -27,9 +31,8 @@ $baseUrl = '/barriogestion/frontend/app/dashboard/Admin';
             <div class="dropdown">
                 <a class="menu-item">Gestión Lotes</a>
                 <div class="dropdown-content">
-                    <a href="<?= $baseUrl ?>/modules/Gestion/espacios/ReservasEspacios.php">Gestionar Espacios</a>
-                    <a href="<?= $baseUrl ?>/modules/Gestion/lotes/lotes.php">Gestionar Lotes</a>
-                    <a href="<?= $baseUrl ?>/modules/Gestion/usuarios/Usuarios.php">Gestionar Usuarios</a>
+                    <a href="<?= $baseUrl ?>/modules/GestionLotes/espacios/ReservasEspacios.php">Gestionar Espacios</a>
+                    <a href="<?= $baseUrl ?>/modules/GestionLotes/usuarios/Usuarios.php">Gestionar Usuarios</a>
                 </div>
             </div>
             <div class="dropdown">

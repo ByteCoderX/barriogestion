@@ -330,14 +330,14 @@ function cargarMovimientos() {
             </td>
             <td>${formatearMoneda(mov.saldo)}</td>
             <td class="acciones">
-                <button class="btn-icon" onclick="verDetalle(${mov.id})" title="Ver detalle">
-                    <img src="./assets/icons/eye.svg" alt="Ver">
+                <button class="btn-accion btn-ver" onclick="verDetalle(${mov.id})" title="Ver detalle">
+                    Ver
                 </button>
-                <button class="btn-icon" onclick="editarMovimiento(${mov.id})" title="Editar">
-                    <img src="./assets/icons/edit.svg" alt="Editar">
+                <button class="btn-accion btn-editar" onclick="editarMovimiento(${mov.id})" title="Editar">
+                    Editar
                 </button>
-                <button class="btn-icon" onclick="eliminarMovimiento(${mov.id})" title="Eliminar">
-                    <img src="./assets/icons/trash.svg" alt="Eliminar">
+                <button class="btn-accion btn-eliminar" onclick="eliminarMovimiento(${mov.id})" title="Eliminar">
+                    Eliminar
                 </button>
             </td>
         `;
