@@ -1,8 +1,8 @@
 <?php
 define('APP_BASE_PATH', realpath(__DIR__ . '/../../../')); 
-require APP_BASE_PATH . "/Utils/auth/validator.php";
+// require APP_BASE_PATH . "/Utils/auth/validator.php";
 
-$baseUrl = '/tesisde/app/dashboard/Admin';
+$baseUrl = '/barriogestion/frontend/app/dashboard/Admin';
 ?>
 <header>
     <div class="izq">
@@ -39,7 +39,8 @@ $baseUrl = '/tesisde/app/dashboard/Admin';
                     <a href="<?= $baseUrl ?>/modules/Seguridad/Historial/HistorialAccesos.php">Historial de Accesos</a>
                 </div>
             </div>
-            <a href="#" class="menu-item">Configuración</a>
+            
+                    <a href="<?= $baseUrl ?>/modules/Configuracion/Configuracion.php" class="menu-item">Configuración</a>
         </nav>
     </div>
 
