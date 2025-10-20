@@ -20,19 +20,19 @@
             <!-- Sección de acciones rápidas -->
             <div class="acciones-section">
                 <button class="btn-primary" id="nuevoMovimientoBtn">
-                    <img src="../../../assets/icons/iconmas.png" alt="Nuevo">
+                    <img src="../../../assets/icons/iconmas.svg" alt="Nuevo">
                     Nuevo Movimiento
                 </button>
                 <button class="btn-secondary" id="transferirFondosBtn">
-                    <img src="../../../assets/icons/actualizardatos.png" alt="Transferir">
+                    <img src="../../../assets/icons/actualizardatos.svg" alt="Transferir">
                     Transferir entre Fondos
                 </button>
                 <button class="btn-secondary" id="exportarFondosBtn">
-                    <img src="../../../assets/icons/download.svg" alt="Exportar">
+                    <img src="../../../assets/icons/export.svg" alt="Exportar">
                     Exportar Movimientos
                 </button>
                 <button class="btn-secondary" id="generarReporteBtn">
-                    <img src="../../../assets/icons/assets/icons/reportes.png" alt="Reporte">
+                    <img src="../../../assets/icons/expensas.svg" alt="Reporte">
                     Generar Reporte
                 </button>
             </div>
