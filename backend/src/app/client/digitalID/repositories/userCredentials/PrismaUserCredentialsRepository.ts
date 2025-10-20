@@ -17,7 +17,6 @@ export class PrismaUserCredentialsRepository
         email: true,
         password: true,
         admin: true,
-        createdAt: true,
       },
     })
 
@@ -30,7 +29,6 @@ export class PrismaUserCredentialsRepository
         email: dbResult.email,
         password: dbResult.password,
         admin: dbResult.admin,
-        createdAt: dbResult.createdAt,
       }
 
     return resultFormatted

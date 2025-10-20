@@ -14,6 +14,7 @@ export class PrismaUserMetaRepository implements UserMetaRepository {
         contact: true,
         address: true,
         id: true,
+        createdAt: true,
       },
     })
 
@@ -25,6 +26,7 @@ export class PrismaUserMetaRepository implements UserMetaRepository {
         contact: dbResult.contact ?? 'Ninguno',
         address: dbResult.address ?? 'Ninguna',
         id: String(dbResult.id),
+        createdAt: dbResult.createdAt,
       }
 
     return resultFormatted ?? null
