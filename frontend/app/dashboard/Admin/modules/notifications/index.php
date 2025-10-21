@@ -5,16 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Notificaciones</title>
     <link rel="stylesheet" href="notifications.css">
+    <link rel="stylesheet" href="../../index.css">
 </head>
 <body>
- 
-
-
-
-        <!-- Agregar el hader de admin -->
-
-
-
+    <?php include '../../includes/header.php'; ?>
 
     <nav class="navbar">
         <h1>Sistema de Notificaciones</h1>
