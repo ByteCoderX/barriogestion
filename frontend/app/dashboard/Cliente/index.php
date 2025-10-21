@@ -59,7 +59,7 @@
                         <img src="./assets/icons/reservas.png" alt="Reservas">
                 </div>
                 <div class="ad-info">
-                    <a href="Servicios/ReservasEC/reservas.php">
+                    <a href="modules/Servicios/ReservasEC/reservas.php">
                         <h3>Reservar Espacios</h3>
                         <p>Canchas, quincho, salón</p>
                     </a>
