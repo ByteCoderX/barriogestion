@@ -581,3 +581,15 @@ main {
         display: none;
     }
 }
+.ad-container a.ad-tarjeta {
+  display: block;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+.ad-container a.ad-tarjeta:visited,
+.ad-container a.ad-tarjeta:link,
+.ad-container a.ad-tarjeta:active,
+.ad-container a.ad-tarjeta:hover {
+  color: inherit !important;
+  text-decoration: none !important;
+}
