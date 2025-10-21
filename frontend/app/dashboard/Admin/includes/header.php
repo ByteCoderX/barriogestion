@@ -1,6 +1,6 @@
 <?php
 define('APP_BASE_PATH', realpath(__DIR__ . '/../../../')); 
-require APP_BASE_PATH . "/Utils/auth/validator.php";
+require APP_BASE_PATH . "/Utils/auth/validator.js";
 
 $baseUrl = '/tesisde/app/dashboard/Admin';
 ?>
@@ -45,7 +45,7 @@ $baseUrl = '/tesisde/app/dashboard/Admin';
     </div>
 
     <div class="derecha">
-        <a href="<?= $baseUrl ?>/notificaciones.php" class="icono-header">
+        <a href="<?= $baseUrl ?>/modules/notifications/index.php" class="icono-header">
             <img src="<?= $baseUrl ?>/assets/icons/notificacion.png" alt="notificaciones">
             <span class="notification-badge" id="notificationCount">3</span>
         </a>
@@ -125,7 +125,7 @@ $baseUrl = '/tesisde/app/dashboard/Admin';
         </div>
 
         <div class="mobile-icon-group">
-            <a href="<?= $baseUrl ?>/modules/Notificaciones/Notificacion.php" class="mobile-icon-item">
+            <a href="<?= $baseUrl ?>/modules/notifications/index.php" class="mobile-icon-item">
                 <img src="<?= $baseUrl ?>/assets/icons/notificacion.png" alt="Notificaciones" width="24" height="24">
                 <span>Notificaciones</span>
             </a>

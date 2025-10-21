@@ -162,6 +162,135 @@
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
         }
+
+        import { 
+            reclamos, 
+            reclamoActivo, 
+            contadorReclamos, 
+            cargarDatos, 
+            guardarDatos, 
+            filtrarReclamosAPI, 
+            crearReclamoAPI 
+        } from './reclamos.js';
+
+        // -----------------------
+        // UI Functions
+        // -----------------------
+        export function renderizarListaReclamos() {
+            const lista = document.getElementById('complaintsList');
+            if (!lista) return;
+
+            if (reclamos.length === 0) {
+                lista.innerHTML = '<div>No hay reclamos registrados</div>';
+                return;
+            }
+
+            lista.innerHTML = reclamos.map(reclamo => `
+                <div class="${reclamoActivo?.id === reclamo.id ? 'active' : ''}" 
+                    onclick="seleccionarReclamo('${reclamo.id}')">
+                    <div>${reclamo.id}</div>
+                    <div>${formatearFechaCorta(reclamo.fechaCreacion)}</div>
+                    <div>${reclamo.titulo}</div>
+                </div>
+            `).join('');
+        }
+
+        export function renderizarChat() {
+            const chatContent = document.getElementById('chatContent');
+            if (!chatContent) return;
+
+            if (!reclamoActivo) {
+                chatContent.innerHTML = `<button onclick="abrirModalNuevoReclamo()">Crear Nueva Queja</button>`;
+                return;
+            }
+
+            chatContent.innerHTML = `
+                <div>
+                    <div>${reclamoActivo.titulo}</div>
+                    <div>${reclamoActivo.id}</div>
+                </div>
+                <div id="chatMessages">
+                    ${reclamoActivo.mensajes.map(m => `<div>${m.contenido}</div>`).join('')}
+                </div>
+                <div>
+                    <textarea id="messageInput" onkeydown="manejarEnterEnMensaje(event)" oninput="ajustarAlturaTextarea(this)"></textarea>
+                    <button onclick="enviarMensaje()">Enviar</button>
+                </div>
+            `;
+            setTimeout(() => scrollToBottom(), 100);
+        }
+
+        export function abrirModalNuevoReclamo() {
+            document.getElementById('modalNuevoReclamo').style.display = 'block';
+        }
+        export function cerrarModal() {
+            document.getElementById('modalNuevoReclamo').style.display = 'none';
+            document.getElementById('formNuevoReclamo').reset();
+        }
+
+        export function mostrarNotificacion(mensaje) {
+            const notificacion = document.createElement('div');
+            notificacion.className = 'notification';
+            notificacion.textContent = mensaje;
+            document.body.appendChild(notificacion);
+
+            setTimeout(() => {
+                notificacion.style.animation = 'slideInRight 0.3s ease reverse';
+                setTimeout(() => {
+                    if (document.body.contains(notificacion)) document.body.removeChild(notificacion);
+                }, 300);
+            }, 3000);
+        }
+
+        export function scrollToBottom() {
+            const chatMessages = document.getElementById('chatMessages');
+            if (chatMessages) chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        export function ajustarAlturaTextarea(textarea) {
+            textarea.style.height = 'auto';
+            textarea.style.height = Math.min(textarea.scrollHeight, 120) + 'px';
+        }
+
+        export function formatearFechaCorta(fecha) {
+            const date = new Date(fecha);
+            const ahora = new Date();
+            const diff = ahora - date;
+
+            if (diff < 86400000) return date.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
+            if (diff < 604800000) return date.toLocaleDateString('es-AR', { weekday: 'short' });
+            return date.toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit' });
+        }
+
+        // -----------------------
+        // Initialization
+        // -----------------------
+        document.addEventListener('DOMContentLoaded', () => {
+            cargarDatos();
+            renderizarListaReclamos();
+
+            const form = document.getElementById('formNuevoReclamo');
+            if (form) form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                try {
+                    const ticket = await crearReclamoAPI(new FormData(form));
+                    reclamos.unshift(ticket);
+                    guardarDatos();
+                    renderizarListaReclamos();
+                    cerrarModal();
+                    mostrarNotificacion('Reclamo creado con éxito');
+                } catch (error) {
+                    console.error(error);
+                    mostrarNotificacion('Error al crear el reclamo');
+                }
+            });
+        });
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            const modal = document.getElementById('modalNuevoReclamo');
+            if (event.target === modal) cerrarModal();
+        };
     </script>
 </body>
 </html>
