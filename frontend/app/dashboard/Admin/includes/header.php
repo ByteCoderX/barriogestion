@@ -28,7 +28,7 @@ $baseUrl = '/tesisde/app/dashboard/Admin';
                 <a class="menu-item">Gestión Del Barrio</a>
                 <div class="dropdown-content">
                     <a href="<?= $baseUrl ?>/modules/Gestion/espacios/ReservasEspacios.php">Gestionar Espacios</a>
-                    <a href="<?= $baseUrl ?>/modules/Gestion/lotes/lote.php">Gestionar lotes</a>
+                    <a href="<?= $baseUrl ?>/modules/Gestion/lotes/lotes.php">Gestionar lotes</a>
                     <a href="<?= $baseUrl ?>/modules/Gestion/usuarios/Usuarios.php">Gestionar Usuarios</a>
                 </div>
             </div>
