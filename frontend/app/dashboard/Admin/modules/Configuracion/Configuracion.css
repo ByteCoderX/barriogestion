@@ -575,3 +575,9 @@ p {
   transition-duration: 0.3s;
   transition-timing-function: ease;
 }
+img[src$=".svg"] {
+  width: 30px;
+  height: 30px;
+  filter: invert(1);
+
+}
