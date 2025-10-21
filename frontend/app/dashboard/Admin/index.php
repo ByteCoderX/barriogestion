@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barrio Gestion - Dashboard</title>
-    <link rel="stylesheet" href="index.css?=v14">
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="assets/css/sidebar-right.css?=v5">
 
 </head>
@@ -39,7 +39,7 @@
                 <h2>Accesos Directos</h2>
             </div>
             <div class="ad-container">
-                <div class="ad-tarjeta">
+                <a href="modules/MiBarrio/expensas/ExpensasAdmin.php" class="ad-tarjeta">
                     <div class="ad-icon">
                         <img src="./assets/icons/expensas.svg" alt="Expensas">
                     </div>
@@ -47,8 +47,9 @@
                         <h3>Generar Expensas</h3>
                         <p>Crear liquidación del mes</p>
                     </div>
-                </div>
-                <div class="ad-tarjeta">
+                </a>
+
+                <a href="modules/MiBarrio/pagos/Ges-Pagos.php" class="ad-tarjeta">
                     <div class="ad-icon">
                         <img src="./assets/icons/pagos.svg" alt="Pagos">
                     </div>
@@ -56,8 +57,9 @@
                         <h3>Registrar Pago</h3>
                         <p>Añadir nuevo pago</p>
                     </div>
-                </div>
-                <div class="ad-tarjeta">
+                </a>
+
+                <a href="modules/MiBarrio/gastos/Ges-Gastos.php" class="ad-tarjeta">
                     <div class="ad-icon">
                         <img src="./assets/icons/gastos.svg" alt="Gastos">
                     </div>
@@ -65,9 +67,9 @@
                         <h3>Registrar Gasto</h3>
                         <p>Añadir nuevo gasto</p>
                     </div>
-                </div>
+                </a>
 
-                <div class="ad-tarjeta">
+                <a href="modules/Gestion/usuarios/Usuarios.php" class="ad-tarjeta">
                     <div class="ad-icon">
                         <img src="./assets/icons/usuarios-alt.svg" alt="Usuarios">
                     </div>
@@ -75,8 +77,9 @@
                         <h3>Nuevo Residente</h3>
                         <p>Añadir nuevo propietario</p>
                     </div>
-                </div>
+                </a>
             </div>
+
             
             <div class="seccion-titulo">
                 <h2>Estadísticas del Barrio</h2>
