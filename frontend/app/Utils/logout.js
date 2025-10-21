@@ -1,12 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => {
+import { baseURL } from '../config/config';
 
+document.addEventListener('DOMContentLoaded', () => {
     async function logoutFunction() {
         try {
-            const resSettings = await fetch('../../settings.json');
-            const settings = await resSettings.json();
-            const apiUrl = settings.API_URL;
-
-            await fetch(`${apiUrl}/bg/v1/auth/logout`, {
+            await fetch(`${baseURL}/bg/v1/auth/logout`, {
                 method: 'POST',
                 headers: { 'x-api-key': 'hola' },
                 credentials: 'include'
@@ -16,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         localStorage.removeItem('userdata');
-        window.location.href = "/tesisde/app/login.html";
+        window.location.href = "/barriogestion/frontend/app/login.html";
     }
 
     const logoutDesktop = document.getElementById('logoutBtnDesktop');
