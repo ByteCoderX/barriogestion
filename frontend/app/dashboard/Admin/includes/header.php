@@ -45,7 +45,7 @@ $baseUrl = '/tesisde/app/dashboard/Admin';
     </div>
 
     <div class="derecha">
-        <a href="<?= $baseUrl ?>/notificaciones.php" class="icono-header">
+        <a href="<?= $baseUrl ?>/modules/notifications/" class="icono-header">
             <img src="<?= $baseUrl ?>/assets/icons/notificacion.png" alt="notificaciones">
             <span class="notification-badge" id="notificationCount">3</span>
         </a>
