@@ -1,0 +1,901 @@
+/* Estilos para la página de pago de expensas */
+
+html,
+body {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+    width: 8px;
+    background-color: #e0e0e0;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #999;
+    border-radius: 10px;
+}
+
+* {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Header de pago */
+.pago-header {
+    padding: 0.5rem;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+body.theme-light .pago-header {
+    color: #344E41;
+}
+
+body.theme-nature .pago-header {
+    color: #344E41;
+}
+
+.header-content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.header-content p {
+    font-size: 1rem;
+    opacity: 0.7;
+    margin-bottom: 0.3rem;
+}
+
+.breadcrumb {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.breadcrumb a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+body.theme-light .breadcrumb a {
+    color: #000000;
+}
+
+body.theme-nature .breadcrumb a {
+    color: #000000;
+}
+
+.breadcrumb a:hover {
+    opacity: 0.7;
+}
+
+/* Tarjeta de información de expensa */
+.expensa-info-card {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(131, 131, 131, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.623);
+    margin-bottom: 2rem;
+}
+
+body.theme-light .expensa-info-card {
+    background: rgba(227, 213, 202, 0.8);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+body.theme-nature .expensa-info-card {
+    background: rgba(58, 90, 64, 0.8);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.theme-light .info-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.theme-nature .info-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.info-header h2 {
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+body.theme-light .info-header h2 {
+    color: #344E41;
+}
+
+body.theme-nature .info-header h2 {
+    color: #DAD7CD;
+}
+
+.estado-badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.estado-badge.pendiente {
+    background-color: #ff4444;
+    color: white;
+}
+
+.info-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.theme-light .info-row {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.theme-nature .info-row {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-row .label {
+    color: #aaaaaa;
+    font-weight: 500;
+}
+
+body.theme-light .info-row .label {
+    color: #588157;
+}
+
+body.theme-nature .info-row .label {
+    color: #A7C4BC;
+}
+
+.info-row .value {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+body.theme-light .info-row .value {
+    color: #344E41;
+}
+
+body.theme-nature .info-row .value {
+    color: #DAD7CD;
+}
+
+.info-row.total-row {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #4CAF50;
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+body.theme-light .info-row.total-row {
+    color: #588157;
+    border-top: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+body.theme-nature .info-row.total-row {
+    color: #CCE3DE;
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+body.theme-light .info-row.total-row .label,
+body.theme-light .info-row.total-row .value {
+    color: #588157;
+}
+
+body.theme-nature .info-row.total-row .label,
+body.theme-nature .info-row.total-row .value {
+    color: #CCE3DE;
+}
+
+/* Tarjeta de datos bancarios */
+.datos-bancarios-card {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(131, 131, 131, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.623);
+    margin-bottom: 2rem;
+}
+
+body.theme-light .datos-bancarios-card {
+    background: rgba(227, 213, 202, 0.8);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+body.theme-nature .datos-bancarios-card {
+    background: rgba(58, 90, 64, 0.8);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.theme-light .card-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.theme-nature .card-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card-header h2 {
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+body.theme-light .card-header h2 {
+    color: #344E41;
+}
+
+body.theme-nature .card-header h2 {
+    color: #DAD7CD;
+}
+
+.btn-copiar-todo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+body.theme-light .btn-copiar-todo {
+    background-color: #588157;
+}
+
+body.theme-nature .btn-copiar-todo {
+    background-color: #CCE3DE;
+    color: #6B9080;
+}
+
+.btn-copiar-todo:hover {
+    background-color: #555;
+}
+
+body.theme-light .btn-copiar-todo:hover {
+    background-color: #385238;
+}
+
+body.theme-nature .btn-copiar-todo:hover {
+    background-color: #EAF4F4;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.dato-bancario {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+body.theme-light .dato-bancario {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+body.theme-nature .dato-bancario {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.dato-bancario:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+body.theme-light .dato-bancario:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+body.theme-nature .dato-bancario:hover {
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.dato-bancario.destacado {
+    background: rgba(76, 175, 80, 0.15);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+body.theme-light .dato-bancario.destacado {
+    background: rgba(88, 129, 87, 0.15);
+    border: 1px solid rgba(88, 129, 87, 0.3);
+}
+
+body.theme-nature .dato-bancario.destacado {
+    background: rgba(204, 227, 222, 0.15);
+    border: 1px solid rgba(204, 227, 222, 0.3);
+}
+
+.dato-label {
+    font-size: 0.9rem;
+    color: #aaaaaa;
+    font-weight: 500;
+}
+
+body.theme-light .dato-label {
+    color: #588157;
+}
+
+body.theme-nature .dato-label {
+    color: #A7C4BC;
+}
+
+.dato-valor {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.dato-valor span {
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+body.theme-light .dato-valor span {
+    color: #344E41;
+}
+
+body.theme-nature .dato-valor span {
+    color: #DAD7CD;
+}
+
+.dato-bancario.destacado .dato-valor span {
+    font-size: 1.3rem;
+    color: #4CAF50;
+}
+
+body.theme-light .dato-bancario.destacado .dato-valor span {
+    color: #588157;
+}
+
+body.theme-nature .dato-bancario.destacado .dato-valor span {
+    color: #CCE3DE;
+}
+
+.btn-copiar {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    padding: 0.4rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.theme-light .btn-copiar {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+body.theme-nature .btn-copiar {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-copiar svg {
+    stroke: #ffffff;
+}
+
+body.theme-light .btn-copiar svg {
+    stroke: #344E41;
+}
+
+body.theme-nature .btn-copiar svg {
+    stroke: #DAD7CD;
+}
+
+.btn-copiar:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+body.theme-light .btn-copiar:hover {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+body.theme-nature .btn-copiar:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Tarjeta de comprobante */
+.comprobante-card {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(131, 131, 131, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.623);
+    margin-bottom: 2rem;
+}
+
+body.theme-light .comprobante-card {
+    background: rgba(227, 213, 202, 0.8);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+body.theme-nature .comprobante-card {
+    background: rgba(58, 90, 64, 0.8);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.comprobante-card h2 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+body.theme-light .comprobante-card h2 {
+    color: #344E41;
+}
+
+body.theme-nature .comprobante-card h2 {
+    color: #DAD7CD;
+}
+
+.required {
+    color: #ff4444;
+    margin-left: 0.3rem;
+}
+
+.card-subtitle {
+    font-size: 0.9rem;
+    color: #aaaaaa;
+    margin-bottom: 1.5rem;
+}
+
+body.theme-light .card-subtitle {
+    color: #588157;
+}
+
+body.theme-nature .card-subtitle {
+    color: #A7C4BC;
+}
+
+/* Área de carga */
+.upload-area {
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    border-radius: 0.8rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+body.theme-light .upload-area {
+    border: 2px dashed rgba(0, 0, 0, 0.3);
+}
+
+body.theme-nature .upload-area {
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+}
+
+.upload-area:hover {
+    border-color: rgba(76, 175, 80, 0.5);
+    background: rgba(76, 175, 80, 0.05);
+}
+
+body.theme-light .upload-area:hover {
+    border-color: rgba(88, 129, 87, 0.5);
+    background: rgba(88, 129, 87, 0.05);
+}
+
+body.theme-nature .upload-area:hover {
+    border-color: rgba(204, 227, 222, 0.5);
+    background: rgba(204, 227, 222, 0.05);
+}
+
+.upload-area.drag-over {
+    border-color: #4CAF50;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+body.theme-light .upload-area.drag-over {
+    border-color: #588157;
+    background: rgba(88, 129, 87, 0.1);
+}
+
+body.theme-nature .upload-area.drag-over {
+    border-color: #CCE3DE;
+    background: rgba(204, 227, 222, 0.1);
+}
+
+.upload-content svg {
+    stroke: #ffffff;
+    margin-bottom: 1rem;
+}
+
+body.theme-light .upload-content svg {
+    stroke: #344E41;
+}
+
+body.theme-nature .upload-content svg {
+    stroke: #DAD7CD;
+}
+
+.upload-content h3 {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+body.theme-light .upload-content h3 {
+    color: #344E41;
+}
+
+body.theme-nature .upload-content h3 {
+    color: #DAD7CD;
+}
+
+.upload-content p {
+    font-size: 0.9rem;
+    color: #aaaaaa;
+    margin-bottom: 0.5rem;
+}
+
+body.theme-light .upload-content p {
+    color: #588157;
+}
+
+body.theme-nature .upload-content p {
+    color: #A7C4BC;
+}
+
+.file-types {
+    font-size: 0.8rem;
+    color: #888888;
+}
+
+body.theme-light .file-types {
+    color: #3A5A40;
+}
+
+body.theme-nature .file-types {
+    color: #588157;
+}
+
+/* Vista previa del archivo */
+.file-preview {
+    margin-top: 1.5rem;
+}
+
+.preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(76, 175, 80, 0.15);
+    border-radius: 0.5rem 0.5rem 0 0;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+body.theme-light .preview-header {
+    background: rgba(88, 129, 87, 0.15);
+    border: 1px solid rgba(88, 129, 87, 0.3);
+}
+
+body.theme-nature .preview-header {
+    background: rgba(204, 227, 222, 0.15);
+    border: 1px solid rgba(204, 227, 222, 0.3);
+}
+
+.file-name {
+    font-size: 0.9rem;
+    color: #4CAF50;
+    font-weight: 600;
+}
+
+body.theme-light .file-name {
+    color: #588157;
+}
+
+body.theme-nature .file-name {
+    color: #CCE3DE;
+}
+
+.btn-remove {
+    background: rgba(255, 68, 68, 0.2);
+    border: none;
+    padding: 0.4rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-remove svg {
+    stroke: #ff4444;
+}
+
+.btn-remove:hover {
+    background: rgba(255, 68, 68, 0.3);
+}
+
+.preview-body {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0 0 0.5rem 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: none;
+}
+
+body.theme-light .preview-body {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: none;
+}
+
+body.theme-nature .preview-body {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: none;
+}
+
+.preview-body img {
+    max-width: 100%;
+    border-radius: 0.5rem;
+}
+
+.pdf-preview {
+    padding: 2rem;
+    text-align: center;
+    color: #ffffff;
+}
+
+body.theme-light .pdf-preview {
+    color: #344E41;
+}
+
+body.theme-nature .pdf-preview {
+    color: #DAD7CD;
+}
+
+.pdf-preview svg {
+    stroke: #ffffff;
+    margin-bottom: 1rem;
+}
+
+body.theme-light .pdf-preview svg {
+    stroke: #344E41;
+}
+
+body.theme-nature .pdf-preview svg {
+    stroke: #DAD7CD;
+}
+
+/* Botones de acción */
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.btn-cancelar,
+.btn-confirmar {
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-cancelar {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #666;
+}
+
+body.theme-light .btn-cancelar {
+    color: #344E41;
+    border: 1px solid #588157;
+}
+
+body.theme-nature .btn-cancelar {
+    color: #DAD7CD;
+    border: 1px solid #CCE3DE;
+}
+
+.btn-cancelar:hover {
+    background-color: #666;
+}
+
+body.theme-light .btn-cancelar:hover {
+    background-color: #A6A2A2;
+    color: white;
+}
+
+body.theme-nature .btn-cancelar:hover {
+    background-color: #A6A2A2;
+    color: white;
+}
+
+.btn-confirmar {
+    background-color: #4CAF50;
+    color: white;
+}
+
+body.theme-light .btn-confirmar {
+    background-color: #588157;
+}
+
+body.theme-nature .btn-confirmar {
+    background-color: #CCE3DE;
+    color: #6B9080;
+}
+
+.btn-confirmar:hover {
+    background-color: #45a049;
+}
+
+body.theme-light .btn-confirmar:hover {
+    background-color: #385238;
+}
+
+body.theme-nature .btn-confirmar:hover {
+    background-color: #EAF4F4;
+}
+
+.btn-confirmar:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+body.theme-light .btn-confirmar:disabled {
+    background-color: #A6A2A2;
+}
+
+body.theme-nature .btn-confirmar:disabled {
+    background-color: #A6A2A2;
+    color: #ffffff;
+}
+
+.btn-confirmar:disabled:hover {
+    background-color: #666;
+}
+
+body.theme-light .btn-confirmar:disabled:hover {
+    background-color: #A6A2A2;
+}
+
+body.theme-nature .btn-confirmar:disabled:hover {
+    background-color: #A6A2A2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+
+    .pago-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .expensa-info-card,
+    .datos-bancarios-card,
+    .comprobante-card {
+        padding: 1.5rem;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .btn-copiar-todo {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .dato-bancario {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .dato-valor {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .action-buttons {
+        flex-direction: column-reverse;
+    }
+
+    .btn-cancelar,
+    .btn-confirmar {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .upload-area {
+        padding: 2rem 1rem;
+    }
+
+    .upload-content h3 {
+        font-size: 1rem;
+    }
+}

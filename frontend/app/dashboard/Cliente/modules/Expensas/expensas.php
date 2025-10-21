@@ -39,7 +39,7 @@
                         <div class="vencimiento">Vence: 10 de Julio 2025</div>
                     </div>
                     <div class="card-actions">
-                        <a href="pagar-expensas.php" class="btn-pagar">Pagar Ahora</a>
+                        <a href="PagarExpensas/PagarExpensas.php" class="btn-pagar">Pagar Ahora</a>
                         <button class="btn-comprobante" data-tipo="actual">Ver Detalle</button>
                     </div>
                 </div>
@@ -252,7 +252,7 @@ function mostrarDetalleExpensa(tipo) {
                 
                 <div class="modal-actions">
                     ${tipo === 'actual' ? 
-                        '<a href="pagar-expensas.php" class="btn-pagar-modal">Pagar Ahora</a>' : 
+                        '<a href="PagarExpensas/PagarExpensas.php" class="btn-pagar-modal">Pagar Ahora</a>' : 
                         '<button class="btn-descargar" onclick="descargarComprobante()">Descargar Comprobante</button>'
                     }
                     <button class="btn-cerrar-secundario" onclick="cerrarModal()">Cerrar</button>
@@ -282,12 +282,245 @@ function cerrarModal() {
 }
 
 // Descargar comprobante
+// Función mejorada para descargar comprobante
+// Reemplaza la función descargarComprobante() en expensas.php
+
 function descargarComprobante() {
-    showAlert('Descargando comprobante...', 'info');
+    showAlert('Generando comprobante...', 'info');
+    
+    // Obtener datos de la expensa anterior (pagada)
+    const datos = expensasData.anterior;
+    
+    // Crear el contenido HTML del comprobante
+    const comprobanteHTML = `
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+                body {
+                    font-family: Arial, sans-serif;
+                    padding: 40px;
+                    background: white;
+                    color: #333;
+                }
+                .header {
+                    text-align: center;
+                    margin-bottom: 30px;
+                    border-bottom: 3px solid #4CAF50;
+                    padding-bottom: 20px;
+                }
+                .header h1 {
+                    color: #4CAF50;
+                    font-size: 28px;
+                    margin-bottom: 10px;
+                }
+                .header p {
+                    color: #666;
+                    font-size: 14px;
+                }
+                .badge {
+                    display: inline-block;
+                    background: #4CAF50;
+                    color: white;
+                    padding: 8px 20px;
+                    border-radius: 20px;
+                    font-weight: bold;
+                    margin: 20px 0;
+                }
+                .info-section {
+                    margin: 30px 0;
+                    padding: 20px;
+                    background: #f9f9f9;
+                    border-radius: 8px;
+                }
+                .info-section h2 {
+                    color: #333;
+                    font-size: 18px;
+                    margin-bottom: 15px;
+                    border-bottom: 2px solid #4CAF50;
+                    padding-bottom: 10px;
+                }
+                .info-row {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 0;
+                    border-bottom: 1px solid #ddd;
+                }
+                .info-row:last-child {
+                    border-bottom: none;
+                }
+                .info-label {
+                    font-weight: bold;
+                    color: #666;
+                }
+                .info-value {
+                    color: #333;
+                }
+                .table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin: 20px 0;
+                }
+                .table th {
+                    background: #4CAF50;
+                    color: white;
+                    padding: 12px;
+                    text-align: left;
+                    font-weight: bold;
+                }
+                .table td {
+                    padding: 10px 12px;
+                    border-bottom: 1px solid #ddd;
+                }
+                .table tbody tr:hover {
+                    background: #f5f5f5;
+                }
+                .table tfoot td {
+                    background: #f0f0f0;
+                    font-weight: bold;
+                    font-size: 16px;
+                    color: #4CAF50;
+                    padding: 15px 12px;
+                }
+                .total-amount {
+                    text-align: center;
+                    margin: 30px 0;
+                    padding: 20px;
+                    background: #e8f5e9;
+                    border-radius: 8px;
+                }
+                .total-amount h3 {
+                    color: #4CAF50;
+                    font-size: 24px;
+                    margin-bottom: 10px;
+                }
+                .total-amount .amount {
+                    font-size: 36px;
+                    font-weight: bold;
+                    color: #2e7d32;
+                }
+                .footer {
+                    margin-top: 40px;
+                    text-align: center;
+                    padding-top: 20px;
+                    border-top: 2px solid #ddd;
+                    color: #666;
+                    font-size: 12px;
+                }
+                .qr-code {
+                    text-align: center;
+                    margin: 20px 0;
+                }
+                .transaction-box {
+                    background: #fff3cd;
+                    padding: 15px;
+                    border-radius: 8px;
+                    border-left: 4px solid #ffc107;
+                    margin: 20px 0;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h1>COMPROBANTE DE PAGO</h1>
+                <p>Barrio Gestión - Administración de Expensas</p>
+                <div class="badge">PAGADA</div>
+            </div>
+
+            <div class="info-section">
+                <h2>Información del Pago</h2>
+                <div class="info-row">
+                    <span class="info-label">Período:</span>
+                    <span class="info-value">${datos.mes}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Fecha de Emisión:</span>
+                    <span class="info-value">${datos.fechaEmision}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Fecha de Vencimiento:</span>
+                    <span class="info-value">${datos.fechaVencimiento}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Fecha de Pago:</span>
+                    <span class="info-value">${datos.fechaPago}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Método de Pago:</span>
+                    <span class="info-value">${datos.metodoPago}</span>
+                </div>
+            </div>
+
+            <div class="transaction-box">
+                <strong>Número de Transacción:</strong> ${datos.numeroTransaccion}
+            </div>
+
+            <div class="info-section">
+                <h2>Detalle de Conceptos</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Concepto</th>
+                            <th style="text-align: right;">Monto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${datos.detalle.map(item => `
+                            <tr>
+                                <td>${item.concepto}</td>
+                                <td style="text-align: right;">$${item.monto.toLocaleString('es-AR')}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>TOTAL</td>
+                            <td style="text-align: right;">$${datos.monto.toLocaleString('es-AR')}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div class="total-amount">
+                <h3>Monto Total Abonado</h3>
+                <div class="amount">$${datos.monto.toLocaleString('es-AR')}</div>
+            </div>
+
+            <div class="footer">
+                <p><strong>Barrio Gestión</strong></p>
+                <p>Administración de Consorcios y Expensas</p>
+                <p>Este comprobante certifica el pago de las expensas correspondientes al período indicado.</p>
+                <p style="margin-top: 10px;">Documento generado el ${new Date().toLocaleString('es-AR')}</p>
+            </div>
+        </body>
+        </html>
+    `;
+
+    // Crear un Blob con el contenido HTML
+    const blob = new Blob([comprobanteHTML], { type: 'text/html' });
+    
+    // Crear un enlace temporal para la descarga
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `Comprobante_${datos.mes.replace(/ /g, '_')}_${datos.numeroTransaccion}.html`;
+    
+    // Simular clic en el enlace
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Liberar el objeto URL
+    URL.revokeObjectURL(link.href);
     
     setTimeout(() => {
         showAlert('Comprobante descargado correctamente', 'success');
-    }, 1500);
+    }, 500);
 }
 
 // Mostrar alerta
