@@ -1,8 +1,8 @@
 <?php
 define('APP_BASE_PATH', realpath(__DIR__ . '/../../../')); 
-// require APP_BASE_PATH . "/Utils/auth/validator.php";
+require APP_BASE_PATH . "/Utils/auth/validator.php";
 
-$baseUrl = '/barriogestion/frontend/app/dashboard/Admin';
+$baseUrl = '/tesisde/app/dashboard/Admin';
 ?>
 <header>
     <div class="izq">
