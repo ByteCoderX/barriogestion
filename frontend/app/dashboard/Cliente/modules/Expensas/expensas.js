@@ -151,7 +151,7 @@ function mostrarDetalleExpensa(tipo) {
                 
                 <div class="modal-actions">
                     ${tipo === 'actual' ? 
-                        '<a href="pagar-expensas.php" class="btn-pagar-modal">Pagar Ahora</a>' : 
+                        '<a href="PagarExpensas/PagarExpensas.php" class="btn-pagar-modal">Pagar Ahora</a>' : 
                         '<button class="btn-descargar" onclick="descargarComprobante()">Descargar Comprobante</button>'
                     }
                     <button class="btn-cerrar-secundario" onclick="cerrarModal()">Cerrar</button>
