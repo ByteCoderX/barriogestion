@@ -398,7 +398,7 @@
         </div>
     </div>
 
-      <script src="Permisos.js"></script>
+    <script src="Permisos.js"></script>
 
 
 </body>
