@@ -1,8 +1,8 @@
 <?php
 define('APP_BASE_PATH', realpath(__DIR__ . '/../../../')); 
-require APP_BASE_PATH . "/Utils/auth/validator.php";
+// require APP_BASE_PATH . "/Utils/auth/validator.php";
 
-$baseUrl = '/tesisde/app/dashboard/cliente';
+$baseUrl = '/barriogestion/frontend/app/dashboard/cliente';
 
 ?>
 <header>
@@ -159,4 +159,5 @@ $baseUrl = '/tesisde/app/dashboard/cliente';
         </div>
     </div>
 </header>
+<?php require "barry.php"?>
 <script src="/tesisde/app/Utils/logout.js"></script>
