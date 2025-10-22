@@ -14,7 +14,7 @@ const espaciosData = {
         sena: 12500,
         horarioInicio: 9,
         horarioFin: 23,
-        icono: '../../Assets/icons/clubhouse.png',
+        icono: '../../../Assets/icons/clubhouse.png',
         estado: 'disponible',
         detalles: [
             'Aire acondicionado',
@@ -33,7 +33,7 @@ const espaciosData = {
         sena: 5000,
         horarioInicio: 7,
         horarioFin: 22,
-        icono: '../../assets/icons/tennis.png',
+        icono: '../../../assets/icons/tennis.png',
         estado: 'disponible',
         detalles: [
             'Superficie profesional',
@@ -51,7 +51,7 @@ const espaciosData = {
         sena: 5000,
         horarioInicio: 7,
         horarioFin: 22,
-        icono: '../../assets/icons/tennis.png',
+        icono: '../../../assets/icons/tennis.png',
         estado: 'disponible',
         detalles: [
             'Superficie rápida',
@@ -69,7 +69,7 @@ const espaciosData = {
         sena: 3000,
         horarioInicio: 7,
         horarioFin: 22,
-        icono: '../../assets/icons/futbol.png',
+        icono: '../../../assets/icons/futbol.png',
         estado: 'disponible',
         detalles: [
             'Césped sintético',
@@ -86,7 +86,7 @@ const espaciosData = {
         sena: 3000,
         horarioInicio: 7,
         horarioFin: 22,
-        icono: '../../assets/icons/futbol.png',
+        icono: '../../../assets/icons/futbol.png',
         estado: 'disponible',
         detalles: [
             'Pasto natural',
@@ -103,7 +103,7 @@ const espaciosData = {
         sena: 3000,
         horarioInicio: 7,
         horarioFin: 22,
-        icono: '../../assets/icons/futbol.png',
+        icono: '../../../assets/icons/futbol.png',
         estado: 'disponible',
         detalles: [
             'Césped natural',
@@ -120,7 +120,7 @@ const espaciosData = {
         sena: 5000,
         horarioInicio: 7,
         horarioFin: 22,
-        icono: '../../assets/icons/futbol.png',
+        icono: '../../../assets/icons/futbol.png',
         estado: 'disponible',
         detalles: [
             'Césped sintético',
@@ -137,7 +137,7 @@ const espaciosData = {
         sena: 5000,
         horarioInicio: 7,
         horarioFin: 22,
-        icono: '../../assets/icons/futbol.png',
+        icono: '../../../assets/icons/futbol.png',
         estado: 'disponible',
         detalles: [
             'Césped sintético',
@@ -154,7 +154,7 @@ const espaciosData = {
         sena: 2000,
         horarioInicio: 10,
         horarioFin: 22,
-        icono: '../../assets/icons/quincho.png',
+        icono: '../../../assets/icons/quincho.png',
         estado: 'disponible',
         detalles: [
             'Parrilla compartida',
@@ -170,7 +170,7 @@ const espaciosData = {
         sena: 2000,
         horarioInicio: 10,
         horarioFin: 22,
-        icono: '../../assets/icons/quincho.png',
+        icono: '../../../assets/icons/quincho.png',
         estado: 'disponible',
         detalles: [
             'Parrilla compartida',
