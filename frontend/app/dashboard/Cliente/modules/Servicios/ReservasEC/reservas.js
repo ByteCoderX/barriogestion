@@ -11,7 +11,180 @@ const settings = await cargarSettings();
 
 
 // Datos de los espacios (se llenarán desde la API)
-const espaciosData = {};
+const espaciosData = {
+    clubhouse: {
+        nombre: 'Club House',
+        descripcion: 'Salón de eventos para celebraciones y reuniones',
+        capacidad: '150 personas',
+        precio: 25000,
+        sena: 12500,
+        horarioInicio: 9,
+        horarioFin: 23,
+        icono: '../../../Assets/icons/clubhouse.png',
+        estado: 'disponible',
+        detalles: [
+            'Aire acondicionado',
+            'Sistema de sonido incluido',
+            'Iluminación profesional',
+            'Cocina equipada',
+            'Baños privados',
+            'Estacionamiento incluido'
+        ]
+    },
+    canchaTenis1: {
+        nombre: 'Cancha de Tenis Nº1',
+        descripcion: 'Cancha de tenis profesional con iluminación',
+        capacidad: '4 jugadores',
+        precio: 25000,
+        sena: 5000,
+        horarioInicio: 7,
+        horarioFin: 22,
+        icono: '../../../assets/icons/tennis.png',
+        estado: 'disponible',
+        detalles: [
+            'Superficie profesional',
+            'Red oficial',
+            'Iluminación LED',
+            'Raquetas disponibles',
+            'Pelotas incluidas'
+        ]
+    },
+    canchaTenis2: {
+        nombre: 'Cancha de Tenis Nº2',
+        descripcion: 'Cancha de tenis profesional con superficie rápida',
+        capacidad: '4 jugadores',
+        precio: 25000,
+        sena: 5000,
+        horarioInicio: 7,
+        horarioFin: 22,
+        icono: '../../../assets/icons/tennis.png',
+        estado: 'disponible',
+        detalles: [
+            'Superficie rápida',
+            'Red oficial',
+            'Iluminación nocturna',
+            'Raquetas disponibles',
+            'Pelotas incluidas'
+        ]
+    },
+    canchaFutbol1: {
+        nombre: 'Cancha de Fútbol Nº1',
+        descripcion: 'Cancha de fútbol 5 con césped sintético',
+        capacidad: '10 jugadores',
+        precio: 20000,
+        sena: 3000,
+        horarioInicio: 7,
+        horarioFin: 22,
+        icono: '../../../assets/icons/futbol.png',
+        estado: 'disponible',
+        detalles: [
+            'Césped sintético',
+            'Arcos incluidos',
+            'Iluminación nocturna',
+            'Pelotas disponibles'
+        ]
+    },
+    canchaFutbol2: {
+        nombre: 'Cancha de Fútbol Nº2',
+        descripcion: 'Cancha de fútbol 5 al aire libre',
+        capacidad: '10 jugadores',
+        precio: 20000,
+        sena: 3000,
+        horarioInicio: 7,
+        horarioFin: 22,
+        icono: '../../../assets/icons/futbol.png',
+        estado: 'disponible',
+        detalles: [
+            'Pasto natural',
+            'Arcos incluidos',
+            'Iluminación nocturna',
+            'Vestuarios cercanos'
+        ]
+    },
+    canchaFutbol3: {
+        nombre: 'Cancha de Fútbol Nº3',
+        descripcion: 'Cancha de fútbol 7 con césped natural',
+        capacidad: '14 jugadores',
+        precio: 20000,
+        sena: 3000,
+        horarioInicio: 7,
+        horarioFin: 22,
+        icono: '../../../assets/icons/futbol.png',
+        estado: 'disponible',
+        detalles: [
+            'Césped natural',
+            'Arcos oficiales',
+            'Iluminación nocturna',
+            'Área de espectadores'
+        ]
+    },
+    canchaFutbol4: {
+        nombre: 'Cancha de Fútbol Nº4',
+        descripcion: 'Cancha de fútbol 5 techada',
+        capacidad: '10 jugadores',
+        precio: 20000,
+        sena: 5000,
+        horarioInicio: 7,
+        horarioFin: 22,
+        icono: '../../../assets/icons/futbol.png',
+        estado: 'disponible',
+        detalles: [
+            'Césped sintético',
+            'Arcos incluidos',
+            'Iluminación LED',
+            'Protección lateral techada'
+        ]
+    },
+    canchaFutbol5: {
+        nombre: 'Cancha de Fútbol Nº5',
+        descripcion: 'Cancha de fútbol 5',
+        capacidad: '10 jugadores',
+        precio: 20000,
+        sena: 5000,
+        horarioInicio: 7,
+        horarioFin: 22,
+        icono: '../../../assets/icons/futbol.png',
+        estado: 'disponible',
+        detalles: [
+            'Césped sintético',
+            'Arcos incluidos',
+            'Pelotas disponibles'
+        ]
+    },
+
+    quinchoMesa3: {
+        nombre: 'Quincho Mesa Nº3',
+        descripcion: 'Sector quincho con mesa exclusiva',
+        capacidad: '10 personas',
+        precio: 10000,
+        sena: 2000,
+        horarioInicio: 10,
+        horarioFin: 22,
+        icono: '../../../assets/icons/quincho.png',
+        estado: 'disponible',
+        detalles: [
+            'Parrilla compartida',
+            'Mesa y bancos',
+            'Baño cercano'
+        ]
+    },
+    quinchoMesa4: {
+        nombre: 'Quincho Mesa Nº4',
+        descripcion: 'Sector quincho con mesa exclusiva',
+        capacidad: '10 personas',
+        precio: 10000,
+        sena: 2000,
+        horarioInicio: 10,
+        horarioFin: 22,
+        icono: '../../../assets/icons/quincho.png',
+        estado: 'disponible',
+        detalles: [
+            'Parrilla compartida',
+            'Mesa y bancos',
+            'Baño cercano'
+        ]
+    }
+};;
 let espacioSeleccionado = null;
 let reservasUsuario = [];
 
@@ -307,7 +480,7 @@ async function cargarReservasUsuario() {
         const reservas = await res.json();
         reservasUsuario = reservas; // actualizar array global
         if (!reservas || reservas.length === 0) {
-            lista.innerHTML = `<div class="sin-reservas"><img src="../../../assets/icons/misreservas.png" alt="Sin reservas"><p>No tienes reservas próximas</p></div>`;
+            lista.innerHTML = `<div class="sin-reservas"><img src="../../../../assets/icons/misreservas.png" alt="Sin reservas"><p>No tienes reservas próximas</p></div>`;
             return;
         }
         const proximas = reservas.filter(r => new Date(r.reservationDate) >= new Date())
