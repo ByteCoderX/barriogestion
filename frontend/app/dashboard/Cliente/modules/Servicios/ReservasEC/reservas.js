@@ -1,9 +1,3 @@
-let currentTheme = localStorage.getItem('theme') || 'dark';
-
-document.addEventListener('DOMContentLoaded', function() {
-    applyTheme(currentTheme);
-});
-
 // Datos de los espacios
 const espaciosData = {
     clubhouse: {
@@ -14,7 +8,7 @@ const espaciosData = {
         sena: 12500,
         horarioInicio: 9,
         horarioFin: 23,
-        icono: '../../Assets/icons/clubhouse.png',
+        icono: '../../assets/icons/clubhouse.png',
         estado: 'disponible',
         detalles: [
             'Aire acondicionado',
@@ -145,7 +139,6 @@ const espaciosData = {
             'Pelotas disponibles'
         ]
     },
-
     quinchoMesa3: {
         nombre: 'Quincho Mesa Nº3',
         descripcion: 'Sector quincho con mesa exclusiva',
@@ -183,23 +176,21 @@ const espaciosData = {
 // Variables globales
 let espacioSeleccionado = null;
 let reservasUsuario = [];
+let currentTheme = 'dark';
 
 // Inicializar la aplicación
 document.addEventListener('DOMContentLoaded', function() {
-    // Agregar CSS override para forzar el layout de tiras
-    const style = document.createElement('style');
-    style.textContent = `
-        .espacios-grid {
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 1rem !important;
-            grid-template-columns: none !important;
+    // Intentar recuperar tema del localStorage (si está disponible)
+    try {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            currentTheme = savedTheme;
+            applyTheme(currentTheme);
         }
-        .espacios-grid .espacio-card {
-            display: none !important;
-        }
-    `;
-    document.head.appendChild(style);
+    } catch (e) {
+        // Si localStorage no está disponible, usar tema por defecto
+        applyTheme(currentTheme);
+    }
     
     cargarEspaciosComoTiras();
     cargarReservasUsuario();
@@ -211,9 +202,6 @@ document.addEventListener('DOMContentLoaded', function() {
 function cargarEspaciosComoTiras() {
     const espaciosGrid = document.querySelector('.espacios-grid');
     if (!espaciosGrid) return;
-
-    // Cambiar el CSS del grid para mostrar como lista vertical
-    espaciosGrid.classList.add('espacios-grid-vertical');
 
     espaciosGrid.innerHTML = '';
 
@@ -253,7 +241,7 @@ function crearTiraEspacio(espacioKey, espacio) {
         </div>
         <div class="espacio-precio">
             <div class="precio-valor">
-                ${espacio.precio === 0 ? 'Gratuito' : `${espacio.precio.toLocaleString()}`}
+                ${espacio.precio === 0 ? 'Gratuito' : `$${espacio.precio.toLocaleString()}`}
             </div>
         </div>
         <div class="ver-detalles">
@@ -567,7 +555,6 @@ function cargarReservasUsuario() {
 
 // Ver todas las reservas
 function verMisReservas() {
-    // Por ahora solo mostrar un alert, podrías crear una página dedicada
     if (reservasUsuario.length === 0) {
         alert('No tienes reservas registradas.');
     } else {
@@ -589,7 +576,12 @@ window.verMisReservas = verMisReservas;
 function setTheme(theme) {
     currentTheme = theme;
     applyTheme(theme);
-    localStorage.setItem('theme', theme);
+    try {
+        localStorage.setItem('theme', theme);
+    } catch (e) {
+        // Si localStorage no está disponible, continuar sin guardar
+        console.log('No se pudo guardar el tema');
+    }
 }
 
 function applyTheme(theme) {
@@ -604,10 +596,13 @@ function applyTheme(theme) {
     } else if (theme === 'nature') {
         body.classList.add('theme-nature');
     }
-    // El tema oscuro no necesita clase adicional (es el por defecto)
 }
 
 function toggleThemeMenu() {
     // Esta función puede ser usada si quieres controlar el menú por JavaScript
-    // Por ahora el menú se controla con CSS hover
 }
+
+// Exponer funciones de tema para uso global
+window.setTheme = setTheme;
+window.applyTheme = applyTheme;
+window.toggleThemeMenu = toggleThemeMenu;
