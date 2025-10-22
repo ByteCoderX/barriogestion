@@ -1,4 +1,4 @@
-        // Variables globales para temas
+// Variables globales para temas
 let currentTheme = localStorage.getItem('theme') || 'dark';
 
 // Variables para gestión de miembros
@@ -7,16 +7,9 @@ let miembroEditando = null;
 
 // Inicializar aplicación
 document.addEventListener('DOMContentLoaded', function() {
-    // Aplicar tema guardado
     applyTheme(currentTheme);
-    
-    // Configurar menú móvil
     setupMobileMenu();
-    
-    // Configurar formularios
     setupForms();
-    
-    // Cargar datos iniciales
     cargarMiembros();
 });
 
@@ -95,6 +88,63 @@ function setupForms() {
             agregarNuevoMiembro();
         });
     }
+    
+    // Aplicar validaciones a todos los inputs de edad y DNI
+    aplicarValidacionesInputs();
+}
+
+// Función para aplicar validaciones a inputs
+function aplicarValidacionesInputs() {
+    // Validación para edad (solo 2 dígitos, sin usar type="number")
+    document.addEventListener('input', function(e) {
+        if (e.target.id && e.target.id.toLowerCase().includes('edad')) {
+            // Eliminar cualquier carácter que no sea número
+            e.target.value = e.target.value.replace(/[^\d]/g, '');
+            // Limitar a 2 dígitos
+            if (e.target.value.length > 2) {
+                e.target.value = e.target.value.slice(0, 2);
+            }
+        }
+    });
+    
+    // Validación para DNI (solo 8 números)
+    document.addEventListener('input', function(e) {
+        if (e.target.id && e.target.id.toLowerCase().includes('dni')) {
+            // Eliminar cualquier carácter que no sea número
+            e.target.value = e.target.value.replace(/[^\d]/g, '');
+            // Limitar a 8 dígitos
+            if (e.target.value.length > 8) {
+                e.target.value = e.target.value.slice(0, 8);
+            }
+        }
+    });
+    
+    // Prevenir entrada de caracteres no numéricos con keypress
+    document.addEventListener('keypress', function(e) {
+        const target = e.target;
+        if (target.id && (target.id.toLowerCase().includes('edad') || target.id.toLowerCase().includes('dni'))) {
+            // Solo permitir números (códigos 48-57)
+            if (e.charCode < 48 || e.charCode > 57) {
+                e.preventDefault();
+            }
+        }
+    });
+    
+    // Prevenir pegado de texto no numérico
+    document.addEventListener('paste', function(e) {
+        const target = e.target;
+        if (target.id && (target.id.toLowerCase().includes('edad') || target.id.toLowerCase().includes('dni'))) {
+            e.preventDefault();
+            const pastedText = (e.clipboardData || window.clipboardData).getData('text');
+            const numericText = pastedText.replace(/[^\d]/g, '');
+            
+            if (target.id.toLowerCase().includes('edad')) {
+                target.value = numericText.slice(0, 2);
+            } else if (target.id.toLowerCase().includes('dni')) {
+                target.value = numericText.slice(0, 8);
+            }
+        }
+    });
 }
 
 // Cargar miembros existentes
@@ -104,46 +154,61 @@ function cargarMiembros() {
             id: 1,
             nombre: "Juan Carlos Pérez",
             edad: 45,
-            dni: "25.123.456",
+            dni: "25123456",
             rol: "propietario",
             permisos: ["acceso", "visitas", "familia", "reservas"],
-            editable: false
+            editable: false,
+            telefono: "11 2345-6789",
+            email: "juan.perez@email.com",
+            fechaIngreso: "15/01/2020"
         },
         {
             id: 2,
             nombre: "María Elena García",
             edad: 42,
-            dni: "27.654.321",
+            dni: "27654321",
             rol: "conyuge",
             permisos: ["acceso", "visitas", "reservas"],
-            editable: true
+            editable: true,
+            telefono: "11 3456-7890",
+            email: "maria.garcia@email.com",
+            fechaIngreso: "15/01/2020"
         },
         {
             id: 3,
             nombre: "Carlos Andrés Pérez",
             edad: 22,
-            dni: "43.789.012",
+            dni: "43789012",
             rol: "hijo",
             permisos: ["acceso", "visitas"],
-            editable: true
+            editable: true,
+            telefono: "11 4567-8901",
+            email: "carlos.perez@email.com",
+            fechaIngreso: "20/03/2020"
         },
         {
             id: 4,
             nombre: "Sofía Pérez García",
             edad: 19,
-            dni: "45.234.567",
+            dni: "45234567",
             rol: "hijo",
             permisos: ["acceso"],
-            editable: true
+            editable: true,
+            telefono: "11 5678-9012",
+            email: "sofia.perez@email.com",
+            fechaIngreso: "10/05/2021"
         },
         {
             id: 5,
             nombre: "Rosa Elena Martinez",
             edad: 38,
-            dni: "32.456.789",
+            dni: "32456789",
             rol: "empleado",
             permisos: ["acceso"],
-            editable: true
+            editable: true,
+            telefono: "11 6789-0123",
+            email: "rosa.martinez@email.com",
+            fechaIngreso: "01/02/2022"
         }
     ];
 }
@@ -166,10 +231,114 @@ function filtrarMiembros() {
 // Ver detalles de un miembro
 function verDetalles(id) {
     const miembro = miembros.find(m => m.id === id);
-    if (miembro) {
-        showAlert(`Mostrando detalles de ${miembro.nombre}`, 'info');
-        // Aquí podrías abrir un modal con más detalles
+    if (!miembro) {
+        showAlert('Miembro no encontrado', 'error');
+        return;
     }
+    
+    const roles = {
+        propietario: 'Propietario Principal',
+        conyuge: 'Cónyuge',
+        hijo: 'Hijo/a',
+        familiar: 'Familiar',
+        empleado: 'Empleado Doméstico'
+    };
+    
+    const permisosTexto = {
+        acceso: 'Acceso al Barrio',
+        visitas: 'Autorizar Visitas',
+        familia: 'Gestionar Familia',
+        reservas: 'Realizar Reservas'
+    };
+    
+    const permisosHTML = miembro.permisos.map(p => 
+        `<span class="permiso activo">${permisosTexto[p] || p}</span>`
+    ).join('');
+    
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay active';
+    modal.innerHTML = `
+        <div class="modal-content" style="max-width: 700px;">
+            <div class="modal-header">
+                <h3>Detalles del Miembro</h3>
+                <button class="close-modal" onclick="this.closest('.modal-overlay').remove()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="detalles-miembro">
+                    <div class="detalle-avatar" style="text-align: center; margin-bottom: 1.5rem;">
+                        <div style="width: 150px; height: 150px; margin: 0 auto; border-radius: 50%; overflow: hidden; border: 3px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1);">
+                            <img src="https://www.gravatar.com/avatar/ejemplo?s=200" alt="${miembro.nombre}" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; gap: 1rem;">
+                        <div class="detalle-item">
+                            <strong style="color: #fff; opacity: 0.7;">Nombre Completo:</strong>
+                            <p style="margin: 0.3rem 0; font-size: 1.1rem;">${miembro.nombre}</p>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="detalle-item">
+                                <strong style="color: #fff; opacity: 0.7;">Edad:</strong>
+                                <p style="margin: 0.3rem 0;">${miembro.edad} años</p>
+                            </div>
+                            <div class="detalle-item">
+                                <strong style="color: #fff; opacity: 0.7;">DNI:</strong>
+                                <p style="margin: 0.3rem 0;">${miembro.dni}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detalle-item">
+                            <strong style="color: #fff; opacity: 0.7;">Rol Familiar:</strong>
+                            <p style="margin: 0.5rem 0;">
+                                <span class="rol-badge" style="padding: 0.4rem 1rem; border-radius: 1rem; font-size: 0.9rem; font-weight: 600; background-color: ${
+                                    miembro.rol === 'propietario' ? '#ff6b35' :
+                                    miembro.rol === 'conyuge' ? '#4caf50' :
+                                    miembro.rol === 'hijo' ? '#2196f3' :
+                                    miembro.rol === 'familiar' ? '#9c27b0' : '#607d8b'
+                                }; color: white;">${roles[miembro.rol]}</span>
+                            </p>
+                        </div>
+                        
+                        <div class="detalle-item">
+                            <strong style="color: #fff; opacity: 0.7;">Información de Contacto:</strong>
+                            <p style="margin: 0.3rem 0;">📞 ${miembro.telefono || 'No registrado'}</p>
+                            <p style="margin: 0.3rem 0;">📧 ${miembro.email || 'No registrado'}</p>
+                        </div>
+                        
+                        <div class="detalle-item">
+                            <strong style="color: #fff; opacity: 0.7;">Fecha de Ingreso:</strong>
+                            <p style="margin: 0.3rem 0;">${miembro.fechaIngreso || 'No registrado'}</p>
+                        </div>
+                        
+                        <div class="detalle-item">
+                            <strong style="color: #fff; opacity: 0.7; margin-bottom: 0.5rem; display: block;">Permisos Asignados:</strong>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;">
+                                ${permisosHTML}
+                            </div>
+                        </div>
+                        
+                        <div class="detalle-item" style="margin-top: 1rem; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 0.5rem; border: 1px solid rgba(255,255,255,0.1);">
+                            <strong style="color: #fff; opacity: 0.7;">Estado:</strong>
+                            <p style="margin: 0.3rem 0; color: #4caf50; font-weight: 600;">✓ Activo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="this.closest('.modal-overlay').remove()">Cerrar</button>
+                ${miembro.editable ? `<button class="btn-primary" onclick="this.closest('.modal-overlay').remove(); editarMiembro(${miembro.id});">Editar Información</button>` : ''}
+            </div>
+        </div>
+    `;
+    
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.remove();
+        }
+    });
+    
+    document.body.appendChild(modal);
 }
 
 // Editar miembro
@@ -182,51 +351,51 @@ function editarMiembro(id) {
     
     miembroEditando = miembro;
     
-    // Llenar formulario
     document.getElementById('miembroId').value = miembro.id;
     document.getElementById('nombreMiembro').value = miembro.nombre;
     document.getElementById('edadMiembro').value = miembro.edad;
     document.getElementById('dniMiembro').value = miembro.dni;
     document.getElementById('rolMiembro').value = miembro.rol;
     
-    // Marcar permisos - CORREGIDO
     const checkboxes = document.querySelectorAll('#modalEditarMiembro input[name="permisos[]"]');
     checkboxes.forEach(cb => {
         cb.checked = miembro.permisos.includes(cb.value);
     });
     
-    // Mostrar modal
     document.getElementById('modalEditarMiembro').classList.add('active');
 }
 
-// Guardar cambios del miembro - CORREGIDO
+// Guardar cambios del miembro
 function guardarCambiosMiembro() {
     const form = document.getElementById('formEditarMiembro');
     const formData = new FormData(form);
     const id = parseInt(formData.get('miembroId'));
     
-    // Validaciones
-    if (!validarDNI(formData.get('dniMiembro'))) {
-        showAlert('DNI inválido. Use el formato 12.345.678', 'error');
+    const edad = parseInt(formData.get('edadMiembro'));
+    if (edad < 1 || edad > 99) {
+        showAlert('La edad debe estar entre 1 y 99 años', 'error');
         return;
     }
     
-    // Verificar DNI único (excluyendo el miembro actual)
-    const dniExistente = miembros.find(m => m.id !== id && m.dni === formData.get('dniMiembro'));
+    const dni = formData.get('dniMiembro');
+    if (!validarDNI(dni)) {
+        showAlert('DNI inválido. Debe tener exactamente 8 números', 'error');
+        return;
+    }
+    
+    const dniExistente = miembros.find(m => m.id !== id && m.dni === dni);
     if (dniExistente) {
         showAlert('Ya existe otro miembro con este DNI', 'error');
         return;
     }
     
-    // Actualizar miembro
     const miembro = miembros.find(m => m.id === id);
     if (miembro) {
         miembro.nombre = formData.get('nombreMiembro');
-        miembro.edad = parseInt(formData.get('edadMiembro'));
-        miembro.dni = formData.get('dniMiembro');
+        miembro.edad = edad;
+        miembro.dni = dni;
         miembro.rol = formData.get('rolMiembro');
         
-        // CORREGIDO: Obtener permisos correctamente
         const permisosSeleccionados = [];
         const checkboxes = document.querySelectorAll('#modalEditarMiembro input[name="permisos[]"]:checked');
         checkboxes.forEach(cb => {
@@ -234,7 +403,6 @@ function guardarCambiosMiembro() {
         });
         miembro.permisos = permisosSeleccionados;
         
-        // Actualizar UI
         actualizarMiembroEnDOM(miembro);
         
         showAlert('Miembro actualizado exitosamente', 'success');
@@ -242,79 +410,130 @@ function guardarCambiosMiembro() {
     }
 }
 
-// Agregar nuevo miembro - CORREGIDO
+// Agregar nuevo miembro
 function agregarNuevoMiembro() {
     const form = document.getElementById('formAgregarMiembro');
     const formData = new FormData(form);
     
-    // Validaciones
-    if (!validarDNI(formData.get('nuevoDni'))) {
-        showAlert('DNI inválido. Use el formato 12.345.678', 'error');
+    const edad = parseInt(formData.get('nuevaEdad'));
+    if (edad < 1 || edad > 99) {
+        showAlert('La edad debe estar entre 1 y 99 años', 'error');
         return;
     }
     
-    // Verificar DNI único
-    if (miembros.some(m => m.dni === formData.get('nuevoDni'))) {
+    const dni = formData.get('nuevoDni');
+    if (!validarDNI(dni)) {
+        showAlert('DNI inválido. Debe tener exactamente 8 números', 'error');
+        return;
+    }
+    
+    if (miembros.some(m => m.dni === dni)) {
         showAlert('Ya existe un miembro con este DNI', 'error');
         return;
     }
     
-    // CORREGIDO: Obtener permisos correctamente
     const permisosSeleccionados = [];
     const checkboxes = document.querySelectorAll('#modalAgregarMiembro input[name="nuevosPermisos[]"]:checked');
     checkboxes.forEach(cb => {
         permisosSeleccionados.push(cb.value);
     });
     
-    // Crear nuevo miembro
     const nuevoId = Math.max(...miembros.map(m => m.id)) + 1;
+    const fechaActual = new Date().toLocaleDateString('es-AR');
+    
     const nuevoMiembro = {
         id: nuevoId,
         nombre: formData.get('nuevoNombre'),
-        edad: parseInt(formData.get('nuevaEdad')),
-        dni: formData.get('nuevoDni'),
+        edad: edad,
+        dni: dni,
         rol: formData.get('nuevoRol'),
         permisos: permisosSeleccionados,
-        editable: true
+        editable: true,
+        telefono: 'No registrado',
+        email: 'No registrado',
+        fechaIngreso: fechaActual
     };
     
     miembros.push(nuevoMiembro);
-    
-    // Agregar a DOM
     agregarMiembroADOM(nuevoMiembro);
     
     showAlert('Miembro agregado exitosamente', 'success');
     cerrarModalAgregar();
-    
-    // Limpiar formulario
     form.reset();
-    
-    // Actualizar contador de miembros
     actualizarContadorMiembros();
 }
 
 // Eliminar miembro
 function eliminarMiembro(id) {
-    if (confirm('¿Está seguro de eliminar este miembro? Esta acción no se puede deshacer.')) {
-        const index = miembros.findIndex(m => m.id === id);
-        if (index !== -1) {
-            miembros.splice(index, 1);
-            
-            // Remover del DOM
-            const card = document.querySelector(`[data-id="${id}"]`);
-            if (card) {
-                card.remove();
-            }
-            
-            // Actualizar contador
-            actualizarContadorMiembros();
-            
-            showAlert('Miembro eliminado exitosamente', 'success');
+    const miembro = miembros.find(m => m.id === id);
+    if (!miembro) {
+        showAlert('Miembro no encontrado', 'error');
+        return;
+    }
+    
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay active';
+    modal.innerHTML = `
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3>Confirmar Eliminación</h3>
+                <button class="close-modal" onclick="this.closest('.modal-overlay').remove()">×</button>
+            </div>
+            <div class="modal-body" style="padding: 2rem;">
+                <div style="text-align: center; margin-bottom: 1.5rem;">
+                    <div style="width: 80px; height: 80px; margin: 0 auto 1rem; background-color: rgba(255, 68, 68, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid rgba(255, 68, 68, 0.3);">
+                        <span style="font-size: 3rem; color: #ff4444;">⚠</span>
+                    </div>
+                    <h4 style="margin-bottom: 0.5rem; color: #fff;">¿Está seguro de eliminar este miembro?</h4>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 1rem;">
+                        <strong>${miembro.nombre}</strong><br>
+                        DNI: ${miembro.dni}
+                    </p>
+                    <p style="color: #ff4444; font-size: 0.9rem;">
+                        Esta acción no se puede deshacer
+                    </p>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="this.closest('.modal-overlay').remove()">Cancelar</button>
+                <button class="btn-delete" onclick="confirmarEliminacion(${id}); this.closest('.modal-overlay').remove();">Eliminar</button>
+            </div>
+        </div>
+    `;
+    
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.remove();
         }
+    });
+    
+    document.body.appendChild(modal);
+}
+
+// Confirmar eliminación
+function confirmarEliminacion(id) {
+    const index = miembros.findIndex(m => m.id === id);
+    if (index !== -1) {
+        const miembroEliminado = miembros[index];
+        miembros.splice(index, 1);
+        
+        const card = document.querySelector(`[data-id="${id}"]`);
+        if (card) {
+            card.style.transition = 'all 0.3s ease';
+            card.style.transform = 'translateX(100%)';
+            card.style.opacity = '0';
+            
+            setTimeout(() => {
+                card.remove();
+            }, 300);
+        }
+        
+        actualizarContadorMiembros();
+        showAlert(`${miembroEliminado.nombre} ha sido eliminado exitosamente`, 'success');
     }
 }
 
-// Actualizar permisos según rol - CORREGIDO
+// Actualizar permisos según rol
 function actualizarPermisos() {
     const rol = document.getElementById('rolMiembro').value;
     actualizarPermisosSegunRol(rol, '#modalEditarMiembro', 'permisos[]');
@@ -329,10 +548,8 @@ function actualizarPermisosSegunRol(rol, modalSelector, checkboxName) {
     const modal = document.querySelector(modalSelector);
     const checkboxes = modal.querySelectorAll(`input[name="${checkboxName}"]`);
     
-    // Resetear todos
     checkboxes.forEach(cb => cb.checked = false);
     
-    // Asignar permisos según rol
     const permisosDefecto = {
         propietario: ['acceso', 'visitas', 'familia', 'reservas'],
         conyuge: ['acceso', 'visitas', 'reservas'],
@@ -353,11 +570,9 @@ function actualizarPermisosSegunRol(rol, modalSelector, checkboxName) {
 
 // Funciones de modal
 function abrirModalAgregarMiembro() {
-    // Limpiar formulario antes de abrir
     const form = document.getElementById('formAgregarMiembro');
     form.reset();
     
-    // Resetear checkboxes
     const checkboxes = document.querySelectorAll('#modalAgregarMiembro input[type="checkbox"]');
     checkboxes.forEach(cb => cb.checked = false);
     
@@ -375,7 +590,7 @@ function cerrarModalAgregar() {
 
 // Utilidades
 function validarDNI(dni) {
-    const regex = /^\d{2}\.\d{3}\.\d{3}$/;
+    const regex = /^\d{8}$/;
     return regex.test(dni);
 }
 
@@ -405,7 +620,6 @@ function showAlert(message, type = 'info') {
         animation: slideInRight 0.3s ease-out;
     `;
     
-    // Aplicar estilos según el tema actual
     if (type === 'success') {
         if (document.body.classList.contains('theme-light')) {
             alert.style.backgroundColor = 'rgba(164, 195, 178, 0.1)';
@@ -447,14 +661,11 @@ function showAlert(message, type = 'info') {
     }, 3000);
 }
 
-// CORREGIDO: Función para actualizar miembro en DOM
 function actualizarMiembroEnDOM(miembro) {
     const card = document.querySelector(`[data-id="${miembro.id}"]`);
     if (card) {
-        // Actualizar atributo data-rol
         card.dataset.rol = miembro.rol;
         
-        // Actualizar elementos del DOM
         const nombreEl = card.querySelector('.miembro-info h4');
         const edadEl = card.querySelector('.miembro-edad');
         const dniEl = card.querySelector('.miembro-dni');
@@ -475,12 +686,9 @@ function actualizarMiembroEnDOM(miembro) {
             };
             
             rolEl.textContent = roles[miembro.rol] || miembro.rol;
-            
-            // Actualizar clase CSS del contenedor de rol
             rolContainer.className = `miembro-rol ${miembro.rol}`;
         }
         
-        // Actualizar permisos visuales
         const permisosList = card.querySelector('.permisos-list');
         if (permisosList) {
             permisosList.innerHTML = '';
@@ -499,7 +707,6 @@ function actualizarMiembroEnDOM(miembro) {
             });
         }
         
-        // Actualizar botones de acción si cambia el rol
         const accionesEl = card.querySelector('.miembro-acciones');
         if (accionesEl) {
             accionesEl.innerHTML = '';
@@ -527,18 +734,14 @@ function actualizarMiembroEnDOM(miembro) {
     }
 }
 
-// Seleccionamos todos los overlays
 const modals = document.querySelectorAll('.modal-overlay');
-
 modals.forEach(modal => {
     modal.addEventListener('click', (e) => {
-        // Si el click no es dentro del contenido del modal
         if (e.target === modal) {
             modal.classList.remove('active');
         }
     });
 });
-
 
 function agregarMiembroADOM(miembro) {
     const lista = document.getElementById('miembrosList');

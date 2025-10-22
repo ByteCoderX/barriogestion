@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestionar Permisos - Barrio Gestión</title>
-    <link rel="stylesheet" href="../../../index.css?v=1">
+    <link rel="stylesheet" href="../../../index.css">
     <link rel="stylesheet" href="Permisos.css">
 </head>
 <body>
@@ -130,7 +130,7 @@
                         <div class="miembro-info">
                             <h4>Juan Carlos Pérez</h4>
                             <p class="miembro-edad">45 años</p>
-                            <p class="miembro-dni">DNI: 25.123.456</p>
+                            <p class="miembro-dni">DNI: 25123456</p>
                             <div class="miembro-rol propietario">
                                 <span class="rol-badge">Propietario Principal</span>
                             </div>
@@ -156,7 +156,7 @@
                         <div class="miembro-info">
                             <h4>María Elena García</h4>
                             <p class="miembro-edad">42 años</p>
-                            <p class="miembro-dni">DNI: 27.654.321</p>
+                            <p class="miembro-dni">DNI: 27654321</p>
                             <div class="miembro-rol conyuge">
                                 <span class="rol-badge">Cónyuge</span>
                             </div>
@@ -182,7 +182,7 @@
                         <div class="miembro-info">
                             <h4>Carlos Andrés Pérez</h4>
                             <p class="miembro-edad">22 años</p>
-                            <p class="miembro-dni">DNI: 43.789.012</p>
+                            <p class="miembro-dni">DNI: 43789012</p>
                             <div class="miembro-rol hijo">
                                 <span class="rol-badge">Hijo</span>
                             </div>
@@ -208,7 +208,7 @@
                         <div class="miembro-info">
                             <h4>Sofía Pérez García</h4>
                             <p class="miembro-edad">19 años</p>
-                            <p class="miembro-dni">DNI: 45.234.567</p>
+                            <p class="miembro-dni">DNI: 45234567</p>
                             <div class="miembro-rol hijo">
                                 <span class="rol-badge">Hija</span>
                             </div>
@@ -234,7 +234,7 @@
                         <div class="miembro-info">
                             <h4>Rosa Elena Martinez</h4>
                             <p class="miembro-edad">38 años</p>
-                            <p class="miembro-dni">DNI: 32.456.789</p>
+                            <p class="miembro-dni">DNI: 32456789</p>
                             <div class="miembro-rol empleado">
                                 <span class="rol-badge">Empleada Doméstica</span>
                             </div>
@@ -275,12 +275,12 @@
                         </div>
                         <div class="form-group">
                             <label for="edadMiembro">Edad</label>
-                            <input type="number" id="edadMiembro" name="edadMiembro" min="1" max="120" required>
+                            <input type="number" id="edadMiembro" name="edadMiembro" min="1" max="99" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="dniMiembro">DNI</label>
-                        <input type="text" id="dniMiembro" name="dniMiembro" pattern="[0-9]{2}\.[0-9]{3}\.[0-9]{3}" placeholder="12.345.678" required>
+                        <label for="dniMiembro">DNI (8 números)</label>
+                        <input type="text" id="dniMiembro" name="dniMiembro" maxlength="8" placeholder="12345678" required>
                     </div>
                 </div>
 
@@ -345,12 +345,12 @@
                         </div>
                         <div class="form-group">
                             <label for="nuevaEdad">Edad</label>
-                            <input type="number" id="nuevaEdad" name="nuevaEdad" min="1" max="120" required>
+                            <input type="number" id="nuevaEdad" name="nuevaEdad" min="1" max="99" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="nuevoDni">DNI</label>
-                        <input type="text" id="nuevoDni" name="nuevoDni" pattern="[0-9]{2}\.[0-9]{3}\.[0-9]{3}" placeholder="12.345.678" required>
+                        <label for="nuevoDni">DNI (8 números)</label>
+                        <input type="text" id="nuevoDni" name="nuevoDni" maxlength="8" placeholder="12345678" required>
                     </div>
                 </div>
 
@@ -398,8 +398,7 @@
         </div>
     </div>
 
-      <script src="Permisos.js"></script>
-
+    <script src="Permisos.js"></script>
 
 </body>
 </html>
