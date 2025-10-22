@@ -498,23 +498,101 @@ function abrirModalReserva(espacioKey) {
     espacioSeleccionado = espacioKey;
     const espacio = espaciosData[espacioKey];
     
-    const modal = document.getElementById('modalReserva');
-    const titulo = document.getElementById('modalTitulo');
-    const precioInfo = document.getElementById('precioInfo');
-    
-    titulo.textContent = `Reservar ${espacio.nombre}`;
-    
-    if (espacio.precio > 0) {
-        precioInfo.style.display = 'block';
-        document.getElementById('precioTotal').textContent = `$${espacio.precio.toLocaleString()}`;
-        document.getElementById('senaRequerida').textContent = `$${espacio.sena.toLocaleString()}`;
-        document.getElementById('saldoRestante').textContent = `$${espacio.sena.toLocaleString()}`;
-    } else {
-        precioInfo.style.display = 'none';
+    // Cerrar cualquier modal existente
+    const modalExistente = document.getElementById('modalReserva');
+    if (modalExistente) {
+        modalExistente.remove();
     }
     
+    // Crear modal dinámicamente
+    const modalOverlay = document.createElement('div');
+    modalOverlay.className = 'modal-overlay active';
+    modalOverlay.id = 'modalReserva';
+    
+    modalOverlay.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Reservar ${espacio.nombre}</h3>
+                <button class="close-modal" onclick="cerrarModalReserva()">×</button>
+            </div>
+            <div class="modal-body">
+                ${espacio.precio > 0 ? `
+                <div class="precio-info">
+                    <div class="precio-detalle">
+                        <div class="precio-item">
+                            <span>Precio total:</span>
+                            <strong>$${espacio.precio.toLocaleString()}</strong>
+                        </div>
+                        <div class="precio-item">
+                            <span>Seña requerida (50%):</span>
+                            <strong>$${espacio.sena.toLocaleString()}</strong>
+                        </div>
+                        <div class="precio-item">
+                            <span>Saldo restante:</span>
+                            <strong>$${espacio.sena.toLocaleString()}</strong>
+                        </div>
+                    </div>
+                </div>
+                ` : ''}
+                
+                <form id="formReserva">
+                    <div class="form-group">
+                        <label for="fechaReserva">Fecha de reserva *</label>
+                        <input type="date" id="fechaReserva" name="fechaReserva" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="horaInicio">Hora de inicio *</label>
+                        <select id="horaInicio" name="horaInicio" required>
+                            <option value="">Seleccionar hora</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="horaFin">Hora de fin *</label>
+                        <select id="horaFin" name="horaFin" required>
+                            <option value="">Seleccionar hora</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cantidadPersonas">Cantidad de personas *</label>
+                        <input type="number" id="cantidadPersonas" name="cantidadPersonas" min="1" max="${parseInt(espacio.capacidad)}" placeholder="Ej: 10" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="observaciones">Observaciones</label>
+                        <textarea id="observaciones" name="observaciones" placeholder="Comentarios adicionales (opcional)"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="cerrarModalReserva()">Cancelar</button>
+                <button class="btn-primary" onclick="procesarReserva()">Confirmar Reserva</button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modalOverlay);
+    
+    // Configurar fecha mínima
+    const fechaInput = document.getElementById('fechaReserva');
+    const hoy = new Date().toISOString().split('T')[0];
+    fechaInput.min = hoy;
+    
+    // Cargar horarios y configurar eventos
     cargarHorarios(espacio);
-    modal.classList.add('active');
+    
+    // Prevenir cierre al hacer click dentro del modal
+    const modalContent = modalOverlay.querySelector('.modal-content');
+    modalContent.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+    
+    // Cerrar al hacer click en el overlay
+    modalOverlay.addEventListener('click', function() {
+        cerrarModalReserva();
+    });
 }
 
 // Cargar horarios disponibles
