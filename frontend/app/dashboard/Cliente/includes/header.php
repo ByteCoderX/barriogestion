@@ -159,4 +159,5 @@ $baseUrl = '/tesisde/app/dashboard/cliente';
         </div>
     </div>
 </header>
+<?php require "barry.php"?>
 <script src="/tesisde/app/Utils/logout.js"></script>
