@@ -1,0 +1,74 @@
+[33m575e936[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m)[m Merge pull request #94 from ByteCoderX/frontend-fix-DashCliente
+[33mbba4445[m[33m ([m[1;32mfrontend-fix-DashCliente[m[33m)[m fix(DashCliente): se habia subido mal el anterior dashboard
+[33mfa0e828[m Merge pull request #92 from ByteCoderX/frontend-feature-notificaciones
+[33md79f39f[m Merge pull request #93 from ByteCoderX/frontend-fix-DashCliente
+[33m4bc534c[m fix(DashCliente): estaba mal conectados los botones
+[33mafb9970[m fix(notificaciones): se agrego la ruta y cambie de lugar notificaciones porque estaba en cualquier lado
+[33mfd233e6[m Merge pull request #89 from ByteCoderX/frontend-feature-HistorialExpensasCliente
+[33m6f6ded5[m[33m ([m[1;32mfrontend-feature-HistorialExpensasCliente[m[33m)[m fix(HistorialExpensasCliente): la mayoria de botones no tenian ningun tipo de funcion asi que ya esta arreglado
+[33mcfbc689[m Merge pull request #88 from ByteCoderX/frontend-feature-ConfiguracionAdmin
+[33m2c944a8[m[33m ([m[1;32mfrontend-feature-ConfiguracionAdmin[m[33m)[m fix(configuracionAdmin): las imagenes de la x (error) estaban muy grandes y ocupaban toda la pantalla, ahora estan en una mejor posicion y de otro color para que se vean mejor
+[33mbe87362[m Merge pull request #87 from ByteCoderX/frontend-refactor-DashAdmin
+[33m6a81ec4[m fix(DashAdmin): se bugueo y no se guardo la parte de los botones de accesos rapidos
+[33m22f57c4[m Merge pull request #86 from ByteCoderX/frontend-feature-expensas
+[33m0078264[m feature(ExpensasCliente): se agrego la seccion para poder pagar expensas y arreglamos un par de botones y funciones que no andaban
+[33me0aaa9e[m Merge pull request #85 from ByteCoderX/fix-admin-header
+[33mb200f8b[m fix(header): Se agregó la "s" que faltaba.
+[33m7005ddc[m Merge pull request #84 from ByteCoderX/frontend-fix-lotesAdmin
+[33mf799158[m fix(lotesAdmin): agrege la seccion para gestionar lotes en admin
+[33mfe174aa[m Merge pull request #83 from ByteCoderX/frontend-fix-AdminHeader
+[33m2804e93[m fix(headerAdministracion): el header se corrompio, ahora fue arreglado
+[33m0436780[m Merge pull request #82 from ByteCoderX/fix-backend-config
+[33mb89d391[m fix(config): Se arregl
+[33m037fdb8[m Merge pull request #80 from ByteCoderX/frontend-feature-mibarrio
+[33mbd4c2fa[m frontend-feature-VisitasCliente
+[33m60279b0[m fix(VisitasCliente): los colores de esta seccion estaban mal, ya fueron arreglados
+[33m99aad13[m fix(mibarrio): se arreglaron links, agregaron imagenes y mas cosas
+[33m352e706[m Configuracion Admin
+[33m22e842e[m fix(Configuracion): eliminado los emojis y agregada las imagenes
+[33m3ce635f[m feature(ConfiguracionAdmin): se creo la seccion de configuracion para la seccion de admin
+[33m2a17501[m Merge pull request #78 from ByteCoderX/frontend-feature-notifications
+[33m28fe5c2[m Merge pull request #77 from ByteCoderX/frontend-feature-GestionLotesAdmin
+[33mdb2e685[m (frontend-feature-notifications): Subida de archivos principales de la seccion de notificaciones
+[33m8530d05[m feature(GestionLotes): se agrego la nueva seccion para el control de lotes para los administradores
+[33m6f2b682[m Merge pull request #75 from ByteCoderX/frontend-refactor-DashAdmin
+[33mf715d58[m[33m ([m[1;32mfrontend-refactor-DashAdmin[m[33m)[m fix(dashAdmin): habian botones sin conectar y colores que no se veian a simple vista, todo arreglado
+[33m5fdeae0[m Merge pull request #73 from ByteCoderX/frontend-feature-HistorialAccesosAdmin
+[33m26af8be[m Merge pull request #74 from ByteCoderX/frontend-feature-reclamosClient
+[33m9e6bd82[m[33m ([m[1;31morigin/frontend-feature-reclamosClient[m[33m)[m Merge branch 'develop' into frontend-feature-reclamosClient
+[33m2822c6b[m fix(reclamos): se arreglo una ruta
+[33mb966bff[m[33m ([m[1;31morigin/frontend-feature-HistorialAccesosAdmin[m[33m, [m[1;32mfrontend-feature-HistorialAccesosAdmin[m[33m)[m feature(historialAccesos): terminada la seccion del historial de accesos de los invitados para la parte de admin, solo falta agregar las imagenes
+[33me16a019[m Merge pull request #72 from ByteCoderX/refactor-carnet-information
+[33m3837903[m[33m ([m[1;31morigin/refactor-carnet-information[m[33m)[m refactor(carnet): Se integraron datos reales al sitio.
+[33mb00fb40[m Merge pull request #71 from ByteCoderX/refactor-carnet-data
+[33m06d8eab[m[33m ([m[1;31morigin/refactor-carnet-data[m[33m)[m refactor(carnet): Se modificaron los datos que se envian.
+[33m848416e[m Merge pull request #70 from ByteCoderX/fix-carnet-images
+[33m602c396[m[33m ([m[1;31morigin/fix-carnet-images[m[33m)[m fix(carnet): Se eliminaron imágenes y se cambió el qr.
+[33m9a735bb[m Merge pull request #69 from ByteCoderX/feature-carnet-pdf
+[33me70bc02[m[33m ([m[1;31morigin/feature-carnet-pdf[m[33m)[m feature(carnet): Se implementó el endpoint para generar el carnet.
+[33mfcfe247[m Merge pull request #68 from ByteCoderX/fix-sessions-middleware
+[33mf44803e[m[33m ([m[1;31morigin/fix-sessions-middleware[m[33m)[m fix(sessionsMiddleware): Se cambió el nombre de una importación incorrecta.
+[33md8aa8c5[m Merge pull request #66 from ByteCoderX/frontend-feature-GestionAccesos
+[33m49220ca[m Merge pull request #67 from ByteCoderX/refactor-carnet-endpoint
+[33m39a134b[m[33m ([m[1;31morigin/refactor-carnet-endpoint[m[33m)[m refactor(carnet): Se arregló el funcionamiento.
+[33m7478c73[m[33m ([m[1;31morigin/frontend-feature-GestionAccesos[m[33m, [m[1;32mfrontend-feature-GestionAccesos[m[33m)[m feature(gestionAccesos): finalizada la seccion de gestion de accesos de la seccion de admin para los clientes entrantes, falta agregar las fotos
+[33md3ec72f[m Merge pull request #65 from ByteCoderX/frontend-feature-reclamosClient
+[33m8f35eb5[m Merge pull request #64 from ByteCoderX/feature-digitalid-endpoint
+[33m0572c9a[m[33m ([m[1;31morigin/feature-digitalid-endpoint[m[33m)[m fix(carnet): Arreglé mi cagada
+[33m22610a9[m Merge pull request #63 from ByteCoderX/feature-digitalid-endpoint
+[33mf471dec[m feature(carnet): Se creó un endpoint que devuelve el carnet en PDF.
+[33me8e2e10[m feature(reclamos): se implemente la generacion de reclamos para cliente
+[33m35883a7[m Merge pull request #62 from ByteCoderX/frontend-feature-GestionExpensasAdmin
+[33m545b91f[m[33m ([m[1;31morigin/frontend-feature-GestionExpensasAdmin[m[33m)[m Se eliminó algo turbio
+[33m2dacd17[m[33m ([m[1;32mfrontend-feature-GestionExpensasAdmin[m[33m)[m feature(gestionExpensas): terminada la seccion de la gestion de expensas para admin, solo queda agregar las imagenes
+[33m9c7c509[m Merge branch 'develop' of https://github.com/ByteCoderX/barriogestion into develop
+[33m88b3e2a[m Merge pull request #61 from ByteCoderX/frontend-feature-ingresos
+[33m1b1d4c3[m Merge branch 'develop' of https://github.com/ByteCoderX/barriogestion into develop
+[33m9e2c92a[m Merge pull request #60 from ByteCoderX/frontend-feature-espacios
+[33m49ef9bd[m Merge pull request #58 from ByteCoderX/frontend-feature-resEspacios
+[33m9a652d9[m[33m ([m[1;31morigin/frontend-feature-ingresos[m[33m, [m[1;32mfrontend-feature-ingresosAdmin[m[33m, [m[1;32mfrontend-feature-ingresos[m[33m)[m feature(fondos): terminado la seccion de fondos para admin, falta agregar las imagenes nada mas
+[33mc430be4[m[33m ([m[1;31morigin/frontend-feature-espacios[m[33m)[m feature(reservasClient): se implento la reserva de espacios de cliente
+[33m5be32fa[m[33m ([m[1;31morigin/frontend-feature-fondosAdmin[m[33m, [m[1;32mfrontend-feature-fondosAdmin[m[33m, [m[1;32mfrontend-feature-AdminFondos[m[33m)[m feature(fondos): se creo la seccion de fondos, queda arreglar el temas de las imagenes y un par de detalles mas
+[33mb42cfd1[m[33m ([m[1;31morigin/frontend-feature-resEspacios[m[33m, [m[1;32mfrontend-feature-resEspacios[m[33m)[m feature(reservas): la barra de navegacion y las imagenes estaban rotas y habia un par de conexiones mal. Ya esta todo arreglado
+[33mb26f011[m Merge pull request #57 from ByteCoderX/frontend-feature-registro
+[33mb30fa8e[m
