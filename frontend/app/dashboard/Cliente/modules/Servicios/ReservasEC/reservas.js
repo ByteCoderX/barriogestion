@@ -117,7 +117,7 @@ const espaciosData = {
     },
     
     // Metegol y Playroom
-    meteголPlayroom: {
+    metegolPlayroom: {
         nombre: 'Metegol - Playroom',
         descripcion: 'Sala de juegos y entretenimiento',
         capacidad: '15 personas',
@@ -343,6 +343,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     cargarEspaciosComoTiras();
+    cargarReservasDesdeStorage();
     cargarReservasUsuario();
     configurarFechaMinima();
     configurarEventosFormulario();
@@ -498,23 +499,101 @@ function abrirModalReserva(espacioKey) {
     espacioSeleccionado = espacioKey;
     const espacio = espaciosData[espacioKey];
     
-    const modal = document.getElementById('modalReserva');
-    const titulo = document.getElementById('modalTitulo');
-    const precioInfo = document.getElementById('precioInfo');
-    
-    titulo.textContent = `Reservar ${espacio.nombre}`;
-    
-    if (espacio.precio > 0) {
-        precioInfo.style.display = 'block';
-        document.getElementById('precioTotal').textContent = `$${espacio.precio.toLocaleString()}`;
-        document.getElementById('senaRequerida').textContent = `$${espacio.sena.toLocaleString()}`;
-        document.getElementById('saldoRestante').textContent = `$${espacio.sena.toLocaleString()}`;
-    } else {
-        precioInfo.style.display = 'none';
+    // Cerrar cualquier modal existente
+    const modalExistente = document.getElementById('modalReserva');
+    if (modalExistente) {
+        modalExistente.remove();
     }
     
+    // Crear modal dinámicamente
+    const modalOverlay = document.createElement('div');
+    modalOverlay.className = 'modal-overlay active';
+    modalOverlay.id = 'modalReserva';
+    
+    modalOverlay.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Reservar ${espacio.nombre}</h3>
+                <button class="close-modal" onclick="cerrarModalReserva()">×</button>
+            </div>
+            <div class="modal-body">
+                ${espacio.precio > 0 ? `
+                <div class="precio-info">
+                    <div class="precio-detalle">
+                        <div class="precio-item">
+                            <span>Precio total:</span>
+                            <strong>$${espacio.precio.toLocaleString()}</strong>
+                        </div>
+                        <div class="precio-item">
+                            <span>Seña requerida (50%):</span>
+                            <strong>$${espacio.sena.toLocaleString()}</strong>
+                        </div>
+                        <div class="precio-item">
+                            <span>Saldo restante:</span>
+                            <strong>$${espacio.sena.toLocaleString()}</strong>
+                        </div>
+                    </div>
+                </div>
+                ` : ''}
+                
+                <form id="formReserva">
+                    <div class="form-group">
+                        <label for="fechaReserva">Fecha de reserva *</label>
+                        <input type="date" id="fechaReserva" name="fechaReserva" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="horaInicio">Hora de inicio *</label>
+                        <select id="horaInicio" name="horaInicio" required>
+                            <option value="">Seleccionar hora</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="horaFin">Hora de fin *</label>
+                        <select id="horaFin" name="horaFin" required>
+                            <option value="">Seleccionar hora</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cantidadPersonas">Cantidad de personas *</label>
+                        <input type="number" id="cantidadPersonas" name="cantidadPersonas" min="1" max="${parseInt(espacio.capacidad)}" placeholder="Ej: 10" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="observaciones">Observaciones</label>
+                        <textarea id="observaciones" name="observaciones" placeholder="Comentarios adicionales (opcional)"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="cerrarModalReserva()">Cancelar</button>
+                <button class="btn-primary" onclick="procesarReserva()">Confirmar Reserva</button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modalOverlay);
+    
+    // Configurar fecha mínima
+    const fechaInput = document.getElementById('fechaReserva');
+    const hoy = new Date().toISOString().split('T')[0];
+    fechaInput.min = hoy;
+    
+    // Cargar horarios y configurar eventos
     cargarHorarios(espacio);
-    modal.classList.add('active');
+    
+    // Prevenir cierre al hacer click dentro del modal
+    const modalContent = modalOverlay.querySelector('.modal-content');
+    modalContent.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+    
+    // Cerrar al hacer click en el overlay
+    modalOverlay.addEventListener('click', function() {
+        cerrarModalReserva();
+    });
 }
 
 // Cargar horarios disponibles
@@ -546,9 +625,14 @@ function cargarHorarios(espacio) {
 // Cerrar modal de reserva
 function cerrarModalReserva() {
     const modal = document.getElementById('modalReserva');
-    modal.classList.remove('active');
+    if (modal) {
+        modal.remove();
+    }
     espacioSeleccionado = null;
-    document.getElementById('formReserva').reset();
+    const form = document.getElementById('formReserva');
+    if (form) {
+        form.reset();
+    }
 }
 
 // Configurar fecha mínima (hoy)
@@ -571,19 +655,75 @@ function configurarEventosFormulario() {
     }
 }
 
+// Validar disponibilidad de horarios
+function validarDisponibilidad(espacioKey, fecha, horaInicio, horaFin) {
+    return !reservasUsuario.some(reserva => 
+        reserva.espacio === espacioKey &&
+        reserva.fecha === fecha &&
+        (
+            (parseInt(horaInicio) >= parseInt(reserva.horaInicio) && parseInt(horaInicio) < parseInt(reserva.horaFin)) ||
+            (parseInt(horaFin) > parseInt(reserva.horaInicio) && parseInt(horaFin) <= parseInt(reserva.horaFin)) ||
+            (parseInt(horaInicio) <= parseInt(reserva.horaInicio) && parseInt(horaFin) >= parseInt(reserva.horaFin))
+        )
+    );
+}
+
+// Guardar reservas en localStorage
+function guardarReservas() {
+    try {
+        localStorage.setItem('reservasUsuario', JSON.stringify(reservasUsuario));
+    } catch (e) {
+        console.log('No se pudieron guardar las reservas');
+    }
+}
+
+// Cargar reservas desde localStorage
+function cargarReservasDesdeStorage() {
+    try {
+        const reservasGuardadas = localStorage.getItem('reservasUsuario');
+        if (reservasGuardadas) {
+            reservasUsuario = JSON.parse(reservasGuardadas);
+        }
+    } catch (e) {
+        reservasUsuario = [];
+    }
+}
+
 // Procesar reserva
 function procesarReserva() {
-    const formData = new FormData(document.getElementById('formReserva'));
+    const form = document.getElementById('formReserva');
+    if (!form || !espacioSeleccionado) return;
+
+    const formData = new FormData(form);
     const espacio = espaciosData[espacioSeleccionado];
+    
+    const reservaData = {
+        fecha: formData.get('fechaReserva'),
+        horaInicio: formData.get('horaInicio'),
+        horaFin: formData.get('horaFin'),
+        cantidadPersonas: formData.get('cantidadPersonas')
+    };
+    
+    // Validar campos requeridos
+    if (!reservaData.fecha || !reservaData.horaInicio || !reservaData.horaFin || !reservaData.cantidadPersonas) {
+        alert('Por favor, completa todos los campos requeridos.');
+        return;
+    }
+    
+    // Validar disponibilidad
+    if (!validarDisponibilidad(espacioSeleccionado, reservaData.fecha, reservaData.horaInicio, reservaData.horaFin)) {
+        alert('El espacio no está disponible en ese horario. Por favor, elige otro horario.');
+        return;
+    }
     
     const reserva = {
         id: Date.now(),
         espacio: espacioSeleccionado,
         nombreEspacio: espacio.nombre,
-        fecha: formData.get('fechaReserva'),
-        horaInicio: formData.get('horaInicio'),
-        horaFin: formData.get('horaFin'),
-        cantidadPersonas: formData.get('cantidadPersonas'),
+        fecha: reservaData.fecha,
+        horaInicio: reservaData.horaInicio,
+        horaFin: reservaData.horaFin,
+        cantidadPersonas: reservaData.cantidadPersonas,
         observaciones: formData.get('observaciones'),
         precio: espacio.precio,
         sena: espacio.sena,
@@ -592,6 +732,7 @@ function procesarReserva() {
     };
     
     reservasUsuario.push(reserva);
+    guardarReservas();
     cerrarModalReserva();
     mostrarConfirmacion(reserva);
     cargarReservasUsuario();
@@ -602,6 +743,8 @@ function mostrarConfirmacion(reserva) {
     const modal = document.getElementById('modalConfirmacion');
     const mensaje = document.getElementById('mensajeConfirmacion');
     const detalle = document.getElementById('detalleConfirmacion');
+    
+    if (!modal || !mensaje || !detalle) return;
     
     const fechaFormateada = new Date(reserva.fecha + 'T00:00:00').toLocaleDateString('es-AR', {
         weekday: 'long',
@@ -647,7 +790,9 @@ function mostrarConfirmacion(reserva) {
 // Cerrar modal de confirmación
 function cerrarModalConfirmacion() {
     const modal = document.getElementById('modalConfirmacion');
-    modal.classList.remove('active');
+    if (modal) {
+        modal.classList.remove('active');
+    }
 }
 
 // Cargar reservas del usuario
@@ -655,20 +800,20 @@ function cargarReservasUsuario() {
     const lista = document.getElementById('reservasLista');
     if (!lista) return;
     
-    if (reservasUsuario.length === 0) {
+    const hoy = new Date().toISOString().split('T')[0];
+    const proximasReservas = reservasUsuario
+        .filter(reserva => reserva.fecha >= hoy)
+        .sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+    
+    if (proximasReservas.length === 0) {
         lista.innerHTML = `
             <div class="sin-reservas">
-                <img src="../../assets/icons/misreservas.png" alt="Sin reservas">
+                <img src="../../../assets/icons/misreservas.png" alt="Sin reservas">
                 <p>No tienes reservas próximas</p>
             </div>
         `;
         return;
     }
-    
-    const proximasReservas = reservasUsuario
-        .filter(reserva => new Date(reserva.fecha) >= new Date())
-        .sort((a, b) => new Date(a.fecha) - new Date(b.fecha))
-        .slice(0, 3);
     
     lista.innerHTML = proximasReservas.map(reserva => {
         const fechaFormateada = new Date(reserva.fecha + 'T00:00:00').toLocaleDateString('es-AR', {
@@ -681,6 +826,7 @@ function cargarReservasUsuario() {
                 <div class="reserva-info">
                     <h4>${reserva.nombreEspacio}</h4>
                     <p>${fechaFormateada} - ${reserva.horaInicio}:00 a ${reserva.horaFin}:00</p>
+                    <span class="reserva-personas">${reserva.cantidadPersonas} personas</span>
                 </div>
                 <div class="reserva-status ${reserva.estado}">
                     ${reserva.estado === 'confirmada' ? 'Confirmada' : 'Pendiente'}
@@ -691,15 +837,32 @@ function cargarReservasUsuario() {
 }
 
 // Ver todas las reservas
-function verMisReservas() {
-    if (reservasUsuario.length === 0) {
-        alert('No tienes reservas registradas.');
-    } else {
-        const resumen = reservasUsuario.map(reserva => 
-            `${reserva.nombreEspacio} - ${reserva.fecha} (${reserva.estado})`
-        ).join('\n');
-        alert(`Tus reservas:\n\n${resumen}`);
-    }
+function verMisReservasModal() {
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay active';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Mis Reservas</h3>
+                <button class="close-modal" onclick="cerrarModal(this)">×</button>
+            </div>
+            <div class="modal-body">
+                ${reservasUsuario.length === 0 
+                    ? '<p>No tienes reservas registradas.</p>' 
+                    : reservasUsuario.map(r => `
+                        <div class="reserva-item">
+                            <h4>${r.nombreEspacio}</h4>
+                            <p>${r.fecha} - ${r.horaInicio}:00 a ${r.horaFin}:00 (${r.estado})</p>
+                        </div>
+                    `).join('')}
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+function cerrarModal(btn) {
+    btn.closest('.modal-overlay').remove();
 }
 
 // Funciones para mantener compatibilidad con el HTML existente
@@ -707,7 +870,7 @@ window.abrirModalReserva = abrirModalReserva;
 window.cerrarModalReserva = cerrarModalReserva;
 window.cerrarModalConfirmacion = cerrarModalConfirmacion;
 window.cerrarModalDetalles = cerrarModalDetalles;
-window.verMisReservas = verMisReservas;
+window.verMisReservas = verMisReservasModal;
 
 // Funciones para el selector de tema
 function setTheme(theme) {
