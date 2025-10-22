@@ -2,7 +2,7 @@
 define('APP_BASE_PATH', realpath(__DIR__ . '/../../../')); 
 require APP_BASE_PATH . "/Utils/auth/validator.php";
 
-$baseUrl = 'tesisde/app/dashboard/cliente';
+$baseUrl = '/tesisde/app/dashboard/cliente';
 
 ?>
 <header>
