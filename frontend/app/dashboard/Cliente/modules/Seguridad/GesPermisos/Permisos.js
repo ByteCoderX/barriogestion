@@ -1,4 +1,4 @@
-        // Variables globales para temas
+// Variables globales para temas
 let currentTheme = localStorage.getItem('theme') || 'dark';
 
 // Variables para gestión de miembros
@@ -301,7 +301,7 @@ function eliminarMiembro(id) {
             miembros.splice(index, 1);
             
             // Remover del DOM
-            const card = document.querySelector(`[data-id="${id}"]`);
+            const card = document.querySelector([`data-id=${id}`]);
             if (card) {
                 card.remove();
             }
@@ -327,7 +327,7 @@ function actualizarPermisosNuevo() {
 
 function actualizarPermisosSegunRol(rol, modalSelector, checkboxName) {
     const modal = document.querySelector(modalSelector);
-    const checkboxes = modal.querySelectorAll(`input[name="${checkboxName}"]`);
+    const checkboxes = modal.querySelectorAll(input[name="${checkboxName}"]);
     
     // Resetear todos
     checkboxes.forEach(cb => cb.checked = false);
@@ -344,7 +344,7 @@ function actualizarPermisosSegunRol(rol, modalSelector, checkboxName) {
     const permisos = permisosDefecto[rol] || [];
     
     permisos.forEach(permiso => {
-        const checkbox = modal.querySelector(`input[name="${checkboxName}"][value="${permiso}"]`);
+        const checkbox = modal.querySelector(input[name="${checkboxName}"][value="${permiso}"]);
         if (checkbox) {
             checkbox.checked = true;
         }
@@ -391,7 +391,7 @@ function showAlert(message, type = 'info') {
     existingAlerts.forEach(alert => alert.remove());
     
     const alert = document.createElement('div');
-    alert.className = `temp-alert alert-${type}`;
+    alert.className = temp-alert `alert-${type}`;
     alert.textContent = message;
     alert.style.cssText = `
         position: fixed;
@@ -449,7 +449,7 @@ function showAlert(message, type = 'info') {
 
 // CORREGIDO: Función para actualizar miembro en DOM
 function actualizarMiembroEnDOM(miembro) {
-    const card = document.querySelector(`[data-id="${miembro.id}"]`);
+    const card = document.querySelector([`data-id=${miembro.id}`]);
     if (card) {
         // Actualizar atributo data-rol
         card.dataset.rol = miembro.rol;
@@ -583,15 +583,15 @@ function agregarMiembroADOM(miembro) {
                     familia: 'Gestionar Familia',
                     reservas: 'Realizar Reservas'
                 }).map(([key, text]) => 
-                    `<span class="permiso ${miembro.permisos.includes(key) ? 'activo' : 'inactivo'}">${text}</span>`
+                    <span class="permiso ${miembro.permisos.includes(key) ? 'activo' : 'inactivo'}">${text}</span>
                 ).join('')}
             </div>
         </div>
         <div class="miembro-acciones">
             <button class="btn-action btn-edit" onclick="editarMiembro(${miembro.id})">Editar Rol</button>
             ${miembro.rol === 'empleado' ? 
-                `<button class="btn-action btn-delete" onclick="eliminarMiembro(${miembro.id})">Eliminar</button>` :
-                `<button class="btn-action btn-view" onclick="verDetalles(${miembro.id})">Ver Detalles</button>`
+                <button class="btn-action btn-delete" onclick="eliminarMiembro(${miembro.id})">Eliminar</button> :
+                <button class="btn-action btn-view" onclick="verDetalles(${miembro.id})">Ver Detalles</button>
             }
         </div>
     `;
