@@ -1,8 +1,8 @@
 # BarrioGestion - Frontend
 
-![BarrioGestion Logo](app/assets/img/LogoApp.png)
+![BarrioGestion Logo](../docs/images/LogoApp.png)
 
-## 📋 Descripción
+## Descripción
 
 **BarrioGestion** es un sistema web diseñado para gestionar de manera centralizada las operaciones de barrios cerrados y countrys. La plataforma permite automatizar procesos administrativos, supervisar alertas y garantizar que cada usuario acceda solo a las funciones que le corresponden, optimizando la eficiencia y organización de la comunidad.
 
@@ -10,7 +10,7 @@ Tras una investigación realizada por nuestro equipo, identificamos que los barr
 
 ---
 
-## 🚀 Características Principales
+## Características Principales
 
 ### Para Administradores
 - **Gestión de Residentes**: Control completo de usuarios, lotes y permisos
@@ -34,7 +34,7 @@ Tras una investigación realizada por nuestro equipo, identificamos que los barr
 
 ---
 
-## 🛠️ Stack Tecnológico
+## Stack Tecnológico
 
 - **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
 - **Backend**: Node.js con Prisma ORM
@@ -43,7 +43,7 @@ Tras una investigación realizada por nuestro equipo, identificamos que los barr
 
 ---
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 BarrioGestion/
@@ -124,11 +124,11 @@ BarrioGestion/
 
 ---
 
-## 🌐 Integración con Backend
+## Integración con Backend
 
 La aplicación consume una API REST desarrollada con **Node.js** y **Prisma ORM**. La autenticación se maneja mediante tokens JWT almacenados en cookies HTTP-only para mayor seguridad.
 
-### 🔐 Autenticación
+### Autenticación
 
 El sistema utiliza JWT con refresh tokens almacenados en cookies HTTP-only. El flujo es el siguiente:
 
@@ -138,7 +138,7 @@ El sistema utiliza JWT con refresh tokens almacenados en cookies HTTP-only. El f
 4. El token se valida en cada request mediante `/auth/validator`
 5. Al cerrar sesión, el token se elimina de las cookies
 
-### 📋 Módulos Principales
+### Módulos Principales
 
 El frontend consume endpoints organizados en módulos:
 
@@ -149,11 +149,11 @@ El frontend consume endpoints organizados en módulos:
 - **Reservas**: Consulta de espacios y creación de reservas
 - **Servicios**: Generación de carnets digitales
 
-> 📚 **Para documentación completa de la API**, endpoints detallados y ejemplos, consultar el [README del Backend](../backend/README.md).
+> **Para documentación completa de la API**, endpoints detallados y ejemplos, consultar el [README del Backend](../backend/README.md).
 
 ---
 
-## 👥 Roles y Permisos
+## Roles y Permisos
 
 ### Administrador
 Acceso completo al sistema con capacidad de:
@@ -175,10 +175,11 @@ Acceso limitado a funciones personales:
 
 ---
 
-## 🎨 Convenciones de Código
+## Convenciones de Código
 
 ### Estructura de Archivos
 Cada módulo sigue la estructura:
+
 ```
 NombreModulo/
 ├── NombreModulo.php    # Lógica y HTML
@@ -193,26 +194,26 @@ NombreModulo/
 
 ---
 
-## 📸 Capturas de Pantalla
+## Capturas de Pantalla
 
 ### Panel de Administración
-![dashBoard Admin](app/assets/img/dashAdmin.png)
+![dashBoard Admin](../docs/images/dashAdmin.png)
 
 
 ### Panel de Residente
-![dashBoard Admin](app/assets/img/dashClient.png)
+![dashBoard Client](../docs/images/dashClient.png)
 
 ### Gestión de Expensas
-![dashBoard Admin](app/assets/img/expensasClient.png)
+![Gestión Expensas](../docs/images/image.png)
 
 
 ### Servicio de MiCarnet
-![dashBoard Admin](app/assets/img/miCarnetClient.png)
+![Carnet Client](../docs/images/miCarnetClient.png)
 
 
 ---
 
-## 🗺️ Roadmap
+## Roadmap
 
 ### En Desarrollo
 - [ ] **Escalabilidad para municipios**: Adaptación del sistema para gestionar no solo barrios privados sino todo tipo de comunidades con necesidades organizacionales similares
@@ -232,13 +233,13 @@ NombreModulo/
 
 ---
 
-## 📄 Licencia
+## Licencia
 
 Este proyecto es propiedad de BarrioGestion. Todos los derechos reservados.
 
 ---
 
-## 📧 Contacto
+## Contacto
 
 **Equipo BarrioGestion**
 - Email: Bytercodex@gmail.com
@@ -246,7 +247,7 @@ Este proyecto es propiedad de BarrioGestion. Todos los derechos reservados.
 
 ---
 
-## 🙏 Agradecimientos
+## Agradecimientos
 
 Agradecemos a todas las comunidades y barrios cerrados que participaron en nuestra investigación inicial y nos ayudaron a identificar las necesidades reales del sector.
 
