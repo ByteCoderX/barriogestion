@@ -35,7 +35,7 @@
                             <span class="estado">PENDIENTE</span>
                         </div>
                         <p class="vencimiento">Vence: 10 de Julio</p>
-                        <a href="./Expensas/expensas.php" class="btn-accion">Ver Detalle</a>
+                        <a href="modules/Expensas/expensas.php" class="btn-accion">Ver Detalle</a>
                     </div>
                 </div>
 
@@ -46,7 +46,7 @@
                             <span class="lugar">Cancha de Tenis</span>
                             <span class="fecha">28 Jun - 18:00hs</span>
                         </div>
-                        <a href="./Servicios/ReservasEC/reservas.php" class="btn-accion">Gestionar</a>
+                        <a href="modules/Servicios/ReservasEC/reservas.php" class="btn-accion">Gestionar</a>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                         <img src="./assets/icons/permisos.png" alt="Permisos">
                     </div>
                     <div class="ad-info">
-                        <a href="Seguridad/ControlAccesos/Invitado.php">
+                        <a href="modules/Seguridad/ControlAccesos/Invitado.php">
                         <h3>Autorizar Visitas</h3>
                         <p>Generar permisos de acceso</p>
                         </a>
@@ -82,7 +82,7 @@
                         <img src="./assets/icons/reclamos2.png" alt="Reclamos">
                     </div>
                     <div class="ad-info">
-                        <a href="Reclamos/quejas.php">
+                        <a href="modules/Reclamos/quejas.php">
                         <h3>Nuevo Reclamo</h3>
                         <p>Reporta Incidencias</p>
                         </a>
@@ -94,7 +94,7 @@
                         <img src="./assets/icons/carnet.png" alt="Carnet">
                     </div>
                     <div class="ad-info">
-                        <a href="./Servicios/MiCarnet/carnet.php">
+                        <a href="modules/Servicios/MiCarnet/carnet.php">
                         <h3>Mi Carnet</h3>
                         <p>Acceso a gimnasio y pileta</p>
                         </a>
@@ -106,7 +106,7 @@
             <div class="notificaciones-seccion">
                 <div class="seccion-header">
                     <h2>Notificaciones Recientes</h2>
-                    <a href="Notificaciones/notificacion.php" class="ver-todas">Ver todas</a>
+                    <a href="modules/Notificaciones/notificacion.php" class="ver-todas">Ver todas</a>
                 </div>
                 <div class="notificaciones-lista">
                     <div class="notificacion-item ">
