@@ -3,8 +3,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Reservar Espacios - Barrio Gestión</title>
-        <link rel="stylesheet" href="../../../index.css?v=87">
-        <link rel="stylesheet" href="./reservas.css?v=74">
+        <link rel="stylesheet" href="../../../index.css">
+        <link rel="stylesheet" href="./reservas.css">
     </head>
 
 <body>
@@ -46,7 +46,6 @@
     <div class="modal-overlay" id="modalReserva">...</div>
     <div class="modal-overlay" id="modalConfirmacion">...</div>
 
-    <script src="../../../assets/js/index.js?v=8"></script>
-    <script src="./reservas.js?v=100"></script>
+    <script src="./reservas.js"></script>
 </body>
 </html>

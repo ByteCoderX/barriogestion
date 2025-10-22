@@ -1,26 +1,8 @@
-// Datos de los espacios
+// Datos de los espacios - Actualizado según amenities disponibles
 const espaciosData = {
-    clubhouse: {
-        nombre: 'Club House',
-        descripcion: 'Salón de eventos para celebraciones y reuniones',
-        capacidad: '150 personas',
-        precio: 25000,
-        sena: 12500,
-        horarioInicio: 9,
-        horarioFin: 23,
-        icono: '../../../Assets/icons/clubhouse.png',
-        estado: 'disponible',
-        detalles: [
-            'Aire acondicionado',
-            'Sistema de sonido incluido',
-            'Iluminación profesional',
-            'Cocina equipada',
-            'Baños privados',
-            'Estacionamiento incluido'
-        ]
-    },
+    // Canchas de Tenis
     canchaTenis1: {
-        nombre: 'Cancha de Tenis Nº1',
+        nombre: 'Cancha de tenis Nº 1',
         descripcion: 'Cancha de tenis profesional con iluminación',
         capacidad: '4 jugadores',
         precio: 25000,
@@ -38,7 +20,7 @@ const espaciosData = {
         ]
     },
     canchaTenis2: {
-        nombre: 'Cancha de Tenis Nº2',
+        nombre: 'Cancha de tenis Nº 2',
         descripcion: 'Cancha de tenis profesional con superficie rápida',
         capacidad: '4 jugadores',
         precio: 25000,
@@ -55,8 +37,107 @@ const espaciosData = {
             'Pelotas incluidas'
         ]
     },
+    canchaTenis3: {
+        nombre: 'Canchas de tenis Nº 3',
+        descripcion: 'Cancha de tenis con iluminación nocturna',
+        capacidad: '4 jugadores',
+        precio: 25000,
+        sena: 5000,
+        horarioInicio: 7,
+        horarioFin: 22,
+        icono: '../../../assets/icons/tennis.png',
+        estado: 'disponible',
+        detalles: [
+            'Superficie profesional',
+            'Red oficial',
+            'Iluminación nocturna',
+            'Raquetas disponibles',
+            'Pelotas incluidas'
+        ]
+    },
+    
+    // Cancha Polideportiva
+    canchaPolideportiva: {
+        nombre: 'CHANCHA POLIDEPORTIVA',
+        descripcion: 'Cancha polideportiva multiuso',
+        capacidad: '20 jugadores',
+        precio: 30000,
+        sena: 6000,
+        horarioInicio: 7,
+        horarioFin: 22,
+        icono: '../../../assets/icons/futbol.png',
+        estado: 'disponible',
+        detalles: [
+            'Multiuso (fútbol, básquet, vóley)',
+            'Iluminación profesional',
+            'Césped sintético',
+            'Arcos y aros incluidos',
+            'Vestuarios disponibles'
+        ]
+    },
+    
+    // Club House
+    clubhouse: {
+        nombre: 'House',
+        descripcion: 'Salón de eventos para celebraciones y reuniones',
+        capacidad: '150 personas',
+        precio: 50000,
+        sena: 12500,
+        horarioInicio: 9,
+        horarioFin: 23,
+        icono: '../../../assets/icons/clubhouse.png',
+        estado: 'disponible',
+        detalles: [
+            'Aire acondicionado',
+            'Sistema de sonido incluido',
+            'Iluminación profesional',
+            'Cocina equipada',
+            'Baños privados',
+            'Estacionamiento incluido'
+        ]
+    },
+    
+    // Mesas de Quincho
+    mesasQuincho: {
+        nombre: 'MESAS QUINCHO',
+        descripcion: 'Sector quincho con mesas compartidas',
+        capacidad: '40 personas',
+        precio: 15000,
+        sena: 3000,
+        horarioInicio: 10,
+        horarioFin: 22,
+        icono: '../../../assets/icons/quincho.png',
+        estado: 'disponible',
+        detalles: [
+            'Parrilla compartida',
+            'Mesas y bancos',
+            'Baños cercanos',
+            'Zona techada'
+        ]
+    },
+    
+    // Metegol y Playroom
+    meteголPlayroom: {
+        nombre: 'Metegol - Playroom',
+        descripcion: 'Sala de juegos y entretenimiento',
+        capacidad: '15 personas',
+        precio: 0,
+        sena: 0,
+        horarioInicio: 8,
+        horarioFin: 22,
+        icono: '../../../assets/icons/clubhouse.png',
+        estado: 'disponible',
+        detalles: [
+            'Metegol profesional',
+            'Juegos de mesa',
+            'Zona de recreación',
+            'Gratuito para socios'
+        ]
+    },
+    
+    // Canchas de Fútbol
     canchaFutbol1: {
-        nombre: 'Cancha de Fútbol Nº1',
+        nombre: 'Nº 1 - CANCHA DE FUTBOL',
         descripcion: 'Cancha de fútbol 5 con césped sintético',
         capacidad: '10 jugadores',
         precio: 20000,
@@ -72,25 +153,8 @@ const espaciosData = {
             'Pelotas disponibles'
         ]
     },
-    canchaFutbol2: {
-        nombre: 'Cancha de Fútbol Nº2',
-        descripcion: 'Cancha de fútbol 5 al aire libre',
-        capacidad: '10 jugadores',
-        precio: 20000,
-        sena: 3000,
-        horarioInicio: 7,
-        horarioFin: 22,
-        icono: '../../../assets/icons/futbol.png',
-        estado: 'disponible',
-        detalles: [
-            'Pasto natural',
-            'Arcos incluidos',
-            'Iluminación nocturna',
-            'Vestuarios cercanos'
-        ]
-    },
     canchaFutbol3: {
-        nombre: 'Cancha de Fútbol Nº3',
+        nombre: 'Nº 3 - CANCHA DE FUTBOL',
         descripcion: 'Cancha de fútbol 7 con césped natural',
         capacidad: '14 jugadores',
         precio: 20000,
@@ -107,7 +171,7 @@ const espaciosData = {
         ]
     },
     canchaFutbol4: {
-        nombre: 'Cancha de Fútbol Nº4',
+        nombre: 'Nº 4 - CANCHA DE FUTBOL',
         descripcion: 'Cancha de fútbol 5 techada',
         capacidad: '10 jugadores',
         precio: 20000,
@@ -124,7 +188,7 @@ const espaciosData = {
         ]
     },
     canchaFutbol5: {
-        nombre: 'Cancha de Fútbol Nº5',
+        nombre: 'Nº 5 - CANCHA DE FUTBOL',
         descripcion: 'Cancha de fútbol 5',
         capacidad: '10 jugadores',
         precio: 20000,
@@ -139,8 +203,59 @@ const espaciosData = {
             'Pelotas disponibles'
         ]
     },
+    canchaFutbol2: {
+        nombre: 'Nº2 CANCHA DE FUTBOL',
+        descripcion: 'Cancha de fútbol 5 al aire libre',
+        capacidad: '10 jugadores',
+        precio: 20000,
+        sena: 3000,
+        horarioInicio: 7,
+        horarioFin: 22,
+        icono: '../../../assets/icons/futbol.png',
+        estado: 'disponible',
+        detalles: [
+            'Pasto natural',
+            'Arcos incluidos',
+            'Iluminación nocturna',
+            'Vestuarios cercanos'
+        ]
+    },
+    
+    // Quinchos individuales
+    quinchoMesa1: {
+        nombre: 'Quincho mesa Nº 1',
+        descripcion: 'Sector quincho con mesa exclusiva',
+        capacidad: '10 personas',
+        precio: 10000,
+        sena: 2000,
+        horarioInicio: 10,
+        horarioFin: 22,
+        icono: '../../../assets/icons/quincho.png',
+        estado: 'disponible',
+        detalles: [
+            'Parrilla compartida',
+            'Mesa y bancos',
+            'Baño cercano'
+        ]
+    },
+    quinchoMesa2: {
+        nombre: 'Quincho mesa Nº 2',
+        descripcion: 'Sector quincho con mesa exclusiva',
+        capacidad: '10 personas',
+        precio: 10000,
+        sena: 2000,
+        horarioInicio: 10,
+        horarioFin: 22,
+        icono: '../../../assets/icons/quincho.png',
+        estado: 'disponible',
+        detalles: [
+            'Parrilla compartida',
+            'Mesa y bancos',
+            'Baño cercano'
+        ]
+    },
     quinchoMesa3: {
-        nombre: 'Quincho Mesa Nº3',
+        nombre: 'Quincho mesa Nº 3',
         descripcion: 'Sector quincho con mesa exclusiva',
         capacidad: '10 personas',
         precio: 10000,
@@ -156,7 +271,7 @@ const espaciosData = {
         ]
     },
     quinchoMesa4: {
-        nombre: 'Quincho Mesa Nº4',
+        nombre: 'Quincho mesa Nº 4',
         descripcion: 'Sector quincho con mesa exclusiva',
         capacidad: '10 personas',
         precio: 10000,
@@ -169,6 +284,42 @@ const espaciosData = {
             'Parrilla compartida',
             'Mesa y bancos',
             'Baño cercano'
+        ]
+    },
+    
+    // Ping Pong y Pool
+    pingPongPlayroom: {
+        nombre: 'Ping Pong - Playroom',
+        descripcion: 'Mesa de ping pong en sala de juegos',
+        capacidad: '8 personas',
+        precio: 0,
+        sena: 0,
+        horarioInicio: 8,
+        horarioFin: 22,
+        icono: '../../../assets/icons/clubhouse.png',
+        estado: 'disponible',
+        detalles: [
+            'Mesa profesional',
+            'Paletas incluidas',
+            'Pelotas disponibles',
+            'Gratuito para socios'
+        ]
+    },
+    poolPlayroom: {
+        nombre: 'Pool - Playroom',
+        descripcion: 'Mesa de pool en sala de juegos',
+        capacidad: '8 personas',
+        precio: 0,
+        sena: 0,
+        horarioInicio: 8,
+        horarioFin: 22,
+        icono: '../../../assets/icons/clubhouse.png',
+        estado: 'disponible',
+        detalles: [
+            'Mesa profesional',
+            'Tacos incluidos',
+            'Bolas disponibles',
+            'Gratuito para socios'
         ]
     }
 };
@@ -188,7 +339,6 @@ document.addEventListener('DOMContentLoaded', function() {
             applyTheme(currentTheme);
         }
     } catch (e) {
-        // Si localStorage no está disponible, usar tema por defecto
         applyTheme(currentTheme);
     }
     
@@ -251,7 +401,6 @@ function crearTiraEspacio(espacioKey, espacio) {
         </div>
     `;
 
-    // Agregar eventos sin usar estilos inline
     tira.addEventListener('mouseenter', function() {
         this.classList.add('hover');
     });
@@ -260,7 +409,6 @@ function crearTiraEspacio(espacioKey, espacio) {
         this.classList.remove('hover');
     });
 
-    // Hacer toda la tira clickeable
     tira.addEventListener('click', function() {
         mostrarDetallesEspacio(espacioKey);
     });
@@ -273,7 +421,6 @@ function mostrarDetallesEspacio(espacioKey) {
     const espacio = espaciosData[espacioKey];
     if (!espacio) return;
 
-    // Crear modal de detalles
     const modalOverlay = document.createElement('div');
     modalOverlay.className = 'modal-overlay active modal-detalles';
     modalOverlay.innerHTML = `
@@ -357,7 +504,6 @@ function abrirModalReserva(espacioKey) {
     
     titulo.textContent = `Reservar ${espacio.nombre}`;
     
-    // Mostrar información de precio solo si tiene costo
     if (espacio.precio > 0) {
         precioInfo.style.display = 'block';
         document.getElementById('precioTotal').textContent = `$${espacio.precio.toLocaleString()}`;
@@ -384,7 +530,6 @@ function cargarHorarios(espacio) {
         horaInicio.innerHTML += `<option value="${hora}">${horaFormateada}</option>`;
     }
     
-    // Actualizar horas de fin cuando se selecciona hora de inicio
     horaInicio.addEventListener('change', function() {
         const inicioSeleccionado = parseInt(this.value);
         horaFin.innerHTML = '<option value="">Seleccionar hora</option>';
@@ -446,16 +591,9 @@ function procesarReserva() {
         fechaCreacion: new Date().toISOString()
     };
     
-    // Agregar a reservas del usuario
     reservasUsuario.push(reserva);
-    
-    // Cerrar modal de reserva
     cerrarModalReserva();
-    
-    // Mostrar confirmación
     mostrarConfirmacion(reserva);
-    
-    // Actualizar lista de reservas
     cargarReservasUsuario();
 }
 
@@ -527,7 +665,6 @@ function cargarReservasUsuario() {
         return;
     }
     
-    // Mostrar solo las próximas 3 reservas
     const proximasReservas = reservasUsuario
         .filter(reserva => new Date(reserva.fecha) >= new Date())
         .sort((a, b) => new Date(a.fecha) - new Date(b.fecha))
@@ -579,18 +716,14 @@ function setTheme(theme) {
     try {
         localStorage.setItem('theme', theme);
     } catch (e) {
-        // Si localStorage no está disponible, continuar sin guardar
         console.log('No se pudo guardar el tema');
     }
 }
 
 function applyTheme(theme) {
     const body = document.body;
-    
-    // Remover todas las clases de tema
     body.classList.remove('theme-dark', 'theme-light', 'theme-nature');
     
-    // Aplicar el tema seleccionado
     if (theme === 'light') {
         body.classList.add('theme-light');
     } else if (theme === 'nature') {
