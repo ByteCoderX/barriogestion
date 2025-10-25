@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis Visitas - BarrioGestion</title>
-    <link rel="stylesheet" href="Visitas.css?v=18">
-    <link rel="stylesheet" href="../../../index.css?v=46">
+    <link rel="stylesheet" href="Visitas.css">
+    <link rel="stylesheet" href="../../../index.css">
 </head>
 <body>
     <?php include '../../../includes/header.php'; ?>
@@ -156,7 +156,7 @@
         <!-- Tabla de visitas del cliente -->
         <div class="table-section">
             <div class="table-header">
-                <h2>📋 Mis Visitas Autorizadas</h2>
+                <h2> Mis Visitas Autorizadas</h2>
                 <button class="btn btn-small" onclick="exportarMisVisitas()">📥 Exportar</button>
             </div>
             <div class="table-container">
@@ -177,6 +177,101 @@
                     <tbody id="visitasTableBody">
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmación para Cancelar -->
+    <div id="modalCancelar" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2> Confirmar Cancelación</h2>
+                <button class="modal-close" onclick="cerrarModalCancelar()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>¿Estás seguro de que deseas cancelar la visita de <strong id="nombreVisitanteCancelar"></strong>?</p>
+                <p class="modal-warning">Esta acción no se puede deshacer.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="cerrarModalCancelar()">No, volver</button>
+                <button class="btn btn-danger" onclick="confirmarCancelacion()">Sí, cancelar visita</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Edición -->
+    <div id="modalEditar" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2> Editar Visita</h2>
+                <button class="modal-close" onclick="cerrarModalEditar()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="formEditarVisita" onsubmit="event.preventDefault(); guardarEdicion();">
+                    <input type="hidden" id="editId">
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="editNombre">Nombre Completo *</label>
+                            <input type="text" id="editNombre" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editDni">DNI *</label>
+                            <input type="text" id="editDni" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editTelefono">Teléfono *</label>
+                            <input type="tel" id="editTelefono" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editFecha">Fecha *</label>
+                            <input type="date" id="editFecha" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editHoraDesde">Hora Desde *</label>
+                            <input type="time" id="editHoraDesde" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editHoraHasta">Hora Hasta *</label>
+                            <input type="time" id="editHoraHasta" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editTipo">Tipo de Visita *</label>
+                            <select id="editTipo" required>
+                                <option value="una_vez">Una Vez</option>
+                                <option value="temporal">Temporal</option>
+                                <option value="permanente">Permanente</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editMotivo">Motivo *</label>
+                            <select id="editMotivo" required>
+                                <option value="familiar">Visita Familiar</option>
+                                <option value="social">Visita Social</option>
+                                <option value="trabajo">Trabajo/Servicio</option>
+                                <option value="delivery">Delivery</option>
+                                <option value="mantenimiento">Mantenimiento</option>
+                                <option value="evento">Evento</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group form-group-full">
+                            <label for="editObservaciones">Observaciones</label>
+                            <textarea id="editObservaciones" rows="3"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="cerrarModalEditar()">Cancelar</button>
+                <button class="btn" onclick="guardarEdicion()">Guardar Cambios</button>
             </div>
         </div>
     </div>

@@ -131,8 +131,8 @@ function cargarTabla(visitas) {
                     <td><span class="status status-${visita.estado}">${estadosTexto[visita.estado]}</span></td>
                     <td class="action-buttons">
                         ${visita.estado === 'autorizada' ?
-                `<button class="btn-action btn-cancel" onclick="cancelarVisita(${visita.id})">Cancelar</button>
-                             <button class="btn-action btn-edit" onclick="editarVisita(${visita.id})">Editar</button>`
+                `<button class="btn-action btn-cancel" onclick="mostrarModalCancelar(${visita.id})">Cancelar</button>
+                             <button class="btn-action btn-edit" onclick="mostrarModalEditar(${visita.id})">Editar</button>`
                 : ''}
                     </td>
                 `;
@@ -209,47 +209,193 @@ function filtrarVisitasHoy() {
     aplicarFiltros();
 }
 
-// Cancelar visita
-function cancelarVisita(id) {
-    if (confirm('¿Estás seguro de que quieres cancelar esta visita?')) {
-        const visitaIndex = misVisitas.findIndex(v => v.id === id);
-        if (visitaIndex !== -1) {
-            misVisitas[visitaIndex].estado = 'cancelada';
-            cargarTabla(visitasFiltradas);
-            actualizarEstadisticas();
-            alert('Visita cancelada exitosamente');
-        }
+// MODAL DE CONFIRMACIÓN PARA CANCELAR
+function mostrarModalCancelar(id) {
+    const visita = misVisitas.find(v => v.id === id);
+    if (!visita) return;
+
+    const modal = document.getElementById('modalCancelar');
+    const nombreVisitante = document.getElementById('nombreVisitanteCancelar');
+    
+    nombreVisitante.textContent = visita.nombre;
+    modal.dataset.visitaId = id;
+    modal.classList.add('active');
+}
+
+function cerrarModalCancelar() {
+    const modal = document.getElementById('modalCancelar');
+    modal.classList.remove('active');
+}
+
+function confirmarCancelacion() {
+    const modal = document.getElementById('modalCancelar');
+    const visitaId = parseInt(modal.dataset.visitaId);
+    
+    const visitaIndex = misVisitas.findIndex(v => v.id === visitaId);
+    if (visitaIndex !== -1) {
+        misVisitas[visitaIndex].estado = 'cancelada';
+        visitasFiltradas = [...misVisitas];
+        cargarTabla(visitasFiltradas);
+        actualizarEstadisticas();
+        cerrarModalCancelar();
+        mostrarNotificacion('Visita cancelada exitosamente', 'success');
     }
 }
 
+// MODAL DE EDICIÓN
+function mostrarModalEditar(id) {
+    const visita = misVisitas.find(v => v.id === id);
+    if (!visita) return;
+
+    // Llenar el formulario con los datos actuales
+    document.getElementById('editId').value = visita.id;
+    document.getElementById('editNombre').value = visita.nombre;
+    document.getElementById('editDni').value = visita.dni;
+    document.getElementById('editTelefono').value = visita.telefono;
+    document.getElementById('editFecha').value = visita.fecha;
+    document.getElementById('editHoraDesde').value = visita.hora_desde;
+    document.getElementById('editHoraHasta').value = visita.hora_hasta;
+    document.getElementById('editTipo').value = visita.tipo;
+    document.getElementById('editMotivo').value = visita.motivo;
+    document.getElementById('editObservaciones').value = visita.observaciones;
+
+    const modal = document.getElementById('modalEditar');
+    modal.classList.add('active');
+}
+
+function cerrarModalEditar() {
+    const modal = document.getElementById('modalEditar');
+    modal.classList.remove('active');
+}
+
+function guardarEdicion() {
+    const id = parseInt(document.getElementById('editId').value);
+    const visitaIndex = misVisitas.findIndex(v => v.id === id);
+    
+    if (visitaIndex !== -1) {
+        // Actualizar los datos
+        misVisitas[visitaIndex].nombre = document.getElementById('editNombre').value;
+        misVisitas[visitaIndex].dni = document.getElementById('editDni').value;
+        misVisitas[visitaIndex].telefono = document.getElementById('editTelefono').value;
+        misVisitas[visitaIndex].fecha = document.getElementById('editFecha').value;
+        misVisitas[visitaIndex].hora_desde = document.getElementById('editHoraDesde').value;
+        misVisitas[visitaIndex].hora_hasta = document.getElementById('editHoraHasta').value;
+        misVisitas[visitaIndex].tipo = document.getElementById('editTipo').value;
+        misVisitas[visitaIndex].motivo = document.getElementById('editMotivo').value;
+        misVisitas[visitaIndex].observaciones = document.getElementById('editObservaciones').value;
+
+        visitasFiltradas = [...misVisitas];
+        cargarTabla(visitasFiltradas);
+        actualizarEstadisticas();
+        cerrarModalEditar();
+        mostrarNotificacion('Visita actualizada exitosamente', 'success');
+    }
+}
+
+// Función para mostrar notificaciones
+function mostrarNotificacion(mensaje, tipo) {
+    const notificacion = document.createElement('div');
+    notificacion.className = `notificacion notificacion-${tipo}`;
+    notificacion.textContent = mensaje;
+    document.body.appendChild(notificacion);
+
+    setTimeout(() => {
+        notificacion.classList.add('show');
+    }, 100);
+
+    setTimeout(() => {
+        notificacion.classList.remove('show');
+        setTimeout(() => {
+            document.body.removeChild(notificacion);
+        }, 300);
+    }, 3000);
+}
+
+// Cerrar modales al hacer clic fuera
 window.addEventListener("click", function (event) {
-    const modal = document.querySelector(".modal.active"); // o el id del modal
-    if (modal && event.target === modal) {
-        modal.classList.remove("active"); // o modal.style.display = "none";
+    const modalCancelar = document.getElementById('modalCancelar');
+    const modalEditar = document.getElementById('modalEditar');
+    
+    if (event.target === modalCancelar) {
+        cerrarModalCancelar();
+    }
+    if (event.target === modalEditar) {
+        cerrarModalEditar();
     }
 });
-// Editar visita (redirige a la página de control de accesos)
-function editarVisita(id) {
-    window.location.href = '../Seguridad/ControlAccesos/Invitado.php?edit=' + id;
-}
 
-// Exportar mis visitas
+// Exportar mis visitas a Excel
 function exportarMisVisitas() {
-    let csv = 'Visitante,DNI,Teléfono,Fecha,Horario,Tipo,Motivo,Estado,Observaciones\n';
+    // Crear el contenido HTML de la tabla para Excel
+    let tabla = `
+        <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel">
+        <head>
+            <meta charset="UTF-8">
+            <style>
+                table { border-collapse: collapse; width: 100%; }
+                th { background-color: #333333; color: white; font-weight: bold; padding: 10px; border: 1px solid #ddd; }
+                td { padding: 8px; border: 1px solid #ddd; }
+                tr:nth-child(even) { background-color: #f2f2f2; }
+                .header { font-size: 18px; font-weight: bold; margin-bottom: 10px; }
+                .info { margin-bottom: 20px; }
+            </style>
+        </head>
+        <body>
+            <div class="header">Registro de Visitas - ${clienteData.lote}</div>
+            <div class="info">
+                <strong>Propietario:</strong> ${clienteData.nombre}<br>
+                <strong>Fecha de exportación:</strong> ${new Date().toLocaleDateString('es-AR')}
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Visitante</th>
+                        <th>DNI</th>
+                        <th>Teléfono</th>
+                        <th>Fecha</th>
+                        <th>Horario</th>
+                        <th>Tipo</th>
+                        <th>Motivo</th>
+                        <th>Estado</th>
+                        <th>Observaciones</th>
+                    </tr>
+                </thead>
+                <tbody>`;
 
     visitasFiltradas.forEach(visita => {
-        csv += `"${visita.nombre}",${visita.dni},"${visita.telefono}",${visita.fecha},"${visita.hora_desde} - ${visita.hora_hasta}","${tiposTexto[visita.tipo]}","${motivosTexto[visita.motivo]}","${estadosTexto[visita.estado]}","${visita.observaciones}"\n`;
+        tabla += `
+            <tr>
+                <td>${visita.nombre}</td>
+                <td>${visita.dni}</td>
+                <td>${visita.telefono}</td>
+                <td>${formatearFechaVisualizacion(visita.fecha)}</td>
+                <td>${visita.hora_desde} - ${visita.hora_hasta}</td>
+                <td>${tiposTexto[visita.tipo]}</td>
+                <td>${motivosTexto[visita.motivo]}</td>
+                <td>${estadosTexto[visita.estado]}</td>
+                <td>${visita.observaciones}</td>
+            </tr>`;
     });
 
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    tabla += `
+                </tbody>
+            </table>
+        </body>
+        </html>`;
+
+    // Crear el blob y descargar como Excel
+    const blob = new Blob([tabla], { type: 'application/vnd.ms-excel' });
     const link = document.createElement('a');
     const url = URL.createObjectURL(blob);
     link.setAttribute('href', url);
-    link.setAttribute('download', `mis_visitas_${clienteData.lote.toLowerCase().replace(' ', '_')}_${new Date().toISOString().split('T')[0]}.csv`);
+    link.setAttribute('download', `Visitas_${clienteData.lote.replace(' ', '_')}_${new Date().toISOString().split('T')[0]}.xls`);
     link.style.visibility = 'hidden';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    
+    // Mostrar notificación
+    mostrarNotificacion('Excel descargado exitosamente', 'success');
 }
 
 // Funciones para el selector de tema
