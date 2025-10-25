@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestionar Permisos - Barrio Gestión</title>
-    <link rel="stylesheet" href="../../../index.css?v=1">
+    <link rel="stylesheet" href="../../../index.css">
     <link rel="stylesheet" href="Permisos.css">
 </head>
 <body>
