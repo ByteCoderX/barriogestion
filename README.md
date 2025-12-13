@@ -1,5 +1,4 @@
 # barriogestion - Backend
-[Me quiero matar](https://www.figma.com/board/uUN5NAxLLAz1whjUeNXxaI/Sin-t%C3%ADtulo?node-id=0-1&t=xd0qkSPxeHxPk6lT-1)
 
 - 25 Endpoints - Lógicos
 - http://localhost:2005/bg/v1/{endpoints}
