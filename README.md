@@ -1,5 +1,8 @@
 # barriogestion - Backend
 
+- Estado de la aplicación: 60% Hardcoded
+- Pasó a producción?: No
+
 - 25 Endpoints - Lógicos
 - http://localhost:2005/bg/v1/{endpoints}
 
